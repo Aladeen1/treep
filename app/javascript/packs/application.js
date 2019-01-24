@@ -1,6 +1,6 @@
 import 'components/calendar';
 import "bootstrap";
-import { elements } from '../views/base';
+import { elements, search } from '../views/base';
 import * as flights from '../controllers/flightController';
 import * as airports from '../controllers/locationController';
 import Search from '../models/Search';
@@ -11,9 +11,13 @@ console.log('Hello from webpacker');
 
 airports.displayAirports();
 elements.searchForm.addEventListener('submit', e => {
-    console.log(e);
+  console.log(e);
+  if (search != null) {
     e.preventDefault();
     flights.controlSearch();
+  } else {
+    // flights.controlSearch();
+  }
 });
 
 // elements.searchDuration.addEventListener('input', () => {

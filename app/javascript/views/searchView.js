@@ -1,10 +1,10 @@
 import { elements } from './base';
 
 
-export const clearInput = () => {
-    elements.searchDepartInput.value = '';
-    elements.searchReturnInput.value = '';
-};
+// export const clearInput = () => {
+//     elements.searchDepartInput.value = '';
+//     elements.searchReturnInput.value = '';
+// };
 
 export const getInput = location => {
   const element = elements[location].value;
