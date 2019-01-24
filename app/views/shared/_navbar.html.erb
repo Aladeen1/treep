@@ -4,6 +4,10 @@
   <li>A propos</li>
   <li>Calculateur</li>
   <li>Les arbres</li>
-  <li>Se connecter</li>
+  <% if user_signed_in? %>
+  <%= link_to 'Déconnection', destroy_user_session_path, method: :delete %>
+  <% else %>
+  <%= link_to 'Se connecter', new_user_session_path %>
+  <% end %>
   <li>Français(EUR)</li>
 </ul>

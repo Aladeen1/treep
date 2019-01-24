@@ -4,5 +4,11 @@
 }
 
 .search {
+  display: flex;
   text-align: center;
+  margin-bottom: 75px;
+}
+
+.search__field {
+  width: 200px;
 }

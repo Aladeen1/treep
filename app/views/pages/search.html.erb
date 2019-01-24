@@ -1,7 +1,6 @@
-<h1 class="title" id="home_page"> Make an API call to get flights from kiwis</h1>
+<h1 id='searchPage'> Search Page with options</h1>
 
-
-  <form class="search">
+<form class="search">
     <input type="text" class="search__field" id="departLoc__search" placeholder="Find you dreamed destination" list="airports__depart">
     <input type="text" class="search__field" id="returnLoc__search" placeholder="Returning destination" list="airports__return">
     <input type="text" class="search__field" id="departDate__search" placeholder="departure date format (dd/mm/yyyy)">
@@ -17,19 +16,9 @@
   <datalist id="airports__depart"></datalist>
   <datalist id="airports__return"></datalist>
 
-  <ul class="flights__list"></ul>
+<%= render 'shared/slider', {type: 'Duration', realtype: 'range', maximum: '40'} %>
+<%= render 'shared/slider', {type: 'Prix', realtype: 'range', maximum: '1000'} %>
+<%= render 'shared/slider', {type: 'Depart', realtype: 'text', maximum: '40'} %>
+<%= render 'shared/slider', {type: 'Arrivee', realtype: 'text', maximum: '40'} %>
 
-  <!-- <div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div> -->
-    <!-- </div>
-  </div> -->
+ <ul class="flights__list"></ul>
