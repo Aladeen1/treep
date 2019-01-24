@@ -14,7 +14,7 @@ export const elements = {
 };
 
 export const proxy = 'https://cors-anywhere.herokuapp.com/';
-
+export const search = document.getElementById('searchPage');
 // export const searchOptions = (ID) => {
 //   const search`${ID}` = document.getElementById(ID);
 //   return search`${ID}`

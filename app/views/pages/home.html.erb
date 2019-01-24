@@ -1,7 +1,7 @@
 <h1 class="title" id="home_page"> Make an API call to get flights from kiwis</h1>
 
 
-  <form class="search">
+  <form class="search" action="<%= root_path %>" method="get">
     <input type="text" class="search__field" id="departLoc__search" placeholder="Find you dreamed destination" list="airports__depart">
     <input type="text" class="search__field" id="returnLoc__search" placeholder="Returning destination" list="airports__return">
     <input type="text" class="search__field" id="departDate__search" placeholder="departure date format (dd/mm/yyyy)">

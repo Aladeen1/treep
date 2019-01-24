@@ -1,6 +1,6 @@
 import * as searchView from '../views/flightView';
 import { getInput, clearResults } from '../views/searchView';
-import { elements } from '../views/base';
+import { elements, search } from '../views/base';
 import Search from '../models/Search';
 import { optionalP } from '../views/additionalOptView';
 
@@ -16,7 +16,7 @@ export const controlSearch = () => {
   const departureDate = getInput('searchDepartDate');
   const returningDate = getInput('searchReturnDate');
   
-  const search = document.getElementById('searchPage')
+  
   if (search != null) {
     var options = optionalP();
     console.log(options)
