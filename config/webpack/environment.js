@@ -9,4 +9,7 @@ environment.plugins.prepend('Provide',
   })
 )
 
+// const babelLoader = environment.loaders.get('babel')
+// babelLoader.options.cacheDirectory = false
+
 module.exports = environment
