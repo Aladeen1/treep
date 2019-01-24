@@ -16,19 +16,19 @@ export const controlSearch = () => {
   const departureDate = getInput('searchDepartDate');
   const returningDate = getInput('searchReturnDate');
   
-  const search = document.getElementById('searchPage')
-  if (search != null) {
-    const options = optionalP();
-    console.log(options)
-  } else {
+  // const search = document.getElementById('searchPage')
+  // if (search != null) {
+  //   const options = optionalP();
+  //   console.log(options)
+  // } else {
     const options = {
       duration: '40',
       prix: '1500',
       depart: '06:00',
       arrivee: '06:00'
     }
-    return options
-  }
+  //   return options
+  // }
 
   if (departLoc && returnLoc && departureDate && returningDate) {
     console.log(`The destination is ${departLoc}, the return location is ${returnLoc}, the depart day is ${departureDate}, the return date is ${returningDate}`);

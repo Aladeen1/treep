@@ -12,7 +12,6 @@ console.log('Hello from webpacker');
 airports.displayAirports();
 elements.searchForm.addEventListener('submit', e => {
     console.log(e);
-    e.srcElement.action = "http://localhost:3000/search?";
     e.preventDefault();
     flights.controlSearch();
 });
