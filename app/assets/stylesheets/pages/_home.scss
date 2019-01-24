@@ -1,1 +1,48 @@
-// Specific CSS for your home-page
+#section1 {
+  background-image: url('https://res.cloudinary.com/tark-industries/image/upload/v1548345076/ballon.png');
+  background-size: cover;
+  background-position: center;
+  height: 120vh;
+}
+
+.slogan h1 {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-weight: 300;
+  font-size: 45px;
+  margin: 0px;
+  color: white;
+  padding-left: 13vw;
+  padding-top: 50px;
+}
+
+.choix3 {
+  padding-left: 14vw;
+  color: white;
+}
+
+.choix3 ul{
+  padding: 0px;
+  padding-top: 20px;
+  font-size: 15px;
+}
+
+.choix3 li{
+  padding-right: 3px;
+}
+
+.border-form {
+  background-color: $green;
+  margin-left: 13vw;
+  margin-right: 20vw;
+  border-radius: 5px;
+}
+
+.search {
+  padding: 13px;
+}
+
+.search input {
+  margin-right: 10px;
+  border: none;
+  border-radius: 2px;
+}
