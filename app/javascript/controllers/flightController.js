@@ -1,6 +1,6 @@
 import * as searchView from '../views/flightView';
 import { getInput, clearResults } from '../views/searchView';
-import { elements } from '../views/base';
+import { elements, search } from '../views/base';
 import Search from '../models/Search';
 import { optionalP } from '../views/additionalOptView';
 
@@ -16,18 +16,17 @@ export const controlSearch = () => {
   const departureDate = getInput('searchDepartDate');
   const returningDate = getInput('searchReturnDate');
   
-  const search = document.getElementById('searchPage')
+  
   if (search != null) {
-    const options = optionalP();
+    var options = optionalP();
     console.log(options)
   } else {
-    const options = {
+    var options = {
       duration: '40',
       prix: '1500',
       depart: '06:00',
       arrivee: '06:00'
     }
-    return options
   }
 
   if (departLoc && returnLoc && departureDate && returningDate) {
@@ -44,6 +43,7 @@ export const controlSearch = () => {
 
     Promise.all([state.search.getFlights(options.duration, options.prix, options.depart, options.arrivee), state.search.getAirlinesCode()])
     .then(() => {
+      console.log(state.search.result)
       searchView.renderResults(state.search.result, state.search.airlines);
     })
     .catch(err => console.log(err))
