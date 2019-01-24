@@ -1,13 +1,49 @@
-<ul class="navbar__list__container">
-  <li>Vols</li>
-  <li>Discover</li>
-  <li>A propos</li>
-  <li>Calculateur</li>
-  <li>Les arbres</li>
-  <% if user_signed_in? %>
-  <%= link_to 'Déconnection', destroy_user_session_path, method: :delete %>
-  <% else %>
-  <%= link_to 'Se connecter', new_user_session_path %>
-  <% end %>
-  <li>Français(EUR)</li>
-</ul>
+<div class="rectangle-navbar">
+    <ul class="liste-navbar">
+
+      <li class="logo">
+        <img src="https://res.cloudinary.com/tark-industries/image/upload/v1548348888/LOOG_TREEP_LEGIT_font.png">
+      </li>
+
+      <li class="li-before">
+       <li><i class="fas fa-plane"></i></li>
+       <li><a href="#">Vols</a></li>
+     </li>
+
+      <li class="li-before">
+        <li><i class="fas fa-globe-africa"></i></li>
+        <li><a href="#">Discover</a></li>
+      </li>
+
+      <li class="li-before">
+       <li><i class="far fa-lightbulb"></i></li>
+       <li><a href="#">A propos</a></li>
+     </li>
+
+      <li class="li-before">
+       <li><i class="fas fa-calculator"></i></li>
+       <li><a href="#">Calculateur</a></li>
+     </li>
+
+      <li class="li-before">
+       <li><i class="fas fa-tree"></i></li>
+       <li><a href="#">Les arbres</a></li>
+     </li>
+
+      <li class="li-before">
+        <li><i class="fas fa-user-ninja"></i></li>
+        <li><% if user_signed_in? %>
+           <%= link_to 'Déconnection', destroy_user_session_path, method: :delete %>
+           <% else %>
+           <%= link_to 'Se connecter', new_user_session_path %>
+          <% end %>
+        </li>
+     </li>
+
+      <li class="li-before">
+       <li><img class="fr-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"></li>
+       <li><a href="#">Français (EUR)</a></li>
+     </li>
+
+    </ul>
+  </div>
