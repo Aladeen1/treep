@@ -9,9 +9,6 @@
   margin-bottom: 75px;
 }
 
-.search__field {
-  width: 200px;
-}
 
 .choix3 {
   padding-left: 14vw;
@@ -28,24 +25,60 @@
   padding-right: 3px;
 }
 
+.search__field1 {
+  width: 170px;
+  margin-left: 30px;
+}
+
+.search__field2 {
+  width: 170px;
+  margin-left: 30px;
+}
+
+.search__field3 {
+  width: 200px;
+}
+
 .border-form {
   background-color: $green;
   margin-left: 13vw;
-  margin-right: 20vw;
+  width: 960px;
   border-radius: 5px;
   position: relative;
+}
+
+.square1 {
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  width: 30px;
+  height: 39px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.square2 {
+  position: absolute;
+  top: 13px;
+  left: 224px;
+  width: 30px;
+  height: 39px;
+  background-color: white;
+  border-radius: 2px;
 }
 
 .fa-plane-departure {
   position: absolute;
   top: 24px;
   left: 23px;
+  z-index: 3;
 }
 
 .fa-plane-arrival {
   position: absolute;
   top: 24px;
-  left: 224px;
+  left: 229px;
+  z-index: 3;
 }
 
 .search {
