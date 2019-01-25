@@ -15,7 +15,8 @@ export const controlSearch = () => {
   const returnLoc = searchView.getAirportCode(getInput('searchReturnInput'));
   const departureDate = getInput('searchDepartDate');
   const returningDate = getInput('searchReturnDate');
-  
+  const flightType = getInput('searchFlightType');
+  const passengers = getInput('searchPassengers');
   
   if (search != null) {
     var options = optionalP();
@@ -29,10 +30,10 @@ export const controlSearch = () => {
     }
   }
 
-  if (departLoc && returnLoc && departureDate && returningDate) {
-    console.log(`The destination is ${departLoc}, the return location is ${returnLoc}, the depart day is ${departureDate}, the return date is ${returningDate}`);
+  if (departLoc && returnLoc && departureDate && returningDate && flightType && passengers) {
+    console.log(`The destination is ${departLoc}, the return location is ${returnLoc}, the depart day is ${departureDate}, the return date is ${returningDate}, for ${passengers} passengers and it's a ${flightType} ticket`);
     // 2) New search object and add to state
-    state.search = new Search(departLoc, returnLoc, departureDate, returningDate);
+    state.search = new Search(departLoc, returnLoc, departureDate, returningDate, flightType, passengers);
 
     // 3) Prepare UI for results
     // searchView.clearInput();
