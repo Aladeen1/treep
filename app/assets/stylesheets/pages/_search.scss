@@ -1,0 +1,9 @@
+.flights__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.flight__card {
+  display: flex;
+  justify-content: space-around;
+}
