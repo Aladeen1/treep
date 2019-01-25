@@ -1,6 +1,20 @@
 <h1 id='searchPage'> Search Page with options</h1>
 
 <form class="search">
+	<ul>
+	  <li class="allez-retour">
+	    <select id="flight_type">
+	      <option value="oneway">Aller simple</option>
+	      <option value="round">Aller retour</option>
+	    </select>
+	    <li><i class="fas fa-arrow-down"></i></li>
+	  </li>
+
+	  <li class="passager">
+	    <input type="number" min="1" max="9" id="passengers">
+	    <li><i class="fas fa-arrow-down"></i></li>
+	  </li>
+    </ul>
     <input type="text" class="search__field" id="departLoc__search" placeholder="Find you dreamed destination" list="airports__depart">
     <input type="text" class="search__field" id="returnLoc__search" placeholder="Returning destination" list="airports__return">
     <input type="text" class="search__field" id="departDate__search" placeholder="departure date format (dd/mm/yyyy)">

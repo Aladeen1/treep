@@ -2,11 +2,13 @@ import axios from 'axios';
 import { proxy } from '../views/base.js';
 
 export default class Search {
-    constructor(departLoc, returnLoc, departureDate, returningDate) {
+    constructor(departLoc, returnLoc, departureDate, returningDate, flightType, passengers) {
       this.departLoc = departLoc;
       this.returnLoc = returnLoc;
       this.departureDate = departureDate;
       this.returningDate = returningDate;
+      this.flightType = flightType;
+      this.passengers = passengers;
     }
 
     getLocation(query, locationType) {
@@ -20,7 +22,7 @@ export default class Search {
 
     getFlights(maxDuration, maxPrice, dtimeFrom, atimeFrom) {
       const res = axios(`
-        ${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDate}&dateTo=${this.returningDate}&max_fly_duration=${maxDuration}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&atime_from=${atimeFrom}&limit=40&partner=picky`);
+        ${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDate}&dateTo=${this.returningDate}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&atime_from=${atimeFrom}&limit=40&partner=picky`);
       res.then((flight) => {
         this.result = flight.data.data;
         console.log(this.result);

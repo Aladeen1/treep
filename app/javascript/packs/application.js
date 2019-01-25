@@ -4,7 +4,7 @@ import { elements, search } from '../views/base';
 import * as flights from '../controllers/flightController';
 import * as airports from '../controllers/locationController';
 import Search from '../models/Search';
-import { getInput } from '../views/searchView';
+import { getInput, setInput } from '../views/searchView';
 
 
 console.log('Hello from webpacker');
@@ -15,19 +15,22 @@ elements.searchForm.addEventListener('submit', e => {
   if (search != null) {
     e.preventDefault();
     flights.controlSearch();
-  } else {
-    // flights.controlSearch();
   }
 });
 
-// elements.searchDuration.addEventListener('input', () => {
-//   const point = document.querySelector('.hello');
-//   const text = getInput('searchDuration');
-//   point.innerHTML = '';
-//   point.insertAdjacentHTML('afterbegin', text);
-// })
+window.addEventListener('load', () => {
+  if (search != null) {
+    const landParams = new URL(window.location.href);
+    setInput('searchDepartInput', landParams.searchParams.get('depart'));
+    setInput('searchReturnInput', landParams.searchParams.get('return'));
+    setInput('searchDepartDate', landParams.searchParams.get('from'));
+    setInput('searchReturnDate', landParams.searchParams.get('to'));
+    setInput('searchFlightType', landParams.searchParams.get('flight_type'));
+    setInput('searchPassengers', landParams.searchParams.get('passengers'));
 
-
+    flights.controlSearch();
+  }
+})
 
 
 

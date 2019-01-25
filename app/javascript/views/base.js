@@ -10,6 +10,8 @@ export const elements = {
     searchPrix: document.getElementById('Prix'),
     searchDepart: document.getElementById('Depart'),
     searchArrivee: document.getElementById('Arrivee'),
+    searchPassengers: document.getElementById('passengers'),
+    searchFlightType: document.getElementById('flight_type'),
     displayFlights: document.querySelector('.flights__list')
 };
 
