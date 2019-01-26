@@ -1,32 +1,84 @@
-<div id="section1">
+<div id="section-all">
+  <div id="section1">
 
-  <div class="slogan">
-    <h1>Le premier comparateur <br> pour une empreinte <br>écologique neutre</h1>
+    <div class="background-section1">
+
+    </div>
+
+    <div class="slogan">
+      <h1>Le premier comparateur <br> pour une empreinte <br>écologique neutre</h1>
+    </div>
+
+    <%= render 'shared/searchbar' %>
+
+    <div class="compteur-arbres">
+      <h2>10,762</h2>
+      <h5>D'arbres plantés par les utilisateurs de TREEP</h5>
+      <img src="https://res.cloudinary.com/tark-industries/image/upload/v1548505333/arrow_treep.png">
+    </div>
+
+    <div class="foret-fin-section1">
+      <img src="https://res.cloudinary.com/tark-industries/image/upload/v1548506723/forest-fin-section1.png">
+    </div>
   </div>
 
+  <div id="section2">
 
-  <%= render 'shared/searchbar' %>
+    <div class="logo-vert">
+      <img src="https://res.cloudinary.com/tark-industries/image/upload/v1548508989/LOGO_TREEP_VERT.png">
+    </div>
 
+    <div class="ccm">
+      <h5>Comment ça marche ?</h5>
+    </div>
+
+    <div class="ticket-dette">
+      <ul>
+        <li><img src="https://res.cloudinary.com/tark-industries/image/upload/v1548511349/ticket.png"></li>
+
+        <li>
+          <h4>Notre solution: la dette écologique</h4>
+          <h5>Pour chaque trajet, Treep calcule le nombre de km, le modèle de l’avion et sa consommation puis en déduit le rejet de Co2 par passager.</h5>
+          <h5 class="def-dette">La dette écologique c’est le prix du nombre d’arbres nécessaire pour compenser les rejets de Co2 d’un voyage.</h5>
+        </li>
+      </ul>
+    </div>
+
+    <div class="explications1et2">
+      <ul>
+
+        <li class="explication1">
+          <img class="number1" src="https://res.cloudinary.com/tark-industries/image/upload/v1548514473/treep_expl1.png">
+          <h4>Treep paye une partie de votre dette écologique.</h4>
+          <h5>Lorsque vous passez par Treep, vous avez déja fait un pas. En effet une partie de votre dette est financée par les comissions que Treep perçoit lorsque vous réservez votre billet.
+          Environ 6% de votre dette est automatiquement prise en charge par Treep.</h5>
+          <ul>
+            <li><a class="section2-button" href="#">Transparence financière</a></li>
+            <li><a class="section2-button" href="#">Les revenues de Treep</a></li>
+          </ul>
+        </li>
+
+        <li class="explication2">
+          <img class="number2" src="https://res.cloudinary.com/tark-industries/image/upload/v1548514472/treep_expl2.png">
+          <h4>Vous avez le choix.<br>Votre dette est entre vos mains seules.</h4>
+          <h5>Dès lors que Treep à rempli sa mission, le reste est entre vos mains, vous pouvez remboursez partiellement ou entièrement votre dette écologique!</h5>
+          <ul>
+            <li><a class="section2-button" href="#">Comment payer la dette?</a></li>
+            <li><a class="section2-button" href="#">Comment est calculée la dette?</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
 
 </div>
+
+
 
 
   <datalist id="airports__depart"></datalist>
   <datalist id="airports__return"></datalist>
 
   <ul class="flights__list"></ul>
-
-  <!-- <div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div> -->
-    <!-- </div>
-  </div> -->

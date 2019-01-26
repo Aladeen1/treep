@@ -1,19 +1,142 @@
+
+
+
+
+
+/*    * * * * * * * * * * *
+      * THIS IS SECTION 1 *
+      * * * * * * * * * * *   */
+
+
+
+
 #section1 {
   background-image: url('https://res.cloudinary.com/tark-industries/image/upload/v1548345076/ballon.png');
-  background-size: cover;
-  background-position: center;
-  height: 120vh;
+  background-size: auto 700px;
+  background-repeat: no-repeat;
 }
 
 .slogan h1 {
   font-family: 'Alegreya Sans SC', sans-serif;
   font-weight: 300;
-  font-size: 45px;
+  font-size: 48px;
   margin: 0px;
   color: white;
   padding-left: 13vw;
   padding-top: 50px;
+  padding-bottom: 40px;
 }
+
+.compteur-arbres {
+  text-align: center;
+  padding-top: 250px;
+}
+
+.compteur-arbres h2 {
+  color: $green;
+  padding-bottom: 10px;
+}
+
+.compteur-arbres img {
+  width: 50px;
+  padding-top: 20px;
+}
+
+.foret-fin-section1 img {
+  width: 100%;
+  margin-top: -10vh;
+}
+
+
+
+
+  /*  * * * * * * * * * * *
+      * THIS IS SECTION 2 *
+      * * * * * * * * * * *   */
+
+
+
+
+
+#section2 {
+  background-image: url('https://res.cloudinary.com/tark-industries/image/upload/v1548510357/bluesquare.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 130vh
+}
+
+.logo-vert img {
+  display: block;
+  width: 13%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+}
+
+.ccm h5 {
+  text-align: center;
+  padding-bottom: 50px
+}
+
+.ticket-dette ul li {
+  display: inline-block;
+}
+
+.ticket-dette img {
+  width: 345px;
+  margin-left: 21vw;
+  margin-right: 100px;
+  margin-top: -175px;
+}
+
+.ticket-dette h5 {
+  width: 430px;
+  line-height: 23px;
+}
+
+.ticket-dette h4 {
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.def-dette {
+  font-weight: 700;
+  color: $green;
+}
+
+.explications1et2 ul li {
+  vertical-align: top;
+}
+
+.explication1, .explication2 {
+  width: 37%;
+}
+
+.explication1 img, .explication2 img {
+  width: 50px;
+}
+
+.explication1 {
+  margin-left: 100px;
+  margin-right: 150px;
+}
+
+.explication2 {
+  text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
