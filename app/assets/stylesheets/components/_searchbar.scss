@@ -7,6 +7,7 @@
   display: flex;
   text-align: center;
   margin-bottom: 75px;
+  padding: 13px;
 }
 
 .search ul {
@@ -107,10 +108,6 @@ select:focus {
   top: 24px;
   left: 235px;
   z-index: 3;
-}
-
-.search {
-  padding: 13px;
 }
 
 .search input {
