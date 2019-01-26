@@ -32,10 +32,14 @@ export const renderFlight = (flight, airportCodes) => {
 }
 
 export const renderResults = (flights, airportCodes) => {
-    // render results of current page
+  // render results of current page
+  if (flights.length === 0) {
+    elements.displayFlights.insertAdjacentHTML('beforeend', 'Pas de résultat disponible pour cette recherche .. suddy');
+  } else {
     flights.slice(0, 10).forEach( flight => {
       renderFlight(flight, airportCodes)
     });
+  }
 };
 
 export const getAirportCode = input => {

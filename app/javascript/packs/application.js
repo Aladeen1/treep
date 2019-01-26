@@ -1,4 +1,5 @@
 import 'components/calendar';
+import 'components/calendarInputSwitch';
 import "bootstrap";
 import { elements, search } from '../views/base';
 import * as flights from '../controllers/flightController';
@@ -23,17 +24,14 @@ window.addEventListener('load', () => {
     const landParams = new URL(window.location.href);
     setInput('searchDepartInput', landParams.searchParams.get('depart'));
     setInput('searchReturnInput', landParams.searchParams.get('return'));
-    setInput('searchDepartDate', landParams.searchParams.get('from'));
-    setInput('searchReturnDate', landParams.searchParams.get('to'));
+    setInput('searchDepartDateFrom', landParams.searchParams.get('from'));
+    setInput('searchReturnDateFrom', landParams.searchParams.get('to'));
     setInput('searchFlightType', landParams.searchParams.get('flight_type'));
     setInput('searchPassengers', landParams.searchParams.get('passengers'));
 
     flights.controlSearch();
   }
-})
-
-
-
+});
 
 
 
