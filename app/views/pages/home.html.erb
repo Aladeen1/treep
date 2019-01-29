@@ -1,4 +1,5 @@
 <div id="section-all">
+  <%= render 'shared/navbar' %>
   <div id="section1">
 
     <div class="background-section1">
@@ -35,10 +36,11 @@
     <div class="ticket-dette">
       <div class="container">
         <div class="row">
-          <div class="col-sm">
+          <div class="col-sm-5">
             <img src="https://res.cloudinary.com/tark-industries/image/upload/v1548511349/ticket.png">
           </div>
-          <div class="col-sm">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-6">
             <h4>Notre solution: la dette écologique</h4>
           <h5>Pour chaque trajet, Treep calcule le nombre de km, le modèle de l’avion et sa consommation puis en déduit le rejet de Co2 par passager.</h5>
           <h5 class="def-dette">La dette écologique c’est le prix du nombre d’arbres nécessaire pour compenser les rejets de Co2 d’un voyage.</h5>
@@ -68,7 +70,7 @@
                 </div>
                 <div style="margin-left: -20%" class="col-sm">
                   <a class="section2-button" href="#">Les revenues de Treep</a>
-                  <div style="width: 140%" class="text-button">
+                  <div style="width: 140%" class="text-button wider-text-button">
                     <div class="square-but"></div>
                     <h6>Treep gagne de l'argent grâce a vous !</h6>
                     <p>En effet à chaque fois que nous vous redirigeons vers une compagnie aérienne ou une agence de voyage, celle-ci nous rémunère en retour. C'est entre 1 et 3% du prix de votre billet. Mais vous le savez déjà, nos bénéfices permettent de financer une partie de votre dette écologique.
@@ -85,22 +87,22 @@
               <h4>Vous avez le choix.<br>Votre dette est entre vos mains seules.</h4>
               <h5>Dès lors que Treep à rempli sa mission, le reste est entre vos mains, vous pouvez remboursez partiellement ou entièrement votre dette écologique!</h5>
               <div class="row">
-                <div class="col-sm">
-                  <a style="margin-right: -25%" class="section2-button" href="#">Comment est calculée la dette</a>
+                <div style="margin-right: -20px" class="col-sm">
+                  <a style="margin-right: -20px;" class="section2-button" href="#">Comment est calculée la dette ?</a>
                   <div class="text-button text-button2">
-                    <div class="square-but sq2"></div>
+                    <div class="square-but sq1"></div>
                     <h6>Des meilleurs calculs a venir!</h6>
                     <p>Ce site n'est encore qu'un MVP (prototype), la dette n'est pas encore calculée en prenant en compte le modèle de l'avion. D'autre part ce ne sont pas nos calculs, nous les avons pris sur le site suivant : www.bad-request </p>
                   </div>
                 </div>
                 <div class="col-sm">
-                  <a class="section2-button" href="#">Comment payer la dette</a>
-                  <div style="width: 130%" class="text-button text-button2">
+                  <a class="section2-button" href="#">Comment payer la dette ?</a>
+                  <div style="width: 130%; margin-left: -100px;" class="text-button text-button2">
                     <div class="square-but sq2"></div>
                     <h6>Dans votre Dashboard. <br>
                     Ou consultez l'onglet qui s'affiche lors de votre achat.</h6>
                     <p>Vous pouvez consulter tout vos voyages sur votre compte. D'autre part dès que vous selectionnez un billet, un onglet va s'ouvrir. Et voilà <br>
-                    Ps: Ne vous culpabilisez pas si elle est trop chère !</p>
+                    Ps: Ne vous culpabilisez pas si c'est trop chère !</p>
                   </div>
                 </div>
               </div>
@@ -114,23 +116,23 @@
   <div id="section3">
 
     <div class="network">
-      <a href="#"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1548766802/facebook-treep.png"></a> <br>
-      <a href="#"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1548766811/insta-treep.png"></a> <br>
-      <a href="#"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1548766819/tweeter-treep.png"></a> <br>
+      <a href="https://www.facebook.com/"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1548766802/facebook-treep.png"></a> <br>
+      <a href="https://www.instagram.com/"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1548766811/insta-treep.png"></a> <br>
+      <a href="https://twitter.com/"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1548766819/tweeter-treep.png"></a> <br>
     </div>
 
     <div class="container container-footer1">
       <div class="row">
-        <div class="col-sm">
+        <div class="col-sm-3">
           <a href="#">Qui sommes nous ?</a>
         </div>
-        <div class="col-sm">
+        <div class="col-sm-3">
           <a href="#">Nos arbres</a>
         </div>
-        <div class="col-sm">
+        <div class="col-sm-3">
           <a href="#">La dette écologique</a>
         </div>
-        <div class="col-sm">
+        <div class="col-sm-3">
           <a href="#">Presse</a>
         </div>
       </div>
@@ -186,8 +188,8 @@
           <a href="#">USA - Flights</a>
         </div>
         <div class="col-sm">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg">
-          <a href="#">United Arab Emirates - Flights</a>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/1280px-Flag_of_Poland.svg.png">
+          <a href="#">Polska - Tanie loty</a>
         </div>
       </div>
 
@@ -205,15 +207,15 @@
           <a href="#">日本 - 航空券</a>
         </div>
         <div class="col-sm">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/1280px-Flag_of_Poland.svg.png">
-          <a href="#">Polska - Tanie loty</a>
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png">
+          <a href="#">Deutschland - Flüge</a>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm">
-          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png">
-          <a href="#">Deutschland - Flüge</a>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg">
+          <a href="#">United Arab Emirates - Flights</a>
         </div>
         <div class="col-sm">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/1200px-Flag_of_Australia_%28converted%29.svg.png">
@@ -222,8 +224,6 @@
         <div class="col-sm"></div>
         <div class="col-sm"></div>
       </div>
-
-
     </div>
 
     <div class="container container-footer3">
@@ -234,7 +234,7 @@
         <div class="col-sm">
           <p>Conditions générales</p>
         </div>
-        <div class="col-sm">
+        <div style="text-align: center" class="col-sm">
           <p>©Treep 2019</p>
         </div>
       </div>
@@ -245,6 +245,14 @@
     </div>
 
   </div>
+</div>
+
+<div class="no-phone">
+  <img style="width: 100vw" src="https://res.cloudinary.com/tark-industries/image/upload/v1548780556/treep-width-pic.png">
+</div>
+
+<div class="no-tablet">
+  <img style="width: 100vw" src="https://res.cloudinary.com/tark-industries/image/upload/v1548783809/treep-width-pic2.png">
 </div>
 
 

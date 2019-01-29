@@ -124,3 +124,43 @@ select:focus {
   color: white;
 }
 
+
+  /*  * * * * * * * * * * *
+      *  MEDIA   QUERIES  *
+      * * * * * * * * * * *   */
+
+
+
+
+@media only screen and (max-width: 1145px) {
+  .search__field {
+    width: 150px;
+  }
+  .border-form {
+  background-color: $green;
+  margin-left: 13vw;
+  width: 850px;
+  border-radius: 5px;
+  position: relative;
+  }
+  .square2 {
+  left: 208px;
+  }
+  .fa-plane-arrival {
+  position: absolute;
+  top: 24px;
+  left: 215px;
+  z-index: 3;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
