@@ -6,13 +6,10 @@ export const elements = {
     searchReturnDateFrom: document.querySelector('#returnDate__search'),
     searchResDepart: document.querySelector('.resultsDepart'),
     searchResReturn: document.querySelector('.resultsReturn'),
-    searchDuration: document.getElementById('Duration'),
-    searchPrix: document.getElementById('Prix'),
-    searchDepart: document.getElementById('Depart'),
-    searchArrivee: document.getElementById('Arrivee'),
     searchPassengers: document.getElementById('passengers'),
     searchFlightType: document.getElementById('flight_type'),
-    displayFlights: document.querySelector('.flights__list')
+    displayFlights: document.querySelector('.flights__list'),
+    displayOptions: document.querySelector('.flights__options')
 };
 
 export const proxy = 'https://cors-anywhere.herokuapp.com/';
@@ -21,3 +18,7 @@ export const search = document.getElementById('searchPage');
 //   const search`${ID}` = document.getElementById(ID);
 //   return search`${ID}`
 // }
+
+
+
+
