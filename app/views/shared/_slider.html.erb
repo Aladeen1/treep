@@ -1,5 +1,28 @@
-<div class="range__input">
+<!-- <div class="range__input">
 	<div class="params">
 	</div>
-	<input id="<%= type %>" type="<%= realtype %>" min="0" max="<%= maximum %>"><%= type %></input>
+	
+</div> -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+
+      <!-- Start noUiSlider -->
+
+      <div id="<%= sliderType %>" style="margin: 20px;">
+	  	<input id="<%= sliderMinValueTarget %>" type="hidden" value="<%= sliderMinValue %>"> 
+	  	<input id="<%= sliderMaxValueTarget %>" type="hidden" value="<%= sliderMaxValue %>"> 
+	  </div>
+      
+      <!-- End noUiSlider -->
+    </div>
+  </div>
 </div>
+
+
+<!-- => Créer une fonction (dans le render puis dans le js) qui prend en compte l'id de l'input, l'id du slider.
+// le render sera à remplir dans le markup js.  -->
+
+

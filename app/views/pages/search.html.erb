@@ -14,25 +14,33 @@
 	    <input type="number" min="1" max="9" id="passengers">
 	    <li><i class="fas fa-arrow-down"></i></li>
 	  </li>
-    </ul>
-    <input type="text" class="search__field" id="departLoc__search" placeholder="Find you dreamed destination" list="airports__depart">
-    <input type="text" class="search__field" id="returnLoc__search" placeholder="Returning destination" list="airports__return">
-    <input type="text" class="search__field" id="departDate__search" placeholder="departure date format (dd/mm/yyyy)">
-    <input type="text" class="search__field" id="returnDate__search" placeholder="returning date format (dd/mm/yyyy)">
-    <button class="btn search__btn">
-        <span>Search</span>
-    </button>
-  </form>
+	</ul>
+	<input type="text" class="search__field" id="departLoc__search" placeholder="Find you dreamed destination" list="airports__depart">
+	<input type="text" class="search__field" id="returnLoc__search" placeholder="Returning destination" list="airports__return">
+	<input type="text" class="search__field" id="departDate__search" placeholder="departure date format (dd/mm/yyyy)">
+	<input type="text" class="search__field" id="returnDate__search" placeholder="returning date format (dd/mm/yyyy)">
+	<button class="btn search__btn">
+	    <span>Search</span>
+	</button>
+</form>
 
-  
-
-
+ 
   <datalist id="airports__depart"></datalist>
   <datalist id="airports__return"></datalist>
 
-<%= render 'shared/slider', {type: 'Duration', realtype: 'range', maximum: '40'} %>
-<%= render 'shared/slider', {type: 'Prix', realtype: 'range', maximum: '1000'} %>
-<%= render 'shared/slider', {type: 'Depart', realtype: 'text', maximum: '40'} %>
-<%= render 'shared/slider', {type: 'Arrivee', realtype: 'text', maximum: '40'} %>
+<div class="flights__container">
+	<div class="flights__options">
+		
+	</div>
 
- <ul class="flights__list"></ul>
+	<div class="flights__display">
+	  <ul class="flights__list"></ul>
+	</div>
+</div>
+
+
+
+
+
+
+

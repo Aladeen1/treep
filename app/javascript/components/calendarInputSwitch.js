@@ -17,3 +17,5 @@ elements.searchFlightType.addEventListener('change', e => {
     }, 30)
   }
 });
+
+// Use offset to make a better transition (pas primordial)

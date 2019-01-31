@@ -1,5 +1,6 @@
 import 'components/calendar';
 import 'components/calendarInputSwitch';
+import 'components/sliderRange';
 import "bootstrap";
 import { elements, search } from '../views/base';
 import * as flights from '../controllers/flightController';
@@ -32,9 +33,6 @@ window.addEventListener('load', () => {
     flights.controlSearch();
   }
 });
-
-
-
 
 
 

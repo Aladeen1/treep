@@ -19,6 +19,6 @@ export const clearResults = () => {
 
 
 export const setInput = (location, params) => {
-	console.log(params);
+	// console.log(params);
 	elements[location].value = params;
 }

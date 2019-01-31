@@ -36,7 +36,7 @@ export const renderResults = (flights, airportCodes) => {
   if (flights.length === 0) {
     elements.displayFlights.insertAdjacentHTML('beforeend', 'Pas de résultat disponible pour cette recherche .. suddy');
   } else {
-    flights.slice(0, 10).forEach( flight => {
+    flights.slice(0, 1).forEach( flight => {
       renderFlight(flight, airportCodes)
     });
   }

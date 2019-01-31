@@ -1,3 +1,4 @@
+
 .flights__list {
   display: flex;
   flex-direction: column;
@@ -6,4 +7,21 @@
 .flight__card {
   display: flex;
   justify-content: space-around;
+}
+
+.flights__container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.flights__options {
+	
+}
+
+.flights__display {
+	width: 200px;
+}
+
+.container {
+	width: 200px;
 }

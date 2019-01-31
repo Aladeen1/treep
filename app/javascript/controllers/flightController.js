@@ -2,7 +2,8 @@ import * as searchView from '../views/flightView';
 import { getInput, clearResults } from '../views/searchView';
 import { elements, search } from '../views/base';
 import Search from '../models/Search';
-import { optionalP } from '../views/additionalOptView';
+import { optionalP, displayOptions } from '../views/additionalOptView';
+import { globalSliderInitialization } from '../components/sliderRange';
 
 const state = {};
 
@@ -20,7 +21,7 @@ export const controlSearch = () => {
 
 
   
-  if (search != null) {
+  if (elements.optionLoaded != null) {
     var options = optionalP();
     console.log(options)
   } 
@@ -43,16 +44,25 @@ export const controlSearch = () => {
     
     // 4) Search for flights
     // 5) Render results on UI
+    if (elements.optionLoaded != null) {
+      var call = Promise.all([state.search.getFlights(options.duration, options.prix, options.depart, options.arrivee), state.search.getAirlinesCode()]);
+    } else {
+      var call = Promise.all([state.search.getFlights(), state.search.getAirlinesCode()]);
+    }
+    call.then(() => {
+      console.log(state.search.result.length);
+      var optionsElement = displayOptions(state.search.result);
+      
+      globalSliderInitialization(optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepartHour, optionsElement.searchArriveeHour);
+
   
-    Promise.all([state.search.getFlights(options.duration, options.prix, options.depart, options.arrivee), state.search.getAirlinesCode()])
-    .then(() => {
-      console.log(state.search.result)
-      searchView.renderResults(state.search.result, state.search.airlines);
+      // searchView.renderResults(state.search.result, state.search.airlines);
     })
     .catch(err => console.log(err))
   }
 }
 
+// Arguments of the getFlight Method => options.duration, options.prix, options.depart, options.arrivee
 
 
 
