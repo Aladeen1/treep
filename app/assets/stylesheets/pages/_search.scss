@@ -4,24 +4,145 @@
   flex-direction: column;
 }
 
-.flight__card {
-  display: flex;
-  justify-content: space-around;
-}
 
 .flights__container {
 	display: flex;
 	justify-content: space-around;
 }
 
-.flights__options {
-	
-}
-
-.flights__display {
-	width: 200px;
-}
 
 .container {
 	width: 200px;
 }
+
+.search__field {
+  width: 20%;
+}
+
+.search {
+  text-align: center;
+}
+
+.flights__list {
+  list-style: none;
+  padding: 0px;
+}
+
+.flight__card {
+  margin: 25px auto;
+  background: #FFFFFF;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.flight__schedule {
+  display: flex;
+}
+
+.flight__days__added {
+  font-size: 13px;
+  padding-left: 2px;
+}
+
+.flight__duration__code {
+  display: flex;
+  flex-direction: column;
+} p {
+  margin: 0px;
+}
+
+
+.flight__card__div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 600px;
+  margin: 10px;
+}
+
+.flight__card__div__info {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.flight__card__header {
+  margin-bottom: 20px;
+}
+
+.flight__flex {
+  display: flex;
+}
+
+.straight {
+  border-top: solid 1px grey;
+}
+
+.flight__card__duree__trajet {
+  width: 100px;
+  text-align: center;
+  margin: 0px 20px;
+}
+
+.flight__card__info__depart {
+  width: 150px;
+  text-align: right;
+}
+
+.flight__card__depart__code__heure {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.heure {
+  margin-left: 4px;
+}
+
+
+.flight__card__info__arrivee {
+  width: 150px;
+  text-align: left;
+}
+
+.flight__card__arrivee__code__heure {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flight__card__checkout {
+  width: 100%;
+  background-color: #5CA9B2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.checkout__button {
+  background-color: #00C896;
+  border-radius: 3px;
+  font-size: 20px;
+  border: none;
+  color: white;
+  padding: 10px 50px;
+} 
+
+#details {
+  border-top-left-radius: 0px;
+}
+
+.flight__price {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: white;
+}
+
+button:focus { outline: none; }
+
+
+
+.details__div {
+  border-top: 0.5px solid #b3aeae;
+}
+
