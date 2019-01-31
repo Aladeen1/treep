@@ -5,10 +5,13 @@ import { getInput } from './searchView';
 
 export const optionalP = () => {
    const name = {
-	duration: getInput('searchDuration'),
-	prix: getInput('searchPrix'),
-	depart: getInput('searchDepartHour'),
-	arrivee: getInput('searchArriveeHour')
+	durationMax: document.getElementById('maxDurationInput').value,
+	prixMax:document.getElementById('maxPrixInput').value,
+	prixMin:document.getElementById('minPrixInput').value,
+	departMax: document.getElementById('maxDepartInput').value,
+	departMin: document.getElementById('minDepartInput').value,
+	arriveeMax: document.getElementById('maxArriveeInput').value,
+	arriveeMin: document.getElementById('minArriveeInput').value
    }
    return name
 }
@@ -41,9 +44,8 @@ export const displayOptions = flights => {
     minArrivalTime = 0;
     maxDepartureTime = formatageCreationSlider(maxDepartureTime);
     minDepartureTime = formatageCreationSlider(minDepartureTime);
-
-    maxDuration = Math.ceil((maxDuration / 60) / 60)
-    minDuration = Math.floor((minDuration / 60) / 60)
+    maxDuration = Math.ceil((maxDuration / 60) / 60);
+    minDuration = Math.floor((minDuration / 60) / 60);
     
     console.log(maxDuration)
     console.log(minDuration)

@@ -22,12 +22,14 @@ export default class Search {
       return res
     }
 
-    getFlights(maxDuration = '40', maxPrice = '10000', dtimeFrom = '06:00', atimeFrom = '06:00') {
+    getFlights(maxDuration, minPrice, maxPrice, dtimeFrom, dtimeTo, atimeFrom, atimeTo) {
       let res;
       if (this.flightType === 'oneway') {
-        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&atime_from=${atimeFrom}&limit=10&partner=picky`);
-      } else if (this.flightType === 'round') {
-        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&atime_from=${atimeFrom}&limit=10&partner=picky`);
+        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&atime_from=${atimeFrom}&limit=20&partner=picky`);
+      } else if (this.flightType === 'round' && (document.getElementById('loaded') != null) ) {
+        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_from=${minPrice}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&dtime_to=${dtimeTo}&atime_from=${atimeFrom}&atime_to=${atimeTo}&limit=20&partner=picky`);
+      } else {
+        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}`);
       }
       res.then((flight) => {
         this.result = flight.data.data;

@@ -21,7 +21,7 @@ export const controlSearch = () => {
 
 
   
-  if (elements.optionLoaded != null) {
+  if (document.getElementById('loaded') != null) {
     var options = optionalP();
     console.log(options)
   } 
@@ -44,8 +44,8 @@ export const controlSearch = () => {
     
     // 4) Search for flights
     // 5) Render results on UI
-    if (elements.optionLoaded != null) {
-      var call = Promise.all([state.search.getFlights(options.duration, options.prix, options.depart, options.arrivee), state.search.getAirlinesCode()]);
+    if (document.getElementById('loaded') != null) {
+      var call = Promise.all([state.search.getFlights( options.durationMax, options.prixMin, options.prixMax, options.departMin, options.departMax, options.arriveeMin, options.arriveeMax), state.search.getAirlinesCode()]);
     } else {
       var call = Promise.all([state.search.getFlights(), state.search.getAirlinesCode()]);
     }
@@ -54,9 +54,7 @@ export const controlSearch = () => {
       var optionsElement = displayOptions(state.search.result);
       
       globalSliderInitialization(optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepartHour, optionsElement.searchArriveeHour);
-
-  
-      // searchView.renderResults(state.search.result, state.search.airlines);
+      searchView.renderResults(state.search.result, state.search.airlines);
     })
     .catch(err => console.log(err))
   }

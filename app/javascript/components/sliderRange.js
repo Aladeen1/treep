@@ -62,11 +62,15 @@ const updateSliderValue = (slider, handle = 0) => {
        val = parseInt(values);
        if (slider.target.id === 'sliderDepart' || slider.target.id === 'sliderArrivee') {
        	 val = convertMinsToHrsMins(val);
+       } else if (slider.target.id === 'sliderDuration') {
+
        }
     } else {
        val = parseInt(values[i]);
        if (slider.target.id === 'sliderDepart' || slider.target.id === 'sliderArrivee') {
        	 val = convertMinsToHrsMins(val);
+       } else if (slider.target.id === 'sliderDuration') {
+       	
        }
     }
     children[i].dataset.value = val
@@ -92,3 +96,8 @@ function convertMinsToHrsMins(mins) {
   return `${h}:${m}`;
 }
 
+// Converti les secondes en heure et arrondi a l'heure près
+
+function convertSecToHrs(sec) {
+	
+}

@@ -1,4 +1,5 @@
 import { elements } from './base';
+import { renderReturnFlights } from './renderFlight';
 
 
 export const renderFlight = (flight, airportCodes) => {
@@ -36,8 +37,8 @@ export const renderResults = (flights, airportCodes) => {
   if (flights.length === 0) {
     elements.displayFlights.insertAdjacentHTML('beforeend', 'Pas de résultat disponible pour cette recherche .. suddy');
   } else {
-    flights.slice(0, 1).forEach( flight => {
-      renderFlight(flight, airportCodes)
+    flights.slice(0, 10).forEach( flight => {
+      renderReturnFlights(flight, airportCodes)
     });
   }
 };
@@ -62,7 +63,7 @@ const getTransferNumber = flight => {
   return transferNumber
 }
 
-const matchAirlinesCode = (flight, airportCodes) => {
+export const matchAirlinesCode = (flight, airportCodes) => {
   let name = [];
   if (flight.airlines.length > 1) {
     flight.airlines.forEach( airline => {
