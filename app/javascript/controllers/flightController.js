@@ -51,9 +51,10 @@ export const controlSearch = () => {
     }
     call.then(() => {
       console.log(state.search.result.length);
-      var optionsElement = displayOptions(state.search.result);
-      
-      globalSliderInitialization(optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepartHour, optionsElement.searchArriveeHour);
+      if (document.getElementById('loaded') == null) {
+        var optionsElement = displayOptions(state.search.result);
+        globalSliderInitialization(optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepartHour, optionsElement.searchArriveeHour);
+      }
       searchView.renderResults(state.search.result, state.search.airlines);
     })
     .catch(err => console.log(err))

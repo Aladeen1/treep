@@ -43,11 +43,13 @@ function createUiSlider(slider, minValue, maxValue) {
 
 function connectUiSlider(slider, sliderInput, type) {
 	slider.on("update", () => {
-		let formattedValue = slider.get()[type];
-		formattedValue = convertMinsToHrsMins(parseInt(formattedValue));
-		sliderInput.value = formattedValue;
-    })
-}
+		let formattedValue = parseInt(slider.get()[type]);
+    if (slider.target.id === 'sliderDepart' || slider.target.id === 'sliderArrivee') {
+  		formattedValue = convertMinsToHrsMins(parseInt(formattedValue));
+    } 
+    sliderInput.value = formattedValue;
+  });
+};
 
 
 // Fonction qui lie la valeur du slider au dataset dans le css du module en le transformant en entier
@@ -62,16 +64,12 @@ const updateSliderValue = (slider, handle = 0) => {
        val = parseInt(values);
        if (slider.target.id === 'sliderDepart' || slider.target.id === 'sliderArrivee') {
        	 val = convertMinsToHrsMins(val);
-       } else if (slider.target.id === 'sliderDuration') {
-
-       }
+       } 
     } else {
        val = parseInt(values[i]);
        if (slider.target.id === 'sliderDepart' || slider.target.id === 'sliderArrivee') {
        	 val = convertMinsToHrsMins(val);
-       } else if (slider.target.id === 'sliderDuration') {
-       	
-       }
+       } 
     }
     children[i].dataset.value = val
     i++
