@@ -1,0 +1,46 @@
+.noUi-background {
+  height: 25px;
+}
+
+.noUi-base .noUi-connect {
+  background-color: #006c79;
+}
+.noUi-base .noUi-handle {
+  background-color: #009AAC;
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+  color: #FFFFFF;
+  display: table;
+  font-size: 15px;
+  height: 40px;
+  left: 0;
+  margin-left: -22px;
+  margin-top: -8.5px;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 80px;
+  z-index: 2;
+}
+.noUi-base .noUi-handle:hover {
+  background-color: #00c8df;
+}
+.noUi-base .noUi-handle.noUi-active {
+  background-color: #006c79;
+  z-index: 3;
+}
+.noUi-base .noUi-handle::before {
+  background: transparent;
+  content: attr(data-value);
+  display: table-cell;
+  font-size: 18px;
+  font-weight: 100;
+  position: static;
+  width: 100%;
+  vertical-align: middle;
+}
+.noUi-base .noUi-handle::after {
+  display: none;
+}

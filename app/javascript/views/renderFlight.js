@@ -1,7 +1,8 @@
 import { matchAirlinesCode } from './flightView';
 import { elements } from './base';
+import { markupDetails, markupRoute } from './renderDetails';
 
-export const renderReturnFlights = (flight, airportCodes) => {
+export const renderReturnFlights = (flight, airportCodes, id) => {
   let returnade = []
   let go = []
   flight.route.forEach( route => {
@@ -24,12 +25,12 @@ export const renderReturnFlights = (flight, airportCodes) => {
   const allerInfoFormatted = getFormattedTime(allerInfo[0], allerInfo[1])
   const retourInfoFormatted = getFormattedTime(retourInfo[0], retourInfo[1])
   
-  rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, retourDepart, retourArrivee, allerInfo[0], allerInfo[1], retourInfo[0], retourInfo[1], go, returnade)
+  rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, retourDepart, retourArrivee, allerInfo[0], allerInfo[1], retourInfo[0], retourInfo[1], go, returnade, id)
  
 }
 
 
-function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, retourDepart, retourArrivee, allerDepartDay, allerArrivalDay, retourDepartDay, retourArrivalDay, routesAller, routesRetour) {
+function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, retourDepart, retourArrivee, allerDepartDay, allerArrivalDay, retourDepartDay, retourArrivalDay, routesAller, routesRetour, id) {
 	const markup = `
 
 	  <li class="flight__card">
@@ -51,7 +52,7 @@ function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, reto
 						        <p class="heure">${allerInfoFormatted[0]}:${allerInfoFormatted[1]}</p>
 						      </div>
 						      <div class="flight__card__depart__nom__airport">
-			                    <p>Charles de Gaulle</p>
+			                    <p>Aiport name</p>
 						      </div>
 						    </div>
 
@@ -70,7 +71,7 @@ function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, reto
 						        </div>
 						      </div>
 						      <div class="flight__card__arrivee__nom__airport">
-						        <p>Denpasar Aiport</p>
+						        <p>Airport name</p>
 						      </div>
 						    </div>
 					    </div>
@@ -88,7 +89,7 @@ function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, reto
 						        <p class="heure">${retourInfoFormatted[0]}:${retourInfoFormatted[1]}</p>
 						      </div>
 						      <div class="flight__card__depart__nom__airport">
-						        <p>Denpasar Airport</p>
+						        <p>Airport name</p>
 						      </div>
 						    </div>
 
@@ -107,13 +108,13 @@ function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, reto
 						        </div>
 						      </div>
 						      <div class="flight__card__arrivee__nom__airport">
-						        <p>Charles de Gaulle</p>
+						        <p>Airport Name</p>
 						      </div>
 						    </div>
 					    </div>
 
 				  </div>
-				  <div class="details__div"><button class="checkout__button" id="details">Détails</button></div>
+				  <div class="details__div"><button class="checkout__button" id="details" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">Détails</button></div>
 			  </div>
 
 
@@ -122,7 +123,7 @@ function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, reto
 		          <a href=${flight.deep_link} target="_blank" class="flight__card__link_target"><button  class="checkout__button">Sélectionner</button></a>
 			  </div>
 		  </div>
-		  
+		  ${markupDetails(flight, id)}
 	  </li>
 	`
 
@@ -169,11 +170,3 @@ function getFormattedTime(departureTime, arrivalTime) {
 }
 
 
-
-// const arrivalTime = new Date(flight.aTime * 1000);
-// const arrivalMinutes = arrivalTime.toString().split(" ")[4].split(":")[1];
-// const arrivalHours = arrivalTime.toString().split(" ")[4].split(":")[0];
-
-// const departureTime = new Date(flight.dTime * 1000);
-// const departureMinutes = departureTime.toString().split(" ")[4].split(":")[1];
-// const departureHours = departureTime.toString().split(" ")[4].split(":")[0];
