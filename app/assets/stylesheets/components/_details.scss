@@ -1,0 +1,48 @@
+
+.details {
+  width: 100%;
+  margin: 0px;
+}
+
+.flight__details__aller {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+
+.straight__details {
+  width: 100%;
+  border-top: 1px solid #b3aeae;
+  padding: 10px;
+}
+
+.big__info__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.straight__vertical {
+	transform: rotate(90deg);
+	background-color: grey;
+	width: 50px;
+	height: 0.5px;
+}
+
+.schedule__city__flightNumber {
+  width: 170px;
+  text-align: right;
+}
+
+.equipement__consommationC02__commission {
+  width: 170px;
+}
+
+.main__details__info__container {
+  display: flex;
+  justify-content: space-between;
+  width: 420px;
+  align-items: center;
+}

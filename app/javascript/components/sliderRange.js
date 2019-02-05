@@ -1,6 +1,7 @@
 import noUiSlider from "nouislider";
-import customize from 'nouislider/distribute/nouislider.css';
+import 'nouislider/distribute/nouislider.css';
 import { elements } from "../views/base";
+import 'nouislider/distribute/custom-style.css';     
 
 
 
@@ -97,5 +98,5 @@ function convertMinsToHrsMins(mins) {
 // Converti les secondes en heure et arrondi a l'heure près
 
 function convertSecToHrs(sec) {
-	
+	 
 }
