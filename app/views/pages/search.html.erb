@@ -1,32 +1,43 @@
-<h1 id='searchPage'> Search Page with options</h1>
 
-<form class="search">
-	<ul>
-	  <li class="allez-retour">
-	    <select id="flight_type">
-	      <option value="oneway">Aller simple</option>
-	      <option value="round">Aller retour</option>
-	    </select>
-	    <li><i class="fas fa-arrow-down"></i></li>
-	  </li>
+<div class="search__bar__container">
+    <div class="search__bar__element__container">
+        <div class="search__bar__options">
+            <div class="aller-retour">
+                <select id="flight_type">
+                	<option value="round">Aller retour</option>
+                    <option value="oneway">Aller simple</option>
+                </select>
+            </div>
 
-	  <li class="passager">
-	    <input type="number" min="1" max="9" id="passengers">
-	    <li><i class="fas fa-arrow-down"></i></li>
-	  </li>
-	</ul>
-	<input type="text" class="search__field" id="departLoc__search" placeholder="Find you dreamed destination" list="airports__depart">
-	<input type="text" class="search__field" id="returnLoc__search" placeholder="Returning destination" list="airports__return">
-	<input type="text" class="search__field" id="departDate__search" placeholder="departure date format (dd/mm/yyyy)">
-	<input type="text" class="search__field" id="returnDate__search" placeholder="returning date format (dd/mm/yyyy)">
-	<button class="btn search__btn">
-	    <span>Search</span>
-	</button>
-</form>
-
+            
+            <p class="passager__description">Passagers</p>
+            <div class="passager">
+                <div class="value-button" id="decrease"  value="Decrease Value"><p>-</p></div>
+                    <input type="number" id="passengers" min="1" max="9" value="1" />
+                <div class="value-button" id="increase"  value="Increase Value"><p>+</p></div>
+            </div>
+        </div>
+        <div class="search__bar__frame">
+            <form class="search">
+                <div class="search__bar__box">
+                    <input type="text" class="search__field" id="departLoc__search" placeholder="Partir de" list="airports__depart">
+                    <input type="text" class="search__field" id="returnLoc__search" placeholder="Aller à" list="airports__return">
+                </div>
+                <div class="search__bar__box">
+                    <input type="text" class="search__field" id="departDate__search" placeholder="Aller le">
+                    <input type="text" class="search__field" id="returnDate__search" placeholder="Retour le">
+                </div>
+                <button class="checkout__button" id="blue">
+                    <span>Rechercher</span>
+                </button>
+                
+            </form>
+        </div>
+    </div>
+</div>
  
-  <datalist id="airports__depart"></datalist>
-  <datalist id="airports__return"></datalist>
+<datalist id="airports__depart"></datalist>
+<datalist id="airports__return"></datalist>
 
 <div class="flights__container">
 	<div class="flights__options">
@@ -38,7 +49,7 @@
 	</div>
 </div>
 
-
+<div id='searchPage'></div>
 
 
 
