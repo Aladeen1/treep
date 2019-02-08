@@ -19,4 +19,4 @@ function decreaseValue() {
   document.getElementById('passengers').value = value;
 }
 
-numberTest()
+numberTest();
