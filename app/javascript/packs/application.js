@@ -1,3 +1,4 @@
+import 'components/passagerNumber';
 import 'components/calendar';
 import 'components/calendarInputSwitch';
 import 'components/sliderRange';
@@ -20,19 +21,19 @@ elements.searchForm.addEventListener('submit', e => {
   }
 });
 
-window.addEventListener('load', () => {
-  if (search != null) {
-    const landParams = new URL(window.location.href);
-    setInput('searchDepartInput', landParams.searchParams.get('depart'));
-    setInput('searchReturnInput', landParams.searchParams.get('return'));
-    setInput('searchDepartDateFrom', landParams.searchParams.get('from'));
-    setInput('searchReturnDateFrom', landParams.searchParams.get('to'));
-    setInput('searchFlightType', landParams.searchParams.get('flight_type'));
-    setInput('searchPassengers', landParams.searchParams.get('passengers'));
+// window.addEventListener('load', () => {
+//   if (search != null) {
+//     const landParams = new URL(window.location.href);
+//     setInput('searchDepartInput', landParams.searchParams.get('depart'));
+//     setInput('searchReturnInput', landParams.searchParams.get('return'));
+//     setInput('searchDepartDateFrom', landParams.searchParams.get('from'));
+//     setInput('searchReturnDateFrom', landParams.searchParams.get('to'));
+//     setInput('searchFlightType', landParams.searchParams.get('flight_type'));
+//     setInput('searchPassengers', landParams.searchParams.get('passengers'));
 
-    flights.controlSearch();
-  }
-});
+//     flights.controlSearch();
+//   }
+// });
 
 
 

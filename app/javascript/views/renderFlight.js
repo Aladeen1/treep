@@ -20,7 +20,7 @@ export const renderReturnFlights = (flight, airportCodes, id) => {
   const allerInfo  = departArriveeTime(go);
   const retourInfo = departArriveeTime(returnade);
 
-
+  
 
   const allerInfoFormatted = getFormattedTime(allerInfo[0], allerInfo[1])
   const retourInfoFormatted = getFormattedTime(retourInfo[0], retourInfo[1])

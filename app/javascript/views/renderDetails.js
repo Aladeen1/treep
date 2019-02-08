@@ -43,11 +43,6 @@ function markupEscales(vol, indice, table) {
 	  </div>
 	`
    
-   // console.log(vol)
-   // console.log(`Pour le vol: ${vol} avec l'indice ${indice} dans la liste soit des allers ou des retour,
-   // le temps d'escale est égale à:${(vol.dTime - table[indice - 1].aTime) / 60} ou:`)
-   // console.log(convertMinsToHrsMinutes((vol.dTime - table[indice - 1].aTime) / 60))
-   
    return markupEscale
 }
 
