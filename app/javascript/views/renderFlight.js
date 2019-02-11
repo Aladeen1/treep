@@ -12,25 +12,27 @@ export const renderReturnFlights = (flight, airportCodes, id) => {
   		returnade.push(route);
   	}
   })
-
-  const retourDepart = returnade[0]
-  const retourArrivee = returnade[returnade.length - 1]
+  
   const airlines = matchAirlinesCode(flight, airportCodes);
-
   const allerInfo  = departArriveeTime(go);
-  const retourInfo = departArriveeTime(returnade);
-
-  
-
   const allerInfoFormatted = getFormattedTime(allerInfo[0], allerInfo[1])
-  const retourInfoFormatted = getFormattedTime(retourInfo[0], retourInfo[1])
-  
-  rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, retourDepart, retourArrivee, allerInfo[0], allerInfo[1], retourInfo[0], retourInfo[1], go, returnade, id)
- 
+
+  if (returnade.length != 0) {
+  	const retourDepart = returnade[0]
+    const retourArrivee = returnade[returnade.length - 1]
+    const retourInfo = departArriveeTime(returnade)
+    const  retourInfoFormatted = getFormattedTime(retourInfo[0], retourInfo[1])
+    render(flight, airlines, allerInfoFormatted, allerInfo[0], allerInfo[1], go, id, retourInfoFormatted, retourDepart, retourArrivee, retourInfo[0], retourInfo[1], returnade)
+  } else {
+  	
+
+  	render(flight, airlines, allerInfoFormatted, allerInfo[0], allerInfo[1], go, id)
+  }
 }
 
 
-function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, retourDepart, retourArrivee, allerDepartDay, allerArrivalDay, retourDepartDay, retourArrivalDay, routesAller, routesRetour, id) {
+function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArrivalDay, routesAller, id, retourInfoFormatted = [], retourDepart = 0, retourArrivee = 0, retourDepartDay = [], retourArrivalDay = [], routesRetour = []) {
+	
 	const markup = `
 
 	  <li class="flight__card">
@@ -77,43 +79,9 @@ function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, reto
 					    </div>
 
 				  </div>
-
-				  <div class="flight__card__div">
-
-					    <img src="https://images.kiwi.com/airlines/64/${flight.airlines[0]}.png ">
-
-					    <div class="flight__card__div__info">
-						    <div class="flight__card__info__depart">
-						      <div class="flight__card__depart__code__heure">
-						        <p>${retourDepart.flyFrom}</p>
-						        <p class="heure">${retourInfoFormatted[0]}:${retourInfoFormatted[1]}</p>
-						      </div>
-						      <div class="flight__card__depart__nom__airport">
-						        <p>Airport name</p>
-						      </div>
-						    </div>
-
-						    <div class="flight__card__duree__trajet">
-						      <p>${flight.return_duration}</p>
-						      <div class="straight"></div>
-			                  <p>${getTransferNumber(routesRetour)}</p>
-						    </div>
-
-						    <div class="flight__card__info__arrivee">
-						      <div class="flight__card__arrivee__code__heure">
-						        <p>${retourArrivee.flyTo}</p>
-						        <div class="flight__schedule">
-						        	<p class="heure">${retourInfoFormatted[2]}:${retourInfoFormatted[3]}</p>
-						        	<p class="flight__days__added">${(retourArrivalDay.getDate() - retourDepartDay.getDate() > 0) ? "+" + `${(retourArrivalDay.getDate() - retourDepartDay.getDate())}`: ""}</p>
-						        </div>
-						      </div>
-						      <div class="flight__card__arrivee__nom__airport">
-						        <p>Airport Name</p>
-						      </div>
-						    </div>
-					    </div>
-
-				  </div>
+                  
+                  ${(retourDepart != 0) ? createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDepart, retourArrivee, retourDepartDay, retourArrivalDay) : ''}
+				  
 				  <div class="details__div"><button class="checkout__button" id="details" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">Détails</button></div>
 			  </div>
 
@@ -128,6 +96,49 @@ function rendouz(flight, airlines, allerInfoFormatted, retourInfoFormatted, reto
 	`
 
 	elements.displayFlights.insertAdjacentHTML('beforeend', markup)
+
+}
+
+
+function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDepart,  retourArrivee, retourDepartDay, retourArrivalDay ) {
+  const markupRetour = `
+		<div class="flight__card__div">
+
+		    <img src="https://images.kiwi.com/airlines/64/${flight.airlines[0]}.png ">
+
+		    <div class="flight__card__div__info">
+			    <div class="flight__card__info__depart">
+			      <div class="flight__card__depart__code__heure">
+			        <p>${retourDepart.flyFrom}</p>
+			        <p class="heure">${retourInfoFormatted[0]}:${retourInfoFormatted[1]}</p>
+			      </div>
+			      <div class="flight__card__depart__nom__airport">
+			        <p>Airport name</p>
+			      </div>
+			    </div>
+
+			    <div class="flight__card__duree__trajet">
+			      <p>${flight.return_duration}</p>
+			      <div class="straight"></div>
+	              <p>${getTransferNumber(routesRetour)}</p>
+			    </div>
+
+			    <div class="flight__card__info__arrivee">
+			      <div class="flight__card__arrivee__code__heure">
+			        <p>${retourArrivee.flyTo}</p>
+			        <div class="flight__schedule">
+			        	<p class="heure">${retourInfoFormatted[2]}:${retourInfoFormatted[3]}</p>
+			        	<p class="flight__days__added">${(retourArrivalDay.getDate() - retourDepartDay.getDate() > 0) ? "+" + `${(retourArrivalDay.getDate() - retourDepartDay.getDate())}`: ""}</p>
+			        </div>
+			      </div>
+			      <div class="flight__card__arrivee__nom__airport">
+			        <p>Airport Name</p>
+			      </div>
+			    </div>
+		    </div>
+	    </div>
+	`
+	return markupRetour
 }
 
 

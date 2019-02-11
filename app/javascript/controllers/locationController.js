@@ -30,7 +30,6 @@ const callLocationAPI = (targetInput) => {
 
   state.search.getLocation(query, 'locations')
   .then(() => {
-    console.log(state.search.locations);
     if (targetInput == 'searchDepartInput' && state.search.locations) {
       state.search.locations.forEach( result => {
         renderDestination(result, '#airports__depart');

@@ -1,8 +1,16 @@
+/* On va du général au spécifique */
+
+
 .search__bar__container {
 	background-color: #009AAC;
 	height: 150px;
 	width: 100%;
 	display: flex;
+}
+
+.search__bar__element__container {
+  margin: auto;
+  width: 70%;
 }
 
 .search__bar__frame {
@@ -12,7 +20,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-    border-radius: 3px;
+  border-radius: 3px;
 }
 
 .search {
@@ -22,14 +30,27 @@
   justify-content: space-around;
 }
 
+.search__bar__options {
+  display: flex;
+  margin-bottom: 5px;
+}
+
 .search__field {
   width: 48%;
   height: 100%;
   border: none;
   border-radius: 3px;
   font-size: 15px;
-  margin: 0px 2px;
+  padding-left: 4px;
 }
+
+.search__bar__box {
+  width: 38%;
+  display: flex;
+  align-items: center;
+}
+
+/* Ajustement pour le bouton de recherche */
 
 #blue {
   background-color: #009AAC;
@@ -41,12 +62,6 @@
   cursor: pointer;
 }
 
-.search__bar__box {
-	width: 38%;
-  display: flex;
-  justify-content: center;
-}
-
 
 button:focus { outline: none; }
 input:focus { outline: none; }
@@ -54,17 +69,7 @@ input:focus { outline: none; }
 #passengers:focus { outline: none; }
 
 
-.search__bar__options {
-	display: flex;
-	margin-bottom: 5px;
-}
-
-.search__bar__element__container {
-	margin: auto;
-	width: 70%;
-}
-
-/* custom the selection menu */
+/* Css pour ce qu'il y a au dessus de la barre de recherche */
 
 .aller-retour {
 	display: flex;
@@ -90,7 +95,7 @@ input:focus { outline: none; }
   font-size: 17px;
 }
 
-/* Passenger front-end */
+/* Passenger + et - front-end */
 
 .value-button {
   display: flex;
@@ -118,12 +123,12 @@ input:focus { outline: none; }
   background-color: #00c8df;
 }
 
-form #decrease {
+#decrease {
   margin-right: -4px;
   border-radius: 8px 0 0 8px;
 }
 
-form #increase {
+#increase {
   margin-left: -4px;
   border-radius: 0 8px 8px 0;
 }
@@ -159,6 +164,3 @@ input[type=number]::-webkit-outer-spin-button {
 	align-items: center;
 }
 
-#search__bar__home__background {
-  background: transparent;
-}

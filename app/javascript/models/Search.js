@@ -24,14 +24,22 @@ export default class Search {
 
     getFlights(maxDuration, minPrice, maxPrice, dtimeFrom, dtimeTo, atimeFrom, atimeTo) {
       let res;
-      if (this.flightType === 'oneway') {
-        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&atime_from=${atimeFrom}&limit=20&partner=picky`);
-      } else if (this.flightType === 'round' && (document.getElementById('loaded') != null) ) {
-        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_from=${minPrice}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&dtime_to=${dtimeTo}&atime_from=${atimeFrom}&atime_to=${atimeTo}&limit=20&partner=picky`);
-      } else {
+      
+      if (this.flightType === 'oneway' && (document.getElementById('loaded') == null)) {
+        console.log('this one')
+        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&limit=20&partner=picky`);
+      } else if (this.flightType === 'oneway' && (document.getElementById('loaded') != null) ) {
+        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_from=${minPrice}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&dtime_to=${dtimeTo}&atime_from=${atimeFrom}&atime_to=${atimeTo}&limit=20&partner=picky`);
+      } else if (this.flightType === 'round' && (document.getElementById('loaded') == null)) {
+        console.log('why is it not returning a full array')
         res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&limit=20&partner=picky`);
-      }
+      } else if (this.flightType === 'round' && (document.getElementById('loaded') != null) ) {
+        console.log('does it take the options into account ?')
+        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_from=${minPrice}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&dtime_to=${dtimeTo}&atime_from=${atimeFrom}&atime_to=${atimeTo}&limit=20&partner=picky`);
+        console.log(res)
+      } 
       res.then((flight) => {
+        console.log(flight)
         this.result = flight.data.data;
         console.log(this.result);
       })
