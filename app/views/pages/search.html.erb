@@ -4,8 +4,8 @@
         <div class="search__bar__options">
             <div class="aller-retour">
                 <select id="flight_type">
-                	<option selected="selected" value="round">Aller retour</option>
                     <option value="oneway">Aller simple</option>
+                	<option value="round">Aller retour</option>
                 </select>
             </div>
 
@@ -20,12 +20,12 @@
         <div class="search__bar__frame">
             <form class="search">
                 <div class="search__bar__box">
-                    <input type="text" class="search__field" id="departLoc__search" placeholder="Partir de" list="airports__depart">
-                    <input type="text" class="search__field" id="returnLoc__search" placeholder="Aller à" list="airports__return">
+                    <input type="text" class="search__field left-element" id="departLoc__search" placeholder="Partir de" list="airports__depart">
+                    <input type="text" class="search__field right-element" id="returnLoc__search" placeholder="Aller à" list="airports__return">
                 </div>
                 <div class="search__bar__box">
-                    <input type="text" class="search__field" id="departDate__search" placeholder="Aller le">
-                    <input type="text" class="search__field" id="returnDate__search" placeholder="Retour le">
+                    <input type="text" class="search__field left-element" id="departDate__search" placeholder="Aller le">
+                    <input type="text" class="search__field right-element" id="returnDate__search" placeholder="Retour le">
                 </div>
                 <button class="checkout__button" id="blue">
                     Rechercher

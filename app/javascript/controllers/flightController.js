@@ -45,12 +45,12 @@ export const controlSearch = () => {
     // 4) Search for flights
     // 5) Render results on UI
     if (document.getElementById('loaded') != null) {
+      console.log('if statement apply for search with option')
       var call = Promise.all([state.search.getFlights( options.durationMax, options.prixMin, options.prixMax, options.departMin, options.departMax, options.arriveeMin, options.arriveeMax), state.search.getAirlinesCode()]);
     } else {
       var call = Promise.all([state.search.getFlights(), state.search.getAirlinesCode()]);
     }
     call.then(() => {
-      console.log(state.search.result.length);
       if (document.getElementById('loaded') == null) {
         var optionsElement = displayOptions(state.search.result);
         globalSliderInitialization(optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepartHour, optionsElement.searchArriveeHour);

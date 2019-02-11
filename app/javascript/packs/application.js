@@ -1,6 +1,6 @@
 import 'components/passagerNumber';
 import 'components/calendar';
-import 'components/calendarInputSwitch';
+import { handleFieldTransition } from 'components/calendarInputSwitch';
 import 'components/sliderRange';
 import "bootstrap";
 import { elements, search } from '../views/base';
@@ -23,18 +23,24 @@ elements.searchForm.addEventListener('submit', e => {
 
 window.addEventListener('load', () => {
   if (search != null) {
-    console.log('yo les bials')
     const landParams = new URL(window.location.href);
     setInput('searchDepartInput', landParams.searchParams.get('depart'));
     setInput('searchReturnInput', landParams.searchParams.get('return'));
     setInput('searchDepartDateFrom', landParams.searchParams.get('from'));
-    setInput('searchReturnDateFrom', landParams.searchParams.get('to'));
     setInput('searchFlightType', landParams.searchParams.get('flight_type'));
     setInput('searchPassengers', landParams.searchParams.get('passengers'));
-
+    if (landParams.searchParams.get('flight_type') === 'round') {
+      setInput('searchReturnDateFrom', landParams.searchParams.get('to'));
+      elements.searchFlightType.children[1].setAttribute('selected', 'selected');
+      handleFieldTransition(elements.searchFlightType.value);
+    } else {
+      elements.searchFlightType.children[0].setAttribute('selected', 'selected');
+      handleFieldTransition(elements.searchFlightType.value);
+    }
     flights.controlSearch();
   }
 });
+
 
 
 

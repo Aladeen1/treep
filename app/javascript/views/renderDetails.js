@@ -3,13 +3,13 @@
 export const markupDetails = (flight, id) => { 
 
   const routeAller = createRouteArray(flight)[0];
-  const routeRetour = createRouteArray(flight)[1];
+  const routeRetour = createRouteArray(flight)[1]; 
 
   const markupDetails = `
 	<div class="collapse" id="collapse-${id}">
 	  <div class="card card-body details">
 	   
-	    ${miniMarkup('Aller', flight, routeRetour)}
+	    ${miniMarkup('Aller', flight, routeAller)}
 
 	    ${markupRoute(routeAller)}
 
@@ -153,9 +153,11 @@ function distanceFlight(lat1, lon1, lat2, lon2, unit) {
 }
 
 
-function miniMarkup(trajet, flight, retour = '') {
+function miniMarkup(trajet, flight, retour) {
 	const timeAller = timeFormating(flight.aTime, flight.dTime);
-	const timeRetour = timeFormating(retour[0].aTime, retour[0].dTime);
+	if (retour != undefined) {
+      var timeRetour = timeFormating(retour[0].aTime, retour[0].dTime);
+	}
 
     let markupTrajet;
     if ( trajet === 'Aller') {
