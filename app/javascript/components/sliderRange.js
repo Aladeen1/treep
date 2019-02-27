@@ -1,24 +1,26 @@
 import noUiSlider from "nouislider";
 import 'nouislider/distribute/nouislider.css';
 import { elements } from "../views/base";
-import 'nouislider/distribute/custom-style.css';     
+import 'nouislider/distribute/custom-style.css';
+import { sortFlights } from '../views/sliderUtilisation';     
 
 
 
-// Initialise les 4 sliders dont on a besoin en toutes occasions 
+// Initialise les 6 sliders dont on a besoin en toutes occasions.
 // (à modifier pour le cas des retour on aura un departHour et arrivee en plus)
 
-export const globalSliderInitialization = (duration, prix, departHour, arriveeHour) => {
+export const globalSliderInitialization = (carbon, distance, duration, prix, departHour, arriveeHour) => {
+  initializeUislider(carbon);
+  initializeUislider(distance);
 	initializeUislider(duration);
-    initializeUislider(prix);
-    initializeUislider(departHour);
-    initializeUislider(arriveeHour);
+  initializeUislider(prix);
+  initializeUislider(departHour);
+  initializeUislider(arriveeHour);
 }
 
 // Créer le UiSlider avec les maximums et minimum et connecte l'input min et max a la valeur des handles lower et upper. 
 
 function initializeUislider(sliderAnchor) {
-	
     var sliderCreated = createUiSlider(sliderAnchor, parseInt(sliderAnchor.children[0].value), parseInt(sliderAnchor.children[1].value));
     connectUiSlider(sliderCreated, sliderAnchor.children[0], 0);
     connectUiSlider(sliderCreated, sliderAnchor.children[1], 1);
@@ -27,7 +29,7 @@ function initializeUislider(sliderAnchor) {
 
 // Créer le slider pour chaque option avec la valeur minimum d'origine et celle maximum et retourne le slider
 
-function createUiSlider(slider, minValue, maxValue) {
+export const createUiSlider = (slider, minValue, maxValue) => {
 	noUiSlider.create(slider, {
 	    start: [minValue, maxValue],
 	    connect: true,
@@ -43,6 +45,7 @@ function createUiSlider(slider, minValue, maxValue) {
 // Relie l'interface du slider à l'input caché qui est derrière en conservant le format qui est le bon. 
 
 function connectUiSlider(slider, sliderInput, type) {
+  // slider.off('update');
 	slider.on("update", () => {
 		let formattedValue = parseInt(slider.get()[type]);
     if (slider.target.id === 'sliderDepart' || slider.target.id === 'sliderArrivee') {
@@ -50,6 +53,10 @@ function connectUiSlider(slider, sliderInput, type) {
     } 
     sliderInput.value = formattedValue;
   });
+
+  // Utilise off pour qu'il n'y ai qu'un eventListener déclenché (peut être un bug)
+  slider.off('change');
+  slider.on("change", sortFlights);
 };
 
 

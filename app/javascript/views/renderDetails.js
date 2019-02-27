@@ -94,7 +94,7 @@ function markupRoute(array) {
 }
 
 
-function createRouteArray(flight) {
+export const createRouteArray = flight => {
 	let routeAller = [];
 	let routeRetour = [];
 
@@ -130,7 +130,7 @@ function timeFormating(aTime, dTime) {
 }
 
 
-function distanceFlight(lat1, lon1, lat2, lon2, unit) {
+export const distanceFlight = (lat1, lon1, lat2, lon2, unit) => {
 	if ((lat1 == lat2) && (lon1 == lon2)) {
 		return 0;
 	}

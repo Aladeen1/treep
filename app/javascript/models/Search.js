@@ -22,35 +22,30 @@ export default class Search {
       return res
     }
 
-    getFlights(maxDuration, minPrice, maxPrice, dtimeFrom, dtimeTo, atimeFrom, atimeTo) {
+
+    getFlights() {
       let res;
-      
-      if (this.flightType === 'oneway' && (document.getElementById('loaded') == null)) {
-        console.log('this one')
+      if (this.flightType === 'oneway') {
+        console.log('Oneway call lauching')
         res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&limit=20&partner=picky`);
-      } else if (this.flightType === 'oneway' && (document.getElementById('loaded') != null) ) {
-        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_from=${minPrice}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&dtime_to=${dtimeTo}&atime_from=${atimeFrom}&atime_to=${atimeTo}&limit=20&partner=picky`);
-      } else if (this.flightType === 'round' && (document.getElementById('loaded') == null)) {
-        console.log('why is it not returning a full array')
+      } else if (this.flightType === 'round') {
+        console.log('Round way call lauching')
         res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&limit=20&partner=picky`);
-      } else if (this.flightType === 'round' && (document.getElementById('loaded') != null) ) {
-        console.log('does it take the options into account ?')
-        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_from=${minPrice}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&dtime_to=${dtimeTo}&atime_from=${atimeFrom}&atime_to=${atimeTo}&limit=20&partner=picky`);
-        console.log(res)
       } 
       res.then((flight) => {
-        console.log(flight)
-        this.result = flight.data.data;
-        console.log(this.result);
+        this.result = JSON.stringify(flight.data.data);
+        localStorage.setItem('Recherche', this.result);
       })
       .catch( error => alert(error))
       return res
     }
 
+
     getAirlinesCode() {
       let airline = axios(`${proxy}https://api.skypicker.com/airlines?`);
       airline.then((result) => {
-        this.airlines = result.data
+        this.airlines = JSON.stringify(result.data);
+        localStorage.setItem('Airlines', this.airlines);
       })
       .catch( error => alert(error + 'les airlines ont bugué'))
       return airline
@@ -74,3 +69,13 @@ export default class Search {
 // stopover_to
 // max_stopovers
 
+
+// else if (this.flightType === 'oneway' && (document.getElementById('loaded') != null) ) {
+//   res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_from=${minPrice}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&dtime_to=${dtimeTo}&atime_from=${atimeFrom}&atime_to=${atimeTo}&limit=20&partner=picky`);
+// }
+
+// else if (this.flightType === 'round' && (document.getElementById('loaded') != null) ) {
+//   console.log('does it take the options into account ?')
+//   res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&max_fly_duration=${maxDuration}&price_from=${minPrice}&price_to=${maxPrice}&dtime_from=${dtimeFrom}&dtime_to=${dtimeTo}&atime_from=${atimeFrom}&atime_to=${atimeTo}&limit=20&partner=picky`);
+//   console.log(res)
+// } 

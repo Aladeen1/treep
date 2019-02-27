@@ -1,6 +1,7 @@
-import 'components/passagerNumber';
+import 'components/compensation';
 import 'components/calendar';
 import { handleFieldTransition } from 'components/calendarInputSwitch';
+import 'components/passagerNumber';
 import 'components/sliderRange';
 import "bootstrap";
 import { elements, search } from '../views/base';
@@ -13,13 +14,21 @@ import { getInput, setInput } from '../views/searchView';
 console.log('Hello from webpacker');
 
 airports.displayAirports();
-elements.searchForm.addEventListener('submit', e => {
-  console.log(e);
-  if (search != null) {
-    e.preventDefault();
-    flights.controlSearch();
-  }
-});
+
+if (elements.searchForm) {
+  elements.searchForm.addEventListener('submit', envoi => {
+  
+    if (localStorage.getItem('Recherche')) {
+      localStorage.removeItem('Recherche');
+    }
+    
+    if (search != null) {
+      envoi.preventDefault();
+      flights.controlSearch();
+    }
+  });
+}
+
 
 window.addEventListener('load', () => {
   if (search != null) {

@@ -17,6 +17,8 @@ flatpickr("#returnDate__search", {
   // "plugins": [new rangePlugin({ input: "#range_end"})]
 });
 
-elements.searchFlightType.addEventListener('change', event => {
-  handleFieldTransition(event.target.value);
-})
+if (elements.searchFlightType) {
+	elements.searchFlightType.addEventListener('change', event => {
+    	handleFieldTransition(event.target.value);
+    })
+}

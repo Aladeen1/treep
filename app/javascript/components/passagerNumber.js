@@ -1,6 +1,8 @@
 function numberTest() {
-	document.getElementById('decrease').addEventListener('click', decreaseValue);
-	document.getElementById('increase').addEventListener('click', increaseValue);
+  if (document.getElementById('decrease')) {
+    document.getElementById('decrease').addEventListener('click', decreaseValue);
+    document.getElementById('increase').addEventListener('click', increaseValue);
+  }
 }
 
 function increaseValue() {
