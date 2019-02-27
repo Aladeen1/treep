@@ -1,9 +1,11 @@
 import * as searchView from '../views/flightView';
-import { getInput, clearResults } from '../views/searchView';
+import { getInput, clearResults, clearSliders } from '../views/searchView';
 import { elements, search } from '../views/base';
 import Search from '../models/Search';
-import { optionalP, displayOptions } from '../views/additionalOptView';
+import { displayOptions } from '../views/sliderCreation';
+import { getOptionValues } from '../views/sliderUtilisation';
 import { globalSliderInitialization } from '../components/sliderRange';
+import { targetRedirection } from '../components/modalApparition';
 
 const state = {};
 
@@ -20,16 +22,11 @@ export const controlSearch = () => {
   const passengers = getInput('searchPassengers');
 
 
-  
-  if (document.getElementById('loaded') != null) {
-    var options = optionalP();
-    console.log(options)
-  } 
 
   if (departLocation && returnLocation && departDateTo && departDateFrom && flightType && passengers) {
     console.log(`The destination is ${departLocation}, the return location is ${returnLocation}, the depart day is ${departDateFrom}, the return date is ${departDateTo}, for ${passengers} passengers and it's a ${flightType} ticket`);
     // 2) New search object and add to state
-
+ 
     if (flightType == 'round') {
       const returnDateFrom = getInput('searchReturnDateFrom');
       const returnDateTo = returnDateFrom;
@@ -43,22 +40,23 @@ export const controlSearch = () => {
     // searchView.clearInput();
     
     // 4) Search for flights
-    // 5) Render results on UI
-    if (document.getElementById('loaded') != null) {
-      console.log('if statement apply for search with option')
-      var call = Promise.all([state.search.getFlights( options.durationMax, options.prixMin, options.prixMax, options.departMin, options.departMax, options.arriveeMin, options.arriveeMax), state.search.getAirlinesCode()]);
-    } else {
-      var call = Promise.all([state.search.getFlights(), state.search.getAirlinesCode()]);
-    }
+    clearSliders();
+    const call = Promise.all([state.search.getFlights(), state.search.getAirlinesCode()]);
     call.then(() => {
-      if (document.getElementById('loaded') == null) {
-        var optionsElement = displayOptions(state.search.result);
-        globalSliderInitialization(optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepartHour, optionsElement.searchArriveeHour);
-      }
-      searchView.renderResults(state.search.result, state.search.airlines);
-    })
-    .catch(err => console.log(err))
-  }
+      // Les deux fonctions ont cachés les réponses donc on les récupère et on les assigne à deux variables
+      const airlines = JSON.parse(localStorage.getItem('Airlines'));
+      const resultat = JSON.parse(localStorage.getItem('Recherche'));
+      console.log(resultat)
+      // if (document.getElementById('loaded') == null) {
+      var optionsElement = displayOptions(resultat);
+      globalSliderInitialization(optionsElement.searchCarbon, optionsElement.searchDistance, optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepartHour, optionsElement.searchArriveeHour);
+      // }
+      // 5) Render results on UI
+      searchView.renderResults(resultat, airlines);
+      targetRedirection();
+     })
+  //   .catch(err => console.log(err))
+   }
 }
 
 // Arguments of the getFlight Method => options.duration, options.prix, options.depart, options.arrivee

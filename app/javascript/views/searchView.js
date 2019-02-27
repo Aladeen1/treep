@@ -22,3 +22,7 @@ export const setInput = (location, params) => {
 	// console.log(params);
 	elements[location].value = params;
 }
+
+export const clearSliders = () => {
+	document.querySelector('.flights__options').innerHTML = '';
+}

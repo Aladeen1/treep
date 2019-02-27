@@ -88,7 +88,9 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
 			  <div class="flight__card__checkout">
 				  <p class="flight__price">${flight.price}€</p>
-		          <a href=${flight.deep_link} target="_blank" class="flight__card__link_target"><button  class="checkout__button">Sélectionner</button></a>
+				  <div class="${flight.id}">
+		          <a href=${flight.deep_link} target="_blank" class="flight__card__link_target"><button  class="checkout__button redirection__target">Sélectionner</button></a>
+		          </div>
 			  </div>
 		  </div>
 		  ${markupDetails(flight, id)}

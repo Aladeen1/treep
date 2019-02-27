@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def search
   end
+
+  def compensation
+  end
 end
