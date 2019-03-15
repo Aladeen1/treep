@@ -51,6 +51,10 @@ window.addEventListener('load', () => {
 });
 
 
+// initialize tooltips
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
 
 
