@@ -1,3 +1,4 @@
+import 'components/filterSearch';
 import 'components/compensation';
 import 'components/calendar';
 import { handleFieldTransition } from 'components/calendarInputSwitch';

@@ -218,7 +218,6 @@ function createCompensationMarkup(flight) {
 			</div>
 		</div>
 	`
-
 	return markup
 }
 
