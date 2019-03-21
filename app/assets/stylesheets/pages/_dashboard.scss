@@ -1,3 +1,42 @@
-.okko {
-  color: red;
+.avatar-dash {
+  width: 150px;
+  padding-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
+
+.hello-dash {
+  text-align: center;
+}
+
+.menu-dash .onglet1, .menu-dash .onglet2 {
+  border-top: 1px solid gray;
+}
+.menu-dash .onglet1:hover, .menu-dash .onglet2:hover {
+  background-color: rgb(242,250,251);
+}
+
+.menu-dash .onglet2 {
+  border-bottom: 1px solid gray;
+}
+
+
+.onglet-item {
+  display: inline-block;
+}
+
+.menu-dash h5 {
+  margin-left: 10px;
+}
+
+.menu-dash img {
+  width: 9px;
+  float: right;
+  padding-top: 14px;
+}
+
+
+
+
+
