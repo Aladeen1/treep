@@ -1,0 +1,156 @@
+.background-dash {
+  position: absolute;
+}
+
+.background-dash img {
+  width: 100%;
+}
+
+.compteur-arbres-dash {
+  position: absolute;
+  top: 114px;
+  left: 23px;
+  background-image: url(https://res.cloudinary.com/tark-industries/image/upload/v1553192196/ovale_arbre.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 145px;
+  height: 65px;
+}
+
+.compteur-arbres-dash img {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  width: 50px;
+}
+
+.compteur-arbres-dash h3 {
+  position: absolute;
+  top: -9px;
+  left: 60px;
+}
+
+/* FIN DU CADRE */
+
+
+/* DEBUT DU MENU CENTRAL */
+
+.avatar-dash {
+  width: 150px;
+  padding-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.hello-dash {
+  text-align: center;
+}
+
+.menu-dash .onglet1, .menu-dash .onglet2 {
+  border-top: 1px solid gray;
+}
+.menu-dash .onglet1:hover, .menu-dash .onglet2:hover {
+  background-color: rgb(242,250,251);
+}
+
+.menu-dash .onglet2 {
+  border-bottom: 1px solid gray;
+}
+
+
+.onglet-item {
+  display: inline-block;
+}
+
+.menu-dash h5 {
+  margin-left: 10px;
+}
+
+.menu-dash img {
+  width: 9px;
+  float: right;
+  padding-top: 14px;
+}
+
+/* FIN DU MENU CENTRAL */
+
+
+/* DEBUT DU MENU INFO */
+
+
+.menu-info-dash {
+  padding-top: 100px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.sous-menu-info-dash {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid gray;
+}
+
+.info-item1 {
+  text-align: right;
+}
+
+.info-item3 {
+  color: rgb(54,172,184);
+}
+
+.delete-account {
+  color: rgb(54,172,184);
+  border-top: 1px solid gray;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+/* FIN DU MENU INFO */
+
+
+/* DEBUT DU MENU VOYAGE */
+
+.voyage-card img {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 120px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
