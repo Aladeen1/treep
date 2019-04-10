@@ -24,6 +24,7 @@ body, html {
   color: white;
   padding-left: 13vw;
   padding-top: 50px;
+  text-shadow: .9px .9px grey;
 }
 
 .compteur-arbres {
@@ -48,6 +49,16 @@ body, html {
 
 
 
+  /*  * * * * * * * * * * *
+      * THIS IS SECTION video *
+      * * * * * * * * * * *   */
+
+.section-video iframe {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  display: block;
+}
 
   /*  * * * * * * * * * * *
       * THIS IS SECTION 2 *
@@ -157,11 +168,11 @@ body, html {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 2px 10px grey;
-}  
+}
 
-.logo-vert img {
+.logo-ccm img {
   display: block;
-  width: 13%;
+  width: 30%;
   margin-left: auto;
   margin-right: auto;
   padding-top: 50px;
@@ -169,7 +180,11 @@ body, html {
 
 .ccm h5 {
   text-align: center;
-  padding-bottom: 50px
+  padding-bottom: 20px
+}
+
+.section-video {
+  padding-bottom: 40px;
 }
 
 .ticket-dette img {
