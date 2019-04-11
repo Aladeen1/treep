@@ -1,3 +1,128 @@
-.hue {
-  color: red;
+body {
+  margin: 0px;
 }
+
+ul {
+  list-style: none;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+ul li, ul li li {
+  display: inline-block;
+}
+
+ul .li-before {
+  padding-right: 1.6vw;
+  padding-left: 1.6vw;
+}
+
+li a {
+  padding-left: 5px;
+  color: white;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.liste-navbar-no-bg i {
+  color: rgb(27, 105, 166);
+}
+
+.liste-navbar-no-bg {
+  padding-left: 35vw;
+  padding-right: 3vw;
+  padding-top: 25px;
+  height: 60px;
+}
+
+.logo img {
+  width: 240px;
+  margin-right: 8vw;
+  margin-top: -18px;
+  margin-left: 6%;
+
+}
+
+.fr-flag {
+  width: 20px;
+}
+
+
+  /*  * * * * * * * * * * *
+      *  MEDIA   QUERIES  *
+      * * * * * * * * * * *   */
+
+
+
+@media only screen and (max-width: 1132px) {
+  ul .li-before {
+  padding-right: 0.7vw;
+  padding-left: 0.7vw;
+  }
+}
+
+
+/*  * * * * * * * * * * *
+      *  About page     *
+      * * * * * * * * * * *   */
+
+
+.about-page {
+  background-image: url('https://res.cloudinary.com/tark-industries/image/upload/v1554994799/Lake_white_block.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.titre-page h1 {
+  text-align: center;
+  color: white;
+  padding-top: 5vw;
+  padding-bottom: 9vw;
+}
+
+.text-apropos {
+  text-align: center;
+  padding-left: 18vw;
+  padding-right: 14vw;
+  padding-top: 20px;
+  font-family: raleway
+}
+
+/*  * * * * * * * * * * *
+      *  MEDIA   QUERIES about  *
+      * * * * * * * * * * *   */
+
+@media only screen and (max-width: 1200px) {
+  .titre-page h1 {
+    padding-top: 3vw;
+    padding-bottom: 6vw;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,1 +1,83 @@
-<h1 class="hue">hey</h1>
+
+<div style="background-color: white;" class="about-page">
+
+    <ul class="liste-navbar-no-bg">
+
+      <li class="li-before">
+       <li><i class="fas fa-plane"></i></li>
+       <li><a href="#">Vols</a></li>
+     </li>
+
+
+      <li class="li-before">
+       <li><i class="far fa-lightbulb"></i></li>
+       <li><a href="#">A propos</a></li>
+     </li>
+
+
+      <li class="li-before">
+       <li><i class="fas fa-tree"></i></li>
+       <li><a href="#">Les arbres</a></li>
+     </li>
+
+      <li class="li-before">
+        <li><i class="fas fa-user-ninja"></i></li>
+        <li><% if user_signed_in? %>
+           <%= link_to 'Déconnection', destroy_user_session_path, method: :delete %>
+           <% else %>
+           <%= link_to 'Se connecter', new_user_session_path %>
+          <% end %>
+        </li>
+     </li>
+
+      <li class="li-before">
+       <li><img class="fr-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"></li>
+       <li><a href="#">Français (EUR)</a></li>
+     </li>
+
+    </ul>
+
+      <div class="logo">
+        <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553080750/LOGO_SKYTREEP_BLANC.png">
+      </div>
+
+
+<!-- /*  * * * * * * * * * * *
+      *  page about        *
+      * * * * * * * * * * *   */ -->
+
+  <div>
+    <div class="titre-page">
+      <h1>A propos de Skytree'p</h1>
+    </div>
+
+    <div class="text-apropos">
+      Nous sommes une toute jeune entreprise qui a <strong>encore beaucoup à apprendre</strong> , notamment sur la compensation carbone et les pollutions liées à l’avion. Skytree’p est partit d’un constat négatif : <strong>nous n’avons pas le pouvoir d’arrêter l’avion</strong>  et pire, chaque année il y en aura de plus en plus.
+    </div>
+
+    <div class="text-apropos">
+      A la base du projet, en 2018, nous cherchions une solution pour réduire les émissions carbones liées aux transports aériens. Après beaucoup de réflexion, nous nous sommes dit que la solution demeurait dans l’éducation. Il nous fallait faire comprendre au maximum de personne l’impact écologique de l’avion. Mais comment ?
+    </div>
+
+    <div class="text-apropos">
+      Les idées fusent mais peu sont convaincantes. Alors nous décortiquons la chaîne du processus de prendre l’avion, de la naissance de l’idée de voyager dans la tête du consommateur jusqu’aux pieds dans l’eau. Il s’agissait ensuite de <strong>trouver la meilleure place</strong>  dans cette chaîne <strong>pour avoir le plus d’impact !</strong>  Ce sera au niveau de l’achat en tant que comparateur.
+    </div>
+
+    <div class="text-apropos">
+      Tout commence alors pour Skytree’p. Nous commençons à imaginer la solution, l’idée de <strong>la dette écologique</strong>  se crée, nous décidons de <strong>reverser 80% du profit,</strong>  on se renseigne sur les arbres, on les adopte et enfin on commence à coder le site internet.
+    </div>
+
+    <div class="text-apropos">
+      Notre vision aujourd’hui.
+    </div>
+
+    <div class="text-apropos">
+      Skytree’p est imparfait, il est encore compliqué de parfaitement déterminer la globalité des pollutions engendré par un avion. Au fil de notre évolution, <strong>notre mission est de nous rapprocher au plus près de la réalité,</strong>  que ce soit pour mieux comprendre la pollution de l’avion ou bien analyser le rôle clef des arbres dans la compensation.
+    </div>
+
+    <div style="padding-bottom: 50px" class="text-apropos">
+      Nous chercherons toujours <strong>la transparence</strong>  et <strong>l’honnêteté,</strong>  nous chercherons toujours à guider nos utilisateurs vers des meilleurs pratiques et <strong>à terme, nous rechercherons scientifiquement des moyens pour combattre le réchauffement climatique.</strong>
+    </div>
+  </div>
+
+</div>
