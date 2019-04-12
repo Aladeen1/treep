@@ -18,4 +18,8 @@ class PagesController < ApplicationController
   def dashboard
     @search_nav = true
   end
+
+  def lesarbres
+    @search_nav = false
+  end
 end
