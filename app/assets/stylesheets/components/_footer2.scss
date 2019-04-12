@@ -1,0 +1,57 @@
+#footer-skytreep2 {
+  background-image: url('https://res.cloudinary.com/tark-industries/image/upload/v1555078520/footerpic.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px 35px 60px;
+  color: white;
+  position: relative;
+}
+
+.network {
+  position: absolute;
+  right: 20px;
+  padding-top: 100px;
+}
+
+.network img {
+  width: 50px;
+  padding-bottom: 20px;
+}
+
+#footer-skytreep2 a {
+  color: white;
+}
+
+#section3 .container-home {
+  margin-left: 5vw !important;
+}
+
+.container-footer1 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.container-footer2 img {
+  width: 24px;
+  height: 17px;
+}
+
+.container-footer2 {
+  padding-bottom: 30px;
+  padding-right: 20px;
+}
+
+#footer-skytreep2 .container-footer3 {
+  margin-left: 15vw !important;
+}
+
+.text-footer p {
+  text-align: center;
+  font-size: 12px;
+  padding-right: 16%;
+  padding-left: 10%;
+  margin-bottom: 0px;
+}

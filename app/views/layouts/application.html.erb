@@ -23,6 +23,7 @@
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
 
-    <%= render 'shared/footer' %>
+    <%= render 'shared/footer' if @footer1 %>
+    <%= render 'shared/footer' if @footer2 %>
   </body>
 </html>
