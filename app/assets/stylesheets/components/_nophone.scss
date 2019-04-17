@@ -1,0 +1,41 @@
+.no-phone {
+  display: none
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .no-phone {
+    display: inline !important;
+  }
+
+  .about-page {
+    display: none;
+  }
+
+  .dashboard {
+    display: none;
+  }
+
+  #section-all {
+    display: none;
+  }
+
+  .search__bar__container {
+    display: none;
+  }
+
+  .rectangle-navbar {
+    display: none;
+  }
+
+  #footer-skytreep {
+    display: none;
+  }
+
+  #footer-skytreep2 {
+    display: none;
+  }
+
+}
+
+
