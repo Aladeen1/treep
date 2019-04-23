@@ -3,10 +3,10 @@
 }
 
 .slider__presentation__target {
-    align-items: baseline;
+    align-items: flex-end;
 	display: flex;
 	justify-content: space-between;
-	padding-bottom: 5px;
+	padding-bottom: 10px;
 }
 
 
@@ -15,6 +15,7 @@
 	height: 12px;
     width: 12px;
     padding-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .slider__update__display {
