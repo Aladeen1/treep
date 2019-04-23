@@ -2,9 +2,15 @@ import * as searchView from '../views/flightView';
 import { clearResults } from '../views/searchView';
 import { ecological, formatageCreationSlider } from './sliderCreation';
 import { renderReturnFlights } from './renderFlight';
+import { flightType } from './base';
+import { getNumberBoxChecked, getEscalesNumber } from './sliders/escalesFilter';
 
-export const getOptionValues = () => {
-   const optionValues = {
+
+// Fonction qui récupère la valeur des inputs connectés au slider. Récupère le min et max. 
+// Les valeurs sont récupérées sous forme de string déjà formattés
+
+export const getOptionValues = (flights) => {
+   let optionValues = {
    	carbonMax: document.getElementById('maxCarbonInput').value,
    	carbonMin: document.getElementById('minCarbonInput').value,
    	distanceMax: document.getElementById('maxDistanceInput').value,
@@ -17,16 +23,27 @@ export const getOptionValues = () => {
 	arriveeMax: document.getElementById('maxArriveeInput').value,
 	arriveeMin: document.getElementById('minArriveeInput').value
    }
+   
+   
+   if (flightType(flights[0])) {
+   	optionValues.durationRetourMax = document.getElementById('maxDurationRetourInput').value;
+   	optionValues.departRetourMax = document.getElementById('maxDepartRetourInput').value;
+   	optionValues.departRetourMin = document.getElementById('minDepartRetourInput').value;
+   	optionValues.arriveeRetourMax = document.getElementById('maxArriveeRetourInput').value;
+   	optionValues.arriveeRetourMin = document.getElementById('minArriveeRetourInput').value;
+   }
+
+   
    return optionValues
 }
 
 // La array des vols se trouve dans localstorage
 
 export const sortFlights = () => {
-	const values = getOptionValues();
-    console.log(values)
+	
 	const airlines = JSON.parse(localStorage.getItem('Airlines'));
     const resultat = JSON.parse(localStorage.getItem('Recherche'));
+    const values = getOptionValues(resultat);
     
     console.log('clear')
     clearResults();
@@ -39,16 +56,23 @@ export const sortFlights = () => {
 
 // Créer une fonction qui rend les vols en fonction des options sélectionnées. 
 // Rendre les vols on a ça il faut pouvoir les sélectionnés en fonction de critère qu'on a.
-// On a déjà toutes les valeures pour chaque vol, donc on récupère ça et on display les vols 
+// On a déjà toutes les valeurs pour chaque vol, donc on récupère ça et on display les vols qui remplissent tous les critères.
 // Pour lesquelles ces valeurs sont > au min et < max. 
 
-
-
 function renderSortedFlights(flights, airlines, optionValues) {
-    
-    console.log(flights)
-	flights.forEach( (flight, id) => {
 
+	// On va devoir mettre un if pour différencier les vols aller/retour et les vols simple.
+    
+    // renvoi l'array avec le type d'escale qui est coché
+
+    const arrayCheckedBox = getNumberBoxChecked();
+
+    // pour checker si le bail il faut le nombre d'escale de chaque routes pour chaque vol (array de 2 nombres)
+    
+    
+	flights.forEach( (flight, id) => {
+        
+        const escales = checkEscaleCompatibility(arrayCheckedBox, flight);
 		const prealable = ecological(flight);
         const ecology = checkCompatibility(prealable[1], optionValues.carbonMin, optionValues.carbonMax)
         const distance = checkCompatibility(prealable[0], optionValues.distanceMin, optionValues.distanceMax)
@@ -56,29 +80,68 @@ function renderSortedFlights(flights, airlines, optionValues) {
         const duree = checkCompatibility(flight.duration.departure, 0 , optionValues.durationMax)
         const heureDepart = checkCompatibilityTime(flight.dTime, optionValues.departMin, optionValues.departMax)
         const heureArrivee = checkCompatibilityTime(flight.aTime, optionValues.arriveeMin, optionValues.arriveeMax)
-        
-		if ( ecology && distance && prix && duree && heureDepart && heureArrivee) {
+
+        // Si tous les critères sont remplis (Tous les variables retourne "true"), le vol est affiché.     
+        // Ecrire une grosse fonction pour les autres sliders qui donneront des données en plus en aller/retour.
+
+        if (flightType(flight)) {
+        	// console.log('retour flight')
+			const dureeRetour = checkCompatibility(flight.duration.return, 0 , optionValues.durationRetourMax)
+			const heureDepartRetour = checkCompatibilityTime(retourHoraire(flight)[0], optionValues.departRetourMin, optionValues.departRetourMax)
+            const heureArriveeRetour = checkCompatibilityTime(retourHoraire(flight)[1], optionValues.arriveeRetourMin, optionValues.arriveeRetourMax)
+
+            // console.log(`critère de durée est: ${dureeRetour}`)
+            // console.log(`critère de départ est: ${heureDepartRetour}`)
+            // console.log(`critère de arrivée est: ${heureArriveeRetour}`)
+
+			if ( ecology && distance && prix && duree && heureDepart && heureArrivee && dureeRetour && heureDepartRetour && heureArriveeRetour && escales) {
+				renderReturnFlights(flight, airlines, id)
+	        } 
+		} else if ( ecology && distance && prix && duree && heureDepart && heureArrivee && escales) {
 			renderReturnFlights(flight, airlines, id)
-		}
+		}    
 	})
 }
+
+// Check si la value du vol est comprise entre la valeur min et max.
+// Passe la valeur qu'on avait en string en integer pour les comparer.
+// Retourne vrai si la valeur est comprise entre les valeurs et faux autrement.
+// Du coup le vol se fait exclure par la fonction au dessus. 
+
+function checkEscaleCompatibility(arrayBox, flight) {
+
+    let check = false;
+	const escale = getEscalesNumber(flight);
+	console.log(escale[1]);
+
+	if (arrayBox.includes(escale[0]) || arrayBox.includes(escale[1]) || arrayBox.length === 0) {
+		check = true;
+	}
+    
+    return check;
+}
+
 
 function checkCompatibility(flightValue, valueMin = 0, valueMax) {
 	let check;
 	const value1 = parseInt(valueMin)
 	const value2 = parseInt(valueMax)
+
+	// 1er cas est celui de la durée du départ seulement. On va devoir implémenter pour retour aussi.
+	// (Et pour la durée des escales aussi). 
+
 	if (valueMin === 0) {
-	  const spe = Math.ceil((flightValue / 60) / 60)
-      check = (spe <= value2)
+	  const duree = Math.ceil((flightValue / 60))
+      check = (duree <= value2)
 	} else {
 	  check = ((flightValue >= value1) && (flightValue <= value2))
 	}
 	return check
 }
 
-function checkCompatibilityTime(option, valueMin, valueMax) {
-	
+// Fonction spécial pour checker la compatibilité pour les horaires. 
 
+function checkCompatibilityTime(option, valueMin, valueMax) {
 	const timeMin = hourToInteger(valueMin);
 	const timeMax = hourToInteger(valueMax);
 	const flightTime = formatageCreationSlider(option);
@@ -86,14 +149,27 @@ function checkCompatibilityTime(option, valueMin, valueMax) {
 }
 
 
-// créer une fonction pour comparer les heures de départ et d'arrivée. 
+// Fonction qui formatte les horaires de départ et d'arrivée pour les comparer
+// entre la valeur du slider et celle du vol
 
 
 function hourToInteger(time) {
 	const array = time.split(':')
     const format = (parseInt(array[0]) * 60) + parseInt(array[1])
+    // renvoi un entier qui correspond aux minutes écoulées dans la journée
     return format
 }
+
+function retourHoraire(flight) {
+	let routesRetourArray = [];
+	flight.route.forEach( route => {
+		if (route.return === 1) {
+			routesRetourArray.push(route)
+		}
+	})
+	return [routesRetourArray[0].dTime, routesRetourArray[routesRetourArray.length - 1].aTime]
+}
+
 
 
 

@@ -21,21 +21,26 @@ export const search = document.getElementById('searchPage');
 // }
 
 
-export const renderLoader = parent => {
-    const loader = `
-        <div class="loader">
-            <svg>
-                <use href="../../assets/images/spinner.svg"></use>
-            </svg>
-        </div>
-    `;
-    parent.insertAdjacentHTML('afterbegin', loader);
+export const renderLoader = () => {
+    console.log('rendering__loader')
+    document.querySelector('.loader').classList.add('loader__display');
 };
 
 export const clearLoader = () => {
     const loader = document.querySelector('.loader');
-    if (loader) loader.parentElement.removeChild(loader);
+    if (loader) {
+        loader.classList.remove('loader__display');
+    }
 };
 
+// return true if the flight is a return flight
+
+export const flightType = flight => {
+    if (flight.routes.length >= 2) {
+        return true 
+    } else {
+        return false
+    }
+}
 
 

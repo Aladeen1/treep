@@ -1,0 +1,55 @@
+.slider__style {  
+  margin: 30px auto;
+  margin-top: 10px;
+  width: 75%;
+  height: 8px;
+  background-color: #E8EEF2;
+}
+
+.slider__compensation__container {
+  display: flex;
+}
+
+.slider__style .noUi-handle:before {
+    text-align: center;
+    width: 80px;
+    height: 25px;
+    position: absolute;
+    top: -26px;
+    left: -30px;
+    background-color: transparent;
+    color: black;
+    content: attr(data-value);
+    font-size: 16px;
+}
+
+.slider__style .noUi-handle:focus {
+  outline: none;
+}
+
+.slider__style .noUi-handle {
+  border-radius: 50%;
+  height: 20px;
+    width: 20px;
+    background-color: #36ACB8;
+} 
+
+.slider__style .noUi-handle:hover {
+    background-color: #57c6d2;
+}
+
+.noUi-horizontal .noUi-handle {
+  top: -6px;
+}
+
+.slider__style .noUi-connect {
+  background-color: rgba(54, 172, 184, 0.42);
+}
+
+.slider__style .noUi-connects {
+  border: solid 1px lightgrey;
+}
+
+.slider__style .noUi-handle .noUi-handle-lower {
+  right: -3px;
+}

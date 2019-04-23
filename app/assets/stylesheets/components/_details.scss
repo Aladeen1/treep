@@ -2,6 +2,8 @@
 .details {
   width: 100%;
   margin: 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .flight__details__aller {
@@ -14,7 +16,6 @@
 
 .straight__details {
   width: 100%;
-  border-top: 1px solid #b3aeae;
   padding: 10px;
 }
 
@@ -46,3 +47,118 @@
   width: 420px;
   align-items: center;
 }
+
+.text__formatting__details {
+  line-height: 14px;
+  display: flex;
+  align-items: flex-end;
+  width: 80px;
+}
+
+.tranche__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+} 
+
+.container__details__secondary {
+  width: 230px;
+}
+
+.second__tranche { 
+  width: 100%;
+  align-items: center;
+}
+
+.round__div {
+  width: 14px;
+  height: 14px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.details__straight__experiment {
+  height: 80px;
+  width: 1px;
+  background-color: black;
+}
+
+.details__straight__escale {
+  height: 30px;
+  border-left: 2px dotted;
+}
+  
+.first__row {
+  justify-content: flex-end;
+}
+
+.green__round {
+  border: 2px solid $green;
+}
+
+.red__round {
+  border: 2px solid #F12430;
+}
+
+.escale__tranche {
+  width: 100%;
+  align-items: center;
+}
+
+.escale__color {
+  color: #F12430;
+}
+
+.overall__details__container {
+  width: 230px;
+  margin: 0px 15px;
+}
+
+.info__details__container {
+  margin: 15px;
+}
+
+.info__details__container__dette {
+  margin: 15px;
+  padding: 10px;
+  border: 1px grey solid;
+  box-shadow: 2px 2px 2px grey;
+}
+
+.dette__infographie__container {
+  display: flex;
+  color: white;
+  height: 45px;
+}
+
+
+.dette__infographie__skyparticipation {
+  background-color: $blue;
+  border-radius: 3px 0px 0px 3px;
+}
+
+.dette__infographie__reste {
+  background-color: $green;
+  border-radius: 0px 3px 3px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
