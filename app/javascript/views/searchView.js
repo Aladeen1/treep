@@ -26,3 +26,7 @@ export const setInput = (location, params) => {
 export const clearSliders = () => {
 	document.querySelector('.flights__options').innerHTML = '';
 }
+
+export const clearFilters = () => {
+	document.querySelector('.flights__filter__display').innerHTML = '';
+}

@@ -1,17 +1,17 @@
 import * as searchView from '../views/flightView';
-import { getInput, clearResults, clearSliders } from '../views/searchView';
-import { elements, search } from '../views/base';
+import { getInput, clearResults, clearSliders, clearFilters } from '../views/searchView';
+import { elements, search, renderLoader, clearLoader } from '../views/base';
 import Search from '../models/Search';
 import { displayOptions } from '../views/sliderCreation';
 import { getOptionValues } from '../views/sliderUtilisation';
 import { globalSliderInitialization } from '../components/sliderRange';
 import { targetRedirection } from '../components/modalApparition';
+import { createFilterMarkup } from '../components/filterSearch';
+
 
 const state = {};
 
 export const controlSearch = () => {
-
-  clearResults();
 
     // 1) Get airport codes from locations queried in the view
   const departLocation = searchView.getAirportCode(getInput('searchDepartInput'));
@@ -35,27 +35,47 @@ export const controlSearch = () => {
       state.search = new Search(departLocation, returnLocation, departDateFrom, departDateTo, flightType, passengers);
     }
     
-
+ 
     // 3) Prepare UI for results
+    clearSliders();
+    clearFilters();
+    clearResults();
+    renderLoader();
     // searchView.clearInput();
     
     // 4) Search for flights
-    clearSliders();
+    
     const call = Promise.all([state.search.getFlights(), state.search.getAirlinesCode()]);
     call.then(() => {
       // Les deux fonctions ont cachés les réponses donc on les récupère et on les assigne à deux variables
       const airlines = JSON.parse(localStorage.getItem('Airlines'));
       const resultat = JSON.parse(localStorage.getItem('Recherche'));
-      console.log(resultat)
-      // if (document.getElementById('loaded') == null) {
-      var optionsElement = displayOptions(resultat);
-      globalSliderInitialization(optionsElement.searchCarbon, optionsElement.searchDistance, optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepartHour, optionsElement.searchArriveeHour);
-      // }
+      console.log(resultat);
+      
       // 5) Render results on UI
-      searchView.renderResults(resultat, airlines);
-      targetRedirection();
+
+      clearLoader();
+
+      // slider
+        if (resultat[0].routes.length >= 2) {
+          var optionsElement = displayOptions(resultat, 1);
+          globalSliderInitialization(optionsElement.searchCarbon, optionsElement.searchDistance, optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepart, optionsElement.searchArrivee, optionsElement.searchDurationRetour, optionsElement.searchDepartRetour, optionsElement.searchArriveeRetour);
+        } else {
+          var optionsElement = displayOptions(resultat, 0);
+          globalSliderInitialization(optionsElement.searchCarbon, optionsElement.searchDistance, optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepart, optionsElement.searchArrivee);
+        }
+        
+      
+      // filter
+        createFilterMarkup();
+
+      // flights
+        searchView.renderResults(resultat, airlines);
+        targetRedirection();
+
      })
-  //   .catch(err => console.log(err))
+
+     // .catch(err => console.log(err))
    }
 }
 

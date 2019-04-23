@@ -2,4 +2,74 @@
   width: 100px;
 }
 
+.slider__presentation__target {
+    align-items: baseline;
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 5px;
+}
+
+
+.slider__presentation__arrow {
+    transition: 0.5s ease;
+	height: 12px;
+    width: 12px;
+    padding-bottom: 4px;
+}
+
+.slider__update__display {
+	display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.horaire__toggle {
+	border: #9F9D9D solid 0.5px;
+	color: #9F9D9D;
+    padding: 4px 15px;
+    font-size: 16px;
+}
+
+#active__horaire {
+	border: black solid 0.5px;
+    color: black;
+}
+
+.horaire {
+	display: block;
+}
+
+.hide__horaire {
+	display: none;
+}
+
+.horaire__target__margin {
+	margin-top: 15px;
+}
+
+.filter__checkbox {
+	margin-right: 15px;
+	background-color: red;
+}
+
+.escale__list__container {
+	display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.escale__list__element {
+	display: flex;
+	justify-content: space-between;
+}
+
+.arrow__loop {
+	transform: rotate(-180deg);
+}
+
+
+
+
+
+
 

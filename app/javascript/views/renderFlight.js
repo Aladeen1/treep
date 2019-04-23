@@ -36,8 +36,9 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 	const markup = `
 
 	  <li class="flight__card">
+              
 
-          <div class="flight__flex">
+          <div style="display:flex;">
 	          <div class="flight__card__container">
 
 	          <div class="flight__card__header">
@@ -86,13 +87,13 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 			  </div>
 
 
-			  <div class="flight__card__checkout">
+			  <div class="flight__card__checkout back">
 				  <p class="flight__price">${flight.price}€</p>
 				  <div class="${flight.id}">
 		          <a href=${flight.deep_link} target="_blank" class="flight__card__link_target"><button  class="checkout__button redirection__target">Sélectionner</button></a>
 		          </div>
 			  </div>
-		  </div>
+	    </div>
 		  ${markupDetails(flight, id)}
 	  </li>
 	`
@@ -144,7 +145,7 @@ function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDep
 }
 
 
-const getTransferNumber = route => {
+export const getTransferNumber = route => {
   let transferNumber;
 
   if (route.length === 2) {

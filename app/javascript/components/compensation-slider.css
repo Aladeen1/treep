@@ -1,0 +1,38 @@
+#slider__compensation {  
+	width: 550px;
+	margin: auto;
+	/*margin-top: 150px;*/
+	background-color: #E8EEF2;
+}
+
+.slider__compensation__container {
+  display: flex;
+}
+
+#slider__compensation .noUi-handle:before {
+	text-align: center;
+    width: 80px;
+    height: 25px;
+    position: absolute;
+    top: -25px;
+    left: -22px;
+    background-color: #fbfaeb;
+    color: black;
+    content: attr(data-value);
+    font-size: 16px;
+}
+
+#slider__compensation .noUi-handle:focus {
+	outline: none;
+}
+
+#slider__compensation .noUi-handle {
+	border-radius: 50%;
+	height: 32px;
+	width: 32px;
+	background-color: #00C896;
+} 
+
+#slider__compensation .noUi-handle:hover {
+    background-color: #2DE1B4;
+}

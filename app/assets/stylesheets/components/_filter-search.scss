@@ -1,0 +1,39 @@
+.flights__filter__display {
+    display: flex;
+	width: 100%;
+	height: 70px;
+	margin-top: 30px;
+	
+	p {
+	  padding: 5px 12px;
+	  color: white;
+	  height: 100%;
+	}
+}
+
+.filter__square {
+	width: (100% / 3);
+	height: 100%;
+	background-color: $green;
+	margin: 0.5px;
+	transition: all ease 0.5s;
+
+	&:hover {
+	  background-color: $blue;
+	}
+}
+
+.front {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.back {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#active__measure__in {
+	background-color: #36ACB8;
+}
+

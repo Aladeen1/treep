@@ -9,7 +9,8 @@ export const elements = {
     searchPassengers: document.getElementById('passengers'),
     searchFlightType: document.getElementById('flight_type'),
     displayFlights: document.querySelector('.flights__list'),
-    displayOptions: document.querySelector('.flights__options')
+    displayOptions: document.querySelector('.flights__options'),
+    searchContainer: document.querySelector('.flights__container')
 };
 
 export const proxy = 'https://cors-anywhere.herokuapp.com/';
@@ -20,5 +21,26 @@ export const search = document.getElementById('searchPage');
 // }
 
 
+export const renderLoader = () => {
+    console.log('rendering__loader')
+    document.querySelector('.loader').classList.add('loader__display');
+};
+
+export const clearLoader = () => {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.classList.remove('loader__display');
+    }
+};
+
+// return true if the flight is a return flight
+
+export const flightType = flight => {
+    if (flight.routes.length >= 2) {
+        return true 
+    } else {
+        return false
+    }
+}
 
 

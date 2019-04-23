@@ -1,7 +1,7 @@
 // import { createUiSlider } from './sliderRange';
 import noUiSlider from "nouislider";
 import 'nouislider/distribute/nouislider.css';
-import 'nouislider/distribute/compensation.css';
+import './compensation-slider.css';
 
 window.addEventListener('load', () => {
 	if ($('#title-target')[0] != null) {
@@ -39,7 +39,7 @@ function switchIcons(flight) {
       		};
         })
     })
-}
+}  
 
 function updateMeasure(measure, flight) {
 	const detteEcologique = (flight.price * 0.02).toFixed(2);
@@ -218,7 +218,6 @@ function createCompensationMarkup(flight) {
 			</div>
 		</div>
 	`
-
 	return markup
 }
 

@@ -2,7 +2,6 @@
 export const targetRedirection = () => {
 	const targets = document.querySelectorAll('.redirection__target');
     const flights = JSON.parse(localStorage.getItem('Recherche'));
-    
 	targets.forEach( button => {
 		button.addEventListener( 'click', event => {
             console.log('ça part');
