@@ -13,7 +13,9 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+
+    <%= render 'shared/navbar' if @search_nav %>
+    <!-- if @search_nav permet de render la navbar uniquement dans les controllers qui ont @search_nav = true -->
     <%= render 'shared/flashes' %>
     <div class='frame'>
     <%= yield %>
@@ -21,6 +23,9 @@
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
 
+    <%= render 'shared/footer' if @footer1 %>
+    <%= render 'shared/footer2' if @footer2 %>
+    <%= render 'shared/nophone' %>
 
   </body>
 </html>

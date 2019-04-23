@@ -1,0 +1,90 @@
+
+<div style="background-color: white;" class="about-page">
+
+    <ul class="liste-navbar-no-bg">
+
+      <li class="li-before">
+       <li><i class="fas fa-plane"></i></li>
+       <li><a href="http://localhost:3000/search">Vols</a></li>
+     </li>
+
+
+      <li class="li-before">
+       <li><i class="far fa-lightbulb"></i></li>
+       <li><a href="http://localhost:3000/about">A propos</a></li>
+     </li>
+
+
+      <li class="li-before">
+       <li><i class="fas fa-tree"></i></li>
+       <li><a href="http://localhost:3000/lesarbres">Les arbres</a></li>
+     </li>
+
+      <li class="li-before">
+        <li><i class="fas fa-user-ninja"></i></li>
+        <li><% if user_signed_in? %>
+           <%= link_to 'Déconnection', destroy_user_session_path, method: :delete %>
+           <% else %>
+           <%= link_to 'Se connecter', new_user_session_path %>
+          <% end %>
+        </li>
+     </li>
+
+      <li class="li-before">
+       <li><img class="fr-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"></li>
+       <li><a href="#">Français (EUR)</a></li>
+     </li>
+
+    </ul>
+
+      <div class="logo">
+        <a href="http://localhost:3000">
+          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553080750/LOGO_SKYTREEP_BLANC.png">
+        </a>
+      </div>
+
+
+<!-- /*  * * * * * * * * * * *
+      *  page about        *
+      * * * * * * * * * * *   */ -->
+
+  <div>
+    <div class="titre-page">
+      <h1>Les arbres de Skytree'p</h1>
+    </div>
+
+    <div class="text-apropos">
+      Pour compenser les émissions carbones, nous avons décidé de planter des arbres. <br> Pourquoi ?
+    </div>
+
+    <div class="text-apropos">
+      Les arbres sont des véritables <strong>puits à carbone</strong>, au fur et à mesure de leur vie, ils utilisent et stockent le Co2 contenu dans l’air pour grandir. Le Co2 est en quelque sorte un carburant pour les arbres. Selon les espèces et l’endroit, un arbre peut absorber <strong>entre 20 et 50 kg de Co2</strong> par an.
+    </div>
+
+    <div class="text-apropos">
+      Bon à savoir : L’arbre ne fait que stocker le Co2. Lorsqu’il meurt, l’arbre rend à la nature tout le Co2 qu’il a emmagasiner tout au long de sa vie.
+    </div>
+
+    <div class="text-apropos">
+      Les forêts jouent aussi un rôle de régulateur. Des chercheurs ont déterminé que les arbres grandissaient plus vite maintenant qu’il y a 40 ans. Ce parce qu’il y a plus de Co2 dans l’air aujourd’hui qu’hier. Et bien sûr, plus un arbre est gros, plus il contient du Co2. On estime que 65% de l’arbre est constitué de masse sèche et la moitié de celle-ci est du carbone. A noter qu’un gramme de carbone = 3,67 grammes de Co2.
+    </div>
+
+    <div class="text-apropos">
+      Mais l’arbre c’est <strong>le pilier de la nature et son écosystème.</strong> Il permet le retour de la biomasse, ces végétaux, insectes, plantes et animaux qui participent aux cycles naturels de la planète. Les sols des forêts participent également à l’absorption du Co2 et d’autre gaz à effet de serres comme le méthane et combattent l’érosion des sols.
+    </div>
+
+    <div class="text-apropos">
+      Les arbres et les sols s’influencent mutuellement. Ensemble ils permettent de retenir l’eau et donc d’abreuver toute la faune et la flore. Dans certaines régions du monde, là où l’agriculture à nettement pris le dessus sur les espaces forestiers, le manque d’eau et de nutriments dans les sols ont créé des zones arides rendant impossible toute exploitation, chasse ou cueillette.
+    </div>
+
+    <div class="text-apropos">
+      Nous souhaitons planter des arbres à travers le monde. Dans des régions largement défavorisé, la culture de l’arbre <strong>emploie des milliers de personnes et enseigne des pratiques écologiques</strong>  aux populations des pays en voie de développement. SkyTree’p travaille étroitement avec des associations qui ont à cœur de <strong>redonner un sens social au travail</strong>  en engageant plus de femmes pour qu’elles s’émancipent, interdisant le travail d’enfants et réunissant des conditions de travail humaines et décentes etc.
+    </div>
+
+    <div style="padding-bottom: 50px" class="text-apropos">
+      La nature est une technologie incroyable mais encore peu maitrisé. Nous nous engageons à investir dans la recherche pour optimiser la captation du Co2 ou encore mieux comprendre le rôle des sols.
+    </div>
+
+  </div>
+
+</div>
