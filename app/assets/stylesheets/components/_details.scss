@@ -3,7 +3,7 @@
   width: 100%;
   margin: 0px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .flight__details__aller {
@@ -17,6 +17,7 @@
 .straight__details {
   width: 100%;
   padding: 10px;
+  border-top: solid 1px grey;
 }
 
 .big__info__container {
@@ -123,23 +124,36 @@
   padding: 10px;
   border: 1px grey solid;
   box-shadow: 2px 2px 2px grey;
+
+  p {
+    padding: 5px 0px;
+    border-top: solid 1px grey;
+  }
 }
 
 .dette__infographie__container {
   display: flex;
   color: white;
   height: 45px;
+  margin-top: 10px;
+
 }
 
 
 .dette__infographie__skyparticipation {
   background-color: $blue;
   border-radius: 3px 0px 0px 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dette__infographie__reste {
   background-color: $green;
   border-radius: 0px 3px 3px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
