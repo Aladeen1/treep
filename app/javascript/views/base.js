@@ -21,16 +21,24 @@ export const search = document.getElementById('searchPage');
 // }
 
 
-export const renderLoader = () => {
-    console.log('rendering__loader')
-    document.querySelector('.loader').classList.add('loader__display');
+// export const renderLoader = () => {
+//     console.log('rendering__loader')
+//     document.querySelector('.loader').classList.add('loader__display');
+// };
+
+export const renderLoader = (parent) => {
+    
+
+    const loader = `
+        <div class="center__loader">
+            <img class="loader" src="https://res.cloudinary.com/tark-industries/image/upload/v1556034462/Spinner1.png">
+        </div>
+    `
+    parent.insertAdjacentHTML('afterbegin', loader)  
 };
 
-export const clearLoader = () => {
-    const loader = document.querySelector('.loader');
-    if (loader) {
-        loader.classList.remove('loader__display');
-    }
+export const clearLoader = (parent) => {
+    parent.innerHTML = '';
 };
 
 // return true if the flight is a return flight

@@ -2,15 +2,15 @@
 
 export const markupDetails = (flight, id) => { 
 
-  let routeRetour, timeRetour, routes;
+  let routeRetour = [];
+  let timeRetour;
   const routeAller = createRouteArray(flight)[0];
   const timeAller = timeFormating(flight.aTime, flight.dTime);
-  routes = routeAller;
+  
   
   if ( flight.routes.length >= 2 ) {
     routeRetour = createRouteArray(flight)[1];
     timeRetour = timeFormating(routeRetour[routeRetour.length - 1].aTime, routeRetour[0].dTime);
-    routes = routeAller.concat(routeRetour);
   }
 
 
@@ -20,7 +20,7 @@ export const markupDetails = (flight, id) => {
 	  	<div class="details" ${(flight.routes.length >= 2) ? 'style="justify-content: space-between"' : ''}>        
 		   	${displayDetailedRoute(routeAller, timeAller, 'Aller')}
 		    ${(flight.routes.length >= 2) ? displayDetailedRoute(routeRetour, timeRetour, 'Retour') : ''}
-		    ${displayDetteEcoInfos(routes, flight)}
+		    ${displayDetteEcoInfos(routeAller.concat(routeRetour), flight, routeRetour.length)}
       	</div>
 	  </div>
 	</div> 
@@ -31,6 +31,7 @@ export const markupDetails = (flight, id) => {
 
 
 function displayDetailedRoute(routes, time, type) {
+	// console.log(routes)
 
 	const markup = `
 		<div class="overall__details__container">
@@ -40,34 +41,38 @@ function displayDetailedRoute(routes, time, type) {
 	            
 	            ${markupRoute(routes)}
 
-	            <p style="margin: 15px 0px;">Arrivée: ${time[7]} ${time[8]} ${time[9]}</p>
+	            <p style="margin-top: 30px;">Arrivée: ${time[7]} ${time[8]} ${time[9]}</p>
 	        </div>
 	   	</div>
     `
     return markup
 }
 
-function displayDetteEcoInfos(array, flight) {
+function displayDetteEcoInfos(array, flight, type) {
 
-    const treepCompensation = (flight.price * 0.0064).toFixed(2);
-    const detteEcologique = (flight.price * 0.02).toFixed(2);
-    const width = calculateEcoWidth(detteEcologique, treepCompensation);
-    const detteUser = (detteEcologique - treepCompensation).toFixed(2);
 	let distanceTotal = 0;
 	array.forEach( route => {
 		distanceTotal += distanceFlight(route.latFrom, route.lngFrom, route.latTo, route.lngTo, 'K');
 	})
-
-
 	
+    const treepCommission = (flight.price * 0.02).toFixed(2);
+    const treepCompensation = (treepCommission * 0.45).toFixed(2);
+    const carbonEmission = Math.round((distanceTotal * 190) / 1000);
+    const detteEcologique = (Math.round(carbonEmission / 20) * 0.2).toFixed(2);
+    const width = calculateEcoWidth(detteEcologique, treepCompensation);
+    const detteUser = (detteEcologique - treepCompensation).toFixed(2);
+
 	const markup = `
 
 		<div class="dette__ecologique__container">
 			<h3>Dette Ecologique</h3>
-			<div class="info__details__container__dette">
+			<div class="info__details__container">
+			  <p style="margin: 15px 0px;">${type > 0 ? 'Aller - Retour': 'Aller'}</p>
 			  <p>Distance effective: ${distanceTotal}Km</p>
-			  <p>co2 émis: ${Math.round((distanceTotal * 190) / 1000)}Kg</p>
-			  <p>Dette écologique: ${detteEcologique}€</p>
+			  <p>co2 émis: ${carbonEmission}Kg</p>
+			  <p>Skytreep Commission: ${treepCommission}€</p>
+			  <p>Skytreep Participation: ${treepCompensation}€</p>
+			  <p>Montant total: ${detteEcologique}€</p>
 			  <div class="dette__infographie__container">
 			  	<div class="dette__infographie__skyparticipation" style="width: ${width[0]}%;">${treepCompensation}€</div>
 			  	<div class="dette__infographie__reste" style="width: ${width[1]}%;">${detteUser}€</div>
@@ -94,7 +99,7 @@ function displayFlightTimeRoute(routeArrivee, routeDepart) {
 function markupRoute(array) {
 
 	let newArray = array.map( (route, index, tableau) => {
-
+        
         const time = timeFormating(route.aTime, route.dTime)
 
 		const markupFlight = `
@@ -104,23 +109,41 @@ function markupRoute(array) {
 		   		<p class="text__formatting__details first__row ${index != 0 ? 'escale__color' : ''}">${time[0]}:${time[1]}</p>
 		   		<div class="round__div ${index != 0 ? 'red__round' : ''}">
 		   		</div>
-		   		<p class="text__formatting__details">${index === 0 ? route.cityFrom : ''}</p>
+		   		<div class="text__formatting__details details__anchor">
+		   		  ${index === 0 ? renderCityNCode(index, route) : ''}
+		   		</div>
 				</div>
 
 				<div class="tranche__container second__tranche">
 					<p class="text__formatting__details first__row">${displayFlightTimeRoute(route.aTime, route.dTime)}</p>
 					<div class="details__straight__experiment"></div>
-					<p class="text__formatting__details"></p>
+					<p class="text__formatting__details"></p>					
 				</div>
 
 				${markupEscales(route, index, tableau, time)}
 			</div>	
 		`
 		return markupFlight
-
 	})
 
 	return newArray.join('')
+}
+
+function renderCityNCode(index, route) {
+
+    let markup;
+    if (index === 0) {
+    	markup = `
+		<p>${route.cityFrom}</p>
+		<div class="details__airport__code__up">${route.flyFrom}</div>
+	`
+    } else {
+    	markup = `
+    	<p>${route.cityTo}</p>
+		<div class="details__airport__code__up">${route.flyTo}</div>
+	`
+    }
+  	return markup;
 }
 
 
@@ -140,7 +163,6 @@ function markupEscales(route, indice, tableau, time) {
 	let markupEscale; 
 
 	if (indice != (tableau.length - 1)) {
-
 		markupEscale = `
 			<div class="tranche__container">
 		   		<p class="text__formatting__details first__row escale__color">${time[2]}:${time[3]}</p>
@@ -156,12 +178,16 @@ function markupEscales(route, indice, tableau, time) {
 			</div>
 		`
 	} else {
+		// prendre en compte le cas ou il n'y a qu'un vol (ajd bug)
 	    markupEscale = `
+
 			<div class="tranche__container">
 		   		<p class="text__formatting__details first__row">${time[2]}:${time[3]}</p>
 		   		<div class="round__div green__round">
 		   		</div>
-		   		<p class="text__formatting__details">${route.cityTo}</p>
+		   		<div class="text__formatting__details details__anchor">
+		   		  ${renderCityNCode(indice, route)}
+		   		</div>
 			</div>
 		`
 	}

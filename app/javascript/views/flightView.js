@@ -3,8 +3,9 @@ import { renderReturnFlights } from './renderFlight';
 
 export const renderResults = (flights, airportCodes) => {
   // render results of current page
+  createFlightsAnchor();
   if (flights.length === 0) {
-    elements.displayFlights.insertAdjacentHTML('beforeend', 'Pas de résultat disponible pour cette recherche .. suddy');
+    document.querySelector('.flights__list').insertAdjacentHTML('beforeend', 'Pas de résultat disponible pour cette recherche .. suddy');
   } else {
     flights.slice(0, 10).forEach( (flight, id) => {
       renderReturnFlights(flight, airportCodes, id)
@@ -47,3 +48,38 @@ export const matchAirlinesCode = (flight, airportCodes) => {
   }
   return name
 }
+
+function createFlightsAnchor() {
+
+    const markup = `
+      <div class="flights__display">
+        <ul class="flights__list"></ul>
+      </div>
+    `
+    document.querySelector('.flights__second__container').insertAdjacentHTML('beforeend', markup)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

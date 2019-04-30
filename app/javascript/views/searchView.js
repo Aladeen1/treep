@@ -11,9 +11,12 @@ export const getInput = location => {
   return element;
 }
 
-export const clearResults = () => {
-    // document.getElementById('airports__depart').innerHTML = '';
-    // document.getElementById('airports__return').innerHTML = '';
+export const clearInterface = () => {
+	elements.searchContainer.innerHTML = '';
+}
+
+
+export const clearFlights = () => {
     document.querySelector('.flights__list').innerHTML = '';
 };
 
@@ -23,10 +26,3 @@ export const setInput = (location, params) => {
 	elements[location].value = params;
 }
 
-export const clearSliders = () => {
-	document.querySelector('.flights__options').innerHTML = '';
-}
-
-export const clearFilters = () => {
-	document.querySelector('.flights__filter__display').innerHTML = '';
-}

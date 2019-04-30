@@ -4,6 +4,9 @@ import { ecological, formatageCreationSlider } from './sliderCreation';
 import { renderReturnFlights } from './renderFlight';
 import { flightType } from './base';
 import { getNumberBoxChecked, getEscalesNumber } from './sliders/escalesFilter';
+import { renderLoader, clearLoader } from './base';
+import { clearFlights } from './searchView';
+import { flightsArraySorted } from '../components/filterSearch';
 
 
 // Fonction qui récupère la valeur des inputs connectés au slider. Récupère le min et max. 
@@ -32,9 +35,23 @@ export const getOptionValues = (flights) => {
    	optionValues.arriveeRetourMax = document.getElementById('maxArriveeRetourInput').value;
    	optionValues.arriveeRetourMin = document.getElementById('minArriveeRetourInput').value;
    }
-
    
    return optionValues
+}
+
+function rightArray(element, arrayFlights) {
+	let rightArray = [];
+	if (element.includes('cher')) {
+	  console.log('pacher array')
+      rightArray = arrayFlights[0].slice();
+    } else if (element.includes('écolo')) {
+      console.log('écolo array')
+	  rightArray = arrayFlights[1].slice();
+    } else if (element.includes('rapide')) {
+      console.log('rapide array')
+      rightArray = arrayFlights[2].slice();
+    }
+    return rightArray
 }
 
 // La array des vols se trouve dans localstorage
@@ -42,16 +59,27 @@ export const getOptionValues = (flights) => {
 export const sortFlights = () => {
 	
 	const airlines = JSON.parse(localStorage.getItem('Airlines'));
-    const resultat = JSON.parse(localStorage.getItem('Recherche'));
-    const values = getOptionValues(resultat);
+    const flightList = document.querySelector('.flights__list');
+    const arraynOptions = getArraynOptions();
     
-    console.log('clear')
-    clearResults();
+    clearFlights();
+    renderLoader(flightList);
 
-    // Mettre un spinner ici pour bien montrer que les résultats sont updatés
-    
+    window.setTimeout( () => {
+    	clearLoader(flightList)
+    	renderSortedFlights(arraynOptions[0], airlines, arraynOptions[1]);
+    }, 750)
+}
 
-    renderSortedFlights(resultat, airlines, values);
+// fonction qui retourne les options + la bonne array
+
+export const getArraynOptions = () => {
+	const arrayFlights = flightsArraySorted();
+    const activeFilter = document.querySelector('#active__measure__in').innerHTML;
+    const arrayToUse = rightArray(activeFilter, arrayFlights);
+    const sliderValues = getOptionValues(arrayToUse);
+
+    return [arrayToUse, sliderValues]
 }
 
 // Créer une fonction qui rend les vols en fonction des options sélectionnées. 
@@ -85,14 +113,10 @@ function renderSortedFlights(flights, airlines, optionValues) {
         // Ecrire une grosse fonction pour les autres sliders qui donneront des données en plus en aller/retour.
 
         if (flightType(flight)) {
-        	// console.log('retour flight')
+        	
 			const dureeRetour = checkCompatibility(flight.duration.return, 0 , optionValues.durationRetourMax)
 			const heureDepartRetour = checkCompatibilityTime(retourHoraire(flight)[0], optionValues.departRetourMin, optionValues.departRetourMax)
             const heureArriveeRetour = checkCompatibilityTime(retourHoraire(flight)[1], optionValues.arriveeRetourMin, optionValues.arriveeRetourMax)
-
-            // console.log(`critère de durée est: ${dureeRetour}`)
-            // console.log(`critère de départ est: ${heureDepartRetour}`)
-            // console.log(`critère de arrivée est: ${heureArriveeRetour}`)
 
 			if ( ecology && distance && prix && duree && heureDepart && heureArrivee && dureeRetour && heureDepartRetour && heureArriveeRetour && escales) {
 				renderReturnFlights(flight, airlines, id)
@@ -112,7 +136,6 @@ function checkEscaleCompatibility(arrayBox, flight) {
 
     let check = false;
 	const escale = getEscalesNumber(flight);
-	console.log(escale[1]);
 
 	if (arrayBox.includes(escale[0]) || arrayBox.includes(escale[1]) || arrayBox.length === 0) {
 		check = true;

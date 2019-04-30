@@ -38,7 +38,7 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 	  <li class="flight__card">
               
 
-          <div style="display:flex;">
+          <div style="display:flex;width: 100%;">
 	          <div class="flight__card__container">
 
 	          <div class="flight__card__header">
@@ -98,7 +98,7 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 	  </li>
 	`
 
-	elements.displayFlights.insertAdjacentHTML('beforeend', markup)
+	document.querySelector('.flights__list').insertAdjacentHTML('beforeend', markup)
 
 }
 

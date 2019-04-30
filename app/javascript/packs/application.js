@@ -12,13 +12,18 @@ import Search from '../models/Search';
 import { getInput, setInput } from '../views/searchView';
 
 
+
+
+
 console.log('Hello from webpacker');
 
 airports.displayAirports();
 
 if (elements.searchForm) {
   elements.searchForm.addEventListener('submit', envoi => {
-  
+    
+    
+
     if (localStorage.getItem('Recherche')) {
       localStorage.removeItem('Recherche');
     }
@@ -27,8 +32,12 @@ if (elements.searchForm) {
       envoi.preventDefault();
       flights.controlSearch();
     }
+    
   });
 }
+
+
+
 
 
 window.addEventListener('load', () => {

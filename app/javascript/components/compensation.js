@@ -17,7 +17,7 @@ window.addEventListener('load', () => {
       sliderDesign(flight);
       switchIcons(flight);
 	}
-}) 
+})
 
 function sliderDesign(flight) {
 	document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="position__square"></div><p class="position__lower">0.00€</p>`);
