@@ -14,7 +14,7 @@ export default class Search {
     }
 
     getLocation(query, locationType) {
-      let res = axios(`${proxy}https://api.skypicker.com/locations?term=${query}&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name&partner=picky`);
+      let res = axios(`${proxy}https://api.skypicker.com/locations?term=${query}&locale=fr-FR&location_types=airport&limit=10&active_only=true&sort=name&partner=picky`);
       res.then((location) => {
         this[locationType] = location.data.locations;
       })
@@ -30,7 +30,7 @@ export default class Search {
         res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&limit=20&partner=picky`);
       } else if (this.flightType === 'round') {
         console.log('Round way call lauching')
-        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&limit=20&partner=picky`);
+        res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&limit=20&partner=picky`);        
       } 
       res.then((flight) => {
         this.result = JSON.stringify(flight.data.data);

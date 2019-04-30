@@ -10,7 +10,7 @@ export const markupHoraire = (id) => {
                 <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow"> 
               </div>
 
-              <div class="collapse" id="collapse-${id}">
+              <div class="collapse in" id="collapse-${id}">
                   <div style="display: flex;justify-content: center;">
                     <p class="horaire__toggle" id="active__horaire">Départ</p>
                     <p class="horaire__toggle">Arrivée</p>
@@ -32,8 +32,8 @@ export const markupHoraire = (id) => {
 // gérer l'affichage du jour ensuite. 
 export const sliderOnlyMarkup = (sliderType, sliderMinValueTarget, sliderMaxValueTarget, minValue, maxValue, id, type, target) => {
   if (sliderType === 'sliderDepartRetour' || sliderType === 'sliderArriveeRetour') {
-    console.log(minValue)
-    console.log(maxValue)
+    // console.log(minValue)
+    // console.log(maxValue)
   }
   
   const markup = `

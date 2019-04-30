@@ -18,7 +18,7 @@ export const createEscaleMarkup = (flights, id) => {
 			        	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow"> 
 			        </div>
 
-                    <div class="collapse" id="collapse-${id}">
+                    <div class="collapse in" id="collapse-${id}">
                       	<ul class="escale__list__container">
                       		${displayMarkup('Direct', price[0])}
                       		${displayMarkup('1 escale', price[1])}
@@ -122,7 +122,6 @@ export const getNumberBoxChecked = () => {
           array.push(escaleType)
 		}
 	})
-	console.log(array);
 	return array
 }
 

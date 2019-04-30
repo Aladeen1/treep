@@ -125,10 +125,6 @@
   border: 1px grey solid;
   box-shadow: 2px 2px 2px grey;
 
-  p {
-    padding: 5px 0px;
-    border-top: solid 1px grey;
-  }
 }
 
 .dette__infographie__container {
@@ -138,7 +134,6 @@
   margin-top: 10px;
 
 }
-
 
 .dette__infographie__skyparticipation {
   background-color: $blue;
@@ -156,9 +151,14 @@
   align-items: center;
 }
 
+.details__anchor {
+  position: relative;
+}
 
-
-
+.details__airport__code__up {
+  position: absolute;
+  top: 20px;
+}
 
 
 
