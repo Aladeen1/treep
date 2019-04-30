@@ -16,7 +16,7 @@ const callLocationAPI = (targetInput) => {
   state.search = new Search();
 
   // clean the interface
-  clearResults();
+  // clearResults();
 
   // get the input value
   const query = getInput(targetInput);

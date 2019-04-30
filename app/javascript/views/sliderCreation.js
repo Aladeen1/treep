@@ -61,6 +61,10 @@ export const displayOptions = (flights, type) => {
     
     maxDuration = Math.ceil((maxDuration / 60));
     minDuration = Math.floor((minDuration / 60));
+
+    if (maxDuration == minDuration) {
+        maxDuration += 1;
+    }
     
     console.log(` Les max values sont: ${maxArrivalTime}, ${maxDepartureTime}, ${maxPrice}, ${maxDuration}, ${maxCarbon}, ${maxDistance}`)
     console.log(` Les min values sont: ${minArrivalTime}, ${minDepartureTime}, ${minPrice}, ${minDuration}, ${minCarbon}, ${minDistance}`)
@@ -70,12 +74,12 @@ export const displayOptions = (flights, type) => {
 
     // Quick fix pour les departure time
 
-    if (minDepartureTime > maxDepartureTime) {
+    if (minDepartureTime >= maxDepartureTime) {
     	maxDepartureTime = 1439;
     	minDepartureTime = 0;
-
     }
     
+    createOptionsAnchor();
     createEscaleMarkup(flights, 'A');
     createSliderMarkup('sliderPrix', 'minPrixInput', 'maxPrixInput', minPrice, maxPrice, 'Prix', 'B')
     createSliderMarkup('sliderCarbon', 'minCarbonInput', 'maxCarbonInput', minCarbon, maxCarbon, 'C02 émis par personne', 'C')
@@ -135,7 +139,7 @@ export const ecological = (flight) => {
 
     // Changer le calcul du carbon en fonction du tableau qu'on aura établi
 
-    const totalCarbon = Math.round((sumDistance * 141) / 1000);
+    const totalCarbon = Math.round((sumDistance * 190) / 1000);
 
     return [sumDistance, totalCarbon]
 }
@@ -175,7 +179,7 @@ function createSliderMarkup(sliderType, sliderMinValueTarget, sliderMaxValueTarg
 			        	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow"> 
 			        </div>
 
-                    <div class="collapse" id="collapse-${id}">
+                    <div class="collapse in" id="collapse-${id}">
                         <div class="slider__update__display">
                           <p class="value__target__update" id="min-${id}"></p>
                           <p class="value__target__update" id="max-${id}"></p>
@@ -194,7 +198,7 @@ function createSliderMarkup(sliderType, sliderMinValueTarget, sliderMaxValueTarg
 		<div class="straight__details"></div>
     `
     document.querySelector('.flights__options').insertAdjacentHTML('beforeend', markup);
-}
+} 
 
 // Le timeStamp correspond a la date de départ en seconde a partir de 1970. 
 // Prend un unixStamp en seconde et le transforme en minutes dans une journée. 
@@ -286,7 +290,15 @@ function arrowTurn() {
 
 
 
+function createOptionsAnchor() {
 
+    const markup = `
+        <div class="flights__options">
+
+        </div>
+    `
+    elements.searchContainer.insertAdjacentHTML('afterbegin', markup)
+}
 
 
 

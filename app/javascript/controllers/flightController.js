@@ -1,5 +1,5 @@
 import * as searchView from '../views/flightView';
-import { getInput, clearResults, clearSliders, clearFilters } from '../views/searchView';
+import { getInput, clearInterface } from '../views/searchView';
 import { elements, search, renderLoader, clearLoader } from '../views/base';
 import Search from '../models/Search';
 import { displayOptions } from '../views/sliderCreation';
@@ -7,6 +7,7 @@ import { getOptionValues } from '../views/sliderUtilisation';
 import { globalSliderInitialization } from '../components/sliderRange';
 import { targetRedirection } from '../components/modalApparition';
 import { createFilterMarkup } from '../components/filterSearch';
+import { createRouteArray, distanceFlight } from '../views/renderDetails';
 
 
 const state = {};
@@ -37,10 +38,11 @@ export const controlSearch = () => {
     
  
     // 3) Prepare UI for results
-    clearSliders();
-    clearFilters();
-    clearResults();
-    renderLoader();
+    if (document.querySelector('.flights__display')) {
+      clearInterface();
+    }
+    
+    renderLoader(elements.searchContainer);
     // searchView.clearInput();
     
     // 4) Search for flights
@@ -50,11 +52,13 @@ export const controlSearch = () => {
       // Les deux fonctions ont cachés les réponses donc on les récupère et on les assigne à deux variables
       const airlines = JSON.parse(localStorage.getItem('Airlines'));
       const resultat = JSON.parse(localStorage.getItem('Recherche'));
+
       console.log(resultat);
+      showDistanceToParis(resultat);
       
       // 5) Render results on UI
 
-      clearLoader();
+      clearLoader(elements.searchContainer);
 
       // slider
         if (resultat[0].routes.length >= 2) {
@@ -65,7 +69,6 @@ export const controlSearch = () => {
           globalSliderInitialization(optionsElement.searchCarbon, optionsElement.searchDistance, optionsElement.searchDuration, optionsElement.searchPrix, optionsElement.searchDepart, optionsElement.searchArrivee);
         }
         
-      
       // filter
         createFilterMarkup();
 
@@ -81,7 +84,23 @@ export const controlSearch = () => {
 
 // Arguments of the getFlight Method => options.duration, options.prix, options.depart, options.arrivee
 
+function showDistanceToParis(resultat) {
+  
+  
+  const separation = createRouteArray(resultat[0])[0];
+  const last = separation.length - 1;
 
+  console.log(separation[0])
+  console.log(separation[last])
+
+  const latDepart = separation[0].latFrom
+  const lngDepart = separation[0].lngFrom
+  const latRetour = separation[last].latTo
+  const lngRetour = separation[last].lngTo
+
+  console.log(distanceFlight(latDepart, lngDepart, latRetour, lngRetour, 'K') + 'kilomètres')
+
+};
 
 
 
