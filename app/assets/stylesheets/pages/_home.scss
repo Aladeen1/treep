@@ -377,6 +377,94 @@ body, html {
 
 
 
+.carte-dette-ecologique {
+  width: 350px;
+  height: 380px;
+  margin: 50px;
+  padding-left: 10px;
+  padding-top: 12px;
+  border-radius: 5px;
+  position: relative;
+  background-color: white;
+  box-shadow: 1px 1px 7px grey;
+  font-size: 16px;
+}
+
+.carte-dette-ecologique:before {
+  content : "";
+  position: absolute;
+  left    : 11px;
+  top  : 43px;
+  height  : 1px;
+  width   : 88%;
+  border-bottom:1px solid lightgrey;
+}
+
+.carte-dette-ecologique img {
+  width: 25px;
+  margin-top: -5px;
+}
+
+.carte-eco-row2 {
+  font-size: 13.5px;
+  padding-top: 18px;
+}
+
+.montant-dette-eco {
+  color: white;
+  background-color: $green;
+  border-radius: 5px;
+  padding: 10px 2px;
+  text-align: center;
+}
+
+.carte-eco-row3 {
+  padding-left: 14px;
+  padding-top: 10px;
+}
+
+.carte-eco-row3:before {
+  content : "";
+  position: absolute;
+  left    : 11px;
+  top  : 130px;
+  height  : 1px;
+  width   : 88%;
+  border-bottom:1px solid lightgrey;
+}
+
+.carte-eco-row4 {
+  padding-top: 15px;
+  padding-left: 16px;
+  padding-right: 46px;
+  font-size: 13px;
+}
+
+.carte-eco-row5 {
+  padding-left: 14px;
+  padding-top: 10px;
+}
+
+.carte-eco-row4:before {
+  content : "";
+  position: absolute;
+  left    : 11px;
+  top  : 248px;
+  height  : 1px;
+  width   : 88%;
+  border-bottom:1px solid lightgrey;
+}
+
+.carte-eco-row6 {
+  padding-top: 15px;
+  font-size: 13px;
+}
+
+
+
+
+
+
 
 
 
