@@ -4,12 +4,11 @@ export const markupDetails = (flight, id) => {
 
   let routeRetour = [];
   let timeRetour;
-  const routeAller = createRouteArray(flight)[0];
+  const routeAller = flight.routeAller;
   const timeAller = timeFormating(flight.aTime, flight.dTime);
   
-  
   if ( flight.routes.length >= 2 ) {
-    routeRetour = createRouteArray(flight)[1];
+    routeRetour = flight.routeRetour;
     timeRetour = timeFormating(routeRetour[routeRetour.length - 1].aTime, routeRetour[0].dTime);
   }
 
@@ -50,10 +49,7 @@ function displayDetailedRoute(routes, time, type) {
 
 function displayDetteEcoInfos(array, flight, type) {
 
-	let distanceTotal = 0;
-	array.forEach( route => {
-		distanceTotal += distanceFlight(route.latFrom, route.lngFrom, route.latTo, route.lngTo, 'K');
-	})
+	const distanceTotal = flight.treepDistanceEffective;
 	
     const treepCommission = (flight.price * 0.02).toFixed(2);
     const treepCompensation = (treepCommission * 0.45).toFixed(2);
@@ -83,9 +79,34 @@ function displayDetteEcoInfos(array, flight, type) {
 	return markup
 }
 
-function calculateEcoWidth(detteEcologique, treepCompensation) {
-	const widthTreep = Math.round((treepCompensation / detteEcologique) * 100);
-	const widthUser = 100 - widthTreep;
+// export const graphDetteEco = () => {
+
+//     const treepCompensation = (treepCommission * 0.45).toFixed(2);
+//     const carbonEmission = Math.round((distanceTotal * 190) / 1000);
+//     const detteEcologique = (Math.round(carbonEmission / 20) * 0.2).toFixed(2);
+//     const width = calculateEcoWidth(detteEcologique, treepCompensation);
+//     const detteUser = (detteEcologique - treepCompensation).toFixed(2);
+
+// 	const markup = `
+// 		<div class="dette__infographie__container">
+// 		  	<div class="dette__infographie__skyparticipation" style="width: ${width[0]}%;">${treepCompensation}€</div>
+// 		  	<div class="dette__infographie__reste" style="width: ${width[1]}%;">${detteUser}€</div>
+// 		</div>
+// 	`
+
+// 	return markup
+// }
+
+
+
+export const calculateEcoWidth = (detteEcologique, treepCompensation) => {
+	let widthTreep = Math.round((treepCompensation / detteEcologique) * 100);
+	let widthUser = 100 - widthTreep;
+
+	if (widthTreep < 25) {
+      widthTreep = 25;
+      widthUser = 75;
+	}
     
     return [widthTreep, widthUser]
 }

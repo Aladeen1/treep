@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { proxy } from '../views/base.js';
+import { addRelevantData } from './dataFormating';
 
 export default class Search {
     constructor(departLoc, returnLoc, departureDateFrom, departureDateTo, flightType, passengers, returnDateFrom, returnDateTo ) {
@@ -32,8 +33,9 @@ export default class Search {
         console.log('Round way call lauching')
         res = axios(`${proxy}https://api.skypicker.com/flights?flyFrom=${this.departLoc}&to=${this.returnLoc}&dateFrom=${this.departureDateFrom}&dateTo=${this.departureDateTo}&return_from=${this.returnDateFrom}&return_to=${this.returnDateTo}&flight_type=${this.flightType}&adults=${this.passengers}&limit=20&partner=picky`);        
       } 
-      res.then((flight) => {
-        this.result = JSON.stringify(flight.data.data);
+      res.then((flights) => {
+        const realFlights = addRelevantData(flights);
+        this.result = JSON.stringify(realFlights);
         localStorage.setItem('Recherche', this.result);
       })
       .catch( error => alert(error))
