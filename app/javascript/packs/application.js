@@ -23,11 +23,6 @@ if (elements.searchForm) {
   elements.searchForm.addEventListener('submit', envoi => {
     
     
-
-    if (localStorage.getItem('Recherche')) {
-      localStorage.removeItem('Recherche');
-    }
-    
     if (search != null) {
       envoi.preventDefault();
       flights.controlSearch();

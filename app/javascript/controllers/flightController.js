@@ -14,6 +14,11 @@ const state = {};
 
 export const controlSearch = () => {
 
+  if (localStorage.getItem('Recherche')) {
+    console.log('clearStorage')
+    localStorage.removeItem('Recherche')
+  }
+
     // 1) Get airport codes from locations queried in the view
   const departLocation = searchView.getAirportCode(getInput('searchDepartInput'));
   const returnLocation = searchView.getAirportCode(getInput('searchReturnInput'));
@@ -54,7 +59,7 @@ export const controlSearch = () => {
       const resultat = JSON.parse(localStorage.getItem('Recherche'));
 
       console.log(resultat);
-      showDistanceToParis(resultat);
+      // showDistanceToParis(resultat);
       
       // 5) Render results on UI
 
@@ -84,23 +89,23 @@ export const controlSearch = () => {
 
 // Arguments of the getFlight Method => options.duration, options.prix, options.depart, options.arrivee
 
-function showDistanceToParis(resultat) {
+// function showDistanceToParis(resultat) {
   
   
-  const separation = createRouteArray(resultat[0])[0];
-  const last = separation.length - 1;
+//   const separation = createRouteArray(resultat[0])[0];
+//   const last = separation.length - 1;
 
-  console.log(separation[0])
-  console.log(separation[last])
+//   console.log(separation[0])
+//   console.log(separation[last])
 
-  const latDepart = separation[0].latFrom
-  const lngDepart = separation[0].lngFrom
-  const latRetour = separation[last].latTo
-  const lngRetour = separation[last].lngTo
+//   const latDepart = separation[0].latFrom
+//   const lngDepart = separation[0].lngFrom
+//   const latRetour = separation[last].latTo
+//   const lngRetour = separation[last].lngTo
 
-  console.log(distanceFlight(latDepart, lngDepart, latRetour, lngRetour, 'K') + 'kilomètres')
+//   console.log(distanceFlight(latDepart, lngDepart, latRetour, lngRetour, 'K') + 'kilomètres')
 
-};
+// };
 
 
 

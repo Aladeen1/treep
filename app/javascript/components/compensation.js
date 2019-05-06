@@ -16,6 +16,7 @@ window.addEventListener('load', () => {
       initializeUislider(sliderAnchor, flight);
       sliderDesign(flight);
       switchIcons(flight);
+      triggerPayment();
 	}
 })
 
@@ -25,6 +26,14 @@ function sliderDesign(flight) {
     document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="end__square"></div>`);
     document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__treep"><p>La part de Treep</p></div>`);
     document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__user"><p>La part du User</p></div>`);
+}
+
+function triggerPayment() {
+  console.log(document.getElementById('trigger-payment'));
+  document.getElementById('trigger-payment').addEventListener('click', (event) => {
+    console.log(event)
+    console.log(document.getElementById('user-compensation').value)
+  })
 }
 
 
@@ -84,7 +93,7 @@ function updateMeasure(measure, flight) {
 
 function initializeUislider(sliderAnchor, flight) {
     const sliderCreated = createCompensationSlider(sliderAnchor, flight);
-    connectUiSlider(sliderCreated, sliderAnchor.children[0], flight);
+    connectUiSlider(sliderCreated, sliderAnchor, flight);
     updateHandles(sliderCreated, flight);
 }
 
@@ -118,17 +127,29 @@ function updateHandles(slider, flight) {
   })
 }
 
+function setUserShare(slider, sliderInput) {
+  const share = (Number(slider.get()[1]) - Number(slider.get()[0])).toFixed(2);
+  sliderInput.children[1].value = share;
+}
+
+function setGlobalShare(slider, sliderInput, flight) {
+  let formattedValue = slider.get()[1];
+  sliderInput.children[0].value = formattedValue;
+  updateFields(formattedValue, flight);
+}
+
 
 function connectUiSlider(slider, sliderInput, flight) {
-  // slider.off('update');
+  
 	slider.on("update", () => {
-      let formattedValue = slider.get()[2];
-      sliderInput.value = formattedValue;
-      updateFields(formattedValue, flight);
+    setGlobalShare(slider, sliderInput, flight);
+    setUserShare(slider, sliderInput);
     });
 };
 
 // create function measure change % -> € -> T
+
+//create function to get the amount the user wants to pay when he clicks.
 
 
 
@@ -138,44 +159,36 @@ function connectUiSlider(slider, sliderInput, flight) {
 function updateFields(formattedValue, flight) {
 	const detteEcologique = flight.price * 0.02;
 	document.getElementById('percentage').innerHTML = Math.round((formattedValue / detteEcologique) * 100);
-    document.getElementById('euros').innerHTML = formattedValue;
-    document.getElementById('number__trees').innerHTML = Math.round(formattedValue / 0.2);
+  document.getElementById('euros').innerHTML = formattedValue;
+  document.getElementById('number__trees').innerHTML = Math.round(formattedValue / 0.2);
 }
 
 function createCompensationSlider(sliderAnchor, flight) {
 
-	const treepCompensation = flight.price * 0.0064;
-    const detteEcologique = flight.price * 0.02;
+	const treepCompensation = Number((flight.price * 0.0064).toFixed(2));
+  const detteEcologique = Number((flight.price * 0.02).toFixed(2));
     
 	noUiSlider.create(sliderAnchor, {
-	    start: [0, treepCompensation, treepCompensation],
-	    connect: true,
+	    start: [treepCompensation, treepCompensation],
+	    connect: [true, true, false],
+      padding: [treepCompensation, 0],
 	    range: {
 	        'min': 0,
 	        'max': detteEcologique
 	    },
-	    step: 0.2
+	    // step: 0.2
     });
 
 	const handles = sliderAnchor.getElementsByClassName('noUi-handle');
 	const connects = sliderAnchor.getElementsByClassName('noUi-connect');
+  
 	handles[0].style.display = 'none';
-	handles[1].style.display = 'none';
+	
 	connects[0].style.background = '#36ACB8';
-	connects[1].style.background = '#00C896';
+  connects[1].style.background = '#00C896';
 
 	return sliderAnchor.noUiSlider
 }
-
-
-function styleFirstHandle(handle){
-	width = '5px';
-	height = '30px';
-	borderRadius = '3px';
-	marginRight = '9px';
-	backgroundColor = '#36ACB8';
-}
-
 
 
 function createCompensationMarkup(flight) {
@@ -201,7 +214,8 @@ function createCompensationMarkup(flight) {
 	                 
 				  	<div class="compensation__second__part">
 				  	  <div id="slider__compensation">
-				  	    <input class="" id="" type="hidden" value="">
+				  	    <input  id="total-compensation" type="hidden" value="">
+                <input  id="user-compensation" type="hidden" value="">
 				  	  </div>
 				  	</div>
 
@@ -214,7 +228,7 @@ function createCompensationMarkup(flight) {
 				  	</div>
 				</div>
 
-				<button class="checkout__button" style="width: 80%">PAYER MA DETTE ECOLOGIQUE</button>
+				<button class="checkout__button" id="trigger-payment" style="width: 80%">PAYER MA DETTE ECOLOGIQUE</button>
 			</div>
 		</div>
 	`

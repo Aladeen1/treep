@@ -1,6 +1,6 @@
 import { matchAirlinesCode } from './flightView';
 import { elements } from './base';
-import { markupDetails, markupRoute } from './renderDetails';
+import { markupDetails, markupRoute, calculateEcoWidth } from './renderDetails';
 
 export const renderReturnFlights = (flight, airportCodes, id) => {
   let returnade = []
@@ -83,7 +83,11 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
                   ${(retourDepart != 0) ? createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDepart, retourArrivee, retourDepartDay, retourArrivalDay) : ''}
 
-				  <div class="details__div"><button class="checkout__button" id="details" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">Détails</button></div>
+				  <div class="details__div">
+				  <button class="checkout__button" id="details" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">Détails</button>
+				  ${graphDetteEco(flight)}
+
+				  </div>
 			  </div>
 
 
@@ -104,6 +108,20 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 	document.querySelector('.flights__list').insertAdjacentHTML('beforeend', markup)
 
 }
+
+function graphDetteEco(flight) {
+	
+    const width = calculateEcoWidth(flight.treepDetteEcologique, flight.treepCompensation);
+
+	const markup = `
+		<div class="dette__infographie__container__front">
+		  	<div class="dette__infographie__skyparticipation" style="width: 35%;">${flight.treepCompensation}€</div>
+		  	<div class="dette__infographie__reste" style="width: 65%;">${flight.treepDetteUser}€</div>
+		</div>
+	`
+	return markup
+}
+
 
 
 function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDepart,  retourArrivee, retourDepartDay, retourArrivalDay ) {
