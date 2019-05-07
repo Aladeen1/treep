@@ -16,7 +16,6 @@ window.addEventListener('load', () => {
       initializeUislider(sliderAnchor, flight);
       sliderDesign(flight);
       switchIcons(flight);
-      triggerPayment();
 	}
 })
 
@@ -28,11 +27,13 @@ function sliderDesign(flight) {
     document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__user"><p>La part du User</p></div>`);
 }
 
-function triggerPayment() {
-  console.log(document.getElementById('trigger-payment'));
-  document.getElementById('trigger-payment').addEventListener('click', (event) => {
-    console.log(event)
-    console.log(document.getElementById('user-compensation').value)
+function triggerPayment(slider) {
+const payment = document.getElementById('amount');
+
+  slider.on('end', () => {
+    console.log('sending')
+    const userCompensation = Number(document.getElementById('user-compensation').value) * 100;
+    payment.setAttribute('value', userCompensation);
   })
 }
 
@@ -95,6 +96,7 @@ function initializeUislider(sliderAnchor, flight) {
     const sliderCreated = createCompensationSlider(sliderAnchor, flight);
     connectUiSlider(sliderCreated, sliderAnchor, flight);
     updateHandles(sliderCreated, flight);
+    triggerPayment(sliderCreated);
 }
 
 const updateSliderValue = (slider, flight, handle = 0) => {
@@ -195,7 +197,7 @@ function createCompensationMarkup(flight) {
     const detteEcologique = (flight.price * 0.02).toFixed(2);
 
 	const markup = `
-	    <div class="background__container">
+	  <div class="background__container">
 		    <h2 style="margin-top:0;padding-top:20px;">Bravo, en passant par Treep, vous avez déja remboursé 9% de votre dette écologique !</h2>
 			<div class="compensation__container">
 
@@ -227,13 +229,26 @@ function createCompensationMarkup(flight) {
 				  		</ul>
 				  	</div>
 				</div>
-
-				<button class="checkout__button" id="trigger-payment" style="width: 80%">PAYER MA DETTE ECOLOGIQUE</button>
 			</div>
 		</div>
 	`
 	return markup
 }
 
+// <form action="/compensations" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="QMrkEGjBjySDjDzobIPJM0KQornNc6jSX1alG8JQX7vQspfDpRf3SYEfWoWGvUHpn0dhlk2JUd3eC+or6f83UQ==">
 
+//   <script src="https://checkout.stripe.com/checkout.js"
+//     class="stripe-button active" 
+//     data-key="pk_test_Ta4elcvBi6t0416IySdCtfTQ00scNDDgVl" 
+//     data-name="Compensation"   
+//     data-description="Compensation C02 %>" 
+//     data-amount="${userCompensation}"
+//     data-currency="EUR"></script>
+//   <button type="submit" class="stripe-button-el" style="visibility: visible;">
+//     <span style="display: block;min-height: 30px;">Payer ma dette ecologique</span>
+//   </button>
+
+// </form>
+
+// <button class="checkout__button" id="trigger-payment" style="width: 80%">PAYER MA DETTE ECOLOGIQUE</button>
 

@@ -9,10 +9,10 @@ class PagesController < ApplicationController
     @footer1 = true
   end
 
-  def compensation
-    @search_nav = true
-    @footer1 = true
-  end
+  # def compensation
+  #   @search_nav = true
+  #   @footer1 = true
+  # end
 
   def about
     @footer2 = true

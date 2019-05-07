@@ -1,6 +1,8 @@
 
 export const targetRedirection = () => {
+	console.log('target redirection')
 	const targets = document.querySelectorAll('.redirection__target');
+	console.log(targets)
     const flights = JSON.parse(localStorage.getItem('Recherche'));
 	targets.forEach( button => {
 		button.addEventListener( 'click', event => {
@@ -24,12 +26,12 @@ export const targetRedirection = () => {
             $('#searchPage')[0].insertAdjacentHTML('afterend', modalContent);
             $('#compensation').modal('show');
             $('#compensationWanted')[0].addEventListener('click', () => {
-            	window.location.href = "http://localhost:3000/compensation";
+            	window.location.href = "http://localhost:3000/compensations/new";
             })
 		})
 	})
 }
-
+ 
 function intrusion(flight) {
 	const markup = `
 	  <!-- Modal -->
