@@ -501,6 +501,62 @@ body, html {
 
 
 
+.carte-prix {
+  width: 300px;
+  height: 290px;
+  margin: 50px;
+  padding-left: 15px;
+  padding-top: 12px;
+  border-radius: 5px;
+  position: relative;
+  background-color: white;
+  box-shadow: 1px 1px 7px grey;
+  font-size: 16px;
+}
+
+.carte-prix-logo img {
+  width: 60px;
+  margin-top: -19px;
+  margin-left: -27px;
+}
+
+.carte-prix:before {
+  content : "";
+  position: absolute;
+  left    : 11px;
+  top  : 43px;
+  height  : 1px;
+  width   : 88%;
+  border-bottom:1px solid lightgrey;
+}
+
+.carte-prix-row2 {
+  margin-top: 10px;
+  line-height: 30px;
+}
+
+.carte-prix-row2:before {
+  content : "";
+  position: absolute;
+  left    : 11px;
+  top  : 180px;
+  height  : 1px;
+  width   : 88%;
+  border-bottom:1px solid lightgrey;
+}
+
+.carte-prix-row3 {
+  padding-top: 50px;
+}
+
+
+
+
+
+
+
+
+
 
 
 
