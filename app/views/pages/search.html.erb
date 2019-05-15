@@ -40,11 +40,49 @@
 <datalist id="airports__return"></datalist>
 
 <div class="flights__container">
-	
+ 	
     
 </div>
 
 <div id='searchPage'></div>
+
+<div class="modal fade" id="compensation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Merci de nous faire confiance</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="insert-compensation-text">
+        <!-- Introduce the 2 sentences with the data (change the view for what tanguy did) -->
+      </div>
+      <div class="modal-footer">
+        <%= form_tag flights_path, :class => 'compensation-modal-footer' do %>
+  
+          <%= hidden_field_tag 'price'%>
+          <%= hidden_field_tag 'ville_aller'%>
+          <%= hidden_field_tag 'ville_retour'%>
+          <%= hidden_field_tag 'date_aller'%>
+          <%= hidden_field_tag 'date_retour'%>
+          <%= hidden_field_tag 'distance'%>
+          <%= hidden_field_tag 'co2'%>
+          <%= hidden_field_tag 'status'%>
+
+          <%= hidden_field_tag 'total'%>
+          <%= hidden_field_tag 'skytreep_participation'%>
+
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">non</button>
+          <div><%= submit_tag 'Je le souhaite' %></div>
+        <% end %>
+
+          
+         
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

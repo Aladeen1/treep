@@ -1,9 +1,9 @@
 import { createRouteArray, distanceFlight } from '../views/renderDetails';
+import { toCents, toHumanPrice } from '../views/base';
 
 export const addRelevantData = (data) => {
 	let flights = data.data.data;
 	let routeRetour = [];
-	console.log(flights)
 
 	flights.map( flight => {      
 		addRouteArrays(flight)
@@ -33,29 +33,32 @@ function addDistanceEffective(flight) {
 	}
 
 	array.forEach( route => {
-		console.log(route)
 		distanceTotal += distanceFlight(route.latFrom, route.lngFrom, route.latTo, route.lngTo, 'K');
 	})
 	flight.treepDistanceEffective = distanceTotal;
 }
 
 function addCarbonEmission(flight) {
-	console.log(flight.treepDistanceEffective)
 	flight.treepCarbonEmission = Math.round((flight.treepDistanceEffective * 190) / 1000);
 }
 
 function addTreepCommissionCompensation(flight) {
-	const treepCommission = Number((flight.price * 0.02).toFixed(2));
+	const treepCommission = Math.round(toCents(flight.price * 0.02));
 	flight.treepCommission = treepCommission;
-    flight.treepCompensation = Number((treepCommission * 0.45).toFixed(2));
+    flight.treepCompensation = Math.floor(treepCommission * 0.45);
 }
 
 function addDetteeco(flight) {
-  flight.treepDetteEcologique = Number((Math.round(flight.treepCarbonEmission / 20) * 0.2).toFixed(2));
+  const treeAbsorptionKg = 20;
+  const treePriceCents = 20;
+
+  // On utilise ceil pour avoir un nombre d'abres toujours capable d'absorber le co2 entièrement
+
+  flight.treepDetteEcologique = Math.ceil(flight.treepCarbonEmission / treeAbsorptionKg) * treePriceCents;
 }
 
 function addDetteecoUser(flight) {
-  flight.treepDetteUser = Number((flight.treepDetteEcologique - flight.treepCompensation).toFixed(2));
+  flight.treepDetteUser = flight.treepDetteEcologique - flight.treepCompensation;
 }
 
 

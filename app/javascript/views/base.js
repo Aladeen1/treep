@@ -15,19 +15,8 @@ export const elements = {
 
 export const proxy = 'https://cors-anywhere.herokuapp.com/';
 export const search = document.getElementById('searchPage');
-// export const searchOptions = (ID) => {
-//   const search`${ID}` = document.getElementById(ID);
-//   return search`${ID}`
-// }
-
-
-// export const renderLoader = () => {
-//     console.log('rendering__loader')
-//     document.querySelector('.loader').classList.add('loader__display');
-// };
 
 export const renderLoader = (parent) => {
-    
 
     const loader = `
         <div class="center__loader">
@@ -51,4 +40,13 @@ export const flightType = flight => {
     }
 }
 
+// Create functions to handle money
+
+export const toCents = (number) => {
+    return number * 100
+}
+
+export const toHumanPrice = (number) => {
+    return (number / 100).toFixed(2)
+}
 

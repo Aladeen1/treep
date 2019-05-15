@@ -118,6 +118,109 @@
   padding-top: 120px;
 }
 
+/* debut du test */
+
+.grande-dive {
+  margin: 20px;
+  color: white;
+
+  p {
+    text-align: center;
+  }
+}
+
+.petites-dives {
+  height: 200px;
+  width: 250px;
+}
+
+.flights-user {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.upper {
+  background-image: url("https://res.cloudinary.com/tark-industries/image/upload/v1557911959/background-dashboard-card.jpg");
+  background-size: cover;
+  position: relative;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.villes{
+  p {
+    padding-top: 30px;
+    font-size: 25px;
+  }
+}
+
+.dashboard-card-layer {
+  background-color: rgba(118, 112, 112, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.lower {
+  background: linear-gradient(180deg, #00C896 0%, #3AA8B4 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 6px 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dashboard-date-container {
+  margin: 0px auto;
+  background-color: #ffffff;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    text-align: left;
+    margin: 3px;
+    color: black;
+    font-size: 17px;
+  }
+}
+
+.dashboard-date-title {
+  width: 60px;
+}
+
+.upper-date {
+  border-radius: 6px 6px 0px 0px;
+  border-bottom: solid 1px black;
+}
+
+.lower-date {
+  border-radius: 0px 0px 6px 6px;
+  
+}
+
+.dashboard-slider-container {
+  background-color: aqua;
+  margin: 0px auto;
+  width: 80%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+#dashboard-sliderAnchor {
+  width: 100%;
+}
+
+/* end of test */
 
 
 

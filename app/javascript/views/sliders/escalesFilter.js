@@ -9,27 +9,24 @@ export const createEscaleMarkup = (flights, id) => {
 
 	const markup =
 	`
-		<div class="container" id="loaded">
-		  	<div class="row">
-			    <div style="width:100%;">
-                    
-                    <div class="slider__presentation__target" id="" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">
-			        	<p class="option__title">Escales</p>
-			        	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow"> 
-			        </div>
+		
+	    <div style="width:230px;" id="loaded">
+            
+            <div class="slider__presentation__target" id="" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">
+	        	<p class="option__title">Escales</p>
+	        	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow"> 
+	        </div>
 
-                    <div class="collapse in" id="collapse-${id}">
-                      	<ul class="escale__list__container">
-                      		${displayMarkup('Direct', price[0])}
-                      		${displayMarkup('1 escale', price[1])}
-                      		${displayMarkup('2 escales', price[2])}
-                      		${displayMarkup('3 escales', price[3])}
-                      	</ul>
-			        </div>
-			      
-			    </div>
-		  	</div>
-		</div>
+            <div class="collapse in" id="collapse-${id}">
+              	<ul class="escale__list__container">
+              		${displayMarkup('Direct', price[0])}
+              		${displayMarkup('1 escale', price[1])}
+              		${displayMarkup('2 escales', price[2])}
+              		${displayMarkup('3 escales', price[3])}
+              	</ul>
+	        </div>
+	      
+	    </div> 	
 		<div class="straight__details"></div>
     `
     document.querySelector('.flights__options').insertAdjacentHTML('beforeend', markup);
@@ -157,5 +154,6 @@ export const getEscalesNumber = (flight) => {
 
 
 
-
+// <div class="container" id="loaded">
+// 		  	<div class="row">
 
