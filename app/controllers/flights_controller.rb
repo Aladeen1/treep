@@ -1,6 +1,9 @@
 class FlightsController < ApplicationController
 
+
+
 	def create
+		
 		@flight = Flight.new(flight_params)
 		@flight.user = current_user
 		@flight.save!
@@ -24,11 +27,11 @@ class FlightsController < ApplicationController
 	private
 
 	def flight_params
-    	params.require(:flight).permit(:price, :ville_aller, :ville_retour, :date_aller, :date_retour, :distance, :co2, :status)
+    	params.permit(:price, :ville_aller, :ville_retour, :date_aller, :date_retour, :distance, :co2, :status)
     end
 
     def dette_eco_params
-    	params.require(:dette_eco).permit(:total, :skytreep_participation)
+    	params.permit(:total, :skytreep_participation)
     end
 
 end

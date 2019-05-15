@@ -1,5 +1,5 @@
 import { matchAirlinesCode } from './flightView';
-import { elements } from './base';
+import { elements, toHumanPrice } from './base';
 import { markupDetails, markupRoute, calculateEcoWidth } from './renderDetails';
 
 export const renderReturnFlights = (flight, airportCodes, id) => {
@@ -115,8 +115,8 @@ function graphDetteEco(flight) {
 
 	const markup = `
 		<div class="dette__infographie__container__front">
-		  	<div class="dette__infographie__skyparticipation" style="width: 35%;">${flight.treepCompensation}€</div>
-		  	<div class="dette__infographie__reste" style="width: 65%;">${flight.treepDetteUser}€</div>
+		  	<div class="dette__infographie__skyparticipation" style="width: 35%;">${toHumanPrice(flight.treepCompensation)}€</div>
+		  	<div class="dette__infographie__reste" style="width: 65%;">${toHumanPrice(flight.treepDetteUser)}€</div>
 		</div>
 	`
 	return markup

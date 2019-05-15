@@ -1,0 +1,195 @@
+<div class="dashboard">
+
+	<%= content_tag :div, class: "flights_information", data: {flights: @flights} do %>
+    <% end %>
+
+  <!-- <div class="background-dash"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1553191549/Frame_dash.png"></div> -->
+
+  <div class="compteur-arbres-dash">
+    <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png">
+    <h3>341</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-1"></div> <!-- Cette column sert de padding left pour la column qui suit, c'est un offset -->
+    <div class="col-4">
+
+      <img class="avatar-dash" src="https://res.cloudinary.com/tark-industries/image/upload/v1553179848/default_avatar.png">
+
+      <h3 class="hello-dash">Bonjour !  <%= current_user.email %></h3>
+
+      <div class="menu-dash">
+        <div class="onglet1">
+          <i style="width: 30px" class="onglet-item fas fa-user-ninja"></i>
+          <h5 class="onglet-item">Mes infos</h5>
+          <img class="onglet-item" src="https://res.cloudinary.com/tark-industries/image/upload/v1553183193/Arrow_SKYTREEP_right.png">
+        </div>
+
+        <div class="onglet2">
+          <i style="width: 30px" class="onglet-item fas fa-leaf"></i>
+          <h5 class="onglet-item">Mes dettes écologiques / voyages</h5>
+          <img class="onglet-item" src="https://res.cloudinary.com/tark-industries/image/upload/v1553183193/Arrow_SKYTREEP_right.png">
+        </div>
+      </div>
+    </div>
+
+    <!-- /* FIN DU MENU CENTRAL */
+
+
+    /* DEBUT DU MENU INFO */ -->
+
+    <div class="col-7 menu-info-dash">
+      <h5 class="sous-menu-info-dash">Compte</h5>
+
+      <div class="row">
+        <div class="col-2">
+          <h6 class="info-item1">Email</h6>
+        </div>
+        <div class="col-1"></div> <!-- Encore une fois c'est pour faire du padding -->
+        <div class="col-5">
+          <h6 class="info-item2">Tanguycolou@hotmail.fr</h6>
+        </div>
+        <div class="col-4">
+          <h6 class="info-item3">Changer mon email</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <h6 class="info-item1">Password</h6>
+        </div>
+        <div class="col-1"></div> <!-- Encore une fois c'est pour faire du padding -->
+        <div class="col-5">
+          <h6 class="info-item2">**********</h6>
+        </div>
+        <div class="col-4">
+          <h6 class="info-item3">Changer mon password</h6>
+        </div>
+      </div>
+
+      <h5 style="padding-top: 40px" class="sous-menu-info-dash">A propos de moi</h5>
+
+      <div class="row">
+        <div class="col-2">
+          <h6 class="info-item1">Nom</h6>
+        </div>
+        <div class="col-1"></div> <!-- Encore une fois c'est pour faire du padding -->
+        <div class="col-5">
+          <h6 class="info-item2">n/a</h6>
+        </div>
+        <div class="col-4">
+          <h6 class="info-item3">Changer mon nom</h6>
+        </div>
+      </div>
+
+      <h6 class="delete-account">Supprimer mon compte</h6>
+
+    </div>
+    </div>
+</div>
+
+
+
+    <div class="flights-user">
+    	<div class="container">
+			<div class="row">
+
+			    <% @flights.each do |flight| %>
+			    <%= content_tag :div, class: "dette_eco_information", data: {dette_eco: flight.dette_eco} do %>
+                <% end %>    
+					<div class=" col-3 grande-dive">
+				    	<div class="petites-dives upper">
+				    		<div class="dashboard-card-layer">
+					    		<div class="villes">
+					    			<p><%= flight.ville_aller %> - <%= flight.ville_retour %></p>
+					    		</div>
+					    		<div class="distance-co2">
+					    			<p>Km : <%= flight.distance %></p>
+					    			<p>co2 : <%= flight.co2 %> Kg</p>
+					    		</div>
+					    		<div class="dashboard-date-container upper-date">
+					    			<p class="dashboard-date-title">Aller</p>
+					    			<p><%= flight.date_aller %></p>
+					    		</div>
+					    	</div>
+				    	</div>
+				    	<div class="petites-dives lower">
+				    		<% if flight.date_retour != 'undefined' || nil %>
+					    		<div class="dashboard-date-container lower-date">
+					    			<p class="dashboard-date-title">Retour</p>
+					    			<p><%= flight.date_retour %></p>
+					    		</div>
+				    		<% end %>
+				    		<div class="dashboard-slider-container" style="width:80%;">
+				    			<div id="dashboard-sliderAnchor"></div>
+				    	    </div>
+				    	    <p>Vous avez compensé X% de votre dette écologique</p>
+				    	</div> 
+				    </div>		
+				<% end %>
+
+			</div>
+		</div>
+    </div>
+
+<!-- <div class="container">
+  <div class="row">
+
+    <div class="col-12 col-lg-8">
+    </div>
+
+    <div class="col-12 col-lg-4">
+    </div>
+
+  </div>
+</div> -->
+
+
+
+    <!-- /* FIN DU MENU INFO */
+
+
+    /* DEBUT DU MENU VOYAGE */ -->
+
+    <!-- <div class="col-7 menu-voyage-dash">
+      <div class="row">
+
+        <div class="col-6 voyage-card ">
+          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553263213/SKYTREEP_CARD_VOYAGE.png">
+        </div>
+
+        <div class="col-6 voyage-card">
+          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553263213/SKYTREEP_CARD_VOYAGE.png">
+        </div>
+      </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

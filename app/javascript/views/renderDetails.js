@@ -1,4 +1,4 @@
-// import { convertMinsToHrsMins } from '../components/sliderRange'
+import { toHumanPrice } from './base';
 
 export const markupDetails = (flight, id) => { 
 
@@ -48,56 +48,27 @@ function displayDetailedRoute(routes, time, type) {
 }
 
 function displayDetteEcoInfos(array, flight, type) {
-
-	const distanceTotal = flight.treepDistanceEffective;
-	
-    const treepCommission = (flight.price * 0.02).toFixed(2);
-    const treepCompensation = (treepCommission * 0.45).toFixed(2);
-    const carbonEmission = Math.round((distanceTotal * 190) / 1000);
-    const detteEcologique = (Math.round(carbonEmission / 20) * 0.2).toFixed(2);
-    const width = calculateEcoWidth(detteEcologique, treepCompensation);
-    const detteUser = (detteEcologique - treepCompensation).toFixed(2);
-
+    const width = calculateEcoWidth(flight.treepDetteEcologique, flight.treepCompensation);
 	const markup = `
 
 		<div class="dette__ecologique__container">
 			<h3>Dette Ecologique</h3>
 			<div class="info__details__container">
 			  <p style="margin: 15px 0px;">${type > 0 ? 'Aller - Retour': 'Aller'}</p>
-			  <p>Distance effective: ${distanceTotal}Km</p>
-			  <p>co2 émis: ${carbonEmission}Kg</p>
-			  <p>Skytreep Commission: ${treepCommission}€</p>
-			  <p>Skytreep Participation: ${treepCompensation}€</p>
-			  <p>Montant total: ${detteEcologique}€</p>
+			  <p>Distance effective: ${flight.treepDistanceEffective}Km</p>
+			  <p>co2 émis: ${flight.treepCarbonEmission}Kg</p>
+			  <p>Skytreep Commission: ${toHumanPrice(flight.treepCommission)}€</p>
+			  <p>Skytreep Participation: ${toHumanPrice(flight.treepCompensation)}€</p>
+			  <p>Montant total: ${toHumanPrice(flight.treepDetteEcologique)}€</p>
 			  <div class="dette__infographie__container">
-			  	<div class="dette__infographie__skyparticipation" style="width: ${width[0]}%;">${treepCompensation}€</div>
-			  	<div class="dette__infographie__reste" style="width: ${width[1]}%;">${detteUser}€</div>
+			  	<div class="dette__infographie__skyparticipation" style="width: ${width[0]}%;">${toHumanPrice(flight.treepCompensation)}€</div>
+			  	<div class="dette__infographie__reste" style="width: ${width[1]}%;">${toHumanPrice(flight.treepDetteUser)}€</div>
 			  </div>
 			</div>
 		</div>
 	`
 	return markup
 }
-
-// export const graphDetteEco = () => {
-
-//     const treepCompensation = (treepCommission * 0.45).toFixed(2);
-//     const carbonEmission = Math.round((distanceTotal * 190) / 1000);
-//     const detteEcologique = (Math.round(carbonEmission / 20) * 0.2).toFixed(2);
-//     const width = calculateEcoWidth(detteEcologique, treepCompensation);
-//     const detteUser = (detteEcologique - treepCompensation).toFixed(2);
-
-// 	const markup = `
-// 		<div class="dette__infographie__container">
-// 		  	<div class="dette__infographie__skyparticipation" style="width: ${width[0]}%;">${treepCompensation}€</div>
-// 		  	<div class="dette__infographie__reste" style="width: ${width[1]}%;">${detteUser}€</div>
-// 		</div>
-// 	`
-
-// 	return markup
-// }
-
-
 
 export const calculateEcoWidth = (detteEcologique, treepCompensation) => {
 	let widthTreep = Math.round((treepCompensation / detteEcologique) * 100);

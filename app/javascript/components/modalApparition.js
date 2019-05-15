@@ -1,9 +1,9 @@
 import { getInput } from '../views/searchView';
+import { toHumanPrice } from '../views/base';
 
 export const targetRedirection = () => {
 	console.log('target redirection')
 	const targets = document.querySelectorAll('.redirection__target');
-	console.log(targets)
     const flights = JSON.parse(localStorage.getItem('Recherche'));
 	targets.forEach( button => {
 		button.addEventListener( 'click', event => {
@@ -24,9 +24,6 @@ export const targetRedirection = () => {
             insertCompensationText(flight);
             
             $('#compensation').modal('show');
-            // $('#compensationWanted')[0].addEventListener('click', () => {
-            
-            // })
 		})
 	})
 }
@@ -54,8 +51,10 @@ function sendValueInField(id, flight, type) {
     
     if (type == "date_aller") {
       element = getInput('searchDepartDateFrom');
+      console.log(element)
     } else if (type == "date_retour" && flight.routeRetour.length > 0) {
       element = getInput('searchReturnDateFrom');
+      console.log(element)
     } else if (type == 'status') {
     	element = 'pending';
     } else {
@@ -70,7 +69,7 @@ function sendValueInField(id, flight, type) {
 function insertCompensationText(flight) {
 	const markup = `	      
 		<p> Voulez vous compenser une partie de votre empreinte carbone qui sera émise lors de votre séjour à ${flight.cityTo}?</p>
-		<p> Cette dernière s'élève à ${flight.price * 0.02}€ pour 120kg de CO2 rejeté </p>	      
+		<p> Cette dernière s'élève à ${toHumanPrice(flight.treepDetteEcologique)}€ pour ${flight.treepCarbonEmission}kg de CO2 rejeté </p>	      
 	`
 	document.getElementById('insert-compensation-text').insertAdjacentHTML('afterbegin', markup)
 }

@@ -59,7 +59,7 @@
         <!-- Introduce the 2 sentences with the data (change the view for what tanguy did) -->
       </div>
       <div class="modal-footer">
-        <%= form_tag flights_path do %>
+        <%= form_tag flights_path, :class => 'compensation-modal-footer' do %>
   
           <%= hidden_field_tag 'price'%>
           <%= hidden_field_tag 'ville_aller'%>
@@ -73,12 +73,12 @@
           <%= hidden_field_tag 'total'%>
           <%= hidden_field_tag 'skytreep_participation'%>
 
-
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">non</button>
           <div><%= submit_tag 'Je le souhaite' %></div>
         <% end %>
 
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-        <button type="button" class="btn btn-primary" id="compensationWanted">Je le souhaite</button>
+          
+         
       </div>
     </div>
   </div>

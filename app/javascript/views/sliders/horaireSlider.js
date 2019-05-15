@@ -1,29 +1,24 @@
 export const markupHoraire = (id) => {
 
   const markup = `
-    <div class="container" id="loaded">
-        <div class="row">
-          <div style="width:100%;">
-                    
-              <div class="slider__presentation__target" id="" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">
-                <p class="option__title">Horaires</p>
-                <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow"> 
-              </div>
-
-              <div class="collapse in" id="collapse-${id}">
-                  <div style="display: flex;justify-content: center;">
-                    <p class="horaire__toggle" id="active__horaire">Départ</p>
-                    <p class="horaire__toggle">Arrivée</p>
-                  </div> 
-                  <div id="horaire__target">
-                    <div id="horaire__depart__target" class="horaire__target__margin"></div>
-                    <div id="horaire__arrivee__target" class="hide__horaire horaire__target__margin"></div>
-                  </div>
-              </div>
-            
-          </div>
+    <div style="width:230px;" id="loaded">
+              
+        <div class="slider__presentation__target" id="" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">
+          <p class="option__title">Horaires</p>
+          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow"> 
         </div>
-    </div>
+
+        <div class="collapse in" id="collapse-${id}">
+            <div style="display: flex;justify-content: center;">
+              <p class="horaire__toggle" id="active__horaire">Départ</p>
+              <p class="horaire__toggle">Arrivée</p>
+            </div> 
+            <div id="horaire__target">
+              <div id="horaire__depart__target" class="horaire__target__margin"></div>
+              <div id="horaire__arrivee__target" class="hide__horaire horaire__target__margin"></div>
+            </div>
+        </div>
+    </div>  
     <div class="straight__details"></div>
     `
     document.querySelector('.flights__options').insertAdjacentHTML('beforeend', markup)

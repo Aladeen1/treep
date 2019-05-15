@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  get 'dashboard/show'
   devise_for :users
   root to: 'pages#home'
   get '/search', to:'pages#search'
-  get '/dashboard', to:'pages#dashboard'
   get '/about', to:'pages#about'
   get '/lesarbres', to:'pages#lesarbres'
   resources :compensations, only: [:new, :create]

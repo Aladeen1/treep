@@ -2,6 +2,7 @@
 import noUiSlider from "nouislider";
 import 'nouislider/distribute/nouislider.css';
 import './compensation-slider.css';
+import { toHumanPrice } from '../views/base';
 
 window.addEventListener('load', () => {
 	if ($('#title-target')[0] != null) {
@@ -21,10 +22,10 @@ window.addEventListener('load', () => {
 
 function sliderDesign(flight) {
 	document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="position__square"></div><p class="position__lower">0.00€</p>`);
-    document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<p class="position__upper">${(flight.price * 0.02).toFixed(2)}€</p>`);
-    document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="end__square"></div>`);
-    document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__treep"><p>La part de Treep</p></div>`);
-    document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__user"><p>La part du User</p></div>`);
+  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<p class="position__upper">${toHumanPrice(flight.treepDetteEcologique)}€</p>`);
+  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="end__square"></div>`);
+  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__treep"><p>La part de Treep</p></div>`);
+  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__user"><p>La part du User</p></div>`);
 }
 
 function triggerPayment(slider) {
@@ -32,7 +33,8 @@ const payment = document.getElementById('amount');
 
   slider.on('end', () => {
     console.log('sending')
-    const userCompensation = Number(document.getElementById('user-compensation').value) * 100;
+    const userCompensation = Math.round(Number(document.getElementById('user-compensation').value) * 100);
+    console.log(userCompensation);
     payment.setAttribute('value', userCompensation);
   })
 }
@@ -194,18 +196,19 @@ function createCompensationSlider(sliderAnchor, flight) {
 
 
 function createCompensationMarkup(flight) {
-    const detteEcologique = (flight.price * 0.02).toFixed(2);
+    
+  const pourcentageSkytreep = Math.round((flight.treepCompensation / flight.treepDetteEcologique) * 100);
 
 	const markup = `
 	  <div class="background__container">
-		    <h2 style="margin-top:0;padding-top:20px;">Bravo, en passant par Treep, vous avez déja remboursé 9% de votre dette écologique !</h2>
+		    <h3 style="margin-top:0;padding-top:20px;">Bravo, en passant par Skytree'p, vous avez déja remboursé ${pourcentageSkytreep}% de votre dette écologique !</h2>
 			<div class="compensation__container">
 
 				<div class="compensation__stats__container">
 				  	<div class="compensation__first__part">
 					  	<div class="compensation__montant">
 						  	<p id="compensation__titre">Dette écologique:</p>
-						  	<p>${detteEcologique} euros</p>
+						  	<p>${toHumanPrice(flight.treepDetteEcologique)} euros</p>
 					    </div>
 					  	<ul class="compensation__icons">
 					  	  <li class="custom__icons" id="active__measure">€</li>
@@ -235,20 +238,6 @@ function createCompensationMarkup(flight) {
 	return markup
 }
 
-// <form action="/compensations" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="QMrkEGjBjySDjDzobIPJM0KQornNc6jSX1alG8JQX7vQspfDpRf3SYEfWoWGvUHpn0dhlk2JUd3eC+or6f83UQ==">
-
-//   <script src="https://checkout.stripe.com/checkout.js"
-//     class="stripe-button active" 
-//     data-key="pk_test_Ta4elcvBi6t0416IySdCtfTQ00scNDDgVl" 
-//     data-name="Compensation"   
-//     data-description="Compensation C02 %>" 
-//     data-amount="${userCompensation}"
-//     data-currency="EUR"></script>
-//   <button type="submit" class="stripe-button-el" style="visibility: visible;">
-//     <span style="display: block;min-height: 30px;">Payer ma dette ecologique</span>
-//   </button>
-
-// </form>
 
 // <button class="checkout__button" id="trigger-payment" style="width: 80%">PAYER MA DETTE ECOLOGIQUE</button>
 

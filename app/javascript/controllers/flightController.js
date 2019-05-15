@@ -28,7 +28,6 @@ export const controlSearch = () => {
   const passengers = getInput('searchPassengers');
 
 
-
   if (departLocation && returnLocation && departDateTo && departDateFrom && flightType && passengers) {
     console.log(`The destination is ${departLocation}, the return location is ${returnLocation}, the depart day is ${departDateFrom}, the return date is ${departDateTo}, for ${passengers} passengers and it's a ${flightType} ticket`);
     // 2) New search object and add to state

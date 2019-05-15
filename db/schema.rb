@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_08_144240) do
+ActiveRecord::Schema.define(version: 2019_05_14_194352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2019_05_08_144240) do
     t.integer "price"
     t.string "ville_aller"
     t.string "ville_retour"
-    t.date "date_aller"
-    t.date "date_retour"
+    t.string "date_aller"
+    t.string "date_retour"
     t.integer "distance"
     t.integer "co2"
     t.datetime "created_at", null: false
