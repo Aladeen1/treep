@@ -2,6 +2,7 @@ import 'components/filterSearch';
 import 'components/compensation';
 import 'components/dashboard';
 import 'components/calendar';
+import 'components/stripe';
 import { handleFieldTransition } from 'components/calendarInputSwitch';
 import 'components/passagerNumber';
 import 'components/sliderRange';

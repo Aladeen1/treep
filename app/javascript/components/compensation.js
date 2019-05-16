@@ -2,21 +2,21 @@
 import noUiSlider from "nouislider";
 import 'nouislider/distribute/nouislider.css';
 import './compensation-slider.css';
-import { toHumanPrice } from '../views/base';
+import { toHumanPrice, renderLoader, clearLoader } from '../views/base';
+import { customStripeButton } from './stripe';
 
 window.addEventListener('load', () => {
 	if ($('#title-target')[0] != null) {
-      const flight = JSON.parse(localStorage.getItem('userFlight'));
-     
-      
-      const render = createCompensationMarkup(flight);
-      document.getElementById('title-target').insertAdjacentHTML('afterend', render);
+    const flight = JSON.parse(localStorage.getItem('userFlight'));
+    const render = createCompensationMarkup(flight);
+    clearLoader($('#title-target')[0]);
+    document.getElementById('title-target').insertAdjacentHTML('afterbegin', render);
+    customStripeButton()
+    const sliderAnchor = document.getElementById('slider__compensation');
 
-      const sliderAnchor = document.getElementById('slider__compensation');
-
-      initializeUislider(sliderAnchor, flight);
-      sliderDesign(flight);
-      switchIcons(flight);
+    initializeUislider(sliderAnchor, flight);
+    sliderDesign(flight);
+    switchIcons(flight);
 	}
 })
 
@@ -33,12 +33,13 @@ const payment = document.getElementById('amount');
 
   slider.on('end', () => {
     console.log('sending')
-    const userCompensation = Math.round(Number(document.getElementById('user-compensation').value) * 100);
+    const userCompensation = Math.round(Number(document.getElementById('user-compensation').value));
     console.log(userCompensation);
     payment.setAttribute('value', userCompensation);
   })
 }
 
+// Mettre cette fonction en bibliothèque
 
 function switchIcons(flight) {
 	const icons = Array.from(document.querySelector('.compensation__icons').children);
@@ -54,43 +55,29 @@ function switchIcons(flight) {
 }  
 
 function updateMeasure(measure, flight) {
-	const detteEcologique = (flight.price * 0.02).toFixed(2);
-	const handle = document.getElementsByClassName('noUi-handle-upper')[0].dataset.value;
+  
+	const detteEcologique = flight.treepDetteEcologique;
+  let totalCompensation = Number(document.getElementById('total-compensation').value);
+  let valeurDepart, valeurArrivee, handle;
+
 	if (measure === 'T') {
-	  document.querySelector('.position__lower').innerHTML = '0T';
-      document.querySelector('.position__upper').innerHTML = `${Math.round((flight.price * 0.02).toFixed(2)/ 0.2)}T</p>`;
-      if (handle.includes('€')) {
-      	const money = handle;
-      	document.getElementsByClassName('noUi-handle-upper')[0].dataset.value = `${Math.round(parseFloat(money.split('€')[0]) / 0.2)}T`;
-      } else if (handle.includes('%')) {
-      	const percent = handle;
-      	document.getElementsByClassName('noUi-handle-upper')[0].dataset.value = `${Math.round( ((parseInt(percent.split('%')[0]) / 100) * detteEcologique) / 0.2)}T`;
-      }
+    valeurDepart = '0T';
+    valeurArrivee = `${detteEcologique / 20}T`;
+    handle = ` ${totalCompensation / 20}T`;
 	} else if (measure === '%') {
-	  document.querySelector('.position__lower').innerHTML = '0%';
-      document.querySelector('.position__upper').innerHTML = '100%';
-
-      if (handle.includes('€')) {
-      	const money = handle;
-      	document.getElementsByClassName('noUi-handle-upper')[0].dataset.value = `${((parseFloat(money.split('€')[0]) / detteEcologique).toFixed(2)) * 100}%`;
-      } else if (handle.includes('T')) {
-      	const trees = handle;
-      	document.getElementsByClassName('noUi-handle-upper')[0].dataset.value = `${((parseInt(trees.split('T')[0]) * 0.2) / detteEcologique).toFixed(2) * 100}%`;
-      }
+    valeurDepart = '0%';
+    valeurArrivee = '100%';
+    handle = `${Math.round((totalCompensation / detteEcologique) * 100)}%`;
 	} else {
-
-	  document.querySelector('.position__lower').innerHTML = '0.00€';
-      document.querySelector('.position__upper').innerHTML = `${(flight.price * 0.02).toFixed(2)}€</p>`;
-
-      if (handle.includes('T')) {
-      	const trees = handle;
-      	document.getElementsByClassName('noUi-handle-upper')[0].dataset.value = `${(parseInt(trees.split('T')[0]) * 0.2).toFixed(2)}€`;
-      } else if (handle.includes('%')) {
-      	const percent = handle;
-      	document.getElementsByClassName('noUi-handle-upper')[0].dataset.value = `${((parseInt(percent.split('%')[0]) / 100) * detteEcologique).toFixed(2)}€`;
-      }
-
+	  valeurDepart = '0.00€';
+    valeurArrivee = `${toHumanPrice(detteEcologique)}€`;
+    handle = `${toHumanPrice(totalCompensation)}€`;
 	}
+
+  document.querySelector('.position__lower').innerHTML = valeurDepart;
+  document.querySelector('.position__upper').innerHTML = valeurArrivee;
+  document.getElementsByClassName('noUi-handle-upper')[0].dataset.value = handle;
+  
 }
 
 
@@ -103,7 +90,7 @@ function initializeUislider(sliderAnchor, flight) {
 
 const updateSliderValue = (slider, flight, handle = 0) => {
 
-  const detteEcologique = flight.price * 0.02;
+  const detteEcologique = flight.treepDetteEcologique;
   const children = slider.target.getElementsByClassName('noUi-handle');
   const values = slider.get();
   let i = 0;
@@ -114,12 +101,13 @@ const updateSliderValue = (slider, flight, handle = 0) => {
     } else {
        val = values[i];
     }
+    
     if (document.getElementById('active__measure').innerHTML === 'T'){
-      children[i].dataset.value = `${Math.round(val / 0.2)}T`;
+      children[i].dataset.value = `${Math.round(val / 20)}T`;
     } else if (document.getElementById('active__measure').innerHTML === '%') {
       children[i].dataset.value = `${Math.round(val / detteEcologique * 100)}%`;
     } else {
-      children[i].dataset.value = `${val}€`;
+      children[i].dataset.value = `${toHumanPrice(val)}€`;
     }
     i++
   }
@@ -131,25 +119,28 @@ function updateHandles(slider, flight) {
   })
 }
 
+// Ces 3 fonctions ont pour objet de passer la valeur du slider dans l'input caché.
+
 function setUserShare(slider, sliderInput) {
-  const share = (Number(slider.get()[1]) - Number(slider.get()[0])).toFixed(2);
+  const share = Math.round(slider.get()[1]) - Math.round(slider.get()[0]);
   sliderInput.children[1].value = share;
 }
 
 function setGlobalShare(slider, sliderInput, flight) {
   let formattedValue = slider.get()[1];
-  sliderInput.children[0].value = formattedValue;
+  sliderInput.children[0].value = Math.round(formattedValue);
   updateFields(formattedValue, flight);
 }
 
 
 function connectUiSlider(slider, sliderInput, flight) {
-  
 	slider.on("update", () => {
     setGlobalShare(slider, sliderInput, flight);
     setUserShare(slider, sliderInput);
     });
 };
+
+////////////////////////////////////////////////////////////////////////////////////
 
 // create function measure change % -> € -> T
 
@@ -161,16 +152,16 @@ function connectUiSlider(slider, sliderInput, flight) {
 //create function that connects the value of the slider to all the fields in the view. 
 
 function updateFields(formattedValue, flight) {
-	const detteEcologique = flight.price * 0.02;
+	const detteEcologique = flight.treepDetteEcologique;
 	document.getElementById('percentage').innerHTML = Math.round((formattedValue / detteEcologique) * 100);
-  document.getElementById('euros').innerHTML = formattedValue;
-  document.getElementById('number__trees').innerHTML = Math.round(formattedValue / 0.2);
+  document.getElementById('euros').innerHTML = toHumanPrice(formattedValue);
+  document.getElementById('number__trees').innerHTML = Math.round(formattedValue / 20);
 }
 
 function createCompensationSlider(sliderAnchor, flight) {
 
-	const treepCompensation = Number((flight.price * 0.0064).toFixed(2));
-  const detteEcologique = Number((flight.price * 0.02).toFixed(2));
+	const treepCompensation = flight.treepCompensation;
+  const detteEcologique = flight.treepDetteEcologique;
     
 	noUiSlider.create(sliderAnchor, {
 	    start: [treepCompensation, treepCompensation],
@@ -180,7 +171,7 @@ function createCompensationSlider(sliderAnchor, flight) {
 	        'min': 0,
 	        'max': detteEcologique
 	    },
-	    // step: 0.2
+	    step: 20
     });
 
 	const handles = sliderAnchor.getElementsByClassName('noUi-handle');
@@ -201,43 +192,45 @@ function createCompensationMarkup(flight) {
 
 	const markup = `
 	  <div class="background__container">
-		    <h3 style="margin-top:0;padding-top:20px;">Bravo, en passant par Skytree'p, vous avez déja remboursé ${pourcentageSkytreep}% de votre dette écologique !</h2>
-			<div class="compensation__container">
+      <div class="compensation-background-layer">
+  		  <h3 style="margin-top:0;padding-top:20px;">Bravo, en passant par Skytree'p, vous avez déja remboursé ${pourcentageSkytreep}% de votre dette écologique !</h2>
+  			<div class="compensation__container">
 
-				<div class="compensation__stats__container">
-				  	<div class="compensation__first__part">
-					  	<div class="compensation__montant">
-						  	<p id="compensation__titre">Dette écologique:</p>
-						  	<p>${toHumanPrice(flight.treepDetteEcologique)} euros</p>
-					    </div>
-					  	<ul class="compensation__icons">
-					  	  <li class="custom__icons" id="active__measure">€</li>
-					  	  <li class="custom__icons">%</li>
-					  	  <li class="custom__icons">T</li>
-					    </ul>
-				  	</div>
-	                 
-				  	<div class="compensation__second__part">
-				  	  <div id="slider__compensation">
-				  	    <input  id="total-compensation" type="hidden" value="">
-                <input  id="user-compensation" type="hidden" value="">
-				  	  </div>
-				  	</div>
+  				<div class="compensation__stats__container">
+  				  	<div class="compensation__first__part">
+  					  	<div class="compensation__montant">
+  						  	<p id="compensation__titre">Dette écologique:</p>
+  						  	<p>${toHumanPrice(flight.treepDetteEcologique)} euros</p>
+  					    </div>
+  					  	<ul class="compensation__icons">
+  					  	  <li class="custom__icons" id="active__measure">€</li>
+  					  	  <li class="custom__icons">%</li>
+  					  	  <li class="custom__icons">T</li>
+  					    </ul>
+  				  	</div>
+  	                 
+  				  	<div class="compensation__second__part">
+  				  	  <div id="slider__compensation">
+  				  	    <input  id="total-compensation" type="hidden" value="">
+                  <input  id="user-compensation" type="hidden" value="">
+  				  	  </div>
+  				  	</div>
 
-				  	<div class="compensation__third__part">
-				  		<ul class="compensation__stats__list">
-							<li>Pourcentage:  <span id="percentage"></span> %</li>
-							<li class='border-middle'>Euros:  <span id="euros"></span> EUR</li>
-							<li>Nombres d'arbres:  <span id="number__trees"></span></li>
-				  		</ul>
-				  	</div>
-				</div>
-			</div>
+  				  	<div class="compensation__third__part">
+  				  		<ul class="compensation__stats__list">
+  							<li>Pourcentage:  <span id="percentage"></span> %</li>
+  							<li class='border-middle'>Euros:  <span id="euros"></span> EUR</li>
+  							<li>Nombres d'arbres:  <span id="number__trees"></span></li>
+  				  		</ul>
+  				  	</div>
+  				</div>
+  			</div>
+      </div>
 		</div>
 	`
 	return markup
 }
 
-
+ 
 // <button class="checkout__button" id="trigger-payment" style="width: 80%">PAYER MA DETTE ECOLOGIQUE</button>
 
