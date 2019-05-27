@@ -20,6 +20,7 @@ import { getInput, setInput } from '../views/searchView';
 console.log('Hello from webpacker');
 
 airports.displayAirports();
+airports.formatInputLocation();
 
 if (elements.searchForm) {
   elements.searchForm.addEventListener('submit', envoi => {

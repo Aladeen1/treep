@@ -7,3 +7,4 @@ export const renderDestination = (destination, type) => {
     document.querySelector(type).insertAdjacentHTML('beforeend', markup);
 };
 
+ 

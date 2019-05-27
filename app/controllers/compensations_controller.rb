@@ -8,6 +8,7 @@ end
 
 def create
   
+  @flight = current_user.flights.last
   amount = params[:amount]
 
   customer = Stripe::Customer.create(
@@ -18,9 +19,11 @@ def create
   charge = Stripe::Charge.create(
     customer:     customer.id,   # You should store this customer id and re-use it.
     amount:       amount,
-    description:  "Eco-debt payment for your treep to .. ",
+    description:  "Eco-debt payment for your treep to #{@flight.ville_retour} ",
     currency:     'eur'
   )
+  
+  @flight.update(user_participation: amount, status: 'paid')
 
   # Update la dette écologique correspondant au vol.
 

@@ -1,8 +1,5 @@
 <div class="dashboard">
 
-	<%= content_tag :div, class: "flights_information", data: {flights: @flights} do %>
-    <% end %>
-
   <!-- <div class="background-dash"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1553191549/Frame_dash.png"></div> -->
 
   <div class="compteur-arbres-dash">
@@ -95,8 +92,7 @@
 			<div class="row">
 
 			    <% @flights.each do |flight| %>
-			    <%= content_tag :div, class: "dette_eco_information", data: {dette_eco: flight.dette_eco} do %>
-                <% end %>    
+			    
 					<div class=" col-3 grande-dive">
 				    	<div class="petites-dives upper">
 				    		<div class="dashboard-card-layer">

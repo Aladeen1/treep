@@ -1,6 +1,7 @@
 import { matchAirlinesCode } from './flightView';
 import { elements, toHumanPrice } from './base';
 import { markupDetails, markupRoute, calculateEcoWidth } from './renderDetails';
+import { targetRedirection } from '../components/modalApparition';
 
 export const renderReturnFlights = (flight, airportCodes, id) => {
   let returnade = []
@@ -28,6 +29,7 @@ export const renderReturnFlights = (flight, airportCodes, id) => {
 
   	render(flight, airlines, allerInfoFormatted, allerInfo[0], allerInfo[1], go, id)
   }
+  // targetRedirection();
 }
 
 

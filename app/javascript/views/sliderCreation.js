@@ -236,6 +236,10 @@ function createMarkupHoraire(flights, type, minDepartureTime, maxDepartureTime, 
 		departuresRetour.push(returnRoutesArray[0].dTime)
 		arrivalsRetour.push(returnRoutesArray[returnRoutesArray.length - 1].aTime)
 	});
+
+    // arrivalsRetour.sort().forEach( stamp => {
+    //     console.log(formatageCreationSlider(stamp));
+    // });
     
     let maxDepartureRetourTime = optionalMaxValue(departuresRetour);
     let minDepartureRetourTime = optionalMinValue(departuresRetour);
@@ -250,15 +254,15 @@ function createMarkupHoraire(flights, type, minDepartureTime, maxDepartureTime, 
 
     
 
-    if (minDepartureRetourTime > maxDepartureRetourTime || minDepartureRetourTime === maxDepartureRetourTime) {
+    // if (minDepartureRetourTime > maxDepartureRetourTime || minDepartureRetourTime === maxDepartureRetourTime) {
     	maxDepartureRetourTime = 1439;
     	minDepartureRetourTime = 0;
-    } 
-    
-    if (minArrivalRetourTime > maxArrivalRetourTime || minArrivalRetourTime === maxArrivalRetourTime) {
+    // } 
+    // bug du fait que le time est le lendemain mais après le min donc le prend pas en compte. J'ai besoin de réguler les jours.
+    // if (minArrivalRetourTime > maxArrivalRetourTime || minArrivalRetourTime === maxArrivalRetourTime) {
     	maxArrivalRetourTime = 1439;
     	minArrivalRetourTime = 0;
-    }
+    // }
 
     const horaireDepartRetour = sliderOnlyMarkup('sliderDepartRetour', 'minDepartRetourInput', 'maxDepartRetourInput', minDepartureRetourTime, maxDepartureRetourTime, 'J', `départ de ${flights[0].flyTo}`, 'départRetour')
     const horaireArriveeRetour = sliderOnlyMarkup('sliderArriveeRetour', 'minArriveeRetourInput', 'maxArriveeRetourInput', minArrivalRetourTime, maxArrivalRetourTime, 'K', `arrivée à ${flights[0].flyFrom}`, 'arrivéeRetour')
