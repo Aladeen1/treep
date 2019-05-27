@@ -10,7 +10,6 @@
 require 'faker'
 
 Flight.destroy_all
-DetteEco.destroy_all
 User.destroy_all
 
 puts 'seeding starts'
@@ -38,15 +37,6 @@ puts 'seeding starts'
     )
     
     flight.save!
-
-    dette_eco = DetteEco.new(
-  	total: rand(20..30),
-    skytreep_participation: rand(10..10),
-    user_participation: rand(1..10),
-    user_id: user.id,
-    flight_id: flight.id
-    )
-    dette_eco.save!
 
   end
 end

@@ -1,14 +1,19 @@
-<div id="title-target"></div>
+<div id="title-target">
+	<div class="center__loader">
+        <img class="loader" src="https://res.cloudinary.com/tark-industries/image/upload/v1556034462/Spinner1.png">
+    </div>
+</div>
 
-
-<%= form_tag compensations_path do %>
-  
-  <%= hidden_field_tag 'amount'%>
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" id="compensation-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="Compensation"
-    data-email="<%= current_user.email %>"
-    data-description="Compensation C02 %>"
-    data-currency="EUR"></script>
-  
-<% end %>
+<div class="hide__stripe__form">
+	<%= form_tag compensations_path, :class => 'center-compensation-form' do %>
+	  
+	  <%= hidden_field_tag 'amount'%>
+	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" id="compensation-button"
+	    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+	    data-name="Compensation Carbone"
+	    data-email="<%= current_user.email %>"
+	    data-description="Voyage à <%= @flight.ville_retour %>"
+	    data-currency="EUR"></script>
+	    <button type="submit" id="stripe-trigger-payment" class="checkout__button">Payer ma dette écologique</button>
+	<% end %>
+</div>

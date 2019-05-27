@@ -27,9 +27,9 @@ const callLocationAPI = (targetInput) => {
   //print the result for convenience
   // Iterate over this array an render each element in a list on the interface
   // Besoin d'un if statement pour savoir dans quelle liste on met la liste
-
+  clearDatalists();
   state.search.getLocation(query, 'locations')
-  .then(() => {
+  .then((res) => {
     if (targetInput == 'searchDepartInput' && state.search.locations) {
       state.search.locations.forEach( result => {
         renderDestination(result, '#airports__depart');
@@ -53,3 +53,55 @@ export const displayAirports = () => {
     }
   });
 }
+
+function clearDatalists() {
+  let listAller = document.getElementById('airports__depart');
+  let listRetour = document.getElementById('airports__return');
+
+  listAller.innerHTML = '';
+  listRetour.innerHTML = '';
+}
+
+export const formatInputLocation = () => {
+  let inputAller = document.getElementById('departLoc__search');
+  let inputRetour = document.getElementById('returnLoc__search');
+
+  inputAller.addEventListener('input', (event) => {
+      
+      if (event.inputType != 'insertText' && event.inputType != 'deleteContentBackward') {
+
+        let originalValue = inputAller.value;
+        let array = originalValue.split(',').slice(1, 3);
+        // array.map (elt => {
+        //   console.log(elt) 
+        //   elt.split(' ').join('')
+        // });
+        // array[1] = `(${array[1]})`;
+        inputAller.value = array.join(',');
+      }
+  })
+
+  inputRetour.addEventListener('input', (event) => {
+      
+      if (event.inputType != 'insertText' && event.inputType != 'deleteContentBackward') {
+
+        let originalValue = inputRetour.value;
+        let array = originalValue.split(',').slice(1, 3);
+        // array.map (elt => {
+        //   console.log(elt) 
+        //   elt.split(' ').join('')
+        // });
+        // array[1] = `(${array[1]})`;
+        inputRetour.value = array.join(',');
+      }
+  })
+}
+
+
+
+
+
+
+
+
+

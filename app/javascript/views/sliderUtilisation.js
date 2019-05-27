@@ -7,6 +7,7 @@ import { getNumberBoxChecked, getEscalesNumber } from './sliders/escalesFilter';
 import { renderLoader, clearLoader } from './base';
 import { clearFlights } from './searchView';
 import { flightsArraySorted } from '../components/filterSearch';
+import { targetRedirection } from '../components/modalApparition';
 
 
 // Fonction qui récupère la valeur des inputs connectés au slider. Récupère le min et max. 
@@ -14,17 +15,17 @@ import { flightsArraySorted } from '../components/filterSearch';
 
 export const getOptionValues = (flights) => {
    let optionValues = {
-   	carbonMax: document.getElementById('maxCarbonInput').value,
-   	carbonMin: document.getElementById('minCarbonInput').value,
-   	distanceMax: document.getElementById('maxDistanceInput').value,
-   	distanceMin: document.getElementById('minDistanceInput').value,
-	durationMax: document.getElementById('maxDurationInput').value,
-	prixMax: document.getElementById('maxPrixInput').value,
-	prixMin: document.getElementById('minPrixInput').value,
-	departMax: document.getElementById('maxDepartInput').value,
-	departMin: document.getElementById('minDepartInput').value,
-	arriveeMax: document.getElementById('maxArriveeInput').value,
-	arriveeMin: document.getElementById('minArriveeInput').value
+    carbonMax: document.getElementById('maxCarbonInput').value,
+    carbonMin: document.getElementById('minCarbonInput').value,
+    distanceMax: document.getElementById('maxDistanceInput').value,
+    distanceMin: document.getElementById('minDistanceInput').value,
+  	durationMax: document.getElementById('maxDurationInput').value,
+  	prixMax: document.getElementById('maxPrixInput').value,
+  	prixMin: document.getElementById('minPrixInput').value,
+  	departMax: document.getElementById('maxDepartInput').value,
+  	departMin: document.getElementById('minDepartInput').value,
+  	arriveeMax: document.getElementById('maxArriveeInput').value,
+  	arriveeMin: document.getElementById('minArriveeInput').value
    }
    
    
@@ -62,6 +63,7 @@ export const sortFlights = () => {
     const flightList = document.querySelector('.flights__list');
     const arraynOptions = getArraynOptions();
     
+    
     clearFlights();
     renderLoader(flightList);
 
@@ -75,11 +77,15 @@ export const sortFlights = () => {
 
 export const getArraynOptions = () => {
 	const arrayFlights = flightsArraySorted();
-    const activeFilter = document.querySelector('#active__measure__in').innerHTML;
-    const arrayToUse = rightArray(activeFilter, arrayFlights);
-    const sliderValues = getOptionValues(arrayToUse);
+  console.log(arrayFlights);
+  const activeFilter = document.querySelector('#active__measure__in').innerHTML;
+  const arrayToUse = rightArray(activeFilter, arrayFlights);
 
-    return [arrayToUse, sliderValues]
+  
+  const sliderValues = getOptionValues(arrayToUse);
+
+
+  return [arrayToUse, sliderValues]
 }
 
 // Créer une fonction qui rend les vols en fonction des options sélectionnées. 
@@ -101,7 +107,7 @@ function renderSortedFlights(flights, airlines, optionValues) {
 	flights.forEach( (flight, id) => {
         
         const escales = checkEscaleCompatibility(arrayCheckedBox, flight);
-		const prealable = ecological(flight);
+		    const prealable = ecological(flight);
         const ecology = checkCompatibility(prealable[1], optionValues.carbonMin, optionValues.carbonMax)
         const distance = checkCompatibility(prealable[0], optionValues.distanceMin, optionValues.distanceMax)
         const prix = checkCompatibility(flight.price, optionValues.prixMin, optionValues.prixMax)
@@ -122,9 +128,10 @@ function renderSortedFlights(flights, airlines, optionValues) {
 				renderReturnFlights(flight, airlines, id)
 	        } 
 		} else if ( ecology && distance && prix && duree && heureDepart && heureArrivee && escales) {
-			renderReturnFlights(flight, airlines, id)
+			  renderReturnFlights(flight, airlines, id)
 		}    
 	})
+  targetRedirection();
 }
 
 // Check si la value du vol est comprise entre la valeur min et max.

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'; 
 import { proxy } from '../views/base.js';
 import { addRelevantData } from './dataFormating';
 

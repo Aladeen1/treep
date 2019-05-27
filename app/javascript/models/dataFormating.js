@@ -43,9 +43,9 @@ function addCarbonEmission(flight) {
 }
 
 function addTreepCommissionCompensation(flight) {
-	const treepCommission = Math.round(toCents(flight.price * 0.02));
+	const treepCommission = treeCompatibility(toCents(flight.price * 0.02));
 	flight.treepCommission = treepCommission;
-    flight.treepCompensation = Math.floor(treepCommission * 0.45);
+    flight.treepCompensation = treeCompatibility(treepCommission * 0.45);
 }
 
 function addDetteeco(flight) {
@@ -61,6 +61,9 @@ function addDetteecoUser(flight) {
   flight.treepDetteUser = flight.treepDetteEcologique - flight.treepCompensation;
 }
 
+function treeCompatibility(amountInCents) {
+	return Math.floor( amountInCents / 20) * 20
+}
 
 
 

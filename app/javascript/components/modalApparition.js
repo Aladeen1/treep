@@ -1,23 +1,26 @@
 import { getInput } from '../views/searchView';
-import { toHumanPrice } from '../views/base';
+import { toHumanPrice } from '../views/base'; 
 
 export const targetRedirection = () => {
 	console.log('target redirection')
 	const targets = document.querySelectorAll('.redirection__target');
     const flights = JSON.parse(localStorage.getItem('Recherche'));
+    console.log(targets)
+    console.log(flights)
 	targets.forEach( button => {
+		console.log('Pour toutes les targets')
 		button.addEventListener( 'click', event => {
             console.log('ça part');
 			if (localStorage.getItem('userFlight')) {
    			  localStorage.removeItem('userFlight');
  			}
-			event.preventDefault()
 
 			const test = event.target;
 			const buttonId = test.parentElement.parentElement.className;
 			const flight = flights.find( element => {
 				return element.id === buttonId
 			});
+			switchTitle(flight);
 			console.log(flight);
 		    localStorage.setItem('userFlight', JSON.stringify(flight));
 		    fillHiddenFields(flight);
@@ -26,6 +29,18 @@ export const targetRedirection = () => {
             $('#compensation').modal('show');
 		})
 	})
+}
+
+function switchTitle(flight) {
+	const title = document.querySelector('title');
+	title.innerHTML = `(1) ${flight.cityTo} trip compensation available`;
+	// setInterval( () => {
+	// 	if (title.innerHTML == "Skytree'p") {
+	// 		title.innerHTML = `(1) ${flight.cityTo} trip compensation available`;
+	// 	} else {
+	// 		title.innerHTML == "Skytree'p";
+	// 	}
+	// }, 2000)
 }
 
 
@@ -40,7 +55,7 @@ function fillHiddenFields(flight) {
 	sendValueInField('distance', flight, 'treepDistanceEffective')
 	sendValueInField('co2', flight, 'treepCarbonEmission')
 	sendValueInField('status', flight, 'status')
-	sendValueInField('total', flight, 'treepDetteEcologique')
+	sendValueInField('dette_eco', flight, 'treepDetteEcologique')
 	sendValueInField('skytreep_participation', flight, 'treepCompensation')
 }
 
