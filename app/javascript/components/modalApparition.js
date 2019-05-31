@@ -33,14 +33,14 @@ export const targetRedirection = () => {
 
 function switchTitle(flight) {
 	const title = document.querySelector('title');
-	title.innerHTML = `(1) ${flight.cityTo} trip compensation available`;
-	// setInterval( () => {
-	// 	if (title.innerHTML == "Skytree'p") {
-	// 		title.innerHTML = `(1) ${flight.cityTo} trip compensation available`;
-	// 	} else {
-	// 		title.innerHTML == "Skytree'p";
-	// 	}
-	// }, 2000)
+	
+	setInterval( () => {
+		if (title.innerHTML == "Skytree'p") {
+			title.innerHTML = `(1) Compensation ${flight.cityTo} trip available`;
+		} else {
+			title.innerHTML = "Skytree'p";
+		}
+	}, 1500)
 }
 
 
