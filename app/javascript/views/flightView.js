@@ -7,7 +7,7 @@ export const renderResults = (flights, airportCodes) => {
   if (flights.length === 0) {
     document.querySelector('.flights__list').insertAdjacentHTML('beforeend', 'Pas de résultat disponible pour cette recherche .. suddy');
   } else {
-    flights.slice(0, 2).forEach( (flight, id) => {
+    flights.slice(0, 10).forEach( (flight, id) => {
       renderReturnFlights(flight, airportCodes, id)
     });
   }
