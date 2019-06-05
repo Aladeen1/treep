@@ -7,6 +7,9 @@
 
 .flight__card__container {
   width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .flights__container {
@@ -50,6 +53,7 @@
 
 
 .flight__card__div {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -73,7 +77,7 @@
 .flight__card__duree__trajet {
   width: 100px;
   text-align: center;
-  margin: 0px 20px;
+  margin: 0px 25px;
 }
 
 .flight__card__info__depart {
@@ -154,4 +158,12 @@ button:focus { outline: none; }
 
 .flight__card__link_target {
   padding-left: 0px;
+}
+
+.flight__presentation__container {
+  height: 74%;
+  padding: 5px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
