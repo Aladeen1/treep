@@ -34,6 +34,10 @@ export const renderReturnFlights = (flight, airportCodes, id) => {
 
 
 function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArrivalDay, routesAller, id, retourInfoFormatted = [], retourDepart = 0, retourArrivee = 0, retourDepartDay = [], retourArrivalDay = [], routesRetour = []) {
+    
+    const airportDepart = localStorage.getItem('airportDepart');
+    const airportArrivee = localStorage.getItem('airportArrivee');
+
 
 	const markup = `
 
@@ -53,8 +57,8 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 							        <p>${flight.flyFrom}</p>
 							        <p class="heure">${allerInfoFormatted[0]}:${allerInfoFormatted[1]}</p>
 							      </div>
-							      <div class="flight__card__depart__nom__airport">
-				                    <p>Aiport name</p>
+							      <div class="flight__card__nom__airport">
+				                    <p>${airportDepart}</p>
 							      </div>
 							    </div>
 
@@ -72,8 +76,8 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 							        	<p class="flight__days__added">${(allerArrivalDay.getDate() - allerDepartDay.getDate() > 0) ? "+" + `${(allerArrivalDay.getDate() - allerDepartDay.getDate())}`: ""}</p>
 							        </div>
 							      </div>
-							      <div class="flight__card__arrivee__nom__airport">
-							        <p>Airport name</p>
+							      <div class="flight__card__nom__airport">
+							        <p>${airportArrivee}</p>
 							      </div>
 							    </div>
 						    </div>
@@ -132,7 +136,9 @@ function graphDetteEco(flight) {
 
 
 function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDepart,  retourArrivee, retourDepartDay, retourArrivalDay ) {
-  const markupRetour = `
+	const airportDepart = localStorage.getItem('airportDepart');
+	const airportArrivee = localStorage.getItem('airportArrivee');
+  	const markupRetour = `
 		<div class="flight__card__div">
 
 		    <img src="https://images.kiwi.com/airlines/64/${flight.airlines[0]}.png ">
@@ -143,8 +149,8 @@ function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDep
 			        <p>${retourDepart.flyFrom}</p>
 			        <p class="heure">${retourInfoFormatted[0]}:${retourInfoFormatted[1]}</p>
 			      </div>
-			      <div class="flight__card__depart__nom__airport">
-			        <p>Airport name</p>
+			      <div class="flight__card__nom__airport">
+			        <p>${airportArrivee}</p>
 			      </div>
 			    </div>
 
@@ -162,8 +168,8 @@ function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDep
 			        	<p class="flight__days__added">${(retourArrivalDay.getDate() - retourDepartDay.getDate() > 0) ? "+" + `${(retourArrivalDay.getDate() - retourDepartDay.getDate())}`: ""}</p>
 			        </div>
 			      </div>
-			      <div class="flight__card__arrivee__nom__airport">
-			        <p>Airport Name</p>
+			      <div class="flight__card__nom__airport">
+			        <p>${airportDepart}</p>
 			      </div>
 			    </div>
 		    </div>

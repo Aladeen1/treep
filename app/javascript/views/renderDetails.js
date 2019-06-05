@@ -122,7 +122,7 @@ function markupRoute(array) {
 }
 
 function renderCityNCode(index, route) {
-
+    
     let markup;
     if (index === 0) {
     	markup = `
@@ -169,9 +169,20 @@ function markupEscales(route, indice, tableau, time) {
 		   		<p class="text__formatting__details">${route.cityTo}</p>
 			</div>
 		`
-	} else {
-		// prendre en compte le cas ou il n'y a qu'un vol (ajd bug)
+	} else if (indice === 0) {
 	    markupEscale = `
+
+			<div class="tranche__container">
+		   		<p class="text__formatting__details first__row">${time[2]}:${time[3]}</p>
+		   		<div class="round__div green__round">
+		   		</div>
+		   		<div class="text__formatting__details details__anchor">
+		   		  ${renderCityNCode(1, route)}
+		   		</div>
+			</div>
+		`
+	} else {
+		markupEscale = `
 
 			<div class="tranche__container">
 		   		<p class="text__formatting__details first__row">${time[2]}:${time[3]}</p>
