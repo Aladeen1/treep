@@ -34,6 +34,10 @@ export const renderReturnFlights = (flight, airportCodes, id) => {
 
 
 function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArrivalDay, routesAller, id, retourInfoFormatted = [], retourDepart = 0, retourArrivee = 0, retourDepartDay = [], retourArrivalDay = [], routesRetour = []) {
+    
+    const airportDepart = localStorage.getItem('airportDepart');
+    const airportArrivee = localStorage.getItem('airportArrivee');
+
 
 	const markup = `
 
@@ -42,48 +46,46 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
           <div style="display:flex;width: 100%;">
 	          <div class="flight__card__container">
+	              <div class="flight__presentation__container">
+					  <div class="flight__card__div">
 
-	          <div class="flight__card__header">
-		        <p>${(airlines.length > 1) ? airlines.join(' - '): airlines[0]}<p>
-		      </div>
-				  <div class="flight__card__div">
+						    <img src="https://images.kiwi.com/airlines/64/${flight.airlines[0]}.png ">
 
-					    <img src="https://images.kiwi.com/airlines/64/${flight.airlines[0]}.png ">
+							<div class="flight__card__div__info">
+							    <div class="flight__card__info__depart">
+							      <div class="flight__card__depart__code__heure">
+							        <p>${flight.flyFrom}</p>
+							        <p class="heure">${allerInfoFormatted[0]}:${allerInfoFormatted[1]}</p>
+							      </div>
+							      <div class="flight__card__nom__airport">
+				                    <p>${airportDepart}</p>
+							      </div>
+							    </div>
 
-						<div class="flight__card__div__info">
-						    <div class="flight__card__info__depart">
-						      <div class="flight__card__depart__code__heure">
-						        <p>${flight.flyFrom}</p>
-						        <p class="heure">${allerInfoFormatted[0]}:${allerInfoFormatted[1]}</p>
-						      </div>
-						      <div class="flight__card__depart__nom__airport">
-			                    <p>Aiport name</p>
-						      </div>
+							    <div class="flight__card__duree__trajet">
+				                  <p>${flight.fly_duration}</p>
+				                  <div class="straight"></div>
+				                  <p>${getTransferNumber(routesAller)}</p>
+							    </div>
+
+							    <div class="flight__card__info__arrivee">
+							      <div class="flight__card__arrivee__code__heure">
+							        <p>${flight.flyTo}</p>
+							        <div class="flight__schedule">
+							        	<p class="heure">${allerInfoFormatted[2]}:${allerInfoFormatted[3]}</p>
+							        	<p class="flight__days__added">${(allerArrivalDay.getDate() - allerDepartDay.getDate() > 0) ? "+" + `${(allerArrivalDay.getDate() - allerDepartDay.getDate())}`: ""}</p>
+							        </div>
+							      </div>
+							      <div class="flight__card__nom__airport">
+							        <p>${airportArrivee}</p>
+							      </div>
+							    </div>
 						    </div>
 
-						    <div class="flight__card__duree__trajet">
-			                  <p>${flight.fly_duration}</p>
-			                  <div class="straight"></div>
-			                  <p>${getTransferNumber(routesAller)}</p>
-						    </div>
+					  </div>
 
-						    <div class="flight__card__info__arrivee">
-						      <div class="flight__card__arrivee__code__heure">
-						        <p>${flight.flyTo}</p>
-						        <div class="flight__schedule">
-						        	<p class="heure">${allerInfoFormatted[2]}:${allerInfoFormatted[3]}</p>
-						        	<p class="flight__days__added">${(allerArrivalDay.getDate() - allerDepartDay.getDate() > 0) ? "+" + `${(allerArrivalDay.getDate() - allerDepartDay.getDate())}`: ""}</p>
-						        </div>
-						      </div>
-						      <div class="flight__card__arrivee__nom__airport">
-						        <p>Airport name</p>
-						      </div>
-						    </div>
-					    </div>
-
-				  </div>
-
-                  ${(retourDepart != 0) ? createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDepart, retourArrivee, retourDepartDay, retourArrivalDay) : ''}
+	                  ${(retourDepart != 0) ? createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDepart, retourArrivee, retourDepartDay, retourArrivalDay) : ''}
+                  </div>
 
 				  <div class="details__div">
 				  <button class="checkout__button" id="details" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">Détails</button>
@@ -109,6 +111,13 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
 	document.querySelector('.flights__list').insertAdjacentHTML('beforeend', markup)
 
+// Utiliser pour faire un design stylé pour les airlines
+
+		// <div class="flight__card__header">
+		// 	<p>${(airlines.length > 1) ? airlines.join(' - '): airlines[0]}<p>
+		// </div>
+
+//
 }
 
 function graphDetteEco(flight) {
@@ -127,7 +136,9 @@ function graphDetteEco(flight) {
 
 
 function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDepart,  retourArrivee, retourDepartDay, retourArrivalDay ) {
-  const markupRetour = `
+	const airportDepart = localStorage.getItem('airportDepart');
+	const airportArrivee = localStorage.getItem('airportArrivee');
+  	const markupRetour = `
 		<div class="flight__card__div">
 
 		    <img src="https://images.kiwi.com/airlines/64/${flight.airlines[0]}.png ">
@@ -138,8 +149,8 @@ function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDep
 			        <p>${retourDepart.flyFrom}</p>
 			        <p class="heure">${retourInfoFormatted[0]}:${retourInfoFormatted[1]}</p>
 			      </div>
-			      <div class="flight__card__depart__nom__airport">
-			        <p>Airport name</p>
+			      <div class="flight__card__nom__airport">
+			        <p>${airportArrivee}</p>
 			      </div>
 			    </div>
 
@@ -157,8 +168,8 @@ function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDep
 			        	<p class="flight__days__added">${(retourArrivalDay.getDate() - retourDepartDay.getDate() > 0) ? "+" + `${(retourArrivalDay.getDate() - retourDepartDay.getDate())}`: ""}</p>
 			        </div>
 			      </div>
-			      <div class="flight__card__arrivee__nom__airport">
-			        <p>Airport Name</p>
+			      <div class="flight__card__nom__airport">
+			        <p>${airportDepart}</p>
 			      </div>
 			    </div>
 		    </div>

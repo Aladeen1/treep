@@ -4,13 +4,13 @@ import './dashboard-slider.css';
 
 window.addEventListener('load', () => {
 	if ($('.dashboard') != null) {
-		console.log('je suis sur la page du dashboard slider')
+		// console.log('je suis sur la page du dashboard slider')
 		createDashboardSlider()
 	}
 })
 
 function createDashboardSlider() {
-	console.log($('.flights_information').data('flights'));
+	// console.log($('.flights_information').data('flights'));
 	
 	const detteEcos = Array.from(document.querySelectorAll('.dette_eco_information'));
     const sliderAnchors = Array.from(document.querySelectorAll('.dashboard-slider-container'));

@@ -27,6 +27,7 @@ export const controlSearch = () => {
   const flightType = getInput('searchFlightType');
   const passengers = getInput('searchPassengers');
 
+  
 
   if (departLocation && returnLocation && departDateTo && departDateFrom && flightType && passengers) {
     console.log(`The destination is ${departLocation}, the return location is ${returnLocation}, the depart day is ${departDateFrom}, the return date is ${departDateTo}, for ${passengers} passengers and it's a ${flightType} ticket`);
@@ -40,7 +41,7 @@ export const controlSearch = () => {
       state.search = new Search(departLocation, returnLocation, departDateFrom, departDateTo, flightType, passengers);
     }
     
- 
+    setAirportNames(departLocation, returnLocation);
     // 3) Prepare UI for results
     if (document.querySelector('.flights__display')) {
       clearInterface();
@@ -53,6 +54,7 @@ export const controlSearch = () => {
     
     const call = Promise.all([state.search.getFlights(), state.search.getAirlinesCode()]);
     call.then(() => {
+      
       // Les deux fonctions ont cachés les réponses donc on les récupère et on les assigne à deux variables
       const airlines = JSON.parse(localStorage.getItem('Airlines'));
       const resultat = JSON.parse(localStorage.getItem('Recherche'));
@@ -85,6 +87,17 @@ export const controlSearch = () => {
      // .catch(err => console.log(err))
    }
 }
+
+
+function setAirportNames(departLocation, returnLocation) {
+  const airportnames = Promise.all([state.search.getLocation(departLocation, 'locations'), state.search.getLocation(returnLocation, 'locations')]);
+  airportnames.then((res) => {
+    localStorage.setItem('airportDepart', res[0].data.locations[0].alternative_names[0])
+    localStorage.setItem('airportArrivee', res[1].data.locations[0].alternative_names[0])
+  })
+}
+
+
 
 // Arguments of the getFlight Method => options.duration, options.prix, options.depart, options.arrivee
 
