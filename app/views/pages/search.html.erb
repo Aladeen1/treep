@@ -51,8 +51,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          !-- Vous devez être connecter pour aller plus loin --! 
-          <%= link_to 'Se connecter', new_user_session_path, :class => "connection-compensation" %>
+          <div style="text-align: center;">
+          <p style="margin-bottom: 20px;">!-- Vous devez être connecter pour aller plus loin --! </p>
+          <p><%= link_to 'Se connecter', new_user_session_path, :class => "connection-compensation checkout__button" %></p>
+          </div>
+          <br>
           <p>Merci de nous faire confiance</p></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

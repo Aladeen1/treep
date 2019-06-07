@@ -1,4 +1,4 @@
-<div style="min-height:70vh;width: 315px;">
+<div class="dashboard-boss-container">
 
   <div class="dashboard-presentation-container">
     <p>192 T</p>
@@ -12,26 +12,67 @@
             <i style="width: 30px" class="onglet-item fas fa-user-ninja"></i>
             <p class="onglet-item">Mes infos</p>
           </div>
-          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow dashboard-direction" > 
+          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow dashboard-arrow-direction" > 
       </div>
 
-      <div class="category-container">
+      <div class="category-container no-border">
           <div>
             <i style="width: 30px" class="onglet-item fas fa-leaf"></i>
             <p class="onglet-item">Mes dettes écologiques/voyages</p>
           </div>
-          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow dashboard-direction"> 
+          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow dashboard-arrow-direction"> 
       </div>
 
       <div class="category-container">
           <div>
             <i style="width: 30px" class="onglet-item fas fa-user-ninja"></i>
-            <p class="onglet-item">le crowdfunding de skytreep</p>
+            <p class="onglet-item">Le crowdfunding de skytreep</p>
           </div>
-          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow dashboard-direction"> 
+          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow dashboard-arrow-direction"> 
       </div>
 
     </div>
+  </div>
+
+  <div class="dashboard-mes-infos-container">
+
+    <div class="dashboard-statistiques-container">
+
+      <div class="dashboard-part-title"><p>Statistiques</p></div>
+      <div class="dashboard-thermometer">
+        <%= image_tag("design-dashboard.png", class: 'thermomether-image') %>
+        <div class="dashboard-stat info-emission">
+          <div class="thermomether-straight"></div>
+          <p>1,3t de C02 émis</p>
+        </div>
+        <div class="dashboard-stat info-compensation">
+          <div class="thermomether-straight"></div>
+          <p>0,9t de C02 compensé</p>
+        </div>
+        <div class="dashboard-stat info-km-parcourus">
+          <div class="thermomether-straight"></div>
+          <p>18652km parcourus</p>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="dashboard-compte-container">
+      <div class="dashboard-part-title"><p>Compte</p></div>
+      <div class="dashboard-manage-account">
+        <div class="dashboard-account-line">
+          <p>Email</p>
+          <p><%= current_user.email %></p>
+          <%= link_to "Changer mon email", class: 'dashboard-manage-link' %>
+        </div>
+        <div class="dashboard-account-line">
+          <p>Password</p>
+          <p>*************</p>
+          <%= link_to "Changer mon mot de passe", class: 'dashboard-manage-link' %>
+        </div>
+      </div>
+    </div>
+    
   </div>
 
 
