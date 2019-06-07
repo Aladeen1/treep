@@ -89,7 +89,7 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
 				  <div class="details__div">
 				  <button class="checkout__button" id="details" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">Détails</button>
-				  ${graphDetteEco(flight)}
+				  ${graphDetteEco(flight, id)}
 
 				  </div>
 			  </div>
@@ -97,7 +97,7 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
 			  <div class="flight__card__checkout back">
 		          <div class="flight__info white-tooltip" data-toggle="tooltip-${id}" data-html="true" data-placement="left" title='
-		              	<div class="carte-dette-ecologique">
+		              	<div class="carte-dette-ecologique" id="dette-id-hide-${id}">
 						  <div class="row">
 						    <div class="col-10">
 						      <p>Dette écologique</p>
@@ -119,7 +119,7 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 						  </div>
 						  <div class="row">
 						    <p class="carte-eco-row4">
-						      Selectionez simplement votre vol, puis payez le sur le site de notre partenaire.
+						      Sélectionnez simplement votre vol, puis payez le sur le site de notre partenaire.
 						      Revenez ensuite sur cet onglet, un bouton est apparu, cliquez dessus !
 						      <br>Autrement retrouver le vol sur votre tableau de bord.
 						    </p>
@@ -160,9 +160,8 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 	`
 
 	document.querySelector('.flights__list').insertAdjacentHTML('beforeend', markup)
-	console.log($(`[data-toggle="tooltip-${id}"]`));
-	$(`[data-toggle="tooltip-${id}"]`).tooltip();
-
+    toolTipAction(id);
+	
 // Utiliser pour faire un design stylé pour les airlines
 
 		// <div class="flight__card__header">
@@ -172,12 +171,23 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 //
 }
 
-function graphDetteEco(flight) {
+function toolTipAction(id) {
+	$(`[data-toggle="tooltip-${id}"]`).tooltip();
+	document.getElementById(`dette-id-${id}`).addEventListener('mouseover', () => {
+		$(`[data-toggle="tooltip-${id}"]`).tooltip('toggle');
+		
+		window.addEventListener('click', () => {		
+			$(`[data-toggle="tooltip-${id}"]`).tooltip('hide');
+		});
+	});
+}
+
+function graphDetteEco(flight, id) {
 	
     const width = calculateEcoWidth(flight.treepDetteEcologique, flight.treepCompensation);
 
 	const markup = `
-		<div class="dette__infographie__container__front">
+		<div class="dette__infographie__container__front" id="dette-id-${id}">
 		  	<div class="dette__infographie__skyparticipation" style="width: 35%;">${toHumanPrice(flight.treepCompensation)}€</div>
 		  	<div class="dette__infographie__reste" style="width: 65%;">${toHumanPrice(flight.treepDetteUser)}€</div>
 		</div>
