@@ -54,6 +54,11 @@ export const displayAirports = () => {
   });
 }
 
+// export const getAirportNames() {
+
+
+// }
+
 function clearDatalists() {
   let listAller = document.getElementById('airports__depart');
   let listRetour = document.getElementById('airports__return');

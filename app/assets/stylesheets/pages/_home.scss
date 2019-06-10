@@ -385,14 +385,17 @@ body, html {
 .carte-dette-ecologique {
   width: 350px;
   height: 360px;
-  margin: 50px;
   padding-left: 10px;
   padding-top: 12px;
   border-radius: 5px;
   position: relative;
   background-color: white;
-  box-shadow: 1px 1px 7px grey;
+  /* box-shadow: 1px 1px 7px grey; */
   font-size: 16px;
+}
+
+.tooltip.left .tooltip-arrow {
+  border-left-color: white;
 }
 
 .carte-dette-ecologique:before {
@@ -454,7 +457,7 @@ body, html {
   content : "";
   position: absolute;
   left    : 11px;
-  top  : 248px;
+  top  : 268px;
   height  : 1px;
   width   : 88%;
   border-bottom:1px solid lightgrey;

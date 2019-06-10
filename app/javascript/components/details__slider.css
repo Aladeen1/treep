@@ -23,6 +23,14 @@
     font-size: 16px;
 }
 
+.noUi-handle:after {
+  content: none;
+}
+
+.noUi-target {
+  border: none;
+}
+
 .slider__style .noUi-handle:focus {
   outline: none;
 }
@@ -30,8 +38,10 @@
 .slider__style .noUi-handle {
   border-radius: 50%;
   height: 20px;
-    width: 20px;
-    background-color: #36ACB8;
+  width: 20px;
+  background-color: #36ACB8;
+  border: none;
+  box-shadow: none;
 } 
 
 .slider__style .noUi-handle:hover {
@@ -47,7 +57,8 @@
 }
 
 .slider__style .noUi-connects {
-  border: solid 1px lightgrey;
+  /*border: solid 1px lightgrey;*/
+  background-color: rgba(54,172,184,.15);
 }
 
 .slider__style .noUi-handle .noUi-handle-lower {

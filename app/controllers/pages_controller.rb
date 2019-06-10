@@ -17,4 +17,9 @@ class PagesController < ApplicationController
   def lesarbres
     @footer2 = true
   end
+
+  def compensation
+    @search_nav = true
+    @footer1 = true
+  end
 end

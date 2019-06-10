@@ -24,7 +24,7 @@
 }
 
 .search {
-  height: 60%;
+  height: 49px;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -52,14 +52,14 @@
 
 /* Ajustement pour le bouton de recherche */
 
-#blue {
-  background-color: #009AAC;
+.blue {
+  background-color: #009AAC !important;
   padding: 10px 40px;
-}
 
-#blue:hover {
-  background-color: #00c8df;
-  cursor: pointer;
+  &:hover {
+    background-color: #00c8df!important;
+    cursor: pointer;
+  }
 }
 
 

@@ -1,7 +1,7 @@
 class CompensationsController < ApplicationController
 
 def new
-	@flight = current_user.flights.last
+	# @flight = current_user.flights.last
   @search_nav = true
   @footer1 = true
 end

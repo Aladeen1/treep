@@ -66,8 +66,8 @@ export const displayOptions = (flights, type) => {
         maxDuration += 1;
     }
     
-    console.log(` Les max values sont: ${maxArrivalTime}, ${maxDepartureTime}, ${maxPrice}, ${maxDuration}, ${maxCarbon}, ${maxDistance}`)
-    console.log(` Les min values sont: ${minArrivalTime}, ${minDepartureTime}, ${minPrice}, ${minDuration}, ${minCarbon}, ${minDistance}`)
+    // console.log(` Les max values sont: ${maxArrivalTime}, ${maxDepartureTime}, ${maxPrice}, ${maxDuration}, ${maxCarbon}, ${maxDistance}`)
+    // console.log(` Les min values sont: ${minArrivalTime}, ${minDepartureTime}, ${minPrice}, ${minDuration}, ${minCarbon}, ${minDistance}`)
 
     // Ici on utilise les variables + le code qu'on s'est fixé pour les ids des sliders 
     // et on créer les receptacles des Uislider (markup)
@@ -293,6 +293,7 @@ function createOptionsAnchor() {
 
         </div>
     `
+    
     elements.searchContainer.insertAdjacentHTML('afterbegin', markup)
 }
 

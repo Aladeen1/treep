@@ -2,13 +2,12 @@ import { getInput } from '../views/searchView';
 import { toHumanPrice } from '../views/base'; 
 
 export const targetRedirection = () => {
-	console.log('target redirection')
+	
 	const targets = document.querySelectorAll('.redirection__target');
     const flights = JSON.parse(localStorage.getItem('Recherche'));
-    console.log(targets)
-    console.log(flights)
+    
 	targets.forEach( button => {
-		console.log('Pour toutes les targets')
+		
 		button.addEventListener( 'click', event => {
             console.log('ça part');
 			if (localStorage.getItem('userFlight')) {
@@ -23,24 +22,24 @@ export const targetRedirection = () => {
 			switchTitle(flight);
 			console.log(flight);
 		    localStorage.setItem('userFlight', JSON.stringify(flight));
-		    fillHiddenFields(flight);
-            insertCompensationText(flight);
-            
-            $('#compensation').modal('show');
+		    // fillHiddenFields(flight);
+            // insertCompensationText(flight);
+            window.location.href = "http://localhost:3000/compensation"
+            // $('#compensation').modal('show');
 		})
 	})
 }
 
 function switchTitle(flight) {
 	const title = document.querySelector('title');
-	title.innerHTML = `(1) ${flight.cityTo} trip compensation available`;
-	// setInterval( () => {
-	// 	if (title.innerHTML == "Skytree'p") {
-	// 		title.innerHTML = `(1) ${flight.cityTo} trip compensation available`;
-	// 	} else {
-	// 		title.innerHTML == "Skytree'p";
-	// 	}
-	// }, 2000)
+	
+	setInterval( () => {
+		if (title.innerHTML == "Skytree'p") {
+			title.innerHTML = `(1) Compensation ${flight.cityTo} trip available`;
+		} else {
+			title.innerHTML = "Skytree'p";
+		}
+	}, 1500)
 }
 
 
