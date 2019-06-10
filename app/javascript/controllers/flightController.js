@@ -53,9 +53,27 @@ export const controlSearch = () => {
     // 4) Search for flights
     
     const call = Promise.all([state.search.getFlights(), state.search.getAirlinesCode()]);
-    call.then(() => {
-      
-      // Les deux fonctions ont cachés les réponses donc on les récupère et on les assigne à deux variables
+    call.then(() => {    
+      renderAll(elements.searchContainer);
+     })
+
+     // .catch(err => console.log(err))
+   }
+}
+
+
+function setAirportNames(departLocation, returnLocation) {
+  const airportnames = Promise.all([state.search.getLocation(departLocation, 'locations'), state.search.getLocation(returnLocation, 'locations')]);
+  airportnames.then((res) => {
+    localStorage.setItem('airportDepart', res[0].data.locations[0].alternative_names[0])
+    localStorage.setItem('airportArrivee', res[1].data.locations[0].alternative_names[0])
+  })
+}
+
+
+
+export const renderAll = (loaderTarget) => {
+   // Les deux fonctions ont cachés les réponses donc on les récupère et on les assigne à deux variables
       const airlines = JSON.parse(localStorage.getItem('Airlines'));
       const resultat = JSON.parse(localStorage.getItem('Recherche'));
 
@@ -64,7 +82,7 @@ export const controlSearch = () => {
       
       // 5) Render results on UI
 
-      clearLoader(elements.searchContainer);
+      clearLoader(loaderTarget);
 
       // slider
         if (resultat[0].routes.length >= 2) {
@@ -82,20 +100,10 @@ export const controlSearch = () => {
         searchView.renderResults(resultat, airlines);
         targetRedirection();
 
-     })
-
-     // .catch(err => console.log(err))
-   }
 }
 
 
-function setAirportNames(departLocation, returnLocation) {
-  const airportnames = Promise.all([state.search.getLocation(departLocation, 'locations'), state.search.getLocation(returnLocation, 'locations')]);
-  airportnames.then((res) => {
-    localStorage.setItem('airportDepart', res[0].data.locations[0].alternative_names[0])
-    localStorage.setItem('airportArrivee', res[1].data.locations[0].alternative_names[0])
-  })
-}
+
 
 
 

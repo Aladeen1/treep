@@ -4,7 +4,7 @@ import { elements } from "../views/base";
 import './details__slider.css';
 import { sortFlights } from '../views/sliderUtilisation';     
 
- 
+    console.log('bo')    
 
 // Initialise les 6 sliders dont on a besoin en toutes occasions.
 // (à modifier pour le cas des retour on aura un departHour et arrivee en plus)

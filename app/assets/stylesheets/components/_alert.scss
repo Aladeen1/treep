@@ -8,8 +8,14 @@
   color: white;
 }
 .alert-info {
-  background: green;
+  background: #1c4444;
+  border: none;
 }
 .alert-warning {
   background: $red;
+}
+
+.alert-dismissible .close {
+	top: -10px;
+	color: white;
 }

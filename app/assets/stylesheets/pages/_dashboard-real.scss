@@ -1,0 +1,140 @@
+.dashboard-arrow-direction {
+  transform: rotate(90deg);
+  margin-top: 5px;
+}
+
+.category-container {
+  border: 1px #D4D3D3;
+  border-style: solid none;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+
+  &:hover {
+  background-color: rgba(0, 200, 150, 0.1);
+  }
+}
+
+.fa-leaf:before {
+  color:green;
+}
+
+.no-border {
+  border:none
+}
+
+.dashboard-presentation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 315px;
+}
+
+.dashboard-boss-container{
+  min-height:100vh;
+  margin-left: 40px;
+  margin-top: 40px;
+  display: flex;
+}
+
+
+.categories-block {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.avatar-dash {
+  width: 120px;
+}
+
+.onglet-item {
+  display: inline-block;
+}
+
+.dashboard-mes-infos-container {
+  width: 600px;
+}
+
+.dashboard-part-title {
+  border-bottom: 1px solid #838282;
+
+  p {
+    margin-bottom: 4px;
+  }
+}
+
+.dashboard-thermometer {
+  margin: 20px 0px;
+  padding-left: 70px;
+  position: relative;
+}
+
+.thermomether-image {
+  width: 130px;
+  position: relative;
+}
+
+.thermomether-straight {
+  height: 4px;
+  width: 45px;
+  background-color: black;
+  border-radius: 46px;
+  margin-right: 5px;
+}
+
+.dashboard-stat {
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+
+.info-emission {
+  top: 13px;
+  left: 134px;
+}
+
+.info-compensation {
+  top: 110px;
+  left: 134px;
+}
+
+.info-km-parcourus {
+  bottom: 63px;
+  left: 190px;
+}
+
+.dashboard-account-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

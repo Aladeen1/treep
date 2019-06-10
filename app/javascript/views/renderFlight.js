@@ -89,16 +89,66 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
 				  <div class="details__div">
 				  <button class="checkout__button" id="details" data-toggle="collapse" data-target="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">Détails</button>
-				  ${graphDetteEco(flight)}
+				  ${graphDetteEco(flight, id)}
 
 				  </div>
 			  </div>
 
 
 			  <div class="flight__card__checkout back">
-          <div class="flight__info">
-            <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556035926/Ticketinfo.png">
-          </div>
+		          <div class="flight__info white-tooltip" data-toggle="tooltip-${id}" data-html="true" data-placement="left" title='
+		              	<div class="carte-dette-ecologique" id="dette-id-hide-${id}">
+						  <div class="row">
+						    <div class="col-10">
+						      <p>Dette écologique</p>
+						    </div>
+						    <div style="padding-left: 0px;" class="col-2">
+						      <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556638788/Feuilles_skytreep.png">
+						    </div>
+						  </div>
+						  <div class="row carte-eco-row2">
+						    <div class="col-8">
+						      <p style="padding-top: 9px">Dette écologique du trajet :</p>
+						    </div>
+						    <div class="col-3 montant-dette-eco">
+						      <p>${toHumanPrice(flight.treepDetteEcologique)} EUR</p>
+						    </div>
+						  </div>
+						  <div class="row">
+						    <p class="carte-eco-row3">Comment payer votre dette ?</p>
+						  </div>
+						  <div class="row">
+						    <p class="carte-eco-row4">
+						      Sélectionnez simplement votre vol, puis payez le sur le site de notre partenaire.
+						      Revenez ensuite sur cet onglet, un bouton est apparu, cliquez dessus !
+						      <br>Autrement retrouver le vol sur votre tableau de bord.
+						    </p>
+						  </div>
+						  <div class="row">
+						    <p class="carte-eco-row5">Comprendre votre dette</p>
+						  </div>
+						  <div class="row carte-eco-row6">
+						    <div class="col-5">
+						      <p>En bleu le montant que nous finançons.</p>
+						    </div>
+						    <div style="padding-right: 30px" class="col-7">
+						      <p>Le reste de la dette que vous payez selon votre volonté</p>
+						    </div>
+						  </div>
+						  <div class="row carte-eco-row7">
+						    <div class="col-5">
+						      <p style="font-size: 13px; padding-top: 6px">Dette écologique :</p>
+						    </div>
+						    <div class="col-3 st-finance">
+						      <p>${toHumanPrice(flight.treepCompensation)}€</p>
+						    </div>
+						    <div class="col-3 user-finance">
+						      <p>${toHumanPrice(flight.treepDetteUser)}€</p>
+						    </div>
+						  </div>
+						</div>'>
+		            <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556035926/Ticketinfo.png">
+		          </div>
 				  <p class="flight__price">${flight.price}€</p>
 				  <div class="${flight.id}">
 		          <a href=${flight.deep_link} target="_blank" class="flight__card__link_target"><button  class="checkout__button redirection__target">Sélectionner</button></a>
@@ -110,7 +160,8 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 	`
 
 	document.querySelector('.flights__list').insertAdjacentHTML('beforeend', markup)
-
+    toolTipAction(id);
+	
 // Utiliser pour faire un design stylé pour les airlines
 
 		// <div class="flight__card__header">
@@ -120,12 +171,23 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 //
 }
 
-function graphDetteEco(flight) {
+function toolTipAction(id) {
+	$(`[data-toggle="tooltip-${id}"]`).tooltip();
+	document.getElementById(`dette-id-${id}`).addEventListener('mouseover', () => {
+		$(`[data-toggle="tooltip-${id}"]`).tooltip('toggle');
+		
+		window.addEventListener('click', () => {		
+			$(`[data-toggle="tooltip-${id}"]`).tooltip('hide');
+		});
+	});
+}
+
+function graphDetteEco(flight, id) {
 	
     const width = calculateEcoWidth(flight.treepDetteEcologique, flight.treepCompensation);
 
 	const markup = `
-		<div class="dette__infographie__container__front">
+		<div class="dette__infographie__container__front" id="dette-id-${id}">
 		  	<div class="dette__infographie__skyparticipation" style="width: 35%;">${toHumanPrice(flight.treepCompensation)}€</div>
 		  	<div class="dette__infographie__reste" style="width: 65%;">${toHumanPrice(flight.treepDetteUser)}€</div>
 		</div>

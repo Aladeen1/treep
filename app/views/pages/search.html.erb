@@ -1,39 +1,6 @@
 
 <div class="search__bar__container">
-    <div class="search__bar__element__container">
-        <div class="search__bar__options">
-            <div class="aller-retour">
-                <select id="flight_type">
-                    <option value="oneway">Aller simple</option>
-                	<option value="round">Aller retour</option>
-                </select>
-            </div>
-
-
-            <p class="passager__description">Passagers</p>
-            <div class="passager">
-                <div class="value-button" id="decrease"  value="Decrease Value"><p>-</p></div>
-                    <input type="number" id="passengers" min="1" max="9" value="1" />
-                <div class="value-button" id="increase"  value="Increase Value"><p>+</p></div>
-            </div>
-        </div>
-        <div class="search__bar__frame">
-            <form class="search">
-                <div class="search__bar__box">
-                    <input type="text" class="search__field left-element" id="departLoc__search" autocomplete="off" placeholder="Partir de" list="airports__depart">
-                    <input type="text" class="search__field right-element" id="returnLoc__search" autocomplete="off" placeholder="Aller à" list="airports__return">
-                </div>
-                <div class="search__bar__box">
-                    <input type="text" class="search__field left-element" id="departDate__search" placeholder="Aller le">
-                    <input type="text" class="search__field right-element" id="returnDate__search" placeholder="Retour le">
-                </div>
-                <button class="checkout__button" id="blue">
-                    Rechercher
-                </button>
-
-            </form>
-        </div>
-    </div>
+  <%= render 'shared/searchbar' %>
 </div>
 
 <datalist id="airports__depart"></datalist>
@@ -43,20 +10,26 @@
  	
     
 </div>
-
+ 
 <div id='searchPage'></div>
 
-<div class="modal fade" id="compensation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="compensation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Merci de nous faire confiance</h5>
+        <h5 class="modal-title" id="exampleModalLabel">
+          <div style="text-align: center;">
+          <p style="margin-bottom: 20px;">!-- Vous devez être connecter pour aller plus loin --! </p>
+          <p><%= link_to 'Se connecter', new_user_session_path, :class => "connection-compensation checkout__button" %></p>
+          </div>
+          <br>
+          <p>Merci de nous faire confiance</p></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" id="insert-compensation-text">
-        <!-- Introduce the 2 sentences with the data (change the view for what tanguy did) -->
+        
       </div>
       <div class="modal-footer">
         <%= form_tag flights_path, :class => 'compensation-modal-footer' do %>
@@ -79,9 +52,9 @@
           
          
       </div>
-    </div>
+    </div> 
   </div>
-</div>
+</div> -->
 
 
 

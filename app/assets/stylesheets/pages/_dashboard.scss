@@ -36,11 +36,53 @@
 /* DEBUT DU MENU CENTRAL */
 
 .avatar-dash {
-  width: 150px;
-  padding-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  width: 120px;
+}
+
+.dashboard-direction {
+  transform: rotate(90deg);
+  margin-top: 5px;
+}
+
+.category-container {
+  border: 1px #D4D3D3;
+  border-style: solid none;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+
+  &:hover {
+  background-color: rgba(0, 200, 150, 0.1);
+  }
+}
+
+.fa-leaf:before {
+  color:green;
+}
+
+.no-border {
+  border:none
+}
+
+.dashboard-presentation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 315px;
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.dashboard-boss-container{
+  min-height:100vh;
+}
+
+
+.categories-block {
+  width: 100%;
+  margin-top: 15px;
 }
 
 .hello-dash {

@@ -4,6 +4,8 @@ import 'nouislider/distribute/nouislider.css';
 import './compensation-slider.css';
 import { toHumanPrice, renderLoader, clearLoader } from '../views/base';
 import { customStripeButton } from './stripe';
+import { renderAll } from '../controllers/flightController';
+import { populateSearchFields } from '../views/searchView';
 
 window.addEventListener('load', () => {
 	if ($('#title-target')[0] != null) {
@@ -11,21 +13,33 @@ window.addEventListener('load', () => {
     const render = createCompensationMarkup(flight);
     clearLoader($('#title-target')[0]);
     document.getElementById('title-target').insertAdjacentHTML('afterbegin', render);
-    customStripeButton()
+    // customStripeButton();
     const sliderAnchor = document.getElementById('slider__compensation');
 
     initializeUislider(sliderAnchor, flight);
     sliderDesign(flight);
     switchIcons(flight);
+    goBackToResearch();
 	}
 })
+
+function goBackToResearch() {
+  const target = document.getElementById('back-to-research-target');
+  target.addEventListener('click', () => {
+    clearLoader($('#title-target')[0]);
+    $('#title-target')[0].style.minHeight = '0px';
+    renderAll($('#title-target')[0]);
+    document.getElementById('back-to-research-bar').style.display = 'block';
+    populateSearchFields();
+  })
+}
 
 function sliderDesign(flight) {
 	document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="position__square"></div><p class="position__lower">0.00€</p>`);
   document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<p class="position__upper">${toHumanPrice(flight.treepDetteEcologique)}€</p>`);
   document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="end__square"></div>`);
-  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__treep"><p>La part de Treep</p></div>`);
-  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__user"><p>La part du User</p></div>`);
+  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__treep"><p>La part de Skytree'p</p></div>`);
+  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__user"><p>Votre mission écologique si vous l'acceptez</p></div>`);
 }
 
 function triggerPayment(slider) {
@@ -193,7 +207,16 @@ function createCompensationMarkup(flight) {
 	const markup = `
 	  <div class="background__container">
       <div class="compensation-background-layer">
-  		  <h3 style="margin-top:0;padding-top:20px;">Bravo, en passant par Skytree'p, vous avez déja remboursé ${pourcentageSkytreep}% de votre dette écologique !</h2>
+        <div class="modal-like-frame">
+          <h4>bienvenue sur la page de compensation, ici vous pouvez:</h4>
+          <div class="compensation-choix-user">
+            <button style="background-color: #0ADEA9;">Régler votre dette</button>
+            <button style="background-color: #0CC094;">Verser la part de Skytree'p uniquement</button>
+            <button id="back-to-research-target" style="background-color: #1CA8B9;">Continuer vos recherches</button>
+          </div>
+
+        </div>
+  		  <h3>Bravo, en passant par Skytree'p, vous avez déja remboursé ${pourcentageSkytreep}% de votre dette écologique !</h2>
   			<div class="compensation__container">
 
   				<div class="compensation__stats__container">
@@ -231,6 +254,55 @@ function createCompensationMarkup(flight) {
 	return markup
 }
 
+
+// function insertSearchBar() {
+//   const markupBar = `
+//       <div class="search__bar__container">
+//         <div class="search__bar__element__container">
+//             <div class="search__bar__options">
+//                 <div class="aller-retour">
+//                     <select id="flight_type">
+//                         <option value="oneway">Aller simple</option>
+//                       <option value="round">Aller retour</option>
+//                     </select>
+//                 </div>
+
+
+//                 <p class="passager__description">Passagers</p>
+//                 <div class="passager">
+//                     <div class="value-button" id="decrease"  value="Decrease Value"><p>-</p></div>
+//                         <input type="number" id="passengers" min="1" max="9" value="1" />
+//                     <div class="value-button" id="increase"  value="Increase Value"><p>+</p></div>
+//                 </div>
+//             </div>
+//             <div class="search__bar__frame">
+//                 <form class="search">
+//                     <div class="search__bar__box">
+//                         <input type="text" class="search__field left-element" id="departLoc__search" autocomplete="off" placeholder="Partir de" list="airports__depart">
+//                         <input type="text" class="search__field right-element" id="returnLoc__search" autocomplete="off" placeholder="Aller à" list="airports__return">
+//                     </div>
+//                     <div class="search__bar__box">
+//                         <input type="text" class="search__field left-element" id="departDate__search" placeholder="Aller le">
+//                         <input type="text" class="search__field right-element" id="returnDate__search" placeholder="Retour le">
+//                     </div>
+//                     <button class="checkout__button blue" id="">
+//                         Rechercher
+//                     </button>
+
+//                 </form>
+//             </div>
+//         </div>
+//     </div>
+
+//     <datalist id="airports__depart"></datalist>
+//     <datalist id="airports__return"></datalist>
+//   `
+//   document.querySelector('.flights__container').insertAdjacentHTML('beforeBegin', markupBar)
+// }
  
+
+
+
+
 // <button class="checkout__button" id="trigger-payment" style="width: 80%">PAYER MA DETTE ECOLOGIQUE</button>
 

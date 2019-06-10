@@ -2,76 +2,40 @@
 
 </div>
 
-<div class="search__bar__container" id="search__bar__home__background">
-    <div class="search__bar__element__container">
-        
-        <form class="search" id="home__search__form" method="get" action="http://www.skytreep.fr/search">
-          <!-- http://localhost:3000/search -->
-          <!-- http://www.skytreep.fr/search -->
-            <div class="search__bar__options">
-                <div class="aller-retour">
-                    <select id="flight_type" name="flight_type">
-                        <option value="oneway">Aller simple</option>
-                        <option selected="selected" value="round">Aller retour</option>
-                    </select>
-                </div>
+<div class="search__bar__element__container">
+    <div class="search__bar__options">
+        <div class="aller-retour">
+            <select id="flight_type">
+                <option value="round">Aller retour</option>
+                <option value="oneway">Aller simple</option>
+            </select>
+        </div>
 
-                
-                <p class="passager__description">Passagers</p>
-                <div class="passager">
-                    <div class="value-button" id="decrease"  value="Decrease Value"><p>-</p></div>
-                        <input type="number" id="passengers" name="passengers" min="1" max="9" value="1" />
-                    <div class="value-button" id="increase"  value="Increase Value"><p>+</p></div>
-                </div>
+
+        <p class="passager__description">Passagers</p>
+        <div class="passager">
+            <div class="value-button" id="decrease"  value="Decrease Value"><p>-</p></div>
+                <input type="number" id="passengers" min="1" max="9" value="1" />
+            <div class="value-button" id="increase"  value="Increase Value"><p>+</p></div>
+        </div>
+    </div>
+    <div class="search__bar__frame">
+        <form class="search">
+            <div class="search__bar__box">
+                <input type="text" class="search__field left-element" id="departLoc__search" autocomplete="off" placeholder="Partir de" list="airports__depart">
+                <input type="text" class="search__field right-element" id="returnLoc__search" autocomplete="off" placeholder="Aller à" list="airports__return">
             </div>
-            <div class="search__bar__frame" id="search__bar__frame__home">
-                <div class="search__bar__box home__search__box">
-                    <input type="text" class="search__field home__search__field left-element" autocomplete="off" id="departLoc__search" name="depart" placeholder="Partir de" list="airports__depart">
-                    <input type="text" class="search__field home__search__field right-element" autocomplete="off" id="returnLoc__search" name="return" placeholder="Aller à" list="airports__return">
-                </div>
-                <div class="search__bar__box home__search__box">
-                    <input type="text" class="search__field home__search__field left-element" id="departDate__search" name="from" placeholder="Aller le">
-                    <input type="text" class="search__field home__search__field right-element" id="returnDate__search" name="to" placeholder="Retour le">
-                </div>
-                <button class="checkout__button home__search__button" id="blue">
-                    <span>Rechercher</span>
-                </button>
+            <div class="search__bar__box">
+                <input type="text" class="search__field left-element" id="departDate__search" placeholder="Aller le">
+                <input type="text" class="search__field right-element" id="returnDate__search" placeholder="Retour le">
             </div>
+            <button class="checkout__button blue">
+                Rechercher
+            </button>
+
         </form>
     </div>
 </div>
 
-
-  <!-- <div class="border-form">
-    <i class="fas fa-plane-departure"></i>
-    <i class="fas fa-plane-arrival"></i>
-    <div class="square1"></div>
-    <div class="square2"></div>
-
-    <form class="search" method="get" action="http://localhost:3000/search">
-      <ul>
-
-        <li class="allez-retour">
-          <select name="flight_type" id="flight_type">
-            <option value="oneway">Aller simple</option>
-            <option selected="selected" value="round">Aller retour</option>
-          </select>
-        </li>
-
-        <li class="passager">
-          <input type="number" value="1" min="1" max="9" name="passengers" id="passengers">
-          <li><i class="fas fa-arrow-down"></i></li>
-        </li>
-
-      </ul>
-      <input  type="text" name="depart" class="search__field search__field1 " id="departLoc__search" placeholder="    Paris (PAR)" list="airports__depart">
-      <input type="text" name="return" class="search__field search__field2" id="returnLoc__search" placeholder="    À ? " list="airports__return">
-      <input type="text" name="from" class="search__field search__field3" id="departDate__search" placeholder="Date allez">
-      <input type="text" name="to" class="search__field search__field3" id="returnDate__search" placeholder="Date retour">
-      <button class="btn search__btn">
-          <span>Rechercher</span>
-      </button>
-    </form>
-  </div> -->
 
 

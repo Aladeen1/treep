@@ -1,7 +1,6 @@
 #slider__compensation {  
-	width: 550px;
+	width: 650px;
 	margin: auto;
-	/*margin-top: 150px;*/
 	background-color: #E8EEF2;
 }
 
@@ -14,7 +13,7 @@
     width: 80px;
     height: 25px;
     position: absolute;
-    top: -25px;
+    top: -26px;
     left: -22px;
     background-color: #fbfaeb;
     color: black;
@@ -31,6 +30,8 @@
 	height: 32px;
 	width: 32px;
 	background-color: #00C896;
+    border: none;
+    box-shadow: none;
 } 
 
 #slider__compensation .noUi-handle:hover {
