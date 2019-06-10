@@ -293,6 +293,7 @@ function createOptionsAnchor() {
 
         </div>
     `
+    
     elements.searchContainer.insertAdjacentHTML('afterbegin', markup)
 }
 

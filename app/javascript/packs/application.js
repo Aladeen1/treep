@@ -3,7 +3,7 @@ import 'components/compensation';
 import 'components/dashboard';
 import 'components/calendar';
 import 'components/stripe';
-import { handleFieldTransition } from 'components/calendarInputSwitch';
+import 'components/searchBar';
 import 'components/passagerNumber';
 import 'components/sliderRange';
 import "bootstrap";
@@ -11,7 +11,7 @@ import { elements, search } from '../views/base';
 import * as flights from '../controllers/flightController';
 import * as airports from '../controllers/locationController';
 import Search from '../models/Search';
-import { getInput, setInput } from '../views/searchView';
+import { getInput, setInput, populateSearchFields } from '../views/searchView';
 
 
 
@@ -24,9 +24,10 @@ airports.formatInputLocation();
 
 if (elements.searchForm) {
   elements.searchForm.addEventListener('submit', envoi => {
+
+  const compensation = document.getElementById('backToResearch');
     
-    
-    if (search != null) {
+    if (search != null || compensation != null) {
       envoi.preventDefault();
       flights.controlSearch();
     }
@@ -35,25 +36,9 @@ if (elements.searchForm) {
 }
 
 
-
-
-
 window.addEventListener('load', () => {
   if (search != null) {
-    const landParams = new URL(window.location.href);
-    setInput('searchDepartInput', landParams.searchParams.get('depart'));
-    setInput('searchReturnInput', landParams.searchParams.get('return'));
-    setInput('searchDepartDateFrom', landParams.searchParams.get('from'));
-    setInput('searchFlightType', landParams.searchParams.get('flight_type'));
-    setInput('searchPassengers', landParams.searchParams.get('passengers'));
-    if (landParams.searchParams.get('flight_type') === 'round') {
-      setInput('searchReturnDateFrom', landParams.searchParams.get('to'));
-      elements.searchFlightType.children[1].setAttribute('selected', 'selected');
-      handleFieldTransition(elements.searchFlightType.value);
-    } else {
-      elements.searchFlightType.children[0].setAttribute('selected', 'selected');
-      handleFieldTransition(elements.searchFlightType.value);
-    }
+    populateSearchFields();
     flights.controlSearch();
   }
 });
