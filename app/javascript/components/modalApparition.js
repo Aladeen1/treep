@@ -1,6 +1,8 @@
 import { getInput } from '../views/searchView';
 import { toHumanPrice } from '../views/base'; 
 
+
+
 export const targetRedirection = () => {
 	
 	const targets = document.querySelectorAll('.redirection__target');
@@ -23,19 +25,20 @@ export const targetRedirection = () => {
 			console.log(flight);
 		    localStorage.setItem('userFlight', JSON.stringify(flight));
 		    // fillHiddenFields(flight);
-            // insertCompensationText(flight);
-            window.location.href = "http://localhost:3000/compensation"
-            // $('#compensation').modal('show');
+            
+            window.location.href = "http://localhost:3000/compensation";
+            // "http://www.skytreep.fr/compensation"
+            // "http://localhost:3000/compensation"
 		})
 	})
 }
 
-function switchTitle(flight) {
+function switchTitle() {
 	const title = document.querySelector('title');
 	
 	setInterval( () => {
 		if (title.innerHTML == "Skytree'p") {
-			title.innerHTML = `(1) Compensation ${flight.cityTo} trip available`;
+			title.innerHTML = `(1) Compensation available`;
 		} else {
 			title.innerHTML = "Skytree'p";
 		}
@@ -44,8 +47,8 @@ function switchTitle(flight) {
 
 
 // dans la fonction global ça part au click.
-function fillHiddenFields(flight) {
-	console.log('feeling it');
+export const fillHiddenFields = (flight) => {
+	console.log('filling it');
 	sendValueInField('price', flight, 'price')
 	sendValueInField('ville_aller', flight, 'cityFrom')
 	sendValueInField('ville_retour', flight, 'cityTo' )
@@ -58,16 +61,18 @@ function fillHiddenFields(flight) {
 	sendValueInField('skytreep_participation', flight, 'treepCompensation')
 }
 
+const inputs = JSON.parse(localStorage.getItem('UserInputs'))
 
 function sendValueInField(id, flight, type) {
     let element;
-	const target = document.getElementById(id);  
+	const target = document.getElementById(id);
+	
     
     if (type == "date_aller") {
-      element = getInput('searchDepartDateFrom');
+      element = inputs.date_aller;
       console.log(element)
     } else if (type == "date_retour" && flight.routeRetour.length > 0) {
-      element = getInput('searchReturnDateFrom');
+      element = inputs.date_retour;
       console.log(element)
     } else if (type == 'status') {
     	element = 'pending';
@@ -75,18 +80,17 @@ function sendValueInField(id, flight, type) {
     	element = flight[type];
     }
 
-    
     target.setAttribute('value', element);
 }
 
  
-function insertCompensationText(flight) {
-	const markup = `	      
-		<p> Voulez vous compenser une partie de votre empreinte carbone qui sera émise lors de votre séjour à ${flight.cityTo}?</p>
-		<p> Cette dernière s'élève à ${toHumanPrice(flight.treepDetteEcologique)}€ pour ${flight.treepCarbonEmission}kg de CO2 rejeté </p>	      
-	`
-	document.getElementById('insert-compensation-text').insertAdjacentHTML('afterbegin', markup)
-}
+// function insertCompensationText(flight) {
+// 	const markup = `	      
+// 		<p> Voulez vous compenser une partie de votre empreinte carbone qui sera émise lors de votre séjour à ${flight.cityTo}?</p>
+// 		<p> Cette dernière s'élève à ${toHumanPrice(flight.treepDetteEcologique)}€ pour ${flight.treepCarbonEmission}kg de CO2 rejeté </p>	      
+// 	`
+// 	document.getElementById('insert-compensation-text').insertAdjacentHTML('afterbegin', markup)
+// }
 
 
 

@@ -57,7 +57,6 @@ function displayDetteEcoInfos(array, flight, type) {
 			  <p style="margin: 15px 0px;">${type > 0 ? 'Aller - Retour': 'Aller'}</p>
 			  <p>Distance effective: ${flight.treepDistanceEffective}Km</p>
 			  <p>co2 émis: ${flight.treepCarbonEmission}Kg</p>
-			  <p>Skytreep Commission: ${toHumanPrice(flight.treepCommission)}€</p>
 			  <p>Skytreep Participation: ${toHumanPrice(flight.treepCompensation)}€</p>
 			  <p>Montant total: ${toHumanPrice(flight.treepDetteEcologique)}€</p>
 			  <div class="dette__infographie__container">
