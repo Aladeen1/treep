@@ -37,6 +37,9 @@ function sendData() {
 			envoi.preventDefault();
 			cacheInputs();
 			window.location.href = "http://localhost:3000/search";
+			// "http://localhost:3000/search"
+			// "http://www.skytreep.fr/search"
+
 		})
 	}
 }

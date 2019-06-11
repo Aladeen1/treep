@@ -68,38 +68,40 @@ function clearDatalists() {
 }
 
 export const formatInputLocation = () => {
-  let inputAller = document.getElementById('departLoc__search');
-  let inputRetour = document.getElementById('returnLoc__search');
+  if (document.querySelector('.search__bar__element__container')) {
+    let inputAller = document.getElementById('departLoc__search');
+    let inputRetour = document.getElementById('returnLoc__search');
 
-  inputAller.addEventListener('input', (event) => {
-      
-      if (event.inputType != 'insertText' && event.inputType != 'deleteContentBackward') {
+    inputAller.addEventListener('input', (event) => {
+        
+        if (event.inputType != 'insertText' && event.inputType != 'deleteContentBackward') {
 
-        let originalValue = inputAller.value;
-        let array = originalValue.split(',').slice(1, 3);
-        // array.map (elt => {
-        //   console.log(elt) 
-        //   elt.split(' ').join('')
-        // });
-        // array[1] = `(${array[1]})`;
-        inputAller.value = array.join(',');
-      }
-  })
+          let originalValue = inputAller.value;
+          let array = originalValue.split(',').slice(1, 3);
+          // array.map (elt => {
+          //   console.log(elt) 
+          //   elt.split(' ').join('')
+          // });
+          // array[1] = `(${array[1]})`;
+          inputAller.value = array.join(',');
+        }
+    })
 
-  inputRetour.addEventListener('input', (event) => {
-      
-      if (event.inputType != 'insertText' && event.inputType != 'deleteContentBackward') {
+    inputRetour.addEventListener('input', (event) => {
+        
+        if (event.inputType != 'insertText' && event.inputType != 'deleteContentBackward') {
 
-        let originalValue = inputRetour.value;
-        let array = originalValue.split(',').slice(1, 3);
-        // array.map (elt => {
-        //   console.log(elt) 
-        //   elt.split(' ').join('')
-        // });
-        // array[1] = `(${array[1]})`;
-        inputRetour.value = array.join(',');
-      }
-  })
+          let originalValue = inputRetour.value;
+          let array = originalValue.split(',').slice(1, 3);
+          // array.map (elt => {
+          //   console.log(elt) 
+          //   elt.split(' ').join('')
+          // });
+          // array[1] = `(${array[1]})`;
+          inputRetour.value = array.join(',');
+        }
+    })
+  } 
 }
 
 
