@@ -1,5 +1,5 @@
 <div id='backToResearch'></div>
-<div id="title-target">
+<div id="title-target-compensation">
 	<div class="center__loader">
         <img class="loader" src="https://res.cloudinary.com/tark-industries/image/upload/v1556034462/Spinner1.png">
     </div>
@@ -18,4 +18,22 @@
 <div class="flights__container" style="min-height: 0px;">
  	
     
+</div>
+
+<div class="hide__form">
+	<%= form_tag flights_path, :class => 'compensation-only-skytreep' do %>
+	  
+	  <%= hidden_field_tag 'price'%>
+	  <%= hidden_field_tag 'ville_aller'%>
+	  <%= hidden_field_tag 'ville_retour'%>
+	  <%= hidden_field_tag 'date_aller'%>
+	  <%= hidden_field_tag 'date_retour'%>
+	  <%= hidden_field_tag 'distance'%>
+	  <%= hidden_field_tag 'co2'%>
+	  <%= hidden_field_tag 'status'%>
+	  <%= hidden_field_tag 'dette_eco'%>
+	  <%= hidden_field_tag 'skytreep_participation'%>
+
+	  <button type="submit" style="background-color: #0CC094;">Verser la part de Skytree'p uniquement</button>
+	<% end %>
 </div>

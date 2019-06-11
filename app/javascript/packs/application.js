@@ -1,5 +1,6 @@
-import 'components/filterSearch';
 import 'components/compensation';
+import 'components/filterSearch';
+import 'components/redirection';
 import 'components/dashboard';
 import 'components/calendar';
 import 'components/stripe';
