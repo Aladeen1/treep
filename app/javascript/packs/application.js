@@ -1,3 +1,4 @@
+import 'components/home__sliders';
 import 'components/compensation';
 import 'components/filterSearch';
 import 'components/redirection';

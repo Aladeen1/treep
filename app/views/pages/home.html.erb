@@ -25,84 +25,95 @@
     </div>
   </div>
 
-
-
-  <div id="section2">
-    <div class= "home__frame">
-      <div class="logo-ccm">
-        <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556618787/LOGO_SKYTREE_P_noir.png">
+  <div class="home-example-main-container">
+    <div class="home-example-title-container">
+      <img style="height: 100px;" src="https://res.cloudinary.com/tark-industries/image/upload/v1556618787/LOGO_SKYTREE_P_noir.png">
+      <h4>Comment ça marche ?</h3>
+    </div>
+    <div class="home-example-etape-container">
+      <div class="home-example-etape-title">
+        <p class="etape-number">1</p>
+        <p class="etape-text">Pour chaque billet et par passager, nous calculons <strong>le montant de Co2</strong> rejeté dans l'atmosphère.</p>
+      </div>
+      
+      <div class="home-example-section-container double-div">
+        <p class="slider-title-text">CO2 :</p>
+        <div style="width: 600px">
+          <div style="display:flex;">
+            <select id="home-example-selection-depart">
+              <option value="paris">Paris</option>
+              <option value="berlin">Berlin</option>
+              <option value="stockholm">Stockholm</option>
+              <option value="madrid">Madrid</option>
+              <option value="turin">Turin</option>
+              <option value="varsovie">Varsovie</option>
+            </select>
+            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1560346067/plane_go_up.png">
+            <%= render 'shared/fly-way' %>
+            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1560346060/plane_landing.png">
+            <select id="home-example-selection-arrivee">
+              <option value="berlin">Berlin</option>
+              <option value="paris">Paris</option>
+              <option value="stockholm">Stockholm</option>
+              <option value="madrid">Madrid</option>
+              <option value="turin">Turin</option>
+              <option value="varsovie">Varsovie</option>
+            </select>
+          </div>
+          <div id="home-slider-target-co2" style="width:600px;margin-top:35px;height:12px;margin-bottom:20px;"></div>
+        </div>
+        <p class="checkout__button" style="margin-left: 50px;">En savoir plus</p>
       </div>
 
-      <div class="ccm">
-        <h5>Comment ça marche ?</h5>
-      </div>
-
-      <div class="section-video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ldYY72_0jJo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
-      <div class="container__solution">
-
-        <div class="ticket">
-          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1548511349/ticket.png">
-        </div>
-
-        <div class="solution">
-          <h4>Notre solution: la dette écologique</h4>
-          <h5 style="text-align:justify;">Pour chaque trajet, Skytree'p calcule le nombre de km, le modèle de l’avion et sa consommation puis en déduit le rejet de Co2 par passager.</h5>
-          <h5 class="def-dette">La dette écologique c’est le prix du nombre d’arbres nécessaire pour compenser les rejets de Co2 d’un voyage.</h5>
-        </div>
-
+    <div class="home-example-etape-container">
+      <div class="home-example-etape-title">
+        <p class="etape-number">2</p>
+        <p class="etape-text">Ensuite nous calculons <strong>le nombre d'arbres à planter</strong> pour compenser le co2 émis par votre trajet.</p>
       </div>
-
-      <div class="container__explications">
-
-        <div class="explication__1">
-          <div style="text-align:center;margin-bottom: 17px;margin-top: -20px">
-            <img class="number" src="https://res.cloudinary.com/tark-industries/image/upload/v1548514473/treep_expl1.png">
+      
+      <div class="home-example-section-container double-div">
+        <p class="slider-title-text">Arbres :</p>
+        <div style="width: 600px">
+          <div style="display:flex;">
+            <select>
+              <option id="home-example-display-depart">Paris</option>
+            </select>
+            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1560346067/plane_go_up.png">
+            <%= render 'shared/fly-way' %>
+            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1560346060/plane_landing.png">
+            <select>
+              <option id="home-example-display-arrivee">Berlin</option>
+            </select>
           </div>
-          <h4>Skytree'p paye une partie de votre dette écologique.</h4>
-          <h5>Lorsque vous passez par Skytree'p, vous avez déja fait un pas.</h5>
-          <h5>En effet, une partie de votre dette est financée par les commissions que Skytree'p perçoit lorsque vous réservez votre billet.
-          Environ 6% de votre dette est automatiquement prise en charge par Skytree'p.</h5>
-          <div class="boutons__explication" style="margin-top: 10px;">
-            <a class="section2-button white-tooltip" href="#" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<h6>Nous plantons des arbres avec 80% de nos bénefices !</h6>
-            <p>Lorsque vous sélectionnez un billet, vous êtes redirigé chez l’un de nos partenaires. Pour ce service Treep gagne environ 2,2% du prix de votre billet. Avec 80% des bénefices que chaque utilisateur nous rapporte, nous commençons le paiement de sa dette écologique. Donc concrètement, en passant par Treep, vous avez déjà commencé a rembourser la planète ! <br>
-            Les 20% restant nous permettent de stocker de l'argent pour de futur projets, améliorations du site.</p>">
-              Transparence financière
-            </a>
-            <a class="section2-button white-tooltip" href="#" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<h6>Treep gagne de l'argent grâce a vous !</h6>
-            <p>En effet, à chaque fois que nous vous redirigeons vers une compagnie aérienne ou une agence de voyage, celle-ci nous rémunère en retour. C'est entre 1 et 3% du prix de votre billet. Mais vous le savez déjà, nos bénéfices permettent de financer une partie de votre dette écologique.
-            D'autre part nous gagnons aussi de l'argent grâce aux publicitées. <br>
-            Cliquez sur le bouton pour pouvoir accéder à nos rapports financiers.</p>">
-              Les revenues de Skytree'p
-            </a>
-          </div>
+          <div id="home-slider-target-arbres" style="width:600px;margin-top:35px;height:12px;margin-bottom:20px;"></div>
         </div>
-
-        <div class="explication__2">
-          <div>
-            <div style="text-align:center;margin-bottom: 17px;margin-top: -20px">
-              <img class="number" src="https://res.cloudinary.com/tark-industries/image/upload/v1548514472/treep_expl2.png">
-            </div>
-            <h4>Vous avez le choix !<br>Votre dette est entre vos seules mains.</h4>
-          </div>
-          <h5>Dès lors que Skytree'p à rempli sa mission, le reste est entre vos mains, vous pouvez remboursez partiellement ou entièrement votre dette écologique!</h5>
-          <div class="boutons__explication">
-            <a class="section2-button white-tooltip" href="#" data-toggle="tooltip" data-html="true" data-placement="bottom" title="
-            <h6>Des meilleurs calculs a venir!</h6>
-            <p>Ce site n'est encore qu'un MVP (prototype), la dette n'est pas encore calculée en prenant en compte le modèle de l'avion. Découvrez notre méthode de calcul du C02 émis lors des vols en cliquant sur ce lien.</p>">
-              Comment est calculée la dette ?
-            </a>
-            <a class="section2-button white-tooltip" href="#" data-toggle="tooltip" data-html="true" data-placement="bottom" title="
-              <h6>Dans votre Dashboard. <br>
-                Ou consultez l'onglet qui s'affiche lors de votre achat.</h6>
-              <p>Vous pouvez consulter tout vos voyages sur votre compte. D'autre part dès que vous sélectionnez un billet un onglet s'ouvre, vous indiquant comment compenser les émissions à venir du voyage que vous avez choisi. Et voilà!</p>">
-              Comment payer la dette ?
-            </a>
-          </div>
-        </div>
+        <p class="checkout__button" style="margin-left: 50px;">En savoir plus</p>
       </div>
+    </div>
+    <div class="home-example-etape-container">
+      <div class="home-example-etape-title">
+        <p class="etape-number">3</p>
+        <p class="etape-text">Rien qu’en passant par SKYTREE’P, et c’est gratuit, vous avez déjà compensé 20% de votre trajet en moyenne!</p>
+      </div>
+      
+      <div class="home-example-section-container" style="margin-top: 45px;">
+        <p style="width:130px; margin-right:30px; text-align:right;">Compensation :</p>
+        <div id="home-slider-target-compensation" style="width:600px;height:12px;">
+          
+        </div>
+        <p class="checkout__button" style="margin-left: 50px;">En savoir plus</p>
+      </div>
+    </div>
+    <div class="home-example-etape-container" style="margin-top: 85px;">
+      <div class="home-example-etape-title last-etape">
+        <p class="etape-number">4</p>
+        <p class="etape-text last-etape-text">Dernière étape,<br>Vous décidez ou non de faire un don à l'une de nos associations partenaires afin de compenser le reste des émissions de co2 de votre trajet.</p>
+      </div>
+    </div>
+    <div style="display:flex;justify-content: center;">
+      <a href="#" class="checkout__button go-button-home">C'est parti !</a>
     </div>
   </div>
 </div>
