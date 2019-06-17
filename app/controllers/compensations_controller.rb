@@ -17,7 +17,6 @@ class CompensationsController < ApplicationController
 
   def create
     
-    byebug
     @flight = Flight.new(flight_params)
     @flight.user = current_user
     @flight.save!
@@ -37,7 +36,7 @@ class CompensationsController < ApplicationController
     
     @flight.update(status: 'paid')
 
-    flash[:notice] = "Félicitations, vous venez de financer la  plantation de #{@flight.skytreep_participation / 20} arbres"
+    flash[:notice] = "Félicitations, vous venez de financer la  plantation de #{(@flight.skytreep_participation + @flight.user_participation) / 20} arbres"
 
     # Update la dette écologique correspondant au vol.
 
