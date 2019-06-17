@@ -17,10 +17,6 @@ import { getInput, setInput, populateSearchFields } from '../views/searchView';
 
 
 
-
-
-console.log('Hello from webpacker');
-
 airports.displayAirports();
 airports.formatInputLocation();
 

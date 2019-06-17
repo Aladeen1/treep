@@ -69,6 +69,7 @@ function clearDatalists() {
 
 export const formatInputLocation = () => {
   if (document.querySelector('.search__bar__element__container')) {
+    console.log("sanitazing inputs")
     let inputAller = document.getElementById('departLoc__search');
     let inputRetour = document.getElementById('returnLoc__search');
 
