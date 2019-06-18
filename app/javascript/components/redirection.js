@@ -50,6 +50,7 @@ function goBackToResearch() {
   })
 }
 
+
 export const sliderDesign = (flight) => {
 	document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="position__square"></div><p class="position__lower">0.00€</p>`);
   document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<p class="position__upper">${toHumanPrice(flight.treepDetteEcologique)}€</p>`);
