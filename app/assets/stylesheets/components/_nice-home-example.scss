@@ -1,13 +1,16 @@
 .home-example-main-container {
 
-  select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      text-indent: 1px;
-      text-overflow: '';
-      text-align-last: center;
-      height: 40px;
-      width: 100px;
+
+	select {
+	    -webkit-appearance: none;
+	    -moz-appearance: none;
+	    text-indent: 1px;
+	    text-overflow: '';
+	    text-align-last: center;
+	    height: 50px;
+    	width: 120px;
+	    border: 1px solid #E0E0E0;
+	    background-color: #F4F4F4;
 
       &:hover {
         background-color: rgba(171, 181, 169, 0.7)
@@ -32,7 +35,8 @@
 }
 
 .home-example-etape-container {
-  margin-top: 70px;
+	padding: 40px 0px;
+	margin: 20px 0px;
 }
 
 
@@ -124,7 +128,8 @@
 
 
 .double-div {
-  align-items: flex-end;
+	align-items: flex-end;
+	margin-top: 40px;
 }
 
 .home-example-etape-title {
@@ -139,12 +144,12 @@
 }
 
 .last-etape {
-  background: #FFFFFF;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  margin: auto;
-  margin-top: 130px;
-  width: 720px;
+	background: #FFFFFF;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+	border-radius: 15px;
+	margin: auto;
+	margin-top: 75px;
+	width: 720px;
     align-items: center;
     padding: 10px;
 }
@@ -157,7 +162,8 @@
   width: 260px;
     display: inline-block;
     text-align: center;
-    margin: 30px 0px 40px 0px;
+    margin: 20px 0px 20px 0px;
+    height: 50px;
 }
 
 .fly-way-style {
@@ -176,9 +182,49 @@
 }
 
 .slider-main-infos {
-  width: 600px;
-    height: 130px;
+	width: 650px;
+    height: 140px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    div {
+    	display: flex;
+    	align-items: flex-end;
+    }
 }
+
+.le-vrai-pouvoir-all-container {
+	h3 {
+		text-align: center;
+		margin-top: 40x;
+	}
+}
+
+.le-vrai-pouvoir-div-container {
+	display: flex;
+	justify-content: space-around;
+	margin: 40px 0px;
+}
+
+.le-vrai-pouvoir-div {
+	width: 340px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+
+    img {
+    	width: 340px;
+    }
+
+    h4 {
+    	text-align: center;
+    	margin-top: 25px;
+    	margin-bottom: 40px;
+	}
+
+    p {
+    	text-align: justify;
+    	padding: 0px 26px;
+    	margin-bottom: 15px;
+    }
+}
+    
