@@ -211,6 +211,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootsnap
   bootstrap-sass (~> 3.3)
+  connection_pool
   devise
   dotenv-rails
   faker

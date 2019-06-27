@@ -15,6 +15,18 @@ ActiveRecord::Schema.define(version: 2019_05_27_111549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "dette_ecos", force: :cascade do |t|
+    t.integer "total"
+    t.integer "skytreep_participation"
+    t.integer "user_participation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "flight_id"
+    t.index ["flight_id"], name: "index_dette_ecos_on_flight_id"
+    t.index ["user_id"], name: "index_dette_ecos_on_user_id"
+  end
+
   create_table "flights", force: :cascade do |t|
     t.integer "price"
     t.string "ville_aller"
@@ -46,5 +58,7 @@ ActiveRecord::Schema.define(version: 2019_05_27_111549) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "dette_ecos", "flights"
+  add_foreign_key "dette_ecos", "users"
   add_foreign_key "flights", "users"
 end
