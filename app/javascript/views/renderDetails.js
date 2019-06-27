@@ -63,7 +63,7 @@ function displayDetteEcoInfos(array, flight, type) {
 			  	<div class="dette__infographie__skyparticipation" style="width: ${width[0]}%;">${toHumanPrice(flight.treepCompensation)}€</div>
 			  	<div class="dette__infographie__reste" style="width: ${width[1]}%;">${toHumanPrice(flight.treepDetteUser)}€</div>
 			  </div>
-			</div>
+			</div> 
 		</div>
 	`
 	return markup
@@ -106,7 +106,7 @@ function markupRoute(array) {
 				</div>
 
 				<div class="tranche__container second__tranche">
-					<p class="text__formatting__details first__row">${displayFlightTimeRoute(route.aTime, route.dTime)}</p>
+					<p class="text__formatting__details first__row">${displayFlightTimeRoute(route.aTimeUTC, route.dTimeUTC)}</p>
 					<div class="details__straight__experiment"></div>
 					<p class="text__formatting__details"></p>					
 				</div>
@@ -163,7 +163,7 @@ function markupEscales(route, indice, tableau, time) {
 			</div>
 
 			<div class="tranche__container escale__tranche">
-		   		<p class="text__formatting__details first__row">${displayFlightTimeRoute(tableau[indice + 1].dTime, route.aTime)}</p>
+		   		<p class="text__formatting__details first__row">${displayFlightTimeRoute(tableau[indice + 1].dTimeUTC, route.aTimeUTC)}</p>
 		   		<div class="details__straight__escale"></div>
 		   		<p class="text__formatting__details">${route.cityTo}</p>
 			</div>
@@ -222,21 +222,21 @@ function timeFormating(aTime, dTime) {
 	const depart = new Date(dTime * 1000);
 	const arrivee = new Date(aTime * 1000);
 
-	let departHours = depart.toString().split(" ")[4].split(":")[0];
-	let departMinutes = depart.toString().split(" ")[4].split(":")[1];
-	let arriveeHours = arrivee.toString().split(" ")[4].split(":")[0];
-	let arriveeMinutes = arrivee.toString().split(" ")[4].split(":")[1];
+	let departHours = depart.toUTCString().split(" ")[4].split(":")[0];
+	let departMinutes = depart.toUTCString().split(" ")[4].split(":")[1];
+	let arriveeHours = arrivee.toUTCString().split(" ")[4].split(":")[0];
+	let arriveeMinutes = arrivee.toUTCString().split(" ")[4].split(":")[1];
     
     const jours = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
     const mois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 
-	let jourDepart = jours[depart.getDay()];
-	let jourNumberDepart = depart.getDate();
-	let moisDepart = mois[depart.getMonth()];
+	let jourDepart = jours[depart.getUTCDay()];
+	let jourNumberDepart = depart.getUTCDate();
+	let moisDepart = mois[depart.getUTCMonth()];
 
-	let jourArrivee = jours[arrivee.getDay()];
-	let jourNumberArrivee = arrivee.getDate();
-	let moisArrivee = mois[arrivee.getMonth()]
+	let jourArrivee = jours[arrivee.getUTCDay()];
+	let jourNumberArrivee = arrivee.getUTCDate();
+	let moisArrivee = mois[arrivee.getUTCMonth()]
 
   	return [departHours, departMinutes, arriveeHours, arriveeMinutes, jourDepart, jourNumberDepart, moisDepart, jourArrivee, jourNumberArrivee, moisArrivee]
 }

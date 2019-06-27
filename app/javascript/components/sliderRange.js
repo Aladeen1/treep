@@ -4,8 +4,6 @@ import { elements } from "../views/base";
 import './details__slider.css';
 import { sortFlights } from '../views/sliderUtilisation';     
 
-    console.log('bo')    
-
 // Initialise les 6 sliders dont on a besoin en toutes occasions.
 // (à modifier pour le cas des retour on aura un departHour et arrivee en plus)
 
@@ -108,7 +106,7 @@ function identityCheck(element, val) {
     element.innerHTML = `${val} EUR`
   }
   //durée
-  else if (element.id === 'min-E' || element.id === 'max-E' || element.id === 'minRetour-E' || element.id === 'maxRetour-E') {
+  else if (element.id === 'min-E' || element.id === 'max-E' || element.id === 'minRetour-F' || element.id === 'maxRetour-F') {
     element.innerHTML = `${val.split(':')[0]}h ${val.split(':')[1]}min`;
   } 
   

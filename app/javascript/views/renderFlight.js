@@ -73,7 +73,7 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 							        <p>${flight.flyTo}</p>
 							        <div class="flight__schedule">
 							        	<p class="heure">${allerInfoFormatted[2]}:${allerInfoFormatted[3]}</p>
-							        	<p class="flight__days__added">${(allerArrivalDay.getDate() - allerDepartDay.getDate() > 0) ? "+" + `${(allerArrivalDay.getDate() - allerDepartDay.getDate())}`: ""}</p>
+							        	<p class="flight__days__added">${(allerArrivalDay.getUTCDate() - allerDepartDay.getUTCDate() > 0) ? "+" + `${(allerArrivalDay.getUTCDate() - allerDepartDay.getUTCDate())}`: ""}</p>
 							        </div>
 							      </div>
 							      <div class="flight__card__nom__airport">
@@ -188,8 +188,14 @@ function graphDetteEco(flight, id) {
 
 	const markup = `
 		<div class="dette__infographie__container__front" id="dette-id-${id}">
-		  	<div class="dette__infographie__skyparticipation" style="width: 35%;">${toHumanPrice(flight.treepCompensation)}€</div>
-		  	<div class="dette__infographie__reste" style="width: 65%;">${toHumanPrice(flight.treepDetteUser)}€</div>
+		  	<div class="dette__infographie__skyparticipation__preview" style="width: 40%;">
+			  	<div><p>${flight.treepCompensation / 20}</p></div>
+			  	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:32px;width:32px;">
+		  	</div>
+		  	<div class="dette__infographie__reste__preview" style="width: 60%;">
+			  	<div><p>${flight.treepDetteUser / 20}</p></div>
+			  	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:32px;width:32px;">
+		  	</div>
 		</div>
 	`
 	return markup
@@ -270,10 +276,10 @@ function departArriveeTime(routes) {
 
 function getFormattedTime(departureTime, arrivalTime) {
 
-    const departureMinutes = departureTime.toString().split(" ")[4].split(":")[1];
-	const departureHours = departureTime.toString().split(" ")[4].split(":")[0];
-	const arrivalMinutes = arrivalTime.toString().split(" ")[4].split(":")[1];
-	const arrivalHours = arrivalTime.toString().split(" ")[4].split(":")[0];
+    const departureMinutes = departureTime.toUTCString().split(" ")[4].split(":")[1];
+	const departureHours = departureTime.toUTCString().split(" ")[4].split(":")[0];
+	const arrivalMinutes = arrivalTime.toUTCString().split(" ")[4].split(":")[1];
+	const arrivalHours = arrivalTime.toUTCString().split(" ")[4].split(":")[0];
 
 
 	return [departureHours, departureMinutes, arrivalHours, arrivalMinutes]

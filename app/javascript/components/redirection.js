@@ -30,6 +30,8 @@ function reglementDetteEco() {
     window.location.href = "http://localhost:3000/compensations/new";
   })
 }
+// www.skytreep.fr
+// localhost:3000
 
 function versementSkytreep(flight) {
   const form = document.querySelector('.hide__form');
