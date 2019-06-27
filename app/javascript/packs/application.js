@@ -1,3 +1,4 @@
+import 'components/suggestions';
 import 'components/home__sliders';
 import 'components/compensation';
 import 'components/filterSearch';
@@ -17,8 +18,8 @@ import { getInput, setInput, populateSearchFields } from '../views/searchView';
 
 
 
-airports.displayAirports();
-airports.formatInputLocation();
+// airports.displayAirports();
+// airports.formatInputLocation();
 
 if (elements.searchForm) {
   elements.searchForm.addEventListener('submit', envoi => {

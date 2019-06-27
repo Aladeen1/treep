@@ -106,7 +106,7 @@ function identityCheck(element, val) {
     element.innerHTML = `${val} EUR`
   }
   //durée
-  else if (element.id === 'min-E' || element.id === 'max-E' || element.id === 'minRetour-E' || element.id === 'maxRetour-E') {
+  else if (element.id === 'min-E' || element.id === 'max-E' || element.id === 'minRetour-F' || element.id === 'maxRetour-F') {
     element.innerHTML = `${val.split(':')[0]}h ${val.split(':')[1]}min`;
   } 
   

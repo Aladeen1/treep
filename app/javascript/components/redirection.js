@@ -27,10 +27,10 @@ window.addEventListener('load', () => {
 function reglementDetteEco() {
   const target = document.getElementById('regler-dette-eco');
   target.addEventListener('click', () => {
-    window.location.href = "http://skytreep.fr/compensations/new";
+    window.location.href = "http://localhost:3000/compensations/new";
   })
 }
-// skytreep.fr
+// www.skytreep.fr
 // localhost:3000
 
 function versementSkytreep(flight) {
