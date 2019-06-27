@@ -48,8 +48,6 @@ function createRepartitionSlider(sliderAnchor, arbres) {
 
     const connects = sliderAnchor.getElementsByClassName('noUi-connect');
     const handles = sliderAnchor.getElementsByClassName('noUi-handle');
-    console.log(connects)
-    console.log(handles)
 
     handles[0].style.display = 'none';
     handles[1].style.display = 'none';
@@ -86,7 +84,7 @@ function createRepartitionElements() {
 	const markupTreep = `
 	    <div class="home-skytreep-share">
 			<div class='square__arbres__plantes'></div>
-			<p class='text__treep__arbres__plantes'>Vous avez plantés<br>2 arbres gratuitement</p>
+			<p class='text__treep__arbres__plantes'>Vous avez planté<br>2 arbres gratuitement</p>
 		</div>
 	`
 	const markupUser = `
@@ -95,7 +93,6 @@ function createRepartitionElements() {
 			<p class='text__user__arbres__plantes'>Selon votre volonté,<br>vous pouvez choisir de payer le reste de votre<br>dette écologique</p>
 		</div>
 	`
-    console.log(target)
 	target.insertAdjacentHTML('beforeEnd', treepNumber);
 	target.insertAdjacentHTML('beforeEnd', markupTreep);
 	target.insertAdjacentHTML('beforeEnd', userNumber);
@@ -161,9 +158,6 @@ function updateDistance(depart, arrivee) {
     const newPaddingCo2 = 750 - carbon;
     const arbres = Math.ceil(carbon / 20);
     const newPaddingArbres = 25 - arbres;
-    console.log(distance)
-    console.log(`${carbon}kg`)
-    console.log(arbres)
     return [carbon, newPaddingCo2, arbres, newPaddingArbres]
 }
 

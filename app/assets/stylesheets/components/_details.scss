@@ -162,7 +162,39 @@
 }
 
 
+.dette__infographie__skyparticipation__preview {
+  background-color: $blue;
+  border-radius: 3px 0px 0px 3px;
+}
 
+.dette__infographie__reste__preview {
+  background-color: $green;
+  border-radius: 0px 3px 3px 0px;
+}
+
+.dette__infographie__container__front {
+  min-width: 170px;
+  margin: 5px;
+  display: flex;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    div {
+      height: 32px;
+      display: flex;
+      align-items: flex-end;
+
+      p {
+        color: white;
+        font-size: 17px;
+        line-height: 17px;
+      }
+    }
+  }
+}
 
 
 
