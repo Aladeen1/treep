@@ -26,6 +26,7 @@
   </div>
 
   <div class="home-example-main-container">
+    <%= render 'shared/home-background' %>
     <div class="home-example-title-container">
       <img style="height: 100px;" src="https://res.cloudinary.com/tark-industries/image/upload/v1556618787/LOGO_SKYTREE_P_noir.png">
       <h4>Comment ça marche ?</h3>
@@ -38,8 +39,8 @@
       
       <div class="home-example-section-container double-div">
         <p class="slider-title-text">CO2 :</p>
-        <div style="width: 600px">
-          <div style="display:flex;">
+        <div class="slider-main-infos">
+          <div style="display:flex;margin-top:10px;">
             <select id="home-example-selection-depart">
               <option value="paris">Paris</option>
               <option value="berlin">Berlin</option>
@@ -74,8 +75,8 @@
       
       <div class="home-example-section-container double-div">
         <p class="slider-title-text">Arbres :</p>
-        <div style="width: 600px">
-          <div style="display:flex;">
+        <div class="slider-main-infos">
+          <div style="display:flex;margin-top:10px;">
             <select>
               <option id="home-example-display-depart">Paris</option>
             </select>
@@ -108,7 +109,7 @@
     <div class="home-example-etape-container" style="margin-top: 85px;">
       <div class="home-example-etape-title last-etape">
         <p class="etape-number">4</p>
-        <p class="etape-text last-etape-text">Dernière étape,<br>vous décidez ou non de faire un don à l'une de nos associations partenaires afin de compenser le reste des émissions de co2 de votre trajet.</p>
+        <p class="etape-text last-etape-text">Dernière étape,<br>vous pouvez faire un don à l'une de nos associations partenaires afin de compenser le reste des émissions de co2 de votre trajet.</p>
       </div>
     </div>
     <div style="display:flex;justify-content: center;">

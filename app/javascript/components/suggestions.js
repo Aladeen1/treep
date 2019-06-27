@@ -8,7 +8,6 @@ var xhr;
 
 const renderItem = function (item, search) {
 
-	console.log(item)
     return `<div class="autocomplete-suggestion">${item.name}, ${item.city.name}, ${item.code}</div>`
 };
 
@@ -21,7 +20,6 @@ new autoComplete({
         xhr = $.getJSON(`${proxy}https://api.skypicker.com/locations?term=${term}&locale=fr-FR&location_types=airport&limit=10&active_only=true&sort=name&partner=picky`,
          function(data){ return data;
         }).then((data) => {
-        	console.log(data)
         	const matches = [];
         	data.locations.forEach( (location) => {
         		matches.push(location)
@@ -29,7 +27,12 @@ new autoComplete({
         	response(matches); 
         });
     },
-    renderItem: renderItem
+    renderItem: renderItem,
+    onSelect: function(e, term, item){
+    	console.log(e)
+        console.log(term)
+        console.log(item)
+    }
 });
 
 
