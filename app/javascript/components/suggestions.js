@@ -2,38 +2,60 @@ import { proxy } from '../views/base.js';
 
 import 'js-autocomplete/auto-complete.css';
 import autoComplete from 'js-autocomplete';
+import './suggestion.css';
 
 var xhr;
-
+const departInput = document.getElementById('departLoc__search');
+const arriveeInput = document.getElementById('returnLoc__search');     
 
 const renderItem = function (item, search) {
+	const markup =`
+		<div class="autocomplete-suggestion line-suggestion">
+			<img class="tour-de-control" src="https://res.cloudinary.com/tark-industries/image/upload/v1561724813/control_tower.png">
+			<p class="suggestion-text">${item.code} <strong>${item.city.name}</strong>, ${item.city.country.name} - ${item.name}</p>
+		</div>`
+	return markup
+}; 
 
-    return `<div class="autocomplete-suggestion">${item.name}, ${item.city.name}, ${item.code}</div>`
-};
+function createAutocomplete(input) {
 
-new autoComplete({
-    selector: 'input[id="departLoc__search"]',
-    minChars: 2,
-    source: function(term, response){
-    	console.log(term)
-        try { xhr.abort(); } catch(e){}
-        xhr = $.getJSON(`${proxy}https://api.skypicker.com/locations?term=${term}&locale=fr-FR&location_types=airport&limit=10&active_only=true&sort=name&partner=picky`,
-         function(data){ return data;
-        }).then((data) => {
-        	const matches = [];
-        	data.locations.forEach( (location) => {
-        		matches.push(location)
-        	})
-        	response(matches); 
-        });
-    },
-    renderItem: renderItem,
-    onSelect: function(e, term, item){
-    	console.log(e)
-        console.log(term)
-        console.log(item)
-    }
-});
+	new autoComplete({
+	    selector: input,
+	    minChars: 2,
+	    source: function(term, response){	    	
+	        try { xhr.abort(); } catch(e){}
+	        xhr = $.getJSON(`${proxy}https://api.skypicker.com/locations?term=${term}&locale=fr-FR&location_types=airport&limit=10&active_only=true&sort=name&partner=picky`,
+	         function(data){ return data;
+	        }).then((data) => {
+	        	const matches = [];
+	        	data.locations.forEach( (location) => {
+	        		matches.push(location)
+	        	})
+	        	response(matches); 
+	        });
+	    },
+	    menuClass: 'test-suggestion',
+	    renderItem: renderItem,
+	    onSelect: function(e, term, item) {    	
+			const code = item.children[1].innerText.split(" ")[0];
+    		const city = item.children[1].children[0].innerText;
+    		input.value = `${city}, ${code}`
+		}
+	});
+}
+    
+createAutocomplete(departInput);
+createAutocomplete(arriveeInput);
+
+
+
+
+
+
+
+
+
+
 
 
 
