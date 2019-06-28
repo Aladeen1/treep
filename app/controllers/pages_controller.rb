@@ -25,4 +25,8 @@ skip_before_action :authenticate_user!
     @search_nav = true
     @footer1 = true
   end
+
+  def objectifs
+    @footer2 = true
+  end
 end

@@ -1,4 +1,4 @@
-<div class="rectangle-navbar"> 
+<div class="rectangle-navbar">
     <ul class="liste-navbar">
 
       <li class="li-before">
@@ -6,9 +6,23 @@
        <li><%= link_to 'Vols', search_path %></a></li>
      </li>
 
+
+
       <li class="li-before">
        <li><i class="far fa-lightbulb"></i></li>
-       <li><%= link_to 'A propos', about_path %></li>
+       <li>
+        <div class="dropdown show">
+          <a class="navba-propos btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          A propos
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" <%= link_to 'A propos', about_path %> </a>
+            <a class="dropdown-item" <%= link_to 'Nos objectifs', objectifs_path %></a>
+            <a class="dropdown-item" href="#">Nos calculs Co2 / Arbres</a>
+          </div>
+        </div>
+      </li>
      </li>
 
 

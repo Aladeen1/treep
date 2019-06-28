@@ -1,0 +1,101 @@
+<div style="background-color: white;" class="about-page">
+
+  <ul class="liste-navbar-no-bg">
+
+    <li class="li-before">
+    <li><i class="fas fa-plane"></i></li>
+    <li><%= link_to 'Vols', search_path %></li>
+    </li>
+
+
+    <li class="li-before">
+    <li><i class="far fa-lightbulb"></i></li>
+    <li><%= link_to 'A propos', about_path %></li>
+    </li>
+
+
+    <li class="li-before">
+    <li><i class="fas fa-tree"></i></li>
+    <li><%= link_to 'Les arbres', lesarbres_path %></li>
+    </li>
+
+    <li class="li-before">
+    <li><i class="fas fa-user-ninja"></i></li>
+    <li><% if user_signed_in? %>
+           <%= link_to 'Déconnection', destroy_user_session_path, method: :delete %>
+           <% else %>
+           <%= link_to 'Se connecter', new_user_session_path %>
+          <% end %>
+    </li>
+    </li>
+
+    <li class="li-before">
+    <li><img class="fr-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"></li>
+    <li><a href="#">Français (EUR)</a></li>
+    </li>
+
+  </ul>
+
+  <div class="logo">
+    <a href="http://www.skytreep.fr">
+      <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556618176/LOGO_SKYTREE_P_blanc.png">
+    </a>
+  </div>
+
+
+<!-- /* * * * * * * * * * * *
+      *    page objectifs   *
+      * * * * * * * * * * * */ -->
+
+  <div>
+
+    <div class="titre-page">
+      <h1>Les objectifs de Skytree'p</h1>
+    </div>
+
+    <div class="texte-apropos">
+
+      <div class="intro-objectifs">
+        <p>Ces objectifs représentent la ligne de conduite de l'entreprise.</p>
+      </div>
+
+      <div style="margin-left: 9vw; margin-right: 2vw" class="row">
+        <div class="col-4">
+          <div class="carte-objectif">
+            <img src="https://res.cloudinary.com/tark-industries/image/upload/v1561731869/global_warming.jpg">
+            <h2>Lutter contre le réchauffement climatique</h2>
+            <p>Les arbres, tout comme le reste des plantes, absorbent le Co2 et ne gardent que le carbone. Ainsi, par leur simple présence, ces organismes aident à retirer l’excès de Co2 dans l’atmosphère.
+            <br><br>
+            Les anciennes forêts ne pourront bientôt plus absorber davantage de Co2. Il est nécessaire d’en planter des nouvelles pour constituer des nouveaux puits à carbone.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="carte-objectif">
+            <img src="https://res.cloudinary.com/tark-industries/image/upload/v1561731772/voyageur_responsable.jpg">
+            <h2>Devenir un voyageur conscient & responsable</h2>
+            <p>Cela passe en premier par vous sensibiliser sur l’empreinte écologique de votre trajet et sur ses conséquences. Quand il existe une alternative, Skytree’p vous proposera bientôt de prendre des trains. <br>
+            Si vous ne pouvez pas vous déplacer autrement que par avion, Skytree’p vous aide à facilement choisir le vol le moins polluant. Dans l’onglet détail de chaque vol, vous avez accès à la dette écologique, le Co2 émis ainsi que la distance totale parcourue.
+            La compensation est aussi un outil essentiel tant dans la sensibilisation que dans la lutte contre le réchauffement climatique.
+            <br><br>
+            N’oubliez pas : Skytree’p n’est en aucun cas une incitation à prendre l’avion : il est de notre devoir de chacun de ne pas consommer plus que ce que la terre a à nous offrir. (1,7 tonnes de Co2 / an / habitant.)
+            </p>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="carte-objectif">
+            <img src="https://res.cloudinary.com/tark-industries/image/upload/v1561731845/promouvoir_biodiversite%CC%81.jpg">
+            <h2 style="padding-top: 7px;">Promouvoir la biodiversité</h2> <br>
+            <p>La biodiversité et le climat sont intimement liés. Les bouleversements climatiques constituent une des causes profondes de la perte dramatique de biodiversité actuellement observée. Et réciproquement la dégradation de la biodiversité, à son tour, accroît le réchauffement climatique.
+            <br><br>
+            La lutte contre le réchauffement climatique et pour la préservation de la biodiversité sont deux manières de contribuer à la préservation des conditions de vie sur Terre.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
