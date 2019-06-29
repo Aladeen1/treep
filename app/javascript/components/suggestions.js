@@ -1,12 +1,10 @@
-import { proxy } from '../views/base.js';
+import { proxy, home, compensation, search } from '../views/base.js';
 
 import 'js-autocomplete/auto-complete.css';
 import autoComplete from 'js-autocomplete';
 import './suggestion.css';
 
-var xhr;
-const departInput = document.getElementById('departLoc__search');
-const arriveeInput = document.getElementById('returnLoc__search');     
+var xhr;     
 
 const renderItem = function (item, search) {
 	const markup =`
@@ -43,11 +41,14 @@ function createAutocomplete(input) {
 		}
 	});
 }
-    
-createAutocomplete(departInput);
-createAutocomplete(arriveeInput);
 
-
+if (home != null || search != null || compensation != null) {
+	console.log('create autocomplete')
+	const departInput = document.getElementById('departLoc__search');
+	const arriveeInput = document.getElementById('returnLoc__search');  
+	createAutocomplete(departInput);
+	createAutocomplete(arriveeInput);
+}
 
 
 
