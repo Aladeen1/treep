@@ -15,6 +15,8 @@ export const elements = {
 
 export const proxy = 'https://cors-anywhere.herokuapp.com/';
 export const search = document.getElementById('searchPage');
+export const home = document.getElementById('home');
+export const compensation = document.getElementById('backToResearch');
 
 export const renderLoader = (parent) => {
 
