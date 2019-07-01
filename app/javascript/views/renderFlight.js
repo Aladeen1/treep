@@ -96,58 +96,32 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
 
 			  <div class="flight__card__checkout back">
-		          <div class="flight__info white-tooltip" data-toggle="tooltip-${id}" data-html="true" data-placement="left" title='
-		              	<div class="carte-dette-ecologique" id="dette-id-hide-${id}">
-						  <div class="row">
-						    <div class="col-10">
-						      <p>Dette écologique</p>
-						    </div>
-						    <div style="padding-left: 0px;" class="col-2">
-						      <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556638788/Feuilles_skytreep.png">
-						    </div>
+			  	  <div class="search-tooltip-control">
+			          <div class="flight__info white-tooltip" data-toggle="tooltip-${id}" data-html="true" data-placement="left" title='
+					  	<div class="carte-dette-ecologique" id="dette-id-hide-${id}">
+						  <h5 class="search-tooltip-main-title">Dette écologique <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556638788/Feuilles_skytreep.png"></h5>
+						  <div>
+						  	<p class="search-button-style-title">Dette écologique du trajet:</p>
+						  	<p class="search-button-style">${toHumanPrice(flight.treepDetteEcologique)} EUR</p>
 						  </div>
-						  <div class="row carte-eco-row2">
-						    <div class="col-8">
-						      <p style="padding-top: 9px">Dette écologique du trajet :</p>
-						    </div>
-						    <div class="col-3 montant-dette-eco">
-						      <p>${toHumanPrice(flight.treepDetteEcologique)} EUR</p>
-						    </div>
+						  <h5>Comment payer votre dette ?</h5>
+						  <div class="search-tooltip-separation-line"></div>
+						  	<p>Selectionez simplement votre vol, puis payez le sur le site de notre partenaire.
+								Vous remarquerez qu’un nouvel onglet est apparu, c’est ici que vous pouvez régler votre dette écologique.</p>
+						  <h5>Comprendre votre dette ?</h5>
+						  <div class="search-tooltip-separation-line"></div>
+						  <div class="search-tooltip-repartition-text">
+						  	<p>En bleu le montant que nous finançons.</p>
+						  	<p>En vert ce que vous choisissez de payer.</p>
 						  </div>
-						  <div class="row">
-						    <p class="carte-eco-row3">Comment payer votre dette ?</p>
-						  </div>
-						  <div class="row">
-						    <p class="carte-eco-row4">
-						      Sélectionnez simplement votre vol, puis payez le sur le site de notre partenaire.
-						      Revenez ensuite sur cet onglet, un bouton est apparu, cliquez dessus !
-						      <br>Autrement retrouver le vol sur votre tableau de bord.
-						    </p>
-						  </div>
-						  <div class="row">
-						    <p class="carte-eco-row5">Comprendre votre dette</p>
-						  </div>
-						  <div class="row carte-eco-row6">
-						    <div class="col-5">
-						      <p>En bleu le montant que nous finançons.</p>
-						    </div>
-						    <div style="padding-right: 30px" class="col-7">
-						      <p>Le reste de la dette que vous payez selon votre volonté</p>
-						    </div>
-						  </div>
-						  <div class="row carte-eco-row7">
-						    <div class="col-5">
-						      <p style="font-size: 13px; padding-top: 6px">Dette écologique :</p>
-						    </div>
-						    <div class="col-3 st-finance">
-						      <p>${toHumanPrice(flight.treepCompensation)}€</p>
-						    </div>
-						    <div class="col-3 user-finance">
-						      <p>${toHumanPrice(flight.treepDetteUser)}€</p>
-						    </div>
-						  </div>
-						</div>'>
-		            <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556035926/Ticketinfo.png">
+						   
+					  	  <div class="search-tooltip-repartition-box">
+					  		<p class="tooltip-blue-box">${toHumanPrice(flight.treepCompensation)}€</p>
+					  		<p class="tooltip-green-box">${toHumanPrice(flight.treepDetteUser)}€</p>
+					  	  </div>
+					  	</div>'>
+			            <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556035926/Ticketinfo.png">
+			          </div>
 		          </div>
 				  <p class="flight__price">${flight.price}€</p>
 				  <div class="${flight.id}">

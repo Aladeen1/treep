@@ -44,11 +44,11 @@ window.addEventListener('load', () => {
 // initialize tooltips
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
-  // window.addEventListener('click', () => {
+  window.addEventListener('click', () => {
   //   $('#compensation-tooltip').tooltip('show')
   //   $('#arbres-tooltip').tooltip('show')
-  //   $('#co2-tooltip').tooltip('show')
-  // })
+    // $('#co2-tooltip').tooltip('show')
+  })
   //   $('#arbres-tooltip').tooltip('show')
   //   $('#co2-tooltip').tooltip('show')
   //   $('#compensation-tooltip').tooltip('show')
