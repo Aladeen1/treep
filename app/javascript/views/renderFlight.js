@@ -149,10 +149,9 @@ function toolTipAction(id) {
 	$(`[data-toggle="tooltip-${id}"]`).tooltip();
 	document.getElementById(`dette-id-${id}`).addEventListener('mouseover', () => {
 		$(`[data-toggle="tooltip-${id}"]`).tooltip('toggle');
-		
-		window.addEventListener('click', () => {		
+		document.querySelector('.carte-dette-ecologique').addEventListener('mouseleave', () => {
 			$(`[data-toggle="tooltip-${id}"]`).tooltip('hide');
-		});
+		})
 	});
 }
 
