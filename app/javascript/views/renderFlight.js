@@ -106,7 +106,7 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 						  </div>
 						  <h5>Comment payer votre dette ?</h5>
 						  <div class="search-tooltip-separation-line"></div>
-						  	<p>Selectionez simplement votre vol, puis payez le sur le site de notre partenaire.
+						  	<p>Sélectionnez simplement votre vol puis payez le sur le site de notre partenaire.
 								Vous remarquerez qu’un nouvel onglet est apparu, c’est ici que vous pouvez régler votre dette écologique.</p>
 						  <h5>Comprendre votre dette ?</h5>
 						  <div class="search-tooltip-separation-line"></div>
