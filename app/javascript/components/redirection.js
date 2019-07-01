@@ -1,4 +1,4 @@
-import { fillHiddenFields } from './modalApparition';
+import { fillHiddenFields, switchTitle } from './modalApparition';
 import noUiSlider from "nouislider";
 import 'nouislider/distribute/nouislider.css';
 import './compensation-slider.css';
@@ -8,6 +8,7 @@ import { populateSearchFields } from '../views/searchView';
 
 window.addEventListener('load', () => {
 	if ($('#title-target-redirection')[0] != null) {
+    switchTitle();
     const flight = JSON.parse(localStorage.getItem('userFlight'));
     const redirection = redirectionMarkup();
     const render = createCompensationMarkup(flight, redirection);

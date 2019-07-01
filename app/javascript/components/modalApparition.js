@@ -21,7 +21,7 @@ export const targetRedirection = () => {
 			const flight = flights.find( element => {
 				return element.id === buttonId
 			});
-			switchTitle(flight);
+			// switchTitle();
 			console.log(flight);
 		    localStorage.setItem('userFlight', JSON.stringify(flight));
 		    // fillHiddenFields(flight);
@@ -33,7 +33,8 @@ export const targetRedirection = () => {
 	})
 }
 
-function switchTitle() {
+export const switchTitle = () => {
+	console.log('switch title')
 	const title = document.querySelector('title');
 	
 	setInterval( () => {
