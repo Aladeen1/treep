@@ -1,0 +1,33 @@
+.compensation-compensation-tooltip-control {
+
+	.tooltip-inner {
+    	border-radius: 4px;
+		max-width: none;
+	}
+
+	.tooltip.in{
+		opacity:1!important;
+	}
+
+	p {
+		padding: 10px;
+	}
+}
+
+
+.compensation-pay-debt-control {
+
+	.tooltip-inner {
+    	border-radius: 4px;
+    	max-width: none;
+		width: 380px;
+	}
+
+	.tooltip.in{
+		opacity:1!important;
+	}
+
+	p {
+		padding: 6px;
+	}
+}

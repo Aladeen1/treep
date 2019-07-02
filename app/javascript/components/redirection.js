@@ -10,8 +10,9 @@ window.addEventListener('load', () => {
 	if ($('#title-target-redirection')[0] != null) {
     switchTitle();
     const flight = JSON.parse(localStorage.getItem('userFlight'));
-    const redirection = redirectionMarkup();
+    const redirection = redirectionMarkup(flight);
     const render = createCompensationMarkup(flight, redirection);
+    uniquementSkytreepShare(flight);
     clearLoader($('#title-target-redirection')[0]);
     document.getElementById('title-target-redirection').insertAdjacentHTML('afterbegin', render);
     versementSkytreep(flight);
@@ -22,6 +23,7 @@ window.addEventListener('load', () => {
     sliderDesign(flight);
     switchIcons(flight);
     goBackToResearch();
+    $('[data-toggle="tooltip"]').tooltip()
 	}
 })
 
@@ -190,9 +192,9 @@ function connectUiSlider(slider, sliderInput, flight) {
 
 function updateFields(formattedValue, flight) {
 	const detteEcologique = flight.treepDetteEcologique;
-	document.getElementById('percentage').innerHTML = Math.round((formattedValue / detteEcologique) * 100);
-  document.getElementById('euros').innerHTML = toHumanPrice(formattedValue);
-  document.getElementById('number__trees').innerHTML = Math.round(formattedValue / 20);
+	document.getElementById('percentage').innerHTML = `${Math.round((formattedValue / detteEcologique) * 100)} %`;
+  document.getElementById('euros').innerHTML = `${toHumanPrice(formattedValue)} EUR`;
+  document.getElementById('number__trees').innerHTML = `${Math.round(formattedValue / 20)}`;
 }
 
 function createCompensationSlider(sliderAnchor, flight) {
@@ -223,17 +225,52 @@ function createCompensationSlider(sliderAnchor, flight) {
 }
 
 
-function redirectionMarkup() {
+function redirectionMarkup(flight) {
+  
   const markupRedirect = `
     <div class="modal-like-frame">
       <h4>bienvenue sur la page de compensation, ici vous pouvez:</h4>
       <div class="compensation-choix-user">
-        <button id="back-to-research-target" style="background-color: #1CA8B9;">Continuer vos recherches</button>
-        <button id="regler-dette-eco" style="background-color: #0ADEA9;">Régler votre dette</button>
-      </div>
+        <div class="compensation-compensation-tooltip-control">
+          <button id="back-to-research-target" style="background-color: #6b847d;" data-toggle="tooltip" data-html="true" data-placement="top" 
+          title='
+            ${displayTooltipDate(flight)}
+          '>Continuer vos recherches</button>
+        </div>
+        <div class="compensation-pay-debt-control">
+          <button id="regler-dette-eco" style="background-color: #0ADEA9;" data-toggle="tooltip" data-html="true" data-placement="top" 
+          title='
+            <p>La participation de skytree’p à votre dette sera automatiquement ajoutée lors de votre paiement</p>
+          '>Régler votre dette</button>
+        </div>
+      </div>  
     </div>
   `
   return markupRedirect
+}
+
+function displayTooltipDate(flight) {
+
+  const mois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+  let moisDateAller, jourDateAller, jourDateRetour, moisDateRetour, anneeDate, markup;
+  let infos = JSON.parse(localStorage.getItem('UserInputs'))
+
+  jourDateAller = infos.date_aller.split('/')[0]
+  moisDateAller = Number(infos.date_aller.split('/')[1])
+  anneeDate = infos.date_aller.split('/')[2]
+
+  console.log(jourDateAller)
+  console.log(moisDateAller)
+
+  markup = `<p>${flight.cityFrom} - ${flight.cityTo} le ${jourDateAller} ${mois[moisDateAller]} ${anneeDate}</p>`
+
+  if (infos.date_retour) {
+    jourDateRetour = infos.date_retour.split('/')[0]
+    moisDateRetour = Number(infos.date_retour.split('/')[1])
+    markup = `<p>${flight.cityFrom} - ${flight.cityTo} du ${jourDateAller} ${mois[moisDateAller]} au ${jourDateRetour} ${mois[moisDateRetour]} ${anneeDate}</p>`
+  }
+
+  return markup
 }
 
 export const createCompensationMarkup = (flight, option) => {
@@ -269,8 +306,8 @@ export const createCompensationMarkup = (flight, option) => {
 
   				  	<div class="compensation__third__part">
   				  		<ul class="compensation__stats__list">
-  							<li>Pourcentage:  <span id="percentage"></span> %</li>
-  							<li class='border-middle'>Euros:  <span id="euros"></span> EUR</li>
+  							<li>Pourcentage:  <span id="percentage"></span></li>
+  							<li class='border-middle'>Euros:  <span id="euros"></span></li>
   							<li>Nombres d'arbres:  <span id="number__trees"></span></li>
   				  		</ul>
   				  	</div>
@@ -280,6 +317,15 @@ export const createCompensationMarkup = (flight, option) => {
 		</div>
 	`
 	return markup
+}
+
+function uniquementSkytreepShare(flight) {
+  const pourcentageSkytreep = Math.round((flight.treepCompensation / flight.treepDetteEcologique) * 100);
+
+  document.getElementById('verser-uniquement').innerHTML = `
+    Uniquement faire payer à skytree'p les ${pourcentageSkytreep}% de votre dette
+  `
+
 }
 
 

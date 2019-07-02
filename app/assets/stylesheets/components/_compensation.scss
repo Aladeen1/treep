@@ -54,7 +54,9 @@
 	background-color: #C3F5E8;
 
     li {
-	  padding: 3px;
+        padding: 3px 8px;
+        display: flex;
+        justify-content: space-between;
     }
 }
 
@@ -236,6 +238,8 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
+        font-size: 26px;
+        margin-bottom: 10px;
     }
 }
 
@@ -263,8 +267,8 @@
 
     button {
         border-radius: 4px;
-        height: 70px;
-        width: 250px;
+        height: 77px;
+        width: 280px;
         color: white;
         border: none;
 
