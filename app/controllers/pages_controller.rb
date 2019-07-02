@@ -29,4 +29,8 @@ skip_before_action :authenticate_user!
   def objectifs
     @footer2 = true
   end
+
+  def noscalculs
+    @footer2 = true
+  end
 end
