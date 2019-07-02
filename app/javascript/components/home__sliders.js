@@ -25,9 +25,9 @@ if ($('#home')[0] != null) {
 	const target2 = document.getElementById('home-slider-target-arbres');
 	const target3 = document.getElementById('home-slider-target-compensation');
 
-	const sliderCo2 = createSlider(target1, 162, 'co2');
-	const sliderArbres = createSlider(target2, 9, 'arbres');
-	const sliderRepartition = createRepartitionSlider(target3, 9)
+	const sliderCo2 = createSlider(target1, 213, 'co2');
+	const sliderArbres = createSlider(target2, 11, 'arbres');
+	const sliderRepartition = createRepartitionSlider(target3, 11)
 	listenChanges(sliderCo2, sliderArbres);
 }
 
@@ -108,8 +108,8 @@ function createSlider(sliderAnchor, value, type) {
 		maxPadding = 750 - value;
 		maxRange = 750;
 	} else if (type == "arbres") {
-		maxPadding = 25 - value;
-		maxRange = 25;
+		maxPadding = 33 - value;
+		maxRange = 33;
 	}
 	
     
@@ -154,10 +154,10 @@ function setHandleText(slider, type) {
 function updateDistance(depart, arrivee) {
 	
     const distance = Number(distanceFlight(cities[depart.value].data.latitude, cities[depart.value].data.longitude, cities[arrivee.value].data.latitude, cities[arrivee.value].data.longitude, 'K'));
-    const carbon = Math.round((distance * 190) / 1000);
+    const carbon = Math.round((distance * 250) / 1000);
     const newPaddingCo2 = 750 - carbon;
     const arbres = Math.ceil(carbon / 20);
-    const newPaddingArbres = 25 - arbres;
+    const newPaddingArbres = 33 - arbres;
     return [carbon, newPaddingCo2, arbres, newPaddingArbres]
 }
 

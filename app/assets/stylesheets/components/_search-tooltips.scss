@@ -1,0 +1,110 @@
+.search-tooltip-control {
+
+	.tooltip-inner {
+		background-color: white;
+		color: black;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+		border-radius: 8px;
+		max-width: none;
+		width: 375px;
+		text-align: justify;
+		padding: 4px 21px;
+	}
+
+	.tooltip.in{
+		opacity:1!important;
+	}
+
+	.tooltip.left .tooltip-arrow {
+	  border-left-color: white ;
+	}
+
+
+	.carte-dette-ecologique {
+
+		div {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		img {
+			height: 27px;
+		}
+	}
+
+	h5 {
+		font-size: 20px;
+	}
+}
+
+.search-tooltip-main-title {
+	display: flex;
+    justify-content: space-between;
+}
+
+.search-button-style-title {
+	line-height: 42px;
+}
+
+.search-button-style {
+	background-color: #00C896;
+    color: white;
+    font-family: carme;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+   
+.search-tooltip-separation-line {
+	height: 0.5px;
+    background-color: #b9b7b7;
+    margin-bottom: 12.5px;
+}
+
+.search-tooltip-repartition-text {
+	p {
+		width: 150px;
+	}
+}
+
+.search-tooltip-repartition-box {
+	border-radius: 3px;
+	width: 140px;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 2px;
+
+	p {
+		padding: 8px;
+    	color: white;
+    	font-family: carme;
+    	text-align: center;
+    	width: 50%;
+	}
+}
+
+.tooltip-blue-box {
+	background-color: #009AAC;
+    border-radius: 3px 0px 0px 3px;
+}
+
+.tooltip-green-box {
+	background-color: #00C896;
+	border-radius: 0px 3px 3px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
