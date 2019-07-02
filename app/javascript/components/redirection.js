@@ -267,7 +267,7 @@ function displayTooltipDate(flight) {
   if (infos.date_retour) {
     jourDateRetour = infos.date_retour.split('/')[0]
     moisDateRetour = Number(infos.date_retour.split('/')[1])
-    markup = `<p>${flight.cityFrom} - ${flight.cityTo} du ${jourDateAller} ${mois[moisDateAller]} au ${jourDateRetour} ${mois[moisDateRetour]} ${anneeDate}</p>`
+    markup = `<p>${flight.cityFrom} - ${flight.cityTo} du ${jourDateAller} ${mois[moisDateAller - 1]} au ${jourDateRetour} ${mois[moisDateRetour - 1]} ${anneeDate}</p>`
   }
 
   return markup
