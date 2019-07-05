@@ -38,28 +38,28 @@
       <div class="home-example-section-container double-div">
         <p class="slider-title-text">CO2 :</p>
         <div class="slider-main-infos">
-          <div style="display:flex;margin-top:10px;">
+          <div style="display:flex;margin-top:10px; justify-content: space-between;">
             <select id="home-example-selection-depart">
-              <option value="paris">Paris</option>
-              <option value="berlin">Berlin</option>
-              <option value="stockholm">Stockholm</option>
-              <option value="madrid">Madrid</option>
-              <option value="turin">Turin</option>
-              <option value="varsovie">Varsovie</option>
+              <option value="paris">PARIS</option>
+              <option value="berlin">BERLIN</option>
+              <option value="stockholm">STOCKHOLM</option>
+              <option value="madrid">MADRID</option>
+              <option value="turin">TURIN</option>
+              <option value="varsovie">VARSOVIE</option>
             </select>
-            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1560346067/plane_go_up.png">
+            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1562241894/plane_go_up.png">
             <%= render 'shared/fly-way' %>
-            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1560346060/plane_landing.png">
+            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1562241885/plane_landing.png">
             <select id="home-example-selection-arrivee">
-              <option value="berlin">Berlin</option>
-              <option value="paris">Paris</option>
-              <option value="stockholm">Stockholm</option>
-              <option value="madrid">Madrid</option>
-              <option value="turin">Turin</option>
-              <option value="varsovie">Varsovie</option>
+              <option value="berlin">BERLIN</option>
+              <option value="paris">PARIS</option>
+              <option value="stockholm">STOCKHOLM</option>
+              <option value="madrid">MADRID</option>
+              <option value="turin">TURIN</option>
+              <option value="varsovie">VARSOVIE</option>
             </select>
           </div>
-          <div id="home-slider-target-co2" style="width:650px;margin-top:35px;height:12px;margin-bottom:20px;"></div>
+          <div id="home-slider-target-co2" style="width:100%;margin-top:35px;height:18px;margin-bottom:20px; border-radius: 30px;"></div>
         </div>
         <%= render 'shared/tooltips/tooltip-co2' %>
       </div>
@@ -74,18 +74,18 @@
       <div class="home-example-section-container double-div">
         <p class="slider-title-text">Arbres :</p>
         <div class="slider-main-infos">
-          <div style="display:flex;margin-top:10px;">
+          <div style="display:flex;margin-top:10px; justify-content: space-between;">
             <select>
               <option id="home-example-display-depart">Paris</option>
             </select>
-            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1560346067/plane_go_up.png">
+            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1562241894/plane_go_up.png">
             <%= render 'shared/fly-way' %>
-            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1560346060/plane_landing.png">
+            <img class="home-example-plane-icon" src="https://res.cloudinary.com/tark-industries/image/upload/v1562241885/plane_landing.png">
             <select>
               <option id="home-example-display-arrivee">Berlin</option>
             </select>
           </div>
-          <div id="home-slider-target-arbres" style="width:650px;margin-top:35px;height:12px;margin-bottom:20px;"></div>
+          <div id="home-slider-target-arbres" style="width:100%;margin-top:35px;height:18px;margin-bottom:20px;border-radius: 30px;"></div>
         </div>
         <%=render 'shared/tooltips/tooltip-arbres' %>
       </div>
@@ -97,7 +97,7 @@
       </div>
 
       <div class="home-example-section-container" style="margin-top: 45px;">
-        <p class="slider-title-text" style="bottom:-5px;">Compensation :</p>
+        <p class="slider-title-text" style="bottom:-5px;">Compensation:</p>
         <div id="home-slider-target-compensation" style="width:650px;height:12px;"></div>
         <%=render 'shared/tooltips/tooltip-compensation' %>
       </div>

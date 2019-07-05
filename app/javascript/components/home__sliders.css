@@ -1,8 +1,8 @@
 
 #home-slider-target-co2 .noUi-handle {
 	top: -6px;
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 	border-radius: 50%;
 	border: 3px solid #ffffff;
     background: #494949;
@@ -17,8 +17,10 @@
     position: absolute;
     height: 14px;
     background: none;
-    left: -8px;
-    top: -31px;
+    left: -20px;
+    top: -40px;
+    font-size: 29px;
+    font-family: Alegreya Sans SC ExtraBold;
 }
 
 .noUi-state-tap .noUi-origin {
@@ -37,8 +39,8 @@
 
 #home-slider-target-arbres .noUi-handle {
     top: -6px;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     border: 3px solid #ffffff;
     background: #494949;
@@ -52,9 +54,11 @@
     display: block;
     position: absolute;
     background: none;
-    left: -6px;
-    top: -31px;
+    left: -10px;
+    top: -40px;
     letter-spacing: 2px;
+    font-size: 29px;
+    font-family: Alegreya Sans SC ExtraBold;
 }
 
 .noUi-state-tap .noUi-origin {

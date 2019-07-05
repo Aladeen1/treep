@@ -4,7 +4,7 @@ import './home__sliders.css';
 import { createRouteArray, distanceFlight } from '../views/renderDetails';
 
 var CityData = function(data){
-  	this.data = { 
+  	this.data = {
   		name: data.name,
 		latitude: data.latitude,
 		longitude: data.longitude
@@ -35,7 +35,7 @@ function createRepartitionSlider(sliderAnchor, arbres) {
 
 	noUiSlider.create(sliderAnchor, {
 		animate: true,
-		animationDuration: 2000, 
+		animationDuration: 2000,
 	    start: [25, 100],
 	    connect: [true, true, false],
 	    // margin: ,
@@ -51,7 +51,7 @@ function createRepartitionSlider(sliderAnchor, arbres) {
 
     handles[0].style.display = 'none';
     handles[1].style.display = 'none';
-	
+
 	connects[0].style.background = '#36ACB8';
     connects[1].style.background = '#00C896';
     createRepartitionElements();
@@ -62,11 +62,11 @@ function createRepartitionSlider(sliderAnchor, arbres) {
 function createRepartitionElements() {
 
 	const target = document.getElementById('home-slider-target-compensation').children[0]
-    
+
 	const treepNumber = `
 		<div class="treep-number-positioning">
 			<div style="position:relative;">
-				<p id="skytree-share-target">2</p>
+				<p id="skytree-share-target">3</p>
 				<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:50px;width:50px;">
 			</div>
 		</div>
@@ -75,7 +75,7 @@ function createRepartitionElements() {
 	const userNumber = `
 		<div class="user-number-positioning">
 			<div style="position:relative;">
-				<p id="user-share-target">7</p>
+				<p id="user-share-target">8</p>
 				<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:50px;width:50px;">
 			</div>
 		</div>
@@ -84,13 +84,13 @@ function createRepartitionElements() {
 	const markupTreep = `
 	    <div class="home-skytreep-share">
 			<div class='square__arbres__plantes'></div>
-			<p class='text__treep__arbres__plantes'>Vous avez planté<br>2 arbres gratuitement</p>
+			<p class='text__treep__arbres__plantes'>Vous avez planté<br>3 arbres gratuitement</p>
 		</div>
 	`
 	const markupUser = `
 	    <div class="home-user-share">
 			<div class='square__arbres__plantes'></div>
-			<p class='text__user__arbres__plantes'>Selon votre volonté,<br>vous pouvez choisir de payer le reste de votre<br>dette écologique</p>
+			<p class='text__user__arbres__plantes'>Vous voulez compenser le reste ?<br> Choississez de planter les 8 arbres restants <br> chez l'une de nos association partenaire.  </p>
 		</div>
 	`
 	target.insertAdjacentHTML('beforeEnd', treepNumber);
@@ -111,11 +111,11 @@ function createSlider(sliderAnchor, value, type) {
 		maxPadding = 33 - value;
 		maxRange = 33;
 	}
-	
-    
+
+
 	noUiSlider.create(sliderAnchor, {
 		animate: true,
-		animationDuration: 2000, 
+		animationDuration: 2000,
 	    start: value,
 	    connect: [true, false],
 	    margin: value,
@@ -125,9 +125,9 @@ function createSlider(sliderAnchor, value, type) {
 	        'max': maxRange
 	    }
     });
-    
+
 	const connects = sliderAnchor.getElementsByClassName('noUi-connect');
-  	
+
   	if(type == "co2") {
   		connects[0].style.background = '#FFC7C7';
   	} else if (type == "arbres") {
@@ -135,7 +135,7 @@ function createSlider(sliderAnchor, value, type) {
   	}
 
   	setHandleText(sliderAnchor.noUiSlider, type)
-	
+
 	return sliderAnchor.noUiSlider
 }
 
@@ -147,12 +147,12 @@ function setHandleText(slider, type) {
     	handle.dataset.value = `${value}KG`;
     } else if (type == 'arbres') {
     	handle.dataset.value = `x${value}`;
-    } 
+    }
 }
 
 
 function updateDistance(depart, arrivee) {
-	
+
     const distance = Number(distanceFlight(cities[depart.value].data.latitude, cities[depart.value].data.longitude, cities[arrivee.value].data.latitude, cities[arrivee.value].data.longitude, 'K'));
     const carbon = Math.round((distance * 250) / 1000);
     const newPaddingCo2 = 750 - carbon;
@@ -170,17 +170,17 @@ function listenChanges(sliderCo2, sliderArbres) {
     	updateSlider(sliderCo2, sliderArbres)
     })
 }
-	
+
 function updateSlider(sliderCo2, sliderArbres) {
-	
-	let arrivee = document.getElementById('home-example-selection-arrivee');   
+
+	let arrivee = document.getElementById('home-example-selection-arrivee');
 	let depart = document.getElementById('home-example-selection-depart');
 	updateNameSecondDisplay(depart, arrivee);
 	let options = updateDistance(depart, arrivee)
 	setNewSliderValues(sliderCo2, options[0], options[1], 'co2');
 	setNewSliderValues(sliderArbres, options[2], options[3], 'arbres');
 	updateRepartition(options[2])
-} 
+}
 
 function setNewSliderValues (slider, value, padding, type) {
 	slider.set(value)
