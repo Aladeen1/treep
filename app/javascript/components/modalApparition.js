@@ -21,19 +21,20 @@ export const targetRedirection = () => {
 			const flight = flights.find( element => {
 				return element.id === buttonId
 			});
-			switchTitle(flight);
+			// switchTitle();
 			console.log(flight);
 		    localStorage.setItem('userFlight', JSON.stringify(flight));
 		    // fillHiddenFields(flight);
             
-            window.location.href = "http://www.skytreep.fr/compensation";
+            window.location.href = "https://www.skytreep.fr/compensation";
             // "http://www.skytreep.fr/compensation"
             // "http://localhost:3000/compensation"
 		})
 	})
 }
 
-function switchTitle() {
+export const switchTitle = () => {
+	console.log('switch title')
 	const title = document.querySelector('title');
 	
 	setInterval( () => {

@@ -139,7 +139,7 @@ export const ecological = (flight) => {
 
     // Changer le calcul du carbon en fonction du tableau qu'on aura établi
 
-    const totalCarbon = Math.round((sumDistance * 250) / 1000);
+    const totalCarbon = Math.round((sumDistance * 235) / 1000);
 
     return [sumDistance, totalCarbon]
 }

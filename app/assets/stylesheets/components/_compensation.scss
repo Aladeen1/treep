@@ -54,7 +54,9 @@
 	background-color: #C3F5E8;
 
     li {
-	  padding: 3px;
+        padding: 3px 8px;
+        display: flex;
+        justify-content: space-between;
     }
 }
 
@@ -67,16 +69,23 @@
       font-weight: 600;
 	  background-color: #A3E6ED;
 	  border-radius: 3px;
-	  padding: 25px;
 	  height: 50px;
+      width: 70px;
 	  display: flex;
 	  align-items: center;
+      justify-content: center;
 	}
 
     li:hover {
       background-color: #36ACB8;
     }
+
+    img {
+            pointer-events: none;
+    }
 }
+
+
 
 #active__measure {
 	background-color: #36ACB8;
@@ -151,7 +160,7 @@
     margin-right: 9px;
     background-color: #36ACB8;
     position: absolute;
-    top: -7px;
+    top: -8px;
     left: -3px;
 }
 
@@ -159,7 +168,7 @@
 .participation__treep {
     position: absolute;
     border: 3px solid;
-    width: 32%;
+    width: 18%;
     height: 20px;
     top: 35px;
     left: 5px;
@@ -173,7 +182,7 @@
 .participation__user {
     position: absolute;
     border: 3px solid;
-    width: 60%;
+    width: 75%;
     height: 20px;
     top: 35px;
     right: 4px;
@@ -190,7 +199,7 @@
     background-color: #00C896;
     border-radius: 3px;
     position: absolute;
-    top: -7px;
+    top: -8px;
     right: -6px;
 }
 
@@ -236,6 +245,8 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
+        font-size: 26px;
+        margin-bottom: 10px;
     }
 }
 
@@ -263,8 +274,8 @@
 
     button {
         border-radius: 4px;
-        height: 70px;
-        width: 250px;
+        height: 77px;
+        width: 280px;
         color: white;
         border: none;
 
@@ -274,5 +285,37 @@
     }
 }
 
+.compensation-slider-tree-positionning {
+    display: flex;
+    position: absolute;
+    top: -52px;
+    right: -7px;
+    align-items: flex-end;
 
+    p {
+        height: 20px;
+        font-size: 16px;
+        position: absolute;
+        bottom: -2px;
+        right: 29px;
+        color: black;
+    }
+
+    div {
+        position: relative;
+    }
+}
+
+.compensation-slider-text-positionning {
+    
+    position: relative;
+
+    p {
+       position: absolute;
+       font-size: 16px;
+       color: black;
+       bottom: 5px;
+    }
+
+}
 

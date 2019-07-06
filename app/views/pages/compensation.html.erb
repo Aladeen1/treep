@@ -9,10 +9,6 @@
 	<div class="search__bar__container">
 		<%= render 'shared/searchbar' %>
     </div>
-
-
-	<datalist id="airports__depart"></datalist>
-	<datalist id="airports__return"></datalist>
 </div>
 
 <div class="flights__container" style="min-height: 0px;">
@@ -34,6 +30,6 @@
 	  <%= hidden_field_tag 'dette_eco'%>
 	  <%= hidden_field_tag 'skytreep_participation'%>
 
-	  <button type="submit" style="background-color: #0CC094;">Verser la part de Skytree'p uniquement</button>
+	  <button type="submit" id="verser-uniquement"style="background-color: #36ACB8;"></button>
 	<% end %>
 </div>

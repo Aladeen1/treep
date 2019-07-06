@@ -154,7 +154,7 @@ function setHandleText(slider, type) {
 function updateDistance(depart, arrivee) {
 
     const distance = Number(distanceFlight(cities[depart.value].data.latitude, cities[depart.value].data.longitude, cities[arrivee.value].data.latitude, cities[arrivee.value].data.longitude, 'K'));
-    const carbon = Math.round((distance * 250) / 1000);
+    const carbon = Math.round((distance * 235) / 1000);
     const newPaddingCo2 = 750 - carbon;
     const arbres = Math.ceil(carbon / 20);
     const newPaddingArbres = 33 - arbres;
