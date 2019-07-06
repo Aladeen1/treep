@@ -30,7 +30,7 @@ window.addEventListener('load', () => {
 function reglementDetteEco() {
   const target = document.getElementById('regler-dette-eco');
   target.addEventListener('click', () => {
-    window.location.href = "http://www.skytreep.fr/compensations/new";
+    window.location.href = "https://www.skytreep.fr/compensations/new";
   })
 }
 // www.skytreep.fr
@@ -57,8 +57,7 @@ function goBackToResearch() {
 
 
 export const sliderDesign = (flight) => {
-	document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="position__square"></div><p class="position__lower">0.00€</p>`);
-  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<p class="position__upper">${toHumanPrice(flight.treepDetteEcologique)}€</p>`);
+	document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="position__square"></div><p class="position__lower">0Kg</p>`);
   document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="end__square"></div>`);
   document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__treep"><p>La part de Skytree'p</p></div>`);
   document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__user"><p>Votre mission écologique si vous l'acceptez</p></div>`);
@@ -85,36 +84,53 @@ export const switchIcons = (flight) => {
       		if (event.target.id != 'active__measure') {
       			document.getElementById('active__measure').id = '';
       			event.target.id = 'active__measure';
-      			updateMeasure(event.target.innerHTML, flight);
+      			updateMeasure(event.target, flight);
       		};
         })
     })
 }  
 
-function updateMeasure(measure, flight) {
+
+function renderTextSquareSliders(type, element, element1) {
+  let markup;
+
+  if (type == "tree") {
+    markup = `
+      <div class="compensation-slider-tree-positionning">
+        <div><p>${element}</p>${element1}</div>
+      </div>
+    `
+  } else if (type == "money" || type == "co2") {
+    markup = `
+      <div class="compensation-slider-text-positionning"><p>${element}${element1}</p></div>
+    `
+  }
   
+
+  return markup
+}
+
+function updateMeasure(measure, flight) {
+  const tree = `<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:45px;">`
 	const detteEcologique = flight.treepDetteEcologique;
-  let totalCompensation = Number(document.getElementById('total-compensation').value);
+  let compensationUser = Number(document.getElementById('total-compensation').value) - flight.treepCompensation;
   let valeurDepart, valeurArrivee, handle;
 
-	if (measure === 'T') {
-    valeurDepart = '0T';
-    valeurArrivee = `${detteEcologique / 20}T`;
-    handle = ` ${totalCompensation / 20}T`;
-	} else if (measure === '%') {
-    valeurDepart = '0%';
-    valeurArrivee = '100%';
-    handle = `${Math.round((totalCompensation / detteEcologique) * 100)}%`;
+	if (measure.className.includes('t-target')) {
+    valeurDepart = `<div class="compensation-slider-tree-positionning" style="top: -47px; left: -3px;">
+                      <div style="position:relative;"><p>0</p>${tree}</div>
+                    </div>`;
+    handle = updateSliderProperly((compensationUser === 0), 'tree', (flight.treepCompensation / 20), (compensationUser / 20), tree);
+	} else if (measure.className.includes('c-target')) {
+    valeurDepart = '0Kg';
+    handle = updateSliderProperly((compensationUser === 0), 'co2', flight.treepCompensation, compensationUser, 'Kg');
 	} else {
 	  valeurDepart = '0.00€';
-    valeurArrivee = `${toHumanPrice(detteEcologique)}€`;
-    handle = `${toHumanPrice(totalCompensation)}€`;
+    handle = updateSliderProperly((compensationUser === 0), 'money', toHumanPrice(flight.treepCompensation), (toHumanPrice(compensationUser)), '€');
 	}
 
   document.querySelector('.position__lower').innerHTML = valeurDepart;
-  document.querySelector('.position__upper').innerHTML = valeurArrivee;
-  document.getElementsByClassName('noUi-handle-upper')[0].dataset.value = handle;
-  
+  document.getElementsByClassName('noUi-handle-upper')[0].innerHTML = handle;
 }
 
 
@@ -127,9 +143,12 @@ export const initializeUislider = (sliderAnchor, flight, payment) => {
     }
 }
 
-const updateSliderValue = (slider, flight, handle = 0) => {
+const updateHandleValue = (slider, flight, handle = 0) => {
 
+  const tree = `<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:45px;">`
   const detteEcologique = flight.treepDetteEcologique;
+  const skytreepParticipation = flight.treepCompensation;
+  const treeSkytreep = (skytreepParticipation / 20);
   const children = slider.target.getElementsByClassName('noUi-handle');
   const values = slider.get();
   let i = 0;
@@ -141,20 +160,37 @@ const updateSliderValue = (slider, flight, handle = 0) => {
        val = values[i];
     }
     
-    if (document.getElementById('active__measure').innerHTML === 'T'){
-      children[i].dataset.value = `${Math.round(val / 20)}T`;
-    } else if (document.getElementById('active__measure').innerHTML === '%') {
-      children[i].dataset.value = `${Math.round(val / detteEcologique * 100)}%`;
+    
+    if (document.getElementById('active__measure').className.includes('t-target')){
+      updateSliderProperly((val  - skytreepParticipation === 0), 'tree', treeSkytreep, (Math.round(val / 20) - treeSkytreep), tree, children[i]);
+    } else if (document.getElementById('active__measure').className.includes('c-target')) {
+      updateSliderProperly((val  - skytreepParticipation === 0), 'co2', val.split('.')[0], (val - skytreepParticipation), 'Kg', children[i]);
     } else {
-      children[i].dataset.value = `${toHumanPrice(val)}€`;
+      updateSliderProperly((val  - skytreepParticipation === 0), 'money', toHumanPrice(skytreepParticipation), (toHumanPrice(val - skytreepParticipation)), '€', children[i]);
     }
     i++
   }
 }
 
+function updateSliderProperly(condition, type, value1, value2, visual, element){
+  let value;
+  if ( condition ){
+    value = renderTextSquareSliders(type, value1, visual);
+  } else {
+    value = renderTextSquareSliders(type, value2, visual);
+  }
+
+  if (element) {
+    element.innerHTML = value
+  } else {
+    return value
+  }
+
+}
+
 function updateHandles(slider, flight) {
   slider.on('update', () => {
-    updateSliderValue(slider, flight)
+    updateHandleValue(slider, flight)
   })
 }
 
@@ -291,14 +327,14 @@ export const createCompensationMarkup = (flight, option) => {
   						  	<p>${toHumanPrice(flight.treepDetteEcologique)} euros</p>
   					    </div>
   					  	<ul class="compensation__icons">
-  					  	  <li class="custom__icons" id="active__measure">€</li>
-  					  	  <li class="custom__icons">%</li>
-  					  	  <li class="custom__icons">T</li>
+                  <li class="c-target" id="active__measure"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1562370362/Co2_icon.png" style="height:45px;"></li>
+  					  	  <li>€</li>
+  					  	  <li class="tree__pictures__compensation t-target" ><img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:45px;padding-left: 8px;margin-bottom: 14px;"></li>
   					    </ul>
   				  	</div>
   	                 
   				  	<div class="compensation__second__part">
-  				  	  <div id="slider__compensation">
+  				  	  <div id="slider__compensation" style="height: 14px;">
   				  	    <input  id="total-compensation" type="hidden" value="">
                   <input  id="user-compensation" type="hidden" value="">
   				  	  </div>

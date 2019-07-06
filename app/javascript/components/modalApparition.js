@@ -26,7 +26,7 @@ export const targetRedirection = () => {
 		    localStorage.setItem('userFlight', JSON.stringify(flight));
 		    // fillHiddenFields(flight);
             
-            window.location.href = "http://www.skytreep.fr/compensation";
+            window.location.href = "https://www.skytreep.fr/compensation";
             // "http://www.skytreep.fr/compensation"
             // "http://localhost:3000/compensation"
 		})
