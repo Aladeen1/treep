@@ -39,7 +39,7 @@ function addDistanceEffective(flight) {
 }
 
 function addCarbonEmission(flight) {
-	flight.treepCarbonEmission = Math.round((flight.treepDistanceEffective * 250) / 1000);
+	flight.treepCarbonEmission = treeCompatibility(Math.round((flight.treepDistanceEffective * 235) / 1000));
 }
 
 function addTreepCommissionCompensation(flight) {
