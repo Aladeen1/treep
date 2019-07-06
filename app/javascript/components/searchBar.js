@@ -36,7 +36,7 @@ function sendData() {
 		document.querySelector('.checkout__button').addEventListener('click', (envoi) => {
 			envoi.preventDefault();
 			cacheInputs();
-			window.location.href = "https://www.skytreep.fr/search";
+			window.location.href = "http://www.skytreep.fr/search";
 			// "http://localhost:3000/search"
 			// "http://www.skytreep.fr/search"
 
