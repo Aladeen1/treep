@@ -11,6 +11,7 @@
     	width: 120px;
 	    border: 1px solid #E0E0E0;
 	    background-color: #F4F4F4;
+      text-transform: uppercase;
 
       &:hover {
         background-color: rgba(171, 181, 169, 0.7)
@@ -35,9 +36,10 @@
 }
 
 .home-example-etape-container {
-  width: 825px;
+  width: 73%;
 	padding: 40px 0px;
-	margin: 20px auto;
+	margin-right: 17%;
+  margin-left: 10%;
 }
 
 
@@ -50,8 +52,8 @@
 }
 
 .home-example-plane-icon {
-  height: 40px;
-  margin: 0px 15px;
+  height: 45px;
+  margin: 0px 20px;
 }
 
 .etape-number {
@@ -127,6 +129,7 @@
   position: absolute;
   left: -120px;
   bottom: 15px;
+  font-size: 25px;
 }
 
 
@@ -143,7 +146,7 @@
 
 .etape-text {
   width: 650px;
-  font-size: 21px;
+  font-size: 26px;
 }
 
 .last-etape {
@@ -171,7 +174,7 @@
 }
 
 .fly-way-style {
-  width: 300px;
+  width: 52%;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
@@ -179,14 +182,14 @@
 }
 
 .fly-way-tube {
-  height: 3px;
-    width: 22px;
+    height: 4px;
+    width: 23px;
     border-radius: 19px;
     background-color: #C4C4C4;
 }
 
 .slider-main-infos {
-  width: 650px;
+  width: 58vw;
   height: 140px;
   display: flex;
   flex-direction: column;
@@ -233,4 +236,4 @@
     	margin-bottom: 15px;
     }
 }
-    
+
