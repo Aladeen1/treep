@@ -1,4 +1,13 @@
-<div class="rectangle-navbar">
+
+<div class="navbar-component-main-container">
+  <div class="rectangle-navbar navbar-component-container">
+
+    <div class="logo-navbar-component">
+        <a href="http://www.skytreep.fr">
+          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556623705/LOGO_SKYTREE_P_blanc.png">
+        </a>
+    </div>
+
     <ul class="liste-navbar">
 
       <li class="li-before">
@@ -8,28 +17,28 @@
 
 
 
-    <li class="li-before">
-      <li><i class="far fa-lightbulb"></i></li>
-      <li>
-        <div class="dropdown show">
-          <a class="navba-propos btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            A propos
-          </a>
+      <li class="li-before">
+        <li><i class="far fa-lightbulb"></i></li>
+        <li>
+          <div class="dropdown show">
+            <a class="navba-propos btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              A propos
+            </a>
 
-          <div class="dropdown-menu apropos-drop" aria-labelledby="dropdownMenuLink">
-            <div class="dropdown-item"> <%= link_to 'A propos', about_path %> </div>
-            <div class="dropdown-item"> <%= link_to 'Nos objectifs', objectifs_path %> </div>
-            <div class="dropdown-item"> <%= link_to 'Nos calculs Co2 / Arbres', noscalculs_path %> </div>
+            <div class="dropdown-menu apropos-drop" aria-labelledby="dropdownMenuLink">
+              <div class="dropdown-item"> <%= link_to 'A propos', about_path %> </div>
+              <div class="dropdown-item"> <%= link_to 'Nos objectifs', objectifs_path %> </div>
+              <div class="dropdown-item"> <%= link_to 'Nos calculs Co2 / Arbres', noscalculs_path %> </div>
+            </div>
           </div>
-        </div>
-      </li>
-     </li>
+        </li>
+       </li>
 
 
       <li class="li-before">
        <li><i class="fas fa-tree"></i></li>
        <li><%= link_to 'Les arbres', lesarbres_path %></li>
-     </li>
+      </li>
 
       <li class="li-before">
         <li><i class="fas fa-user-ninja"></i></li>
@@ -39,19 +48,13 @@
            <%= link_to 'Se connecter', new_user_session_path %>
           <% end %>
         </li>
-     </li>
+      </li>
 
       <li class="li-before">
        <li><img class="fr-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"></li>
        <li><a href="#">Français (EUR)</a></li>
-     </li>
-
+      </li>
+      <p class="beta-icon">BÊTA</p>
     </ul>
-
-      <div class="logo-nav1">
-        <a href="http://www.skytreep.fr">
-          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556623705/LOGO_SKYTREE_P_blanc.png">
-        </a>
-      </div>
-
   </div>
+</div>

@@ -35,11 +35,9 @@ li a {
 }
 
 .liste-navbar {
-  padding-left: 35vw;
-  padding-right: 3vw;
-  background: linear-gradient(80.21deg, #00C896 0%, #03AA80 10.23%, #01AD82 22.85%, #00C896 54.58%, #00C896 85.89%, #02B88A 100%), #C4C4C4;
-  height: 60px;
-  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .logo-nav1 {
@@ -80,14 +78,43 @@ li a {
   }
 }
 
+.beta-icon {
+  font-size: 22px;
+  font-family: Alegreya Sans SC;
+  letter-spacing: 2px;
+  font-weight: bold;
+  position: absolute;
+  background: linear-gradient(241.27deg, #D2D300 2.73%, #F3F400 100%);
+  border-radius: 2px;
+  height: 40px;
+  width: 90px;
+  line-height: 40px;
+  text-align: center;
+  bottom: -29px;
+  right: 83px;
+  z-index: 10;
+}
+
+.logo-navbar-component {
+
+  img {
+    width: 200px;
+    margin-top: 2px;
+    margin-left: 100px;
+  }
+}
+
+.navbar-component-container {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  width: 83%;
+}
 
 
-
-
-
-
-
-
+.navbar-component-main-container {
+  background: linear-gradient(80.21deg, #00C896 0%, #03AA80 10.23%, #01AD82 22.85%, #00C896 54.58%, #00C896 85.89%, #02B88A 100%), #C4C4C4;
+}
 
 
 
