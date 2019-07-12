@@ -45,7 +45,8 @@ window.addEventListener('load', () => {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
   window.addEventListener('click', () => {
-  //   $('#compensation-tooltip').tooltip('show')
+    // $('#back-to-research-target').tooltip('show')
+    // $('#regler-dette-eco').tooltip('show')
   //   $('#arbres-tooltip').tooltip('show')
     // $('#co2-tooltip').tooltip('show')
   })

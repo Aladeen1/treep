@@ -106,7 +106,9 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 						  </div>
 						  <h5>Qu’est-ce que la dette écologique ?</h5>
 						  <div class="search-tooltip-separation-line"></div>
+
 						  	<p>La dette est calculée à partir de votre trajet. Le prix correspond au nombre d’arbres qu’il faut planter pour compenser votre empreinte carbone. </p>
+
 						  <h5>Comprendre votre dette ?</h5>
 						  <div class="search-tooltip-separation-line"></div>
 						  <div class="search-tooltip-repartition-text">
