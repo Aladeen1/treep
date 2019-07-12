@@ -34,7 +34,7 @@ export const renderReturnFlights = (flight, airportCodes, id) => {
 
 
 function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArrivalDay, routesAller, id, retourInfoFormatted = [], retourDepart = 0, retourArrivee = 0, retourDepartDay = [], retourArrivalDay = [], routesRetour = []) {
-    
+
     const airportDepart = localStorage.getItem('airportDepart');
     const airportArrivee = localStorage.getItem('airportArrivee');
 
@@ -104,17 +104,16 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 						  	<p class="search-button-style-title">Dette écologique du trajet:</p>
 						  	<p class="search-button-style">${toHumanPrice(flight.treepDetteEcologique)} EUR</p>
 						  </div>
-						  <h5>Comment payer votre dette ?</h5>
+						  <h5>Qu’est-ce que la dette écologique ?</h5>
 						  <div class="search-tooltip-separation-line"></div>
-						  	<p>Selectionez simplement votre vol, puis payez le sur le site de notre partenaire.
-								Vous remarquerez qu’un nouvel onglet est apparu, c’est ici que vous pouvez régler votre dette écologique.</p>
+						  	<p>La dette est calculée à partir de votre trajet. Le prix correspond au nombre d’arbres qu’il faut planter pour compenser votre empreinte carbone. </p>
 						  <h5>Comprendre votre dette ?</h5>
 						  <div class="search-tooltip-separation-line"></div>
 						  <div class="search-tooltip-repartition-text">
 						  	<p>En bleu le montant que nous finançons.</p>
 						  	<p>En vert ce que vous choisissez de payer.</p>
 						  </div>
-						   
+
 					  	  <div class="search-tooltip-repartition-box">
 					  		<p class="tooltip-blue-box">${toHumanPrice(flight.treepCompensation)}€</p>
 					  		<p class="tooltip-green-box">${toHumanPrice(flight.treepDetteUser)}€</p>
@@ -135,7 +134,7 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
 	document.querySelector('.flights__list').insertAdjacentHTML('beforeend', markup)
     toolTipAction(id);
-	
+
 // Utiliser pour faire un design stylé pour les airlines
 
 		// <div class="flight__card__header">
@@ -156,7 +155,7 @@ function toolTipAction(id) {
 }
 
 function graphDetteEco(flight, id) {
-	
+
     const width = calculateEcoWidth(flight.treepDetteEcologique, flight.treepCompensation);
 
 	const markup = `
