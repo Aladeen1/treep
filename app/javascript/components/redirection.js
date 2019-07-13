@@ -58,6 +58,7 @@ function goBackToResearch() {
 
 export const sliderDesign = (flight) => {
 	document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="position__square"></div><p class="position__lower">0Kg</p>`);
+  document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<p class="position__upper">${flight.treepCarbonEmission}Kg</p>`);
   document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="end__square"></div>`);
   document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__treep"><p>La part de Skytree'p</p></div>`);
   document.querySelector('.noUi-base').insertAdjacentHTML('beforeEnd', `<div class="participation__user"><p>Votre mission écologique si vous l'acceptez</p></div>`);
@@ -91,25 +92,6 @@ export const switchIcons = (flight) => {
 }  
 
 
-function renderTextSquareSliders(type, element, element1) {
-  let markup;
-
-  if (type == "tree") {
-    markup = `
-      <div class="compensation-slider-tree-positionning">
-        <div><p>${element}</p>${element1}</div>
-      </div>
-    `
-  } else if (type == "money" || type == "co2") {
-    markup = `
-      <div class="compensation-slider-text-positionning"><p>${element}${element1}</p></div>
-    `
-  }
-  
-
-  return markup
-}
-
 function updateMeasure(measure, flight) {
   const tree = `<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:45px;">`
 	const detteEcologique = flight.treepDetteEcologique;
@@ -117,40 +99,54 @@ function updateMeasure(measure, flight) {
   let valeurDepart, valeurArrivee, handle;
 
 	if (measure.className.includes('t-target')) {
-    valeurDepart = `<div class="compensation-slider-tree-positionning" style="top: -47px; left: -3px;">
+    valeurDepart = `<div class="compensation-slider-tree-positionning" style="top: -42px; left: -12px;">
                       <div style="position:relative;"><p>0</p>${tree}</div>
                     </div>`;
-    handle = updateSliderProperly((compensationUser === 0), 'tree', (flight.treepCompensation / 20), (compensationUser / 20), tree);
+    valeurArrivee = `<div class="compensation-slider-tree-positionning" style="top: -42px; left: -40px;">
+                      <div style="position:relative;"><p>${detteEcologique / 13}</p>${tree}</div>
+                    </div>
+                    `
+    handle = updateSliderProperly((compensationUser === 0), 'tree', (flight.treepCompensation / 13), (compensationUser / 13), tree);
 	} else if (measure.className.includes('c-target')) {
     valeurDepart = '0Kg';
+    valeurArrivee = `${flight.treepCarbonEmission}Kg`;
     handle = updateSliderProperly((compensationUser === 0), 'co2', flight.treepCompensation, compensationUser, 'Kg');
 	} else {
 	  valeurDepart = '0.00€';
+    valeurArrivee = `${toHumanPrice(detteEcologique)}€`;
     handle = updateSliderProperly((compensationUser === 0), 'money', toHumanPrice(flight.treepCompensation), (toHumanPrice(compensationUser)), '€');
 	}
 
   document.querySelector('.position__lower').innerHTML = valeurDepart;
+  document.querySelector('.position__upper').innerHTML = valeurArrivee;
   document.getElementsByClassName('noUi-handle-upper')[0].innerHTML = handle;
 }
 
+function renderTextSquareSliders(type, element, element1, sliderEquality, handle) {
+  let markup;
 
-export const initializeUislider = (sliderAnchor, flight, payment) => {
-    const sliderCreated = createCompensationSlider(sliderAnchor, flight);
-    connectUiSlider(sliderCreated, sliderAnchor, flight);
-    updateHandles(sliderCreated, flight);
-    if (payment == 'yes') {
-      triggerPayment(sliderCreated);
-    }
+  if (type == "tree" ) {
+    markup = `
+      <div class="compensation-slider-tree-positionning">
+        <div><p>${element}</p>${element1}</div>
+      </div>
+    `
+  } else if (type == "money" || type == "co2") {
+    (sliderEquality & handle == 1) ? markup = '': markup = `<div class="compensation-slider-text-positionning"><p>${element}${element1}</p></div>`;
+  }
+  return markup
 }
 
 const updateHandleValue = (slider, flight, handle = 0) => {
 
   const tree = `<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:45px;">`
   const detteEcologique = flight.treepDetteEcologique;
-  const skytreepParticipation = flight.treepCompensation;
+  const skytreepParticipation = (flight.treepCompensation / 13) * 20;
   const treeSkytreep = (skytreepParticipation / 20);
   const children = slider.target.getElementsByClassName('noUi-handle');
   const values = slider.get();
+  console.log(values)
+
   let i = 0;
   let val;
   while (i < children.length) {
@@ -162,31 +158,43 @@ const updateHandleValue = (slider, flight, handle = 0) => {
     
     
     if (document.getElementById('active__measure').className.includes('t-target')){
-      updateSliderProperly((val  - skytreepParticipation === 0), 'tree', treeSkytreep, (Math.round(val / 20) - treeSkytreep), tree, children[i]);
+      updateSliderProperly((val  - skytreepParticipation === 0), 'tree', treeSkytreep, (Math.round(val / 20) - treeSkytreep), tree, children[i], i);
     } else if (document.getElementById('active__measure').className.includes('c-target')) {
-      updateSliderProperly((val  - skytreepParticipation === 0), 'co2', val.split('.')[0], (val - skytreepParticipation), 'Kg', children[i]);
+      updateSliderProperly((val  - skytreepParticipation === 0), 'co2', val.split('.')[0], (val - skytreepParticipation), 'Kg', children[i], i);
     } else {
-      updateSliderProperly((val  - skytreepParticipation === 0), 'money', toHumanPrice(skytreepParticipation), (toHumanPrice(val - skytreepParticipation)), '€', children[i]);
+      updateSliderProperly((val  - skytreepParticipation === 0), 'money', toHumanPrice((skytreepParticipation / 20) * 13), (toHumanPrice((val - skytreepParticipation)/ 20 * 13)), '€', children[i], i);
     }
     i++
   }
 }
 
-function updateSliderProperly(condition, type, value1, value2, visual, element){
+function updateSliderProperly(condition, type, value1, value2, visual, element, handle){
   let value;
   if ( condition ){
-    value = renderTextSquareSliders(type, value1, visual);
+    value = renderTextSquareSliders(type, value1, visual, condition, handle);
   } else {
-    value = renderTextSquareSliders(type, value2, visual);
+    value = renderTextSquareSliders(type, value2, visual, condition, handle);
   }
 
   if (element) {
-    element.innerHTML = value
+    element.innerHTML = value;
+    if (handle) {
+      document.querySelector('.compensation-slider-text-positionning').children[0].style.bottom = '-57px';
+    } 
   } else {
     return value
   }
-
 }
+
+export const initializeUislider = (sliderAnchor, flight, payment) => {
+    const sliderCreated = createCompensationSlider(sliderAnchor, flight);
+    connectUiSlider(sliderCreated, sliderAnchor, flight);
+    updateHandles(sliderCreated, flight);
+    if (payment == 'yes') {
+      triggerPayment(sliderCreated);
+    }
+}
+
 
 function updateHandles(slider, flight) {
   slider.on('update', () => {
@@ -227,24 +235,24 @@ function connectUiSlider(slider, sliderInput, flight) {
 //create function that connects the value of the slider to all the fields in the view. 
 
 function updateFields(formattedValue, flight) {
-	const detteEcologique = flight.treepDetteEcologique;
+	const detteEcologique = flight.treepCarbonEmission;
 	document.getElementById('percentage').innerHTML = `${Math.round((formattedValue / detteEcologique) * 100)} %`;
-  document.getElementById('euros').innerHTML = `${toHumanPrice(formattedValue)} EUR`;
+  document.getElementById('euros').innerHTML = `${toHumanPrice((formattedValue / 20) * 13)} EUR`;
   document.getElementById('number__trees').innerHTML = `${Math.round(formattedValue / 20)}`;
 }
 
 function createCompensationSlider(sliderAnchor, flight) {
 
-	const treepCompensation = flight.treepCompensation;
-  const detteEcologique = flight.treepDetteEcologique;
+	const treepCarbonCompensation = (flight.treepCompensation / 13) * 20;
+  const totalCarbonEmission = flight.treepCarbonEmission;
     
 	noUiSlider.create(sliderAnchor, {
-	    start: [treepCompensation, treepCompensation],
+	    start: [treepCarbonCompensation, treepCarbonCompensation],
 	    connect: [true, true, false],
-      padding: [treepCompensation, 0],
+      padding: [treepCarbonCompensation, 0],
 	    range: {
 	        'min': 0,
-	        'max': detteEcologique
+	        'max': totalCarbonEmission
 	    },
 	    step: 20
     });
@@ -252,7 +260,10 @@ function createCompensationSlider(sliderAnchor, flight) {
 	const handles = sliderAnchor.getElementsByClassName('noUi-handle');
 	const connects = sliderAnchor.getElementsByClassName('noUi-connect');
   
-	handles[0].style.display = 'none';
+  console.log(connects[0].getBoundingClientRect());
+
+
+	handles[0].style.backgroundColor = 'transparent';
 	
 	connects[0].style.background = '#36ACB8';
   connects[1].style.background = '#00C896';
@@ -262,24 +273,29 @@ function createCompensationSlider(sliderAnchor, flight) {
 
 
 function redirectionMarkup(flight) {
-  
+
+  const pourcentageSkytreep = Math.round((flight.treepCompensation / flight.treepDetteEcologique) * 100);
+
+
   const markupRedirect = `
     <div class="modal-like-frame">
-      <h4>bienvenue sur la page de compensation, ici vous pouvez:</h4>
+      <div class="modal-like-frame-title">
+        <h4>Bravo !  En passant par Skytree'p vous allez rembourser ${pourcentageSkytreep}% de votre dette écologique !</h4>
+        <h4>Votre action  <span style="padding: 3px;"></span><span style="color:#28A72D;">é</span><span style="color:#147B18;">c</span><span style="color:#6BDE70;">o</span><span style="color:#ABF3AE;">l</span><span style="color:#599e5a;">o</span><span style="color:#95EB98;">g</span><span style="color:#06DD0E;">i</span><span style="color:#4EB152;">q</span><span style="color:#C4ECC5;">u</span><span style="color:#04FF0E;">e</span><span style="padding: 3px;"></span>va permettre de planter ${flight.treepCompensation / 13} arbres.</h4>
+      </div>
       <div class="compensation-choix-user">
-        <div class="compensation-compensation-tooltip-control">
-          <button id="back-to-research-target" style="background-color: #6b847d;" data-toggle="tooltip" data-html="true" data-placement="top" 
-          title='
-            ${displayTooltipDate(flight)}
-          '>Continuer vos recherches</button>
+        <div class="compensation-continuer-research-div" id="back-to-research-target">
+          <button>Continuer vos recherches</button>
+          <i class="fas fa-search" style="cursor:pointer;"></i>
+          ${displayTooltipDate(flight)}
         </div>
-        <div class="compensation-pay-debt-control">
-          <button id="regler-dette-eco" style="background-color: #0ADEA9;" data-toggle="tooltip" data-html="true" data-placement="top" 
-          title='
-            <p>La participation de skytree’p à votre dette sera automatiquement ajoutée lors de votre paiement</p>
-          '>Régler votre dette</button>
+        
+        <div class="compensation-continuer-research-div compensation-regler-dette-eco-div">
+          <button id="regler-dette-eco" style="background-color: #0ADEA9;height: 90px;">Régler le reste de votre </br>dette écologique</button>
+          <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png">
+          <p style="background-color:#0ADEA9;">Pour compenser 100% de votre dette écologique, vous devez encore planter ${(flight.treepDetteUser / 13)} arbres.</p>
         </div>
-      </div>  
+      </div>
     </div>
   `
   return markupRedirect
@@ -310,14 +326,11 @@ function displayTooltipDate(flight) {
 }
 
 export const createCompensationMarkup = (flight, option) => {
-  
-  const pourcentageSkytreep = Math.round((flight.treepCompensation / flight.treepDetteEcologique) * 100);
 
 	const markup = `
 	  <div class="background__container">
       <div class="compensation-background-layer">
         ${option}
-  		  <h3>Bravo, en passant par Skytree'p, vous avez déja remboursé ${pourcentageSkytreep}% de votre dette écologique !</h2>
   			<div class="compensation__container">
 
   				<div class="compensation__stats__container">
@@ -359,7 +372,7 @@ function uniquementSkytreepShare(flight) {
   const pourcentageSkytreep = Math.round((flight.treepCompensation / flight.treepDetteEcologique) * 100);
 
   document.getElementById('verser-uniquement').innerHTML = `
-    Uniquement faire payer à skytree'p les ${pourcentageSkytreep}% de votre dette
+    Les ${pourcentageSkytreep}% de votre dette seront automatiquement compensés
   `
 
 }

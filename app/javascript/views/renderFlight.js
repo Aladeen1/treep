@@ -162,11 +162,11 @@ function graphDetteEco(flight, id) {
 	const markup = `
 		<div class="dette__infographie__container__front" id="dette-id-${id}">
 		  	<div class="dette__infographie__skyparticipation__preview" style="width: 40%;">
-			  	<div><p>${flight.treepCompensation / 20}</p></div>
+			  	<div><p>${flight.treepCompensation / 13}</p></div>
 			  	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:32px;width:32px;">
 		  	</div>
 		  	<div class="dette__infographie__reste__preview" style="width: 60%;">
-			  	<div><p>${flight.treepDetteUser / 20}</p></div>
+			  	<div><p>${flight.treepDetteUser / 13}</p></div>
 			  	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:32px;width:32px;">
 		  	</div>
 		</div>

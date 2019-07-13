@@ -33,4 +33,7 @@ skip_before_action :authenticate_user!
   def noscalculs
     @footer2 = true
   end
+
+  def create
+  end
 end

@@ -54,7 +54,45 @@
        <li><img class="fr-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"></li>
        <li><a href="#">Français (EUR)</a></li>
       </li>
-      <p class="beta-icon">BÊTA</p>
+      <div class="beta-call-icons">
+        <p class="beta-icon">BÊTA</p>
+        <p class="call-icon" data-target="#AidezNousModal" data-toggle="modal">AIDEZ NOUS ?</p>
+      </div>
     </ul>
   </div>
 </div>
+
+
+<div class="modal" id="AidezNousModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-formulaire-title">
+          <p>Nous avons besoin de toi pour avancer<i data-dismiss="modal" class="fas fa-times cross-closing-modal"></i></p>
+      </div>
+      <div class="modal-body">   
+        <%= form_tag questions_path, :class => 'formulaire-participation' do %>
+      
+          <div>
+            <p>Qu'est ce qui t'as paru le moins clair ?</p>
+            <%= text_area_tag :reponse, params[:reponse] %>
+          </div>
+          
+
+          <div>
+            <p class="text-for-mail">Rejoins une communauté engagée et fais partie de l'aventure vers un transport éco-responsable (optionnel)</p>
+            <%= text_field_tag :email, params[:email], placeholder: 'marie.lami@skytreep.fr' %>
+          </div>
+          
+
+          <button type="submit" class="submit-button">Soumettre</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
