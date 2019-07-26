@@ -201,10 +201,12 @@ function setNewSliderValues (slider, value, padding, type) {
 }
 
 function updateRepartition(arbres) {
-	const skytreepShare = Math.ceil(arbres * 0.2)
+	const skytreepShare = Math.ceil(arbres * 0.2);
+	const userShare = arbres - skytreepShare;
 	document.getElementById('skytree-share-target').innerHTML = skytreepShare;
-	document.getElementById('user-share-target').innerHTML = arbres - skytreepShare;
-	document.querySelector('.text__treep__arbres__plantes').innerHTML = `Vous avez plantés<br>${skytreepShare} arbres gratuitement`
+	document.getElementById('user-share-target').innerHTML = userShare;
+	document.querySelector('.text__treep__arbres__plantes').innerHTML = `Vous avez plantés<br>${skytreepShare} arbres gratuitement`;
+	document.querySelector('.text__user__arbres__plantes').innerHTML = `Vous voulez compenser le reste ?<br> Choississez de planter les ${userShare} arbres restants <br> chez l'une de nos association partenaire.`;
 }
 
 function updateNameSecondDisplay(depart, arrivee) {
