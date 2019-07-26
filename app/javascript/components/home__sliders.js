@@ -27,8 +27,9 @@ if ($('#home')[0] != null) {
 
 	const sliderCo2 = createSlider(target1, 213, 'co2');
 	const sliderArbres = createSlider(target2, 11, 'arbres');
-	const sliderRepartition = createRepartitionSlider(target3, 11)
+	const sliderRepartition = createRepartitionSlider(target3, 11);
 	listenChanges(sliderCo2, sliderArbres);
+	lockHandles();
 }
 
 function createRepartitionSlider(sliderAnchor, arbres) {
@@ -125,7 +126,7 @@ function createSlider(sliderAnchor, value, type) {
 	        'max': maxRange
 	    }
     });
-
+   
 	const connects = sliderAnchor.getElementsByClassName('noUi-connect');
 
   	if(type == "co2") {
@@ -144,10 +145,17 @@ function setHandleText(slider, type) {
 	const handle = slider.target.getElementsByClassName('noUi-handle')[0];
     const value = (slider.get()).split(".")[0];
     if (type == 'co2') {
-    	handle.dataset.value = `${value}KG`;
+    	handle.dataset.value = `${value} kg`;
     } else if (type == 'arbres') {
     	handle.dataset.value = `x${value}`;
     }
+}
+
+function lockHandles() {
+	const handles = document.querySelectorAll('.noUi-origin');
+	handles.forEach( handle => {
+		handle.setAttribute('disabled', true);
+	})
 }
 
 

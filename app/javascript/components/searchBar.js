@@ -28,7 +28,7 @@ function cacheInputs() {
 
 	localStorage.setItem('UserInputs', inputs);	
 }
-
+ 
 
 function sendData() {
 	const target = document.getElementById('home');

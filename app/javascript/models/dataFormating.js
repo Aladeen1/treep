@@ -39,7 +39,7 @@ function addDistanceEffective(flight) {
 }
 
 function addCarbonEmission(flight) {
-	flight.treepCarbonEmission = treeCompatibility(Math.round((flight.treepDistanceEffective * 235) / 1000));
+	flight.treepCarbonEmission = carbonCompatibility(Math.round((flight.treepDistanceEffective * 235) / 1000));
 }
 
 function addTreepCommissionCompensation(flight) {
@@ -50,7 +50,7 @@ function addTreepCommissionCompensation(flight) {
 
 function addDetteeco(flight) {
   const treeAbsorptionKg = 20;
-  const treePriceCents = 20;
+  const treePriceCents = 13;
 
   // On utilise ceil pour avoir un nombre d'abres toujours capable d'absorber le co2 entièrement
 
@@ -62,6 +62,10 @@ function addDetteecoUser(flight) {
 }
 
 function treeCompatibility(amountInCents) {
+	return Math.floor( amountInCents / 13) * 13
+}
+
+function carbonCompatibility(amountInCents) {
 	return Math.floor( amountInCents / 20) * 20
 }
 

@@ -2,13 +2,12 @@
 
 
 	select {
-	    -webkit-appearance: none;
-	    -moz-appearance: none;
 	    text-indent: 1px;
 	    text-overflow: '';
 	    text-align-last: center;
 	    height: 50px;
     	width: 120px;
+      font-size: 15px;
 	    border: 1px solid #E0E0E0;
 	    background-color: #F4F4F4;
       text-transform: uppercase;
@@ -31,24 +30,28 @@
   align-items: center;
 
   h4 {
-    margin: 0px
+    margin: 0px;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 35px;
   }
 }
 
 .home-example-etape-container {
-  width: 73%;
 	padding: 40px 0px;
-	margin-right: 17%;
-  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
 }
 
 
 .home-example-section-container {
+  width: 1000px;
   position: relative;
   display:flex;
   justify-content:center;
   margin: 20px 40px;
-  align-items: center;
 }
 
 .home-example-plane-icon {
@@ -58,39 +61,45 @@
 
 .etape-number {
   background-color: black;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     text-align: center;
-    line-height: 40px;
+    line-height: 38px;
     color: white;
-    margin-right: 25px;
-    font-size: 25px;
+    margin-right: 20px;
+    font-size: 23px;
 }
 
 .treep-number-positioning {
   display: flex;
     position: absolute;
-    bottom: 18px;
-    left: 48px;
+    bottom: 33px;
+    left: 60px;
 
     p {
       position: absolute;
-      top: 31px;
+      top: 27px;
       left: 5px;
+      font-size: 23px;
+      font-family: Alegreya Sans SC;
+      font-weight: bold;
     }
 }
 
 .user-number-positioning {
   display: flex;
     position: absolute;
-    bottom: 18px;
-    right: 213px;
+    bottom: 33px;
+    right: 260px;
 
     p {
       position: absolute;
-      top: 31px;
+      top: 27px;
       left: -2px;
+      font-size: 23px;
+      font-family: Alegreya Sans SC;
+      font-weight: bold;
     }
 }
 
@@ -113,7 +122,7 @@
 .home-user-share {
     width: 69%;
     position: absolute;
-    top: 27px;
+    top: 33px;
     right: 25px;
 
     p {
@@ -124,12 +133,12 @@
 
 
 .slider-title-text {
-  width: 130px;
+  width: 150px;
   text-align: right;
   position: absolute;
-  left: -120px;
+  left: -70px;
   bottom: 15px;
-  font-size: 25px;
+  font-size: 21px;
 }
 
 
@@ -139,14 +148,14 @@
 }
 
 .home-example-etape-title {
+  width: 660px;
   display: flex;
-    justify-content: center;
-    align-items: center;
+  align-items: center;
 }
 
 .etape-text {
-  width: 650px;
-  font-size: 26px;
+  width: 600px;
+  font-size: 22px;
 }
 
 .last-etape {
@@ -155,14 +164,10 @@
 	border-radius: 15px;
 	margin: auto;
 	margin-top: 75px;
-	width: 720px;
+	width: 680px;
   align-items: center;
   padding: 10px;
   position: relative;
-}
-
-.last-etape-text {
-  width: 650px;
 }
 
 .go-button-home {
@@ -189,8 +194,8 @@
 }
 
 .slider-main-infos {
-  width: 58vw;
-  height: 140px;
+  width: 750px;
+  height: 147px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -24,9 +24,11 @@
 			data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
 			data-name="Compensation Carbone"
 			data-email="<%= current_user.email %>"
-			data-description="Voyage à .."
+			data-description="Voyage à Bruxelles"
 			data-currency="EUR">
 		</script>
 		<button type="submit" id="stripe-trigger-payment" class="checkout__button">Payer ma dette écologique</button>
 	<% end %>
 </div>
+
+<!-- On slider update mettre a jour le payer ma dette écologique (15 euros) -->

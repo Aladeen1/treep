@@ -35,11 +35,9 @@ li a {
 }
 
 .liste-navbar {
-  padding-left: 35vw;
-  padding-right: 3vw;
-  background: linear-gradient(80.21deg, #00C896 0%, #03AA80 10.23%, #01AD82 22.85%, #00C896 54.58%, #00C896 85.89%, #02B88A 100%), #C4C4C4;
-  height: 60px;
-  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .logo-nav1 {
@@ -80,14 +78,62 @@ li a {
   }
 }
 
+.beta-call-icons {
+  
+  display: flex;
+  position: absolute;
+  bottom: -41px;
+  right: -155px;
+  z-index: 10;
+  background-color: transparent;
+
+  p {
+    font-size: 22px;
+    font-family: Alegreya Sans SC;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border-radius: 2px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+  }
+  
+  .beta-icon {
+    background: linear-gradient(241.27deg, #D2D300 2.73%, #F3F400 100%);
+    margin-right: 7px;
+    width: 90px;
+  }
+  
+  .call-icon {
+    width: 170px;
+    margin-left: 7px;
+    background: linear-gradient(226.97deg, #D30000 2.73%, #D21436 100%);
+    color: white;
+    cursor: pointer;
+  }
+  
+}
+
+.logo-navbar-component {
+
+  img {
+    width: 200px;
+    margin-top: 2px;
+    margin-left: 100px;
+  }
+}
+
+.navbar-component-container {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  width: 83%;
+}
 
 
-
-
-
-
-
-
+.navbar-component-main-container {
+  background: linear-gradient(80.21deg, #00C896 0%, #03AA80 10.23%, #01AD82 22.85%, #00C896 54.58%, #00C896 85.89%, #02B88A 100%), #C4C4C4;
+}
 
 
 
