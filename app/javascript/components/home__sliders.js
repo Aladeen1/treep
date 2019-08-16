@@ -91,7 +91,7 @@ function createRepartitionElements() {
 	const markupUser = `
 	    <div class="home-user-share">
 			<div class='square__arbres__plantes'></div>
-			<p class='text__user__arbres__plantes'>Vous voulez compenser le reste ?<br> Choississez de planter les 8 arbres restants <br> chez l'une de nos association partenaire.  </p>
+			<p class='text__user__arbres__plantes'>Vous voulez compenser le reste ?<br> Choississez de planter les 8 arbres restants <br> chez l'une de nos associations partenaires.  </p>
 		</div>
 	`
 	target.insertAdjacentHTML('beforeEnd', treepNumber);
@@ -205,8 +205,8 @@ function updateRepartition(arbres) {
 	const userShare = arbres - skytreepShare;
 	document.getElementById('skytree-share-target').innerHTML = skytreepShare;
 	document.getElementById('user-share-target').innerHTML = userShare;
-	document.querySelector('.text__treep__arbres__plantes').innerHTML = `Vous avez plantés<br>${skytreepShare} arbres gratuitement`;
-	document.querySelector('.text__user__arbres__plantes').innerHTML = `Vous voulez compenser le reste ?<br> Choississez de planter les ${userShare} arbres restants <br> chez l'une de nos association partenaire.`;
+	document.querySelector('.text__treep__arbres__plantes').innerHTML = `Vous avez planté<br>${skytreepShare} arbres gratuitement`;
+	document.querySelector('.text__user__arbres__plantes').innerHTML = `Vous voulez compenser le reste ?<br> Choississez de planter les ${userShare} arbres restants <br> chez l'une de nos associations partenaires.`;
 }
 
 function updateNameSecondDisplay(depart, arrivee) {

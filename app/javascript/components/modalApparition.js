@@ -17,16 +17,18 @@ export const targetRedirection = () => {
  			}
 
 			const test = event.target;
-			const buttonId = test.parentElement.parentElement.className;
+			const buttonId = test.parentElement.className;
 			const flight = flights.find( element => {
 				return element.id === buttonId
 			});
 			// switchTitle();
 			console.log(flight);
+			const deeplink = flight.deep_link;
+		    window.open(deeplink, 'noopener');
 		    localStorage.setItem('userFlight', JSON.stringify(flight));
 		    // fillHiddenFields(flight);
             
-            window.location.href = "https://www.skytreep.fr/compensation";
+            window.location.href = "http://localhost:3000/compensation";
             // "http://www.skytreep.fr/compensation"
             // "http://localhost:3000/compensation"
 		})
