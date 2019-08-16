@@ -23,12 +23,12 @@ import { getInput, setInput, populateSearchFields } from '../views/searchView';
 
 if (elements.searchForm) {
   elements.searchForm.addEventListener('submit', envoi => {
-    
+
     if (search != null || compensation != null) {
       envoi.preventDefault();
       flights.controlSearch();
     }
-    
+
   });
 }
 
@@ -53,7 +53,7 @@ $(function () {
   //   $('#arbres-tooltip').tooltip('show')
   //   $('#co2-tooltip').tooltip('show')
   //   $('#compensation-tooltip').tooltip('show')
-  // } 
+  // }
 })
 
 
