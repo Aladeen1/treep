@@ -6,7 +6,7 @@ import { handleFieldTransition } from '../components/calendarInputSwitch';
 //     elements.searchDepartInput.value = '';
 //     elements.searchReturnInput.value = '';
 // };
-
+ 
 export const getInput = location => {
   const element = elements[location].value;
   return element;

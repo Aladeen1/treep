@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 		    session[:flight] = nil
 		 
 		    #redirect
-		    flash[:notice] = "Félicitations, vous venez de financer la  plantation de #{@flight.skytreep_participation / 20} arbres"
+		    flash[:notice] = "Félicitations, vous venez de financer la  plantation de #{@flight.skytreep_participation / 13} arbres"
 
 		    dashboard_show_path(current_user)
 	    else

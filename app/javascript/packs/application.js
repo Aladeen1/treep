@@ -1,3 +1,4 @@
+import { searchValidation } from '../components/searchBarValidations';
 import 'components/suggestions';
 import 'components/home__sliders';
 import 'components/compensation';
@@ -10,7 +11,7 @@ import 'components/searchBar';
 import 'components/passagerNumber';
 import 'components/sliderRange';
 import "bootstrap";
-import { elements, search, compensation } from '../views/base';
+import { elements, search, compensation, home} from '../views/base';
 import * as flights from '../controllers/flightController';
 import * as airports from '../controllers/locationController';
 import Search from '../models/Search';
@@ -21,22 +22,28 @@ import { getInput, setInput, populateSearchFields } from '../views/searchView';
 // airports.displayAirports();
 // airports.formatInputLocation();
 
-if (elements.searchForm) {
-  elements.searchForm.addEventListener('submit', envoi => {
-
-    if (search != null || compensation != null) {
-      envoi.preventDefault();
-      flights.controlSearch();
-    }
-
-  });
-}
+// if (elements.searchForm) {
+//   // if (search != null || compensation != null || home != null ) {
+//     elements.searchForm.addEventListener('submit', envoi => {
+//       console.log('ça envoie sans validé')
+//       envoi.preventDefault();
+//       const validation = searchValidation();
+//       if (validation == true) {
+//         flights.controlSearch();
+//       }
+    
+//     });
+//   // }
+// }
 
 
 window.addEventListener('load', () => {
   if (search != null) {
     populateSearchFields();
-    flights.controlSearch();
+    const validation = searchValidation();
+    if (validation == true) {
+      flights.controlSearch();
+    }
   }
 });
 

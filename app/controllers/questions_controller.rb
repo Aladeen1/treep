@@ -1,4 +1,7 @@
 class QuestionsController < ApplicationController
+
+	skip_before_action :authenticate_user!,  :only => [:create]
+	
 	def create
 		@question = Question.new(question_params)
 		@question.save!

@@ -1,4 +1,7 @@
 import { getInput } from '../views/searchView';
+import { searchValidation } from './searchBarValidations';
+import { home } from '../views/base';
+import { controlSearch } from '../controllers/flightController';
 
 class UserInputs {
   constructor(ville_aller, ville_retour, date_aller, date_retour, flight_type, passengers) {
@@ -31,17 +34,21 @@ function cacheInputs() {
  
 
 function sendData() {
-	const target = document.getElementById('home');
-	if (target) {	    
-		document.querySelector('.checkout__button').addEventListener('click', (envoi) => {
-			envoi.preventDefault();
+	document.querySelector('.checkout__button').addEventListener('click', (envoi) => {
+		console.log("sending data, imply reload")
+		envoi.preventDefault();
+		const validation = searchValidation();
+		if (validation) {
 			cacheInputs();
-			window.location.href = "https://www.skytreep.fr/search";
-			// "http://localhost:3000/search"
-			// "http://www.skytreep.fr/search"
-
-		})
-	}
+			if (home) {
+				window.location.href = "https://www.skytreep.fr/search";
+			} else {
+				controlSearch();
+			}	
+		}
+		// "http://localhost:3000/search"
+		// "http://www.skytreep.fr/search"
+	})
 }
 
 sendData();

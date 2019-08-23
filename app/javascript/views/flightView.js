@@ -31,7 +31,7 @@ const getTransferNumber = flight => {
     transferNumber = 'direct';
   }
   return transferNumber
-}
+} 
 
 export const matchAirlinesCode = (flight, airportCodes) => {
   let name = [];
