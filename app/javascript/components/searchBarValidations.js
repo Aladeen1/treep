@@ -3,21 +3,28 @@ import { getAirportCode } from '../views/flightView';
 
 export const searchValidation = () => {
 	console.log("sending validation");
-	nettoyerSearchErrorMessage();
+	
 
-	let valide;
+	let valide, datesValide;
 	const departDate = getInput('searchDepartDateFrom');
 	const returnDate = getInput('searchReturnDateFrom');
 	const departLocation = getAirportCode(getInput('searchDepartInput')).length;
 	const returnLocation = getAirportCode(getInput('searchReturnInput')).length;
 	const airportsValide = validateAirports(departLocation, returnLocation);
-	const datesValide = compareDates(departDate, returnDate);
+
+	if (airportsValide) {
+		datesValide = compareDates(departDate, returnDate);
+	}
 
 	if (airportsValide && datesValide) {
 		valide = true;
 	} else {
 		valide = false;
 	}
+
+	window.setTimeout( () => {
+		nettoyerSearchErrorMessage();
+	}, 300)
 
 	return valide;
 }
@@ -94,7 +101,10 @@ function nettoyerSearchErrorMessage() {
 	const target = document.querySelector('.search__error__message');
 
 	if (target) {
-		target.remove();
+		window.addEventListener('click', () => { 
+			console.log('deleting target')
+			target.remove() 
+		})
 	}
 }
 
