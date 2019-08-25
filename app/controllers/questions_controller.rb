@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 		@question = Question.new(question_params)
 		@question.save!
 
-		redirect_to root_path
+		redirect_to request.referrer
 	end
 
 	private

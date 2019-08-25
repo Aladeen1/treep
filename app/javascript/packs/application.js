@@ -54,8 +54,9 @@ $(function () {
   window.addEventListener('click', () => {
     // $('#back-to-research-target').tooltip('show')
     // $('#regler-dette-eco').tooltip('show')
-  //   $('#arbres-tooltip').tooltip('show')
+    //   $('#arbres-tooltip').tooltip('show')
     // $('#co2-tooltip').tooltip('show')
+    // $('#lamif-0').tooltip('show')
   })
   //   $('#arbres-tooltip').tooltip('show')
   //   $('#co2-tooltip').tooltip('show')

@@ -97,29 +97,31 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 
 			  <div class="flight__card__checkout back">
 			  	  <div class="search-tooltip-control">
-			          <div class="flight__info white-tooltip" data-toggle="tooltip-${id}" data-html="true" data-placement="left" title='
+			          <div class="flight__info white-tooltip" id="lamif-${id}" data-toggle="tooltip-${id}" data-html="true" data-placement="left" title='
 					  	<div class="carte-dette-ecologique" id="dette-id-hide-${id}">
-						  <h5 class="search-tooltip-main-title">Dette écologique <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556638788/Feuilles_skytreep.png"></h5>
+						  <h5 class="search-tooltip-main-title">Neutralisation carbone <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556638788/Feuilles_skytreep.png"></h5>
 						  <div>
-						  	<p class="search-button-style-title">Dette écologique du trajet:</p>
-						  	<p class="search-button-style">${toHumanPrice(flight.treepDetteEcologique)} EUR</p>
+						  	<p class="search-tooltip-text-title">C02 émis:</p>
+						  	<p class="search-tooltip-text">${flight.treepCarbonEmission}Kg</p>
 						  </div>
-						  <h5>Qu’est-ce que la dette écologique ?</h5>
-						  <div class="search-tooltip-separation-line"></div>
-
-						  	<p>La dette est calculée à partir de votre trajet. Le prix correspond au nombre d’arbres qu’il faut planter pour compenser votre empreinte carbone. </p>
-
-						  <h5>Comprendre votre dette ?</h5>
-						  <div class="search-tooltip-separation-line"></div>
-						  <div class="search-tooltip-repartition-text">
-						  	<p>En bleu le montant que nous finançons.</p>
-						  	<p>En vert ce que vous choisissez de payer.</p>
+						  <div>
+						  	<p class="search-tooltip-text-title">C02 compensé:</p>
+						  	<p class="search-tooltip-text">${Math.round((flight.treepCompensation / flight.treepDetteEcologique) * 100)}%</p>
+						  </div>
+						  <div>
+						  	<p class="search-tooltip-text-title">Arbres plantés:</p>
+						  	<p class="search-tooltip-text">${flight.treepCompensation / 13}</p>
 						  </div>
 
-					  	  <div class="search-tooltip-repartition-box">
-					  		<p class="tooltip-blue-box">${toHumanPrice(flight.treepCompensation)}€</p>
-					  		<p class="tooltip-green-box">${toHumanPrice(flight.treepDetteUser)}€</p>
-					  	  </div>
+						  <div class="search-tooltip-separation-line"></div>
+
+						  	<p>La neutralisation carbone est calculée à partir des émissions de votre trajet et du nombre d’arbres que nous finançons gratuitement. Nous utilisons 80% de nos profits pour neutraliser le carbone produit par votre trajet.</p>
+
+						  <div class="search-tooltip-separation-line"></div>
+
+						  <h5>Comment atteindre 100% de C02 neutralisé?</h5>
+						  
+						  <p>Une fois que vous avez sélectionné et acheté votre billet, revenez sur la fenêtre de notre site. Vous aurez la possibilité de faire un don pour neutraliser 100% de vos émissions carbones.</p>
 					  	</div>'>
 			            <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556035926/Ticketinfo.png">
 			          </div>
@@ -159,17 +161,25 @@ function toolTipAction(id) {
 function graphDetteEco(flight, id) {
 
     const width = calculateEcoWidth(flight.treepDetteEcologique, flight.treepCompensation);
+    const carbonNeutralizePourcent = Math.round((flight.treepCompensation / flight.treepDetteEcologique) * 100);
 
 	const markup = `
-		<div class="dette__infographie__container__front" id="dette-id-${id}">
-		  	<div class="dette__infographie__skyparticipation__preview" style="width: 40%;">
-			  	<div><p>${flight.treepCompensation / 13}</p></div>
-			  	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:32px;width:32px;">
+		<div class="dette__infographie__large__container">
+			<div class="dette__infographie__container__front" id="dette-id-${id}">
+			  	<div class="dette__infographie__skyparticipation__preview" style="min-width: 40%;width: ${carbonNeutralizePourcent}%;">
+				  	<div>
+				  		<p>${flight.treepCompensation / 13}</p>
+				  		<div class="dette__infographie__center__image"><img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:42px;width:42px;"></div>
+				  	</div>
+			  	</div>
+			  	<div class="dette__infographie__reste__preview" style="width: ${100 - carbonNeutralizePourcent}%;">
+			  	</div>
+			</div>
+			
+		  	<div class="dette__infographie__pourcentage__preview">
+			  	<p>${carbonNeutralizePourcent}%</p>
 		  	</div>
-		  	<div class="dette__infographie__reste__preview" style="width: 60%;">
-			  	<div><p>${flight.treepDetteUser / 13}</p></div>
-			  	<img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height:32px;width:32px;">
-		  	</div>
+			
 		</div>
 	`
 	return markup

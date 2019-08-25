@@ -16,9 +16,11 @@ export const markupDetails = (flight, id) => {
   const markupDetails = `
 	<div class="collapse" id="collapse-${id}">
 	  <div class="card card-body">
-	  	<div class="details" ${(flight.routes.length >= 2) ? 'style="justify-content: space-between"' : ''}>        
-		   	${displayDetailedRoute(routeAller, timeAller, 'Aller')}
-		    ${(flight.routes.length >= 2) ? displayDetailedRoute(routeRetour, timeRetour, 'Retour') : ''}
+	  	<div class="details" ${(flight.routes.length >= 2) ? 'style="justify-content: space-between"' : ''}>
+	  		<div class="details__routes__container">      
+		   		${displayDetailedRoute(routeAller, timeAller, 'Aller')}
+		    	${(flight.routes.length >= 2) ? displayDetailedRoute(routeRetour, timeRetour, 'Retour') : ''}
+		    </div>
 		    ${displayDetteEcoInfos(routeAller.concat(routeRetour), flight, routeRetour.length)}
       	</div>
 	  </div>
@@ -33,9 +35,9 @@ function displayDetailedRoute(routes, time, type) {
 	// console.log(routes)
 
 	const markup = `
-		<div class="overall__details__container">
+		<div class="overall__details__container" ${(type == 'Aller') ? 'style="margin-left: 0px"' : 'style="margin-right: 0px"'}>
 	   	    <h3>${type}</h3>
-	   	    <div class="info__details__container">
+	   	    <div class="info__details__container" >
 		   		<p style="margin: 15px 0px;">Départ: ${time[4]} ${time[5]} ${time[6]}</p>
 	            
 	            ${markupRoute(routes)}
@@ -52,18 +54,33 @@ function displayDetteEcoInfos(array, flight, type) {
 	const markup = `
 
 		<div class="dette__ecologique__container">
-			<h3>Dette Ecologique</h3>
-			<div class="info__details__container">
-			  <p style="margin: 15px 0px;">${type > 0 ? 'Aller - Retour': 'Aller'}</p>
-			  <p>Distance effective: ${flight.treepDistanceEffective}Km</p>
-			  <p>co2 émis: ${flight.treepCarbonEmission}Kg</p>
-			  <p>Skytreep Participation: ${toHumanPrice(flight.treepCompensation)}€</p>
-			  <p>Montant total: ${toHumanPrice(flight.treepDetteEcologique)}€</p>
-			  <div class="dette__infographie__container">
-			  	<div class="dette__infographie__skyparticipation" style="width: ${width[0]}%;">${toHumanPrice(flight.treepCompensation)}€</div>
-			  	<div class="dette__infographie__reste" style="width: ${width[1]}%;">${toHumanPrice(flight.treepDetteUser)}€</div>
-			  </div>
+			<h3>Neutralisation carbone</h3>
+			<p style="margin: 15px 0px;">${type > 0 ? 'Aller - Retour': 'Aller'}</p>
+			<div>
+			  ${displayStats('Distance parcourue:', flight.treepDistanceEffective, 'Km')}
+			  ${displayStats('C02 émis:', flight.treepCarbonEmission, 'Kg')}
+
+			  <div class="search-tooltip-separation-line"></div>
+
+			  ${displayStats('C02 neutralisé:', ((flight.treepCompensation / 13) * 20), 'Kg')}
+			  ${displayStats('Arbres plantés:', (flight.treepCompensation / 13), ' ')}
+
+			  <div class="search-tooltip-separation-line"></div>
+
+			  ${displayStats('C02 restant:', ((flight.treepDetteUser / 13) * 20), 'Kg')}
+			  ${displayStats('Arbres à planter:', (flight.treepDetteUser / 13), ' ')}
+			  ${displayStats('Montant:', toHumanPrice(flight.treepDetteUser), '€')}
 			</div> 
+		</div>
+	`
+	return markup
+}
+
+function displayStats(description, valeur, unit) {
+	const markup = `
+		<div class="details__stats__disposition__div">
+			<p>${description}</p>
+			<p class="details__stats__text">${valeur} ${unit}</p>
 		</div>
 	`
 	return markup
@@ -106,7 +123,7 @@ function markupRoute(array) {
 				</div>
 
 				<div class="tranche__container second__tranche">
-					<p class="text__formatting__details first__row">${displayFlightTimeRoute(route.aTimeUTC, route.dTimeUTC)}</p>
+					<p class="text__formatting__details grey__details__text first__row">${displayFlightTimeRoute(route.aTimeUTC, route.dTimeUTC)}</p>
 					<div class="details__straight__experiment"></div>
 					<p class="text__formatting__details"></p>					
 				</div>
@@ -159,11 +176,11 @@ function markupEscales(route, indice, tableau, time) {
 		   		<p class="text__formatting__details first__row escale__color">${time[2]}:${time[3]}</p>
 		   		<div class="round__div red__round">
 		   		</div>
-		   		<p class="text__formatting__details">Escale</p>
+		   		<p class="text__formatting__details grey__details__text">Escale</p>
 			</div>
 
 			<div class="tranche__container escale__tranche">
-		   		<p class="text__formatting__details first__row">${displayFlightTimeRoute(tableau[indice + 1].dTimeUTC, route.aTimeUTC)}</p>
+		   		<p class="text__formatting__details grey__details__text first__row">${displayFlightTimeRoute(tableau[indice + 1].dTimeUTC, route.aTimeUTC)}</p>
 		   		<div class="details__straight__escale"></div>
 		   		<p class="text__formatting__details">${route.cityTo}</p>
 			</div>

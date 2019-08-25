@@ -41,7 +41,7 @@ function sendData() {
 		if (validation) {
 			cacheInputs();
 			if (home) {
-				window.location.href = "https://www.skytreep.fr/search";
+				window.location.href = "http://localhost:3000/search";
 			} else {
 				controlSearch();
 			}	
