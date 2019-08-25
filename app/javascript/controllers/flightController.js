@@ -9,7 +9,7 @@ import { targetRedirection } from '../components/modalApparition';
 import { createFilterMarkup } from '../components/filterSearch';
 import { createRouteArray, distanceFlight } from '../views/renderDetails';
 
-
+ 
 const state = {}; 
 
 export const controlSearch = () => {

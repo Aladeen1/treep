@@ -3,7 +3,7 @@
   <div class="rectangle-navbar navbar-component-container">
 
     <div class="logo-navbar-component">
-        <a href="http://www.skytreep.fr">
+        <a href="https://www.skytreep.fr">
           <img src="https://res.cloudinary.com/tark-industries/image/upload/v1556623705/LOGO_SKYTREE_P_blanc.png">
         </a>
     </div>
@@ -67,20 +67,20 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-formulaire-title">
-          <p>Nous avons besoin de toi pour avancer<i data-dismiss="modal" class="fas fa-times cross-closing-modal"></i></p>
+          <p>Nous avons besoin de vous pour avancer<i data-dismiss="modal" class="fas fa-times cross-closing-modal"></i></p>
       </div>
       <div class="modal-body">   
         <%= form_tag questions_path, :class => 'formulaire-participation' do %>
       
           <div>
-            <p>Qu'est ce qui t'as paru le moins clair ?</p>
+            <p>Que modifieriez-vous pour améliorer le site ou le concept de skytree'p?</p>
             <%= text_area_tag :reponse, params[:reponse] %>
           </div>
           
 
           <div>
-            <p class="text-for-mail">Rejoins une communauté engagée et fais partie de l'aventure vers un transport éco-responsable (optionnel)</p>
-            <%= text_field_tag :email, params[:email], placeholder: 'marie.lami@skytreep.fr' %>
+            <p class="text-for-mail">Rejoignez une communauté engagée et faites partie de l'aventure vers un transport éco-responsable (optionnel)</p>
+            <%= text_field_tag :email, params[:email], placeholder: 'marie.lami@hotmail.fr' %>
           </div>
           
 

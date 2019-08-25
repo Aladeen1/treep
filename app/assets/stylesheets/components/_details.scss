@@ -4,6 +4,10 @@
   margin: 0px;
   display: flex;
   justify-content: space-around;
+
+  h3 {
+    font-size: 26px;
+  }
 }
 
 .flight__details__aller {
@@ -54,6 +58,12 @@
   display: flex;
   align-items: flex-end;
   width: 80px;
+  font-size: 16px;
+}
+
+.grey__details__text {
+  color: #838080;
+  font-size: 14px;
 }
 
 .tranche__container {
@@ -112,12 +122,48 @@
 
 .overall__details__container {
   width: 230px;
-  margin: 0px 15px;
-  font-size: 15px;
+  margin: 0px 10px;
+  font-size: 16px;
+}
+
+.details__routes__container {
+  width: 490px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.dette__ecologique__container {
+  width: 280px;
+  margin-left: 35px;
+
+  div {
+
+    p {
+      font-size: 17px;
+    }
+  }
 }
 
 .info__details__container {
   margin: 15px;
+}
+
+.details__stats__disposition__div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.details__stats__text {
+  background-color: #00C896;
+  color: white;
+  font-family: carme;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  width: 103px;
 }
 
 .info__details__container__dette {
@@ -168,14 +214,14 @@
 }
 
 .dette__infographie__reste__preview {
-  background-color: $green;
-  border-radius: 0px 3px 3px 0px;
+  background-color: #24cbde;
+  opacity: 0.4;
 }
 
 .dette__infographie__container__front {
   min-width: 170px;
-  margin: 5px;
   display: flex;
+  justify-content: space-between;
 
   div {
     display: flex;
@@ -183,9 +229,9 @@
     align-items: flex-start;
 
     div {
-      height: 32px;
+      height: 100%;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
 
       p {
         color: white;
@@ -196,6 +242,33 @@
   }
 }
 
+.dette__infographie__center__image {
+  width: 42px;
+  position: relative;
+
+  img {
+    position: absolute;
+    bottom: 12px;
+  }
+}
+
+.dette__infographie__large__container {
+  display: flex;
+}
+
+.dette__infographie__pourcentage__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $green;
+  width: 57px;
+
+
+  p {
+    padding: 6px;
+    color: white;
+  }
+}
 
 
 

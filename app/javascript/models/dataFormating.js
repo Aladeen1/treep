@@ -9,8 +9,8 @@ export const addRelevantData = (data) => {
 		addRouteArrays(flight)
 		addDistanceEffective(flight)
 		addCarbonEmission(flight)
-		addTreepCommissionCompensation(flight)
 		addDetteeco(flight)
+		addTreepCommissionCompensation(flight)
 		addDetteecoUser(flight)
 	})
 	return flights
@@ -43,9 +43,20 @@ function addCarbonEmission(flight) {
 }
 
 function addTreepCommissionCompensation(flight) {
+	let reste = 0;
+	const detteEco = flight.treepDetteEcologique;
+	
 	const treepCommission = treeCompatibility(toCents(flight.price * 0.02));
+	let compensation = treeCompatibility(treepCommission * 0.45);
+
+	if (compensation >= detteEco) {
+		reste = compensation - detteEco;
+		compensation = detteEco;
+	}
+
 	flight.treepCommission = treepCommission;
-    flight.treepCompensation = treeCompatibility(treepCommission * 0.45);
+    flight.treepCompensation = compensation;
+    flight.treepCompensationSurplus = reste;
 }
 
 function addDetteeco(flight) {
