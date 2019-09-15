@@ -1,6 +1,6 @@
 import { getInput } from '../views/searchView';
 import { searchValidation } from './searchBarValidations';
-import { home } from '../views/base';
+import { home, search, compensation } from '../views/base';
 import { controlSearch } from '../controllers/flightController';
 
 class UserInputs {
@@ -41,7 +41,7 @@ function sendData() {
 		if (validation) {
 			cacheInputs();
 			if (home) {
-				window.location.href = "https://www.skytreep.fr/search";
+				window.location.href = "http://localhost:3000/search";
 			} else {
 				controlSearch();
 			}	
@@ -51,4 +51,14 @@ function sendData() {
 	})
 }
 
-sendData();
+if (home != null || search != null || compensation != null) {
+	sendData();
+}
+
+
+
+
+
+
+
+

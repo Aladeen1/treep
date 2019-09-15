@@ -145,8 +145,7 @@
   border: none;
   color: white;
   padding: 10px 40px;
-} 
-
+}
 
 #details {
   border-top-left-radius: 0px;
@@ -180,8 +179,14 @@ button:focus { outline: none; }
 }
 
 .flight__card__nom__airport {
+
+  display: flex;
+  justify-content: flex-end;
+
   p {
     font-size: 15px;
+    min-width: 80px;
+    text-align: center;
   }
 }
 

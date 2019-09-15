@@ -24,7 +24,7 @@ const callLocationAPI = (targetInput) => {
   // make the API call
   // Store the result in the 'locations' property of the search Object
   // Only store the locations which is an array
-  //print the result for convenience
+  // print the result for convenience
   // Iterate over this array an render each element in a list on the interface
   // Besoin d'un if statement pour savoir dans quelle liste on met la liste
   clearDatalists();
