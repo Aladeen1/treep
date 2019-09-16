@@ -1,7 +1,8 @@
 #slider__compensation {  
 	width: 650px;
-	margin: auto;
+	margin: auto 0px;
 	background-color: #E8EEF2;
+    position: relative;
 }
 
 .slider__compensation__container {

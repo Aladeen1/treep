@@ -58,7 +58,7 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 							        <p class="heure">${allerInfoFormatted[0]}:${allerInfoFormatted[1]}</p>
 							      </div>
 							      <div class="flight__card__nom__airport">
-				                    <p>${airportDepart}</p>
+				                    <p>${flight.cityFrom}</p>
 							      </div>
 							    </div>
 
@@ -76,8 +76,8 @@ function render(flight, airlines, allerInfoFormatted, allerDepartDay, allerArriv
 							        	<p class="flight__days__added">${(allerArrivalDay.getUTCDate() - allerDepartDay.getUTCDate() > 0) ? "+" + `${(allerArrivalDay.getUTCDate() - allerDepartDay.getUTCDate())}`: ""}</p>
 							        </div>
 							      </div>
-							      <div class="flight__card__nom__airport">
-							        <p>${airportArrivee}</p>
+							      <div class="flight__card__nom__airport" style="justify-content: flex-start;">
+							        <p>${flight.cityTo}</p>
 							      </div>
 							    </div>
 						    </div>
@@ -202,7 +202,7 @@ function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDep
 			        <p class="heure">${retourInfoFormatted[0]}:${retourInfoFormatted[1]}</p>
 			      </div>
 			      <div class="flight__card__nom__airport">
-			        <p>${airportArrivee}</p>
+			        <p>${flight.cityTo}</p>
 			      </div>
 			    </div>
 
@@ -220,8 +220,8 @@ function createMarkupRetour(flight, retourInfoFormatted, routesRetour, retourDep
 			        	<p class="flight__days__added">${(retourArrivalDay.getDate() - retourDepartDay.getDate() > 0) ? "+" + `${(retourArrivalDay.getDate() - retourDepartDay.getDate())}`: ""}</p>
 			        </div>
 			      </div>
-			      <div class="flight__card__nom__airport">
-			        <p>${airportDepart}</p>
+			      <div class="flight__card__nom__airport" style="justify-content: flex-start;">
+			        <p>${flight.cityFrom}</p>
 			      </div>
 			    </div>
 		    </div>

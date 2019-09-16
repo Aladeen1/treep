@@ -28,24 +28,11 @@ export const targetRedirection = () => {
 		    localStorage.setItem('userFlight', JSON.stringify(flight));
 		    // fillHiddenFields(flight);
             
-            window.location.href = "http://localhost:3000/compensation";
+            window.location.href = "https://www.skytreep.fr/compensation";
             // "http://www.skytreep.fr/compensation"
             // "http://localhost:3000/compensation"
 		})
 	})
-}
-
-export const switchTitle = () => {
-	console.log('switch title')
-	const title = document.querySelector('title');
-	
-	setInterval( () => {
-		if (title.innerHTML == "Skytree'p") {
-			title.innerHTML = `(1) Compensation available`;
-		} else {
-			title.innerHTML = "Skytree'p";
-		}
-	}, 1500)
 }
 
 
