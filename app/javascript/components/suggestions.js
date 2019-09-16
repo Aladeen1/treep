@@ -3,7 +3,7 @@ import { proxy, home, compensation, search } from '../views/base.js';
 import 'js-autocomplete/auto-complete.css';
 import autoComplete from 'js-autocomplete';
 import './suggestion.css';
- 
+   
 var xhr;     
 
 const renderItem = function (item, search) {

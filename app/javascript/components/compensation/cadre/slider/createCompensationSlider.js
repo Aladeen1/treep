@@ -24,7 +24,7 @@ export const createCompensationSlider = (sliderAnchor, flight) => {
 	setDataTextPosition(flight)
 	setExplicationTextPosition(flight)
 
-	handles[0].style.backgroundColor = 'transparent';
+	handles[0].style.display = 'none';
 	
 	connects[0].style.background = '#36ACB8';
     connects[1].style.background = '#00C896';
