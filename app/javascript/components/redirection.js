@@ -11,7 +11,7 @@ import { updateMeasure } from './compensation/cadre/slider/updateDataDisplayed';
 window.addEventListener('load', () => {
   const pageTarget = document.getElementById('title-target-redirection');
 	if (pageTarget != null) {
-    // switchTitle();
+    switchTitle();
     const flight = JSON.parse(localStorage.getItem('userFlight'));
     const render = cadreCompensationMarkup(flight, redirectionMarkup(flight));
     clearLoader(pageTarget);
