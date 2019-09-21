@@ -35,7 +35,7 @@ function displayDetailedRoute(routes, time, type) {
 	// console.log(routes)
 
 	const markup = `
-		<div class="overall__details__container" ${(type == 'Aller') ? 'style="margin-left: 0px"' : 'style="margin-right: 0px"'}>
+		<div class="overall__details__container" ${(type == 'Aller') ? 'style="margin-left: 0px"' : 'style="margin-right: 0px; margin-left: 30px;"'}>
 	   	    <h3>${type}</h3>
 	   	    <div class="info__details__container" >
 		   		<p style="margin: 15px 0px;">Départ: ${time[4]} ${time[5]} ${time[6]}</p>
