@@ -1,6 +1,6 @@
 <%= render "shared/navbar" %>
 <div style="width: 400px;margin: 80px auto;">
-  <h2 style="font-size:36px;">Forgot your password?</h2>
+  <h2 style="font-size:36px;">Mot de passe oublié?</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'reset-password-class' }) do |f| %>
     <%= f.error_notification %>
@@ -12,8 +12,8 @@
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Send me reset password instructions" %>
+    <div class="interface__submit">
+      <button type="submit">Réinitialiser mon mot de passe</button>
     </div>
   <% end %>
 
