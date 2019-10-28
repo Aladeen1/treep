@@ -11,6 +11,8 @@ require 'faker'
 
 Flight.destroy_all
 User.destroy_all
+Question.destroy_all
+
 
 puts 'seeding starts'
 
@@ -18,6 +20,8 @@ puts 'seeding starts'
 
   user = User.create(
     email: Faker::Internet.email,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     password: 123456,
     password_confirmation: 123456,
     trees: rand(1..1_000)
@@ -41,3 +45,4 @@ puts 'seeding starts'
   end
 end
 
+puts 'done seeding'

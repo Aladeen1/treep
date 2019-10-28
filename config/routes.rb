@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'dashboard/show'
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  # get '/auth/facebook/callback', to: 'users/omniauth_callbacks#facebook'
   root to: 'pages#home'
   get '/compensation', to: 'pages#compensation'
   get '/search', to:'pages#search'

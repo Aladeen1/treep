@@ -1,0 +1,94 @@
+.facebook__connection {
+
+	text-decoration: none !important;
+	
+	div {
+		display: flex;
+	    background-color: #4267b2;
+	    border-radius: 3px;
+	    padding: 8px;
+	    color: white;
+	    margin: 20px 40px;
+	    &:hover {
+			background-color: #4b73c3;
+		}
+	}
+
+    i {
+    	font-size: 32px;
+    }
+
+    p {
+    	width: 100%;
+    	text-align: center;
+    	line-height: 32px;
+    }
+}
+
+.devise__interface__container {
+	width: 350px;
+	margin: 80px auto;
+}
+
+
+
+.login__separation__container {
+	
+	width: 100%;
+	display: flex;
+	margin-bottom: 15px;
+	align-items: center;
+
+	div {
+		height: 1px;
+   	 	background-color: #b9b7b7;
+   	 	width: 100%;
+   	 	margin: 0px 20px;
+	}
+
+	h4 {
+		margin: 0px;
+	}
+
+}
+
+.interface__submit {
+
+	margin: 30px 40px;
+
+	button {
+		border-radius: 3px;
+	    padding: 8px;
+	    width: 100%;
+	    background-color: #00C896;
+	    color: white;
+	    border: none;
+	    height: 48px;
+
+	    &:hover {
+			background-color: #04dea8;
+		}
+	}
+}
+
+.login__bottom__links {
+	font-size: 17px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.name__input {
+	display: flex;
+	justify-content: space-between;
+
+	div {
+		width: 45%;
+	}
+}
+
+
+
+
+
+
+
