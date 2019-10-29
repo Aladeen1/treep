@@ -44,19 +44,6 @@
   margin-top: 5px;
 }
 
-.category-container {
-  border: 1px #D4D3D3;
-  border-style: solid none;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 17px;
-
-  &:hover {
-  background-color: rgba(0, 200, 150, 0.1);
-  }
-}
 
 .fa-leaf:before {
   color:green;
@@ -162,18 +149,13 @@
 
 /* debut du test */
 
-.grande-dive {
+.voyage-card-container {
   margin: 20px;
   color: white;
 
   p {
     text-align: center;
   }
-}
-
-.petites-dives {
-  height: 200px;
-  width: 250px;
 }
 
 .flights-user {
@@ -183,11 +165,25 @@
   justify-content: space-around;
 }
 
+.voyage-card-subsection {
+  height: 230px;
+  width: 280px;
+}
+
 .upper {
   background-image: url("https://res.cloudinary.com/tark-industries/image/upload/v1557911959/background-dashboard-card.jpg");
   background-size: cover;
   position: relative;
   border-radius: 6px 6px 0px 0px;
+}
+
+.lower {
+  background: linear-gradient(180deg, #00C896 0%, #3AA8B4 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 6px 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .villes{
@@ -210,14 +206,6 @@
   border-radius: 6px 6px 0px 0px;
 }
 
-.lower {
-  background: linear-gradient(180deg, #00C896 0%, #3AA8B4 100%);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 0px 6px 6px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
 .dashboard-date-container {
   margin: 0px auto;
@@ -245,8 +233,9 @@
 
 .lower-date {
   border-radius: 0px 0px 6px 6px;
-  
 }
+
+
 
 .dashboard-slider-container {
   background-color: aqua;
@@ -268,6 +257,19 @@
 
 
 
+/* Code for real */
+
+.travel-card-container {
+  width: 250px;
+}
+
+.travel-card-upper-part {
+  height: 150px;
+}
+
+.travel-card-lower-part {
+  height: 200px;
+}
 
 
 

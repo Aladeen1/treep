@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'dashboard/show'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # get '/auth/facebook/callback', to: 'users/omniauth_callbacks#facebook'
   root to: 'pages#home'
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   get '/lesarbres', to:'pages#lesarbres'
   get '/objectifs', to:'pages#objectifs'
   get '/noscalculs', to:'pages#noscalculs'
+  get '/dashboard', to:'flights#index', as: :dashboard
   resources :compensations, only: [:new, :create]
   resources :flights, only: [:create]
   resources :questions, only: [:create]

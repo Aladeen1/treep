@@ -2,12 +2,12 @@
 
   <div class="dashboard-presentation-container">
     <div style="display: flex;align-items: flex-end;">
-      <p>26</p>
+      <p><%= @user.trees %></p>
       <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553192647/Arbre.png" style="height: 45px;"></p>
     </div>
 
     <img class="avatar-dash" src="https://res.cloudinary.com/tark-industries/image/upload/v1553179848/default_avatar.png">
-    <p>Linda</p>
+    <p>Hello <%= @user.first_name %></p>
 
     <div class="categories-block">
 
@@ -27,20 +27,19 @@
           <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow dashboard-arrow-direction"> 
       </div>
 
-      <div class="category-container">
+      <!-- <div class="category-container">
           <div>
             <i style="width: 30px" class="onglet-item fas fa-user-ninja"></i>
             <p class="onglet-item">Le crowdfunding de skytreep</p>
           </div>
           <img src="https://res.cloudinary.com/tark-industries/image/upload/v1553081403/Arrow_SKYTREEP.png" class="slider__presentation__arrow dashboard-arrow-direction"> 
-      </div>
-
+      </div> -->
     </div>
   </div>
 
   <div class="dashboard-mes-infos-container">
 
-    <div class="dashboard-statistiques-container">
+    <!-- <div class="dashboard-statistiques-container">
 
       <div class="dashboard-part-title"><p>Statistiques</p></div>
       <div class="dashboard-thermometer">
@@ -51,7 +50,7 @@
         </div>
         <div class="dashboard-stat info-compensation">
           <div class="thermomether-straight"></div>
-          <p>520 kg de C02 compensé</p>
+          <p><%= @user.trees * 20 %> kg de C02 compensé</p>
         </div>
         <div class="dashboard-stat info-km-parcourus">
           <div class="thermomether-straight"></div>
@@ -66,7 +65,7 @@
       <div class="dashboard-manage-account">
         <div class="dashboard-account-line">
           <p>Email</p>
-          <p><%= current_user.email %></p>
+          <p><%= @user.email %></p>
           <%= link_to "Changer mon email", class: 'dashboard-manage-link' %>
         </div>
         <div class="dashboard-account-line">
@@ -75,51 +74,52 @@
           <%= link_to "Changer mon mot de passe", class: 'dashboard-manage-link' %>
         </div>
       </div>
+    </div> -->
+    <div class="flights-user">
+      <div class="container">
+        <div class="row">
+            <% @flights.each do |flight| %>   
+            <div><%= flight.inspect %></div>    
+            <div class=" col-3 voyage-card-container">
+                <div class="voyage-card-subsection upper">
+                  <div class="dashboard-card-layer">
+                    <div class="villes">
+                      <p><%= flight.ville_aller %> - <%= flight.ville_retour %></p>
+                    </div>
+                    <div class="distance-co2">
+                      <p>Km : <%= flight.distance %></p>
+                      <p>co2 : <%= flight.co2 %> Kg</p>
+                    </div>
+                    <div class="dashboard-date-container upper-date">
+                      <p class="dashboard-date-title">Aller</p>
+                      <p><%= flight.date_aller %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="voyage-card-subsection lower">
+                  <% if flight.date_retour != 'undefined' || nil %>
+                    <div class="dashboard-date-container lower-date">
+                      <p class="dashboard-date-title">Retour</p>
+                      <p><%= flight.date_retour %></p>
+                    </div>
+                  <% end %>
+                  <div class="dashboard-slider-container" style="width:80%;">
+                    <div id="dashboard-sliderAnchor"></div>
+                    </div>
+                    <p>Vous avez compensé X% de votre dette écologique</p>
+                </div> 
+              </div>    
+          <% end %>
+        </div>
+      </div>
     </div>
     
   </div>
 
 
-
-
 </div>
-<!-- <div class="flights-user">
-	<div class="container">
-  	<div class="row">
-  	    <% @flights.each do |flight| %> 	    
-  			<div class=" col-3 grande-dive">
-  		    	<div class="petites-dives upper">
-  		    		<div class="dashboard-card-layer">
-  			    		<div class="villes">
-  			    			<p><%= flight.ville_aller %> - <%= flight.ville_retour %></p>
-  			    		</div>
-  			    		<div class="distance-co2">
-  			    			<p>Km : <%= flight.distance %></p>
-  			    			<p>co2 : <%= flight.co2 %> Kg</p>
-  			    		</div>
-  			    		<div class="dashboard-date-container upper-date">
-  			    			<p class="dashboard-date-title">Aller</p>
-  			    			<p><%= flight.date_aller %></p>
-  			    		</div>
-  			    	</div>
-  		    	</div>
-  		    	<div class="petites-dives lower">
-  		    		<% if flight.date_retour != 'undefined' || nil %>
-  			    		<div class="dashboard-date-container lower-date">
-  			    			<p class="dashboard-date-title">Retour</p>
-  			    			<p><%= flight.date_retour %></p>
-  			    		</div>
-  		    		<% end %>
-  		    		<div class="dashboard-slider-container" style="width:80%;">
-  		    			<div id="dashboard-sliderAnchor"></div>
-  		    	    </div>
-  		    	    <p>Vous avez compensé X% de votre dette écologique</p>
-  		    	</div> 
-  		    </div>		
-  		<% end %>
-  	</div>
-  </div>
-</div> -->
+
+
 
 
 
