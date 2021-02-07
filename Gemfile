@@ -8,7 +8,7 @@ gem 'puma'
 gem 'pundit'
 gem 'rails', '5.2.2'
 gem 'redis'
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.4'
