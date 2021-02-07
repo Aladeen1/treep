@@ -1,7 +1,7 @@
 import axios from 'axios'; 
 import { proxy } from '../views/base.js';
 import { addRelevantData } from './dataFormating';
-
+ 
 export default class Search {
     constructor(departLoc, returnLoc, departureDateFrom, departureDateTo, flightType, passengers, returnDateFrom, returnDateTo ) {
       this.departLoc = departLoc;
@@ -22,7 +22,6 @@ export default class Search {
       .catch( error => alert(error))
       return res
     }
-
 
     getFlights() {
       let res;
