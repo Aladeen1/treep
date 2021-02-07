@@ -2,6 +2,14 @@ class FlightsController < ApplicationController
 
 skip_before_action :authenticate_user!,  :only => [:create]
 
+	def index
+		@search_nav = true
+		@footer1 = true
+		@user = current_user
+		@trees_kilo = @user.trees * 20
+		@flights = policy_scope(Flight)
+	end
+
 	def create		
 		# Check to see if the user is registered/logged in
 		
@@ -13,13 +21,15 @@ skip_before_action :authenticate_user!,  :only => [:create]
 		# Redirect the user to register/login
 			redirect_to new_user_session_path    
 		else
+		
 			@flight = Flight.new(flight_params)
 			@flight.user = current_user
+			authorize @flight
 			@flight.save!
 
 			flash[:notice] = "Félicitations, vous venez de financer la  plantation de #{@flight.skytreep_participation / 20} arbres"
 
-			redirect_to dashboard_show_path(current_user)
+			redirect_to dashboard_path
 		end
 
         #Update le nombre d'arbres du user quand il est redirigé. C'est de l'argent qu'il a mis dans tous les cas. 

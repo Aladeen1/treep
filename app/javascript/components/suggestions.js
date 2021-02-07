@@ -7,7 +7,6 @@ import './suggestion.css';
 var xhr;     
 
 const renderItem = function (item, search) {
-	console.log(item)
 	let markup;
 	if (item.type === "airport") {
 		markup =`
@@ -33,7 +32,7 @@ function handleOnlyResult(item) {
 		markup = `<div class="autocomplete-suggestion line-suggestion">`
 	}
 	return markup
-}
+} 
 
 function createAutocomplete(input) {
 
@@ -91,7 +90,6 @@ function embeddedCall(term, response) {
         	response(array)
         });
 }
-
 
 
 

@@ -16,7 +16,7 @@ function createDashboardSlider() {
     const sliderAnchors = Array.from(document.querySelectorAll('.dashboard-slider-container'));
 
     sliderAnchors.forEach( (anchor, index) => {
-    	console.log(detteEcos[index]);
+    	console.log(index);
     	console.log(anchor);
     	createUiSlider(anchor.children[0], 0, 100);
     })
