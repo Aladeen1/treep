@@ -2,7 +2,7 @@ import noUiSlider from "nouislider";
 import 'nouislider/distribute/nouislider.css';
 import './home__sliders.css';
 import { createRouteArray, distanceFlight } from '../views/renderDetails';
-
+  
 var CityData = function(data){
   	this.data = {
   		name: data.name,

@@ -1,0 +1,17 @@
+{
+	"name": "Treep",
+	"private": true,
+	"dependencies": {
+		"@babel/plugin-transform-async-to-generator": "^7.12.13",
+		"@babel/polyfill": "^7.12.1",
+		"@rails/webpacker": "^5.2.1",
+		"axios": "^0.21.1",
+		"bootstrap": "3.4.1",
+		"flatpickr": "^4.6.9",
+		"jquery": "^3.5.1",
+		"js-autocomplete": "^1.0.4",
+		"nouislider": "^12.1.0",
+		"postcss-cssnext": "^3.1.0"
+	},
+	"devDependencies": {}
+}

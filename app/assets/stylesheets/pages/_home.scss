@@ -57,7 +57,7 @@ body, html {
   text-align: center;
   margin-top: -20px;
   padding-bottom: 60px;
-  font-family: 'Carme';
+  font-family: $body-font;
   font-size: 1.6vw;
 }
 
@@ -71,7 +71,7 @@ body, html {
 .text_homex1 h4 {
   font-size: 2vw;
   color: black;
-  font-family: 'Carme';
+  font-family: $body-font;
   padding-bottom: 35px;
 }
 

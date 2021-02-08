@@ -15,7 +15,7 @@ export default class Search {
     }
 
     getLocation(query, locationType) {
-      let res = axios(`${proxy}https://api.skypicker.com/locations?term=${query}&locale=fr-FR&location_types=airport&limit=10&active_only=true&sort=name&partner=picky`);
+      let res = axios(`${proxy}https://api.skypicker.com/locations?term=${query}&locale=fr-FR&location_types=airport&limit=10&active_only=true&sort=name`);
       res.then((location) => {
         this[locationType] = location.data.locations;
       })
