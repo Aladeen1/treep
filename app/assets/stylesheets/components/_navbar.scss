@@ -20,7 +20,7 @@ ul .li-before {
 li a {
   padding-left: 5px;
   color: white;
-  font-family: 'Alegreya Sans SC', sans-serif;
+  font-family: $body-font;
   font-weight: 300;
   font-size: 14px;
   text-decoration: none;
@@ -88,8 +88,8 @@ li a {
   background-color: transparent;
 
   p {
-    font-size: 22px;
-    font-family: Alegreya Sans SC;
+    font-size: 18px;
+    font-family: $body-font;
     letter-spacing: 2px;
     font-weight: bold;
     border-radius: 2px;

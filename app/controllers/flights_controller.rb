@@ -6,7 +6,7 @@ skip_before_action :authenticate_user!,  :only => [:create]
 		@search_nav = true
 		@footer1 = true
 		@user = current_user
-		@trees_kilo = @user.trees * 20
+		# @trees_kilo = @user.trees * 20
 		@flights = policy_scope(Flight)
 	end
 

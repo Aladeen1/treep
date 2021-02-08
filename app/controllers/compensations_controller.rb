@@ -45,7 +45,7 @@ class CompensationsController < ApplicationController
     #Update le nombre d'arbres du user quand il a fini de payer. 
 
     
-    redirect_to dashboard_show_path(current_user)
+    redirect_to dashboard_path
 
     rescue Stripe::CardError => e
     	flash[:alert] = e.message

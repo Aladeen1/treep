@@ -62,11 +62,11 @@ function createAutocomplete(input) {
 }
 
 if (home != null || search != null || compensation != null) {
-	console.log('create autocomplete')
+	console.log('create autocomplete ok')
 	const departInput = document.getElementById('departLoc__search');
-	const arriveeInput = document.getElementById('returnLoc__search');  
-	createAutocomplete(departInput);
-	createAutocomplete(arriveeInput);
+	const arriveeInput = document.getElementById('returnLoc__search');
+	createAutocomplete(departInput)
+	createAutocomplete(arriveeInput)
 }
 
 function embeddedCall(term, response) {

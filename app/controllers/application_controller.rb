@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
   	before_action :authenticate_user!
   	before_action :configure_permitted_parameters, if: :devise_controller?
 
-  	# Pundit: white-list approach.
-  	after_action :verify_authorized, except: :index, unless: :skip_pundit?
- 	after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+  # 	# Pundit: white-list approach.
+  # 	after_action :verify_authorized, except: :index, unless: :skip_pundit?
+ 	# after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
     protected
 
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 		    #redirect
 		    flash[:notice] = "Félicitations, vous venez de financer la  plantation de #{@flight.skytreep_participation / 13} arbres"
 
-		    dashboard_show_path(current_user)
+		    dashboard_path
 	    else
 	    #if there is not temp list in the session proceed as normal
 	      stored_location_for(user) || super
